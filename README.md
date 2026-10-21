@@ -1,5 +1,11 @@
 # astro-ph-researcher v2.0 · 天文研究工作台
 
+[![GitHub release](https://img.shields.io/github/v/release/wing-tn/astro-ph-researcher?label=release)](https://github.com/wing-tn/astro-ph-researcher/releases) [![License: MIT](https://img.shields.io/github/license/wing-tn/astro-ph-researcher?label=license)](https://github.com/wing-tn/astro-ph-researcher/blob/main/LICENSE) [![GitHub Repo](https://img.shields.io/badge/GitHub-wing--tn%2Fastro--ph--researcher-181717?logo=github)](https://github.com/wing-tn/astro-ph-researcher)
+
+**仓库**：https://github.com/wing-tn/astro-ph-researcher  
+**Release**：https://github.com/wing-tn/astro-ph-researcher/releases/tag/v2.0.0
+
+
 > **作者 / 所有者**：天外奇航（@hyperskysail，1253932197@qq.com，GXU-CN）
 > **创作记录**：[AUTHORS.md](AUTHORS.md) · [版本备份说明](backups/README.md)
 > **记录日期**：2026-10-22（Asia/Shanghai）
