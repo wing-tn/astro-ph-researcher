@@ -1,0 +1,1184 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-10-22",
+  "source": {
+    "name": "国家天文台 · 天文学名词（NADC）",
+    "baseUrl": "https://nadc.china-vo.org/astrodict/",
+    "searchUrl": "https://nadc.china-vo.org/astrodict/fuzzy?word={term}",
+    "detailUrl": "https://nadc.china-vo.org/astrodict/termdetails?id={id}",
+    "verifiedAt": "2026-10-22",
+    "verifiedCount": 29
+  },
+  "terms": [
+    {
+      "key": "redshift",
+      "en": "redshift",
+      "zh": "红移",
+      "zhTW": "紅移",
+      "abbr": "",
+      "aliases": [
+        "宇宙学红移",
+        "cosmological redshift"
+      ],
+      "astrodictId": "16171",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=16171",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "(1)天体谱线的观测波长向长波方向频移的现象。(2)该现象引起的谱线波长的相对改变量。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "宇宙学",
+      "level": "基础",
+      "explanation": "红移是天体谱线波长向长波方向移动的现象，可用 z = (λ_obs − λ_emit)/λ_emit 度量。它可能来自天体相对观测者的退行运动（多普勒红移），也可能来自宇宙空间膨胀（宇宙学红移）或强引力场（引力红移）。红移是测量星系距离、重建宇宙膨胀历史与筛选高红移天体的基础观测量，哈勃定律正是把红移与距离联系起来。",
+      "formula": "z = (λ_obs − λ_emit) / λ_emit",
+      "units": "无量纲（红移 z）；速度单位 km/s",
+      "misconceptions": [
+        "红移并不都等于多普勒退行速度，高红移天体的红移主要来自宇宙膨胀。",
+        "红移大不代表天体本身运动得快，需借助宇宙学模型才能把 z 换算成距离。"
+      ],
+      "related": [
+        "测光红移",
+        "宇宙微波背景",
+        "引力透镜效应"
+      ],
+      "literatureQuery": "redshift cosmological distance measurement",
+      "literatureQueryZh": "红移 宇宙学 距离测量"
+    },
+    {
+      "key": "parallax",
+      "en": "parallax",
+      "zh": "视差",
+      "zhTW": "視差",
+      "abbr": "",
+      "aliases": [],
+      "astrodictId": "14324",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=14324",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "天体方向因在不同位置观测引起的差异。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "天体测量",
+      "level": "基础",
+      "explanation": "视差是因观测位置变化而使天体方向出现微小角位移的现象，天文上常用地球绕日公转造成的周年视差测距：d(pc) = 1/p(″)。视差角越小，天体越远；它是恒星距离测量的第一级基石，也是 Gaia 等天体测量卫星的核心观测量。",
+      "formula": "d(pc) = 1 / p(″)",
+      "units": "角秒（″）；距离 pc",
+      "misconceptions": [
+        "视差是观测几何效应，不是天体自身在空间中的真实位移。",
+        "周年视差主要适用于银河系内较近天体，更远天体需改用标准烛光等方法测距。"
+      ],
+      "related": [
+        "自行",
+        "绝对星等",
+        "径向速度"
+      ],
+      "literatureQuery": "stellar parallax distance Gaia",
+      "literatureQueryZh": "恒星 视差 距离测量"
+    },
+    {
+      "key": "accretion disk",
+      "en": "accretion disk",
+      "zh": "吸积盘",
+      "zhTW": "吸積盤",
+      "abbr": "",
+      "aliases": [
+        "accretion disc"
+      ],
+      "astrodictId": "4648",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=4648",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "有角动量物质被天体吸积时形成的环绕天体的盘状结构。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "星系",
+      "level": "进阶",
+      "explanation": "吸积盘是物质以角动量主导的方式落向中心天体时形成的盘状结构，黏滞耗散把引力势能转化为热辐射。盘内温度随半径下降，通常从内区的 X 射线、紫外辐射过渡到外区的光学、红外辐射。活动星系核、黑洞 X 射线双星和原行星系统都以吸积盘为核心能量机制。",
+      "formula": "",
+      "units": "",
+      "misconceptions": [
+        "吸积盘不是物质直接“掉进”中心天体的通道，角动量使它先在外围盘旋。",
+        "吸积盘的辐射效率可以高于核聚变，黑洞吸积并不“黑”。"
+      ],
+      "related": [
+        "活动星系核",
+        "黑洞",
+        "星际介质"
+      ],
+      "literatureQuery": "accretion disk black hole X-ray binary",
+      "literatureQueryZh": "吸积盘 黑洞 X射线双星"
+    },
+    {
+      "key": "luminosity",
+      "en": "luminosity",
+      "zh": "光度",
+      "zhTW": "光度",
+      "abbr": "",
+      "aliases": [],
+      "astrodictId": "12175",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=12175",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "天体表面单位时间辐射的总能量，即天体真正的发光能力。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [
+        "天文学概论"
+      ],
+      "field": "恒星",
+      "level": "基础",
+      "explanation": "光度是天体在单位时间内辐射的总能量（全波段），与观测到的流量 F 通过 L = 4πd²F 相联系。它反映天体的内禀发光能力，需先知道距离才能由视亮度换算得到。恒星光度跨越多个数量级，常用太阳光度 L☉ 作单位，并与绝对星等一一对应。",
+      "formula": "L = 4πd²F",
+      "units": "W（或 erg/s、L☉）",
+      "misconceptions": [
+        "光度不是视亮度，视亮度还取决于天体的距离。",
+        "光度是总辐射功率，与某一波段内的亮度或流量密度不是同一个量。"
+      ],
+      "related": [
+        "绝对星等",
+        "赫罗图",
+        "谱线"
+      ],
+      "literatureQuery": "stellar luminosity distance flux",
+      "literatureQueryZh": "恒星 光度 距离 流量"
+    },
+    {
+      "key": "metallicity",
+      "en": "metallicity",
+      "zh": "金属度",
+      "zhTW": "",
+      "abbr": "",
+      "aliases": [
+        "金属丰度"
+      ],
+      "astrodictId": "12838",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=12838",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2013-02-01",
+      "definition": "恒星大气铁丰度与太阳大气相应值之比的常用对数，以［Fe/H］表示。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "恒星",
+      "level": "进阶",
+      "explanation": "金属度描述天体物质中比氦重的元素相对氢的丰度，天文学上常用 [Fe/H] = log10(N_Fe/N_H) − log10(N_Fe/N_H)_☉ 表示，单位为 dex。它记录恒星形成历史与化学演化：金属度越低通常越古老、越贫金属。金属度还会影响不透明度、恒星演化和谱线强度，是星系考古的重要示踪量。",
+      "formula": "[Fe/H] = log10(N_Fe/N_H) − log10(N_Fe/N_H)_☉",
+      "units": "dex（对数丰度）",
+      "misconceptions": [
+        "天文学里的“金属”指氦以外的所有元素，不是化学意义上的金属。",
+        "金属度不是简单的元素总质量占比，观测上常用铁相对氢的对数丰度表示。"
+      ],
+      "related": [
+        "谱线",
+        "恒星形成率",
+        "赫罗图"
+      ],
+      "literatureQuery": "stellar metallicity chemical abundance",
+      "literatureQueryZh": "恒星 金属度 化学丰度"
+    },
+    {
+      "key": "elliptical galaxy",
+      "en": "elliptical galaxy",
+      "zh": "椭圆星系",
+      "zhTW": "橢圓星系",
+      "abbr": "E galaxy",
+      "aliases": [
+        "elliptical"
+      ],
+      "astrodictId": "8707",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=8707",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "椭球状的星系。按视形状自圆而扁依次分为E0、E1……直至E7共八个次型。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "星系",
+      "level": "基础",
+      "explanation": "椭圆星系是由年老恒星和少量冷气体组成的椭球状星系，形态上按投影扁率分为 E0 至 E7 共八个次型。它们多见于星系团等高密度环境，缺少旋臂和大规模恒星形成活动，颜色偏红。椭圆星系被认为多由星系并合形成，是研究星系演化、质量分布与星系团动力学的重要对象。",
+      "formula": "",
+      "units": "",
+      "misconceptions": [
+        "椭圆星系的“椭圆”指投影形状，不代表其三维结构一定是椭球。",
+        "椭圆星系并非完全没有气体，热气体和少量恒星形成仍可能存在。"
+      ],
+      "related": [
+        "超新星",
+        "活动星系核",
+        "星际介质"
+      ],
+      "literatureQuery": "elliptical galaxy formation evolution",
+      "literatureQueryZh": "椭圆星系 形成 演化"
+    },
+    {
+      "key": "gravitational lensing",
+      "en": "gravitational lensing",
+      "zh": "引力透镜效应",
+      "zhTW": "重力透鏡效應",
+      "abbr": "",
+      "aliases": [
+        "gravitational lens effect"
+      ],
+      "astrodictId": "10224",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=10224",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "",
+      "definitionSource": "",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "宇宙学",
+      "level": "进阶",
+      "explanation": "引力透镜效应是前景天体的引力场使背景天体光线偏折，从而产生增亮、畸变或多重像的现象；点质量透镜的偏折角约为 α = 4GM/(c²b)。它不依赖天体自身发光，因此可用于称量暗物质、测量哈勃常数并发现高红移星系。强透镜、弱透镜和微引力透镜是三类主要观测方式。",
+      "formula": "α = 4GM/(c²b)",
+      "units": "偏折角 rad（观测上常用角秒）",
+      "misconceptions": [
+        "引力透镜不是光学透镜，引力偏折与光的波长无关。",
+        "透镜效应放大的是背景天体，不会放大前景透镜自身。"
+      ],
+      "related": [
+        "引力透镜",
+        "暗物质",
+        "红移"
+      ],
+      "literatureQuery": "gravitational lensing dark matter",
+      "literatureQueryZh": "引力透镜 暗物质 质量测量"
+    },
+    {
+      "key": "spectral line",
+      "en": "spectral line",
+      "zh": "谱线",
+      "zhTW": "譜線",
+      "abbr": "",
+      "aliases": [
+        "spectrum line"
+      ],
+      "astrodictId": "17530",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=17530",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "",
+      "definitionSource": "",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "恒星",
+      "level": "基础",
+      "explanation": "谱线是原子、离子或分子在特定能级间跃迁时吸收或发射确定波长光子形成的线状特征，跃迁频率满足 ν = (E_u − E_l)/h。谱线的位置、强度和轮廓携带温度、密度、速度场与化学丰度信息。它是天体物理学最主要的诊断工具之一，红移、金属度和视向速度的测量都依赖谱线。",
+      "formula": "ν = (E_u − E_l) / h",
+      "units": "λ：Å、nm；ν：Hz",
+      "misconceptions": [
+        "谱线不是连续谱上的“裂缝”，它对应确定的量子跃迁能量。",
+        "多普勒频移改变谱线位置，但谱线强度变化还受温度、密度和丰度影响。"
+      ],
+      "related": [
+        "红移",
+        "金属度",
+        "赫罗图"
+      ],
+      "literatureQuery": "spectral line formation stellar atmospheres",
+      "literatureQueryZh": "谱线 形成 恒星大气"
+    },
+    {
+      "key": "star formation rate",
+      "en": "star-formation rate",
+      "zh": "产星率",
+      "zhTW": "恆星形成率",
+      "abbr": "SFR",
+      "aliases": [
+        "恒星形成率"
+      ],
+      "astrodictId": "17817",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=17817",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《海峡两岸天文学名词》科学出版社，2013",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2024-10-18",
+      "definition": "",
+      "definitionSource": "",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "星系",
+      "level": "进阶",
+      "explanation": "恒星形成率指星系或气团在单位时间内把气体转化为恒星的质量速率，通常以 M☉/yr 计量。观测上可用紫外连续谱、Hα 等复合线、红外尘埃辐射或射电等示踪，但都需要做尘埃消光与初始质量函数修正。它与气体含量、金属度和宇宙恒星形成历史密切相关，是星系演化研究的核心参数。",
+      "formula": "",
+      "units": "M☉/yr",
+      "misconceptions": [
+        "恒星形成率不是恒星数量的增长率，而是把气体转化为恒星的质量速率。",
+        "不同示踪物（紫外、Hα、红外）给出的 SFR 需要各自的消光与初始质量函数修正，不能直接比较。"
+      ],
+      "related": [
+        "星际介质",
+        "金属度",
+        "椭圆星系"
+      ],
+      "literatureQuery": "star formation rate galaxy survey",
+      "literatureQueryZh": "恒星形成率 星系 巡天"
+    },
+    {
+      "key": "active galactic nucleus",
+      "en": "active galactic nucleus",
+      "zh": "活动星系核",
+      "zhTW": "活躍星系核",
+      "abbr": "AGN",
+      "aliases": [],
+      "astrodictId": "4707",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=4707",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "活动性比一般星系核更强的星系核。其所属星系兼具下述大部或全部特征：有很明亮的核，非热连续谱，明显发射线，较大的光变，较强的高能光子发射能力等。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "星系",
+      "level": "进阶",
+      "explanation": "活动星系核是星系中心在超大质量黑洞吸积过程中释放巨大能量的致密区域，观测上表现为明亮的核、非热连续谱、强发射线、快速光变和高能辐射。其能源来自吸积盘以及黑洞自旋、磁场参与的过程，部分系统还会产生相对论性喷流。活动星系核反馈会影响宿主星系的恒星形成与演化。",
+      "formula": "",
+      "units": "",
+      "misconceptions": [
+        "并非所有星系的核都处于活动状态，多数星系核的活动性很弱。",
+        "类星体是活动星系核中极亮的一类，不能把活动星系核等同于类星体。"
+      ],
+      "related": [
+        "吸积盘",
+        "黑洞",
+        "红移"
+      ],
+      "literatureQuery": "active galactic nucleus black hole feedback",
+      "literatureQueryZh": "活动星系核 黑洞 反馈"
+    },
+    {
+      "key": "cosmic microwave background",
+      "en": "cosmic microwave background",
+      "zh": "宇宙微波背景",
+      "zhTW": "",
+      "abbr": "CMB",
+      "aliases": [
+        "宇宙微波背景辐射"
+      ],
+      "astrodictId": "7297",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=7297",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "",
+      "definitionSource": "",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "宇宙学",
+      "level": "基础",
+      "explanation": "宇宙微波背景是宇宙早期复合时期释放、随后被膨胀红移到微波波段的黑体辐射，今天温度约 2.725 K。它的微小温度与偏振各向异性记录了原初密度扰动和宇宙学参数，是 ΛCDM 标准宇宙学最关键的观测证据之一。近似完美的黑体谱与 10⁻⁵ 量级各向异性共同支持热大爆炸图像。",
+      "formula": "T_CMB(z) = T₀ (1 + z)",
+      "units": "K（温度）；各向异性量级 10⁻⁵",
+      "misconceptions": [
+        "宇宙微波背景不是恒星或星系发出的光，而是早期宇宙复合时释放的辐射。",
+        "宇宙微波背景并非完全均匀，10⁻⁵ 量级的各向异性正是宇宙大尺度结构的种子。"
+      ],
+      "related": [
+        "红移",
+        "暗物质",
+        "暗能量"
+      ],
+      "literatureQuery": "cosmic microwave background anisotropy",
+      "literatureQueryZh": "宇宙微波背景 各向异性"
+    },
+    {
+      "key": "photometric redshift",
+      "en": "photometric redshift",
+      "zh": "测光红移",
+      "zhTW": "測光紅移",
+      "abbr": "",
+      "aliases": [
+        "photo-z"
+      ],
+      "astrodictId": "14798",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=14798",
+      "status": "已出版",
+      "sources": [
+        "第十六批天文学名词的推荐译名，天文学进展，2009(2)",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "",
+      "definitionSource": "",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "宇宙学",
+      "level": "前沿",
+      "explanation": "测光红移是利用多波段测光得到的颜色和能谱形状，通过与模板能谱或训练集比对来估计星系红移的方法，常记为 z_phot。它不需要光谱，能高效处理巡天中数量巨大的暗弱天体，但精度低于光谱红移（典型误差约 0.01–0.05）。测光红移是弱引力透镜、星系成团性和宇宙学大尺度结构研究的基础。",
+      "formula": "",
+      "units": "无量纲（z_phot）；误差常以 σ_NMAD 或归一化中位误差描述",
+      "misconceptions": [
+        "测光红移不是直接测量谱线位移，而是由多波段颜色拟合推断。",
+        "测光红移误差随红移和星系类型变化，不能当作精确距离使用。"
+      ],
+      "related": [
+        "红移",
+        "引力透镜效应",
+        "椭圆星系"
+      ],
+      "literatureQuery": "photometric redshift galaxy survey",
+      "literatureQueryZh": "测光红移 星系 巡天"
+    },
+    {
+      "key": "proper motion",
+      "en": "proper motion",
+      "zh": "自行",
+      "zhTW": "自行",
+      "abbr": "P.M.",
+      "aliases": [],
+      "astrodictId": "15469",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=15469",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "(1) 恒星和其他天体相对太阳系在垂直于观测者视线方向上的角位移或单位时间内角位移量。(2) 太阳黑子相对于光球表面的运动。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "天体测量",
+      "level": "基础",
+      "explanation": "自行是恒星或其他天体在天球上垂直于视线方向的角位移速率，通常以 mas/yr 或 ″/yr 表示，可写作 μ = dθ/dt。它由天体相对太阳系的空间运动产生，需要通过跨历元的精确位置测量得到。自行与视差、视向速度共同构成恒星的三维运动学信息，巴纳德星约 10″/yr 的自行是著名例子。",
+      "formula": "μ = dθ/dt",
+      "units": "mas/yr 或 ″/yr",
+      "misconceptions": [
+        "自行不是天体沿视线方向的运动，那属于视向速度。",
+        "高自行不代表恒星本身速度极高，也可能只是因为它距离很近。"
+      ],
+      "related": [
+        "视差",
+        "径向速度",
+        "绝对星等"
+      ],
+      "literatureQuery": "proper motion stellar kinematics",
+      "literatureQueryZh": "自行 恒星 运动学"
+    },
+    {
+      "key": "absolute magnitude",
+      "en": "absolute magnitude",
+      "zh": "绝对星等",
+      "zhTW": "絕對星等",
+      "abbr": "",
+      "aliases": [],
+      "astrodictId": "4561",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=4561",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "天体光度的一种量度。假定天体距离为10pc(秒差距)时的视星等。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [
+        "天文学概论"
+      ],
+      "field": "恒星",
+      "level": "基础",
+      "explanation": "绝对星等是假定天体位于 10 pc 处所应有的视星等，用 M 表示，反映天体的内禀光度：M = m − 5 log10(d/10 pc)。视星等 m 与绝对星等之差称为距离模数，可用来求距离或比较不同天体的真实亮度。太阳的绝对星等约为 +4.8 等。",
+      "formula": "M = m − 5 log10(d / 10 pc)",
+      "units": "mag（星等）；距离 pc",
+      "misconceptions": [
+        "绝对星等不是天体在任意距离下的亮度，而是统一归算到 10 pc 的内禀亮度。",
+        "星等数值越小天体越亮，绝对星等与视星等一样是对数标度。"
+      ],
+      "related": [
+        "光度",
+        "视差",
+        "赫罗图"
+      ],
+      "literatureQuery": "absolute magnitude distance modulus",
+      "literatureQueryZh": "绝对星等 距离模数"
+    },
+    {
+      "key": "Hertzsprung-Russell diagram",
+      "en": "Hertzsprung-Russell diagram",
+      "zh": "赫罗图",
+      "zhTW": "赫羅圖; HR圖",
+      "abbr": "HR diagram",
+      "aliases": [
+        "H-R diagram",
+        "光谱光度图"
+      ],
+      "astrodictId": "1849",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=1849",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2015-04-15",
+      "definition": "又称:光谱光度图(spectrumluminosity diagram)。 1911年丹麦天文学家赫兹伯隆和1913年美国天文学家罗素分别独立采用的显示恒星序列性的光谱型-光度关系图。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "恒星",
+      "level": "基础",
+      "explanation": "赫罗图把恒星按光谱型（或有效温度）与光度（或绝对星等）作图，揭示恒星性质的序列性。大多数恒星集中在主序带上，其余分布在巨星、超巨星和白矮星区；恒星从主序到红巨星再到白矮星的演化轨迹取决于质量与化学丰度。赫罗图是理解恒星结构和演化的基础工具，也能用于测定星团年龄与距离。",
+      "formula": "L = 4πR²σT_eff⁴",
+      "units": "T_eff：K；L：L☉ 或 W；坐标轴：光谱型/温度 vs 光度/绝对星等",
+      "misconceptions": [
+        "赫罗图横轴的温度通常从高到低排列，并不是常见的从左到右递增。",
+        "赫罗图上位置相同的恒星不一定质量相同，金属丰度和演化阶段也会影响位置。"
+      ],
+      "related": [
+        "光度",
+        "绝对星等",
+        "白矮星"
+      ],
+      "literatureQuery": "Hertzsprung-Russell diagram stellar evolution",
+      "literatureQueryZh": "赫罗图 恒星演化"
+    },
+    {
+      "key": "radial velocity",
+      "en": "radial velocity",
+      "zh": "径向速度",
+      "zhTW": "徑向速度",
+      "abbr": "",
+      "aliases": [
+        "视向速度",
+        "line-of-sight velocity"
+      ],
+      "astrodictId": "15757",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=15757",
+      "status": "已出版",
+      "sources": [
+        "《海峡两岸天文学名词》科学出版社，2013",
+        "《英汉天文学名词》，中国科学技术出版社，2015"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "",
+      "definitionSource": "",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "天体测量",
+      "level": "基础",
+      "explanation": "径向速度是天体沿视线方向相对观测者的运动速度，可由谱线多普勒位移测得：v_r = c(λ_obs − λ_0)/λ_0。它是视向速度法发现系外行星的基础，也用于测量星系旋转曲线、双星轨道和恒星运动学。测量时需要扣除地球公转、仪器漂移等系统效应。",
+      "formula": "v_r = c · (λ_obs − λ_0) / λ_0",
+      "units": "km/s",
+      "misconceptions": [
+        "径向速度只给出视线方向的速度分量，不能单独确定天体的三维速度。",
+        "视向速度法测到的是恒星因行星引力产生的周期性速度变化，不是行星本身的速度。"
+      ],
+      "related": [
+        "视差",
+        "自行",
+        "谱线"
+      ],
+      "literatureQuery": "radial velocity exoplanet detection",
+      "literatureQueryZh": "径向速度 系外行星 探测"
+    },
+    {
+      "key": "interstellar medium",
+      "en": "interstellar medium",
+      "zh": "星际介质",
+      "zhTW": "星際介質; 星際物質",
+      "abbr": "ISM",
+      "aliases": [
+        "星际物质",
+        "interstellar matter"
+      ],
+      "astrodictId": "11391",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=11391",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "又称:星际物质(interstellar matter) 。星系内恒星与恒星之间的物质。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "星际介质",
+      "level": "进阶",
+      "explanation": "星际介质是星系中恒星之间分布的气体与尘埃，主要成分是氢和氦，另有少量重元素和分子云。它包含不同温度相，从冷分子云、暖中性介质到热电离气体，是恒星形成的原料库。星际介质通过辐射、吸收和超新星爆发与恒星交换物质和能量，观测手段包括 21 cm 谱线、分子谱线、尘埃红外辐射和吸收线。",
+      "formula": "",
+      "units": "",
+      "misconceptions": [
+        "星际介质不是完全真空，平均密度虽低但总质量可观。",
+        "星际尘埃不是无关紧要的“脏东西”，它主导可见光消光和红外再辐射。"
+      ],
+      "related": [
+        "恒星形成率",
+        "超新星",
+        "谱线"
+      ],
+      "literatureQuery": "interstellar medium molecular clouds",
+      "literatureQueryZh": "星际介质 分子云"
+    },
+    {
+      "key": "dark matter",
+      "en": "dark matter",
+      "zh": "暗物质",
+      "zhTW": "[黑]暗物質; 暗質",
+      "abbr": "",
+      "aliases": [],
+      "astrodictId": "7612",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=7612",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "由天文观测推断存在于宇宙中的不发光物质。由不发光天体、晕物质、以及非重子中性粒子组成。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "宇宙学",
+      "level": "基础",
+      "explanation": "暗物质是不与电磁辐射直接相互作用、因而不可见但具有引力的物质，其存在由星系旋转曲线、星系团动力学、引力透镜和宇宙微波背景等观测共同推断。它约占宇宙总能量密度的 27%，主要通过引力塑造宇宙大尺度结构和星系晕。暗物质的粒子本质仍是未解之谜，候选包括弱相互作用大质量粒子、轴子和原初黑洞等。",
+      "formula": "",
+      "units": "密度参数 Ω_DM ≈ 0.27",
+      "misconceptions": [
+        "暗物质不是黑洞或看不见的普通物质，后者属于重子物质且不足以解释观测。",
+        "暗物质不是反物质，它与普通物质的区别在于几乎不参与电磁相互作用。"
+      ],
+      "related": [
+        "暗能量",
+        "引力透镜效应",
+        "宇宙微波背景"
+      ],
+      "literatureQuery": "dark matter rotation curves",
+      "literatureQueryZh": "暗物质 星系 旋转曲线"
+    },
+    {
+      "key": "dark energy",
+      "en": "dark energy",
+      "zh": "暗能量",
+      "zhTW": "暗能[量]",
+      "abbr": "",
+      "aliases": [],
+      "astrodictId": "7605",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=7605",
+      "status": "已出版",
+      "sources": [
+        "第十批天文学名词的推荐译名，天文学进展，2003(1)",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "",
+      "definitionSource": "",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "宇宙学",
+      "level": "基础",
+      "explanation": "暗能量是导致宇宙加速膨胀的未知能量成分，约占宇宙总能量密度的 68%。它的状态方程参数 w = p/(ρc²) 接近 −1，行为类似爱因斯坦宇宙学常数 Λ。暗能量的存在由 Ia 型超新星、宇宙微波背景和重子声学振荡等观测共同支持，但其物理本质仍未确定。",
+      "formula": "w = p / (ρc²) ≈ −1",
+      "units": "状态方程参数 w 无量纲；密度参数 Ω_Λ ≈ 0.68",
+      "misconceptions": [
+        "暗能量不是普通物质或暗物质，它提供的是负压而不是引力吸引。",
+        "宇宙加速膨胀不是星系自身在空间中膨胀，而是空间度规尺度在增大。"
+      ],
+      "related": [
+        "暗物质",
+        "宇宙微波背景",
+        "红移"
+      ],
+      "literatureQuery": "dark energy equation of state",
+      "literatureQueryZh": "暗能量 状态方程"
+    },
+    {
+      "key": "black hole",
+      "en": "black hole",
+      "zh": "黑洞",
+      "zhTW": "黑洞",
+      "abbr": "BH",
+      "aliases": [],
+      "astrodictId": "5940",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=5940",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "由一个只允许外部物质和辐射进入而不允许物质和辐射从中逃离的边界即视界(event horizon)所规定的时空区域。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [
+        "'According to Einstein’s general theory of relativity, as mass is added to a degenerate star a sudden collapse will take place and the intense gravitational field of the star will close in on itself. Such a star then forms a ‘black hole’ in the universe.' --《Science News Letter》Ann Ewing，18 January 1964"
+      ],
+      "notes": "http://www.worldwidewords.org/topicalwords/tw-bla1.htm",
+      "nadcTags": [],
+      "field": "恒星",
+      "level": "基础",
+      "explanation": "黑洞是引力强到连光也无法逃逸的时空区域，其边界称为事件视界，史瓦西半径 r_s = 2GM/c²。黑洞可由大质量恒星坍缩或致密天体并合形成，按质量可分为恒星级、中等质量和超大质量黑洞。黑洞吸积物质时形成吸积盘并辐射 X 射线；2019 年事件视界望远镜首次发布 M87 黑洞阴影图像。",
+      "formula": "r_s = 2GM/c²",
+      "units": "质量 M☉；史瓦西半径 m 或 km",
+      "misconceptions": [
+        "黑洞不是宇宙中的“真空吸尘器”，在视界之外它的引力与同质量天体无异。",
+        "黑洞并非永恒不变，霍金辐射预言它会缓慢蒸发。"
+      ],
+      "related": [
+        "吸积盘",
+        "中子星",
+        "引力波"
+      ],
+      "literatureQuery": "black hole event horizon imaging",
+      "literatureQueryZh": "黑洞 事件视界 成像"
+    },
+    {
+      "key": "neutron star",
+      "en": "neutron star",
+      "zh": "中子星",
+      "zhTW": "中子星",
+      "abbr": "",
+      "aliases": [],
+      "astrodictId": "13512",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=13512",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "依靠简并中子的压力与引力相平衡的致密星。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "恒星",
+      "level": "基础",
+      "explanation": "中子星是大质量恒星坍缩后形成的致密残骸，主要由简并中子构成，半径约 10–15 km 而质量约 1.4 M☉，密度可达核物质密度量级。它依靠中子简并压与引力平衡，具有极强磁场和高速自转，脉冲星就是其中一类。中子星并合是 r 过程元素和引力波的重要来源。",
+      "formula": "",
+      "units": "质量 M☉；半径 km；自转周期 ms–s",
+      "misconceptions": [
+        "中子星不是“全由中子组成”的均匀球体，其内部结构仍有待研究。",
+        "脉冲星并不等于所有中子星，只有部分中子星以脉冲形式被观测到。"
+      ],
+      "related": [
+        "黑洞",
+        "白矮星",
+        "超新星"
+      ],
+      "literatureQuery": "neutron star equation of state",
+      "literatureQueryZh": "中子星 物态方程"
+    },
+    {
+      "key": "white dwarf",
+      "en": "white dwarf",
+      "zh": "白矮星",
+      "zhTW": "白矮星",
+      "abbr": "WD",
+      "aliases": [],
+      "astrodictId": "19680",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=19680",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "由简并电子的压力抗衡引力而维持平衡状态的致密星。因早期发现的大多呈白色而得名。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "恒星",
+      "level": "基础",
+      "explanation": "白矮星是低中等质量恒星演化末期的致密残骸，由碳氧（或氧氖）核心和薄大气组成，依靠电子简并压支撑，质量约 0.5–1.4 M☉，半径与地球相当。它已停止核聚变，只靠残余热能缓慢冷却，冷却序列可用于测定星团年龄。当吸积使质量接近钱德拉塞卡极限（约 1.4 M☉）时，白矮星可能爆发为 Ia 型超新星。",
+      "formula": "",
+      "units": "质量 M☉；半径约为地球半径量级",
+      "misconceptions": [
+        "白矮星不是仍在燃烧的恒星，它已停止核聚变，只剩余热辐射。",
+        "钱德拉塞卡极限是白矮星的质量上限，并非所有白矮星最终都会变成超新星。"
+      ],
+      "related": [
+        "超新星",
+        "赫罗图",
+        "中子星"
+      ],
+      "literatureQuery": "white dwarf cooling age",
+      "literatureQueryZh": "白矮星 冷却 年龄"
+    },
+    {
+      "key": "supernova",
+      "en": "supernova",
+      "zh": "超新星",
+      "zhTW": "超新星",
+      "abbr": "SN",
+      "aliases": [],
+      "astrodictId": "18266",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=18266",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-06-08",
+      "definition": "爆发规模最大的变星。爆发时释放的能量一般达1E+41--1E+44J，并且全部或大部分物质被炸散。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "复数：supernovae",
+      "nadcTags": [],
+      "field": "恒星",
+      "level": "基础",
+      "explanation": "超新星是恒星演化末期或白矮星吸积过程中发生的剧烈爆发，峰值亮度可超过整个星系，释放能量约 10⁴⁴ J。按机制主要分为热核爆发（Ia 型，白矮星达到临界质量）和核坍缩（II 型及 Ib/Ic 型，大质量恒星铁核坍缩）。超新星是重元素合成与宇宙增富的关键来源，Ia 型超新星还被用作宇宙学标准烛光。",
+      "formula": "",
+      "units": "峰值能量 J 或 erg；亮度 mag",
+      "misconceptions": [
+        "超新星与新星不同：新星是表面氢燃烧，超新星则是恒星整体爆发或坍缩。",
+        "Ia 型超新星来自白矮星而非大质量恒星，其前身星与 II 型超新星不同。"
+      ],
+      "related": [
+        "白矮星",
+        "中子星",
+        "黑洞"
+      ],
+      "literatureQuery": "supernova progenitor explosion mechanism",
+      "literatureQueryZh": "超新星 前身星 爆发机制"
+    },
+    {
+      "key": "exoplanet",
+      "en": "exoplanet",
+      "zh": "系外行星",
+      "zhTW": "[太陽]系外行星",
+      "abbr": "",
+      "aliases": [
+        "extrasolar planet"
+      ],
+      "astrodictId": "9206",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=9206",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《海峡两岸天文学名词》科学出版社，2013",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2015-10-23",
+      "definition": "",
+      "definitionSource": "",
+      "examples": [],
+      "notes": "不加[太阳]，恐有断句歧义",
+      "nadcTags": [],
+      "field": "系外行星",
+      "level": "基础",
+      "explanation": "系外行星是围绕太阳系外恒星运行（或自由漂浮）的行星，1995 年飞马座 51b 的发现开启了系外行星研究时代。主要探测方法包括凌星法、视向速度法、微引力透镜和直接成像等，已确认的系外行星超过 5000 颗。系外行星研究关注行星形成与迁移、大气成分和宜居性，是寻找地外生命的关键方向。",
+      "formula": "",
+      "units": "",
+      "misconceptions": [
+        "系外行星不都是类地行星，其质量和轨道分布极为多样，包括热木星和超级地球。",
+        "单次凌星造成的亮度下降不足以确认行星，需要多个周期的重复观测和排除假信号。"
+      ],
+      "related": [
+        "凌",
+        "径向速度",
+        "引力透镜效应"
+      ],
+      "literatureQuery": "exoplanet atmosphere transit spectroscopy",
+      "literatureQueryZh": "系外行星 大气 凌星 光谱"
+    },
+    {
+      "key": "transit",
+      "en": "transit",
+      "zh": "凌",
+      "zhTW": "凌",
+      "abbr": "",
+      "aliases": [
+        "凌星"
+      ],
+      "astrodictId": "18912",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=18912",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "(1) 内行星的圆面投影在日面上的现象。(2) 卫星的圆面投影在其母行星表面的现象。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [
+        "天体力学"
+      ],
+      "field": "系外行星",
+      "level": "基础",
+      "explanation": "凌是指一个天体从另一天体前方经过、遮挡其部分或全部视面的现象，例如内行星凌日、卫星凌母行星以及系外行星凌星。对系外行星而言，凌星造成恒星亮度的周期性微小下降，下降深度约为 (Rₚ/R★)²，持续时间与轨道倾角和速度有关。凌星法可测量行星半径和轨道周期，结合视向速度还能得到行星密度；凌星光谱则用于研究行星大气。",
+      "formula": "ΔF/F ≈ (Rₚ/R★)²",
+      "units": "深度无量纲；持续时间 h",
+      "misconceptions": [
+        "凌不等于掩星：凌通常指前景天体从背景天体前方经过，掩星指背景天体被遮挡。",
+        "凌星深度只直接给出半径比，不能单独给出系外行星的质量。"
+      ],
+      "related": [
+        "系外行星",
+        "径向速度",
+        "凌星方法"
+      ],
+      "literatureQuery": "exoplanet transit light curve",
+      "literatureQueryZh": "系外行星 凌星 光变曲线"
+    },
+    {
+      "key": "gravitational wave",
+      "en": "gravitational wave",
+      "zh": "引力波",
+      "zhTW": "重力波",
+      "abbr": "GW",
+      "aliases": [
+        "引力辐射",
+        "gravitational radiation"
+      ],
+      "astrodictId": "10238",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=10238",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "又称:引力辐射(gravitational radiation) 。广义相对论预言的引力场的波动形式。其传播速度等于光速。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "宇宙学",
+      "level": "前沿",
+      "explanation": "引力波是广义相对论预言的时空曲率扰动，以光速传播，应变 h = ΔL/L 描述其通过时空间尺度的相对变化。它由加速的质量分布（如双黑洞或双中子星并合）产生，2015 年 LIGO 首次直接探测到 GW150914。引力波提供了不依赖电磁辐射研究致密天体并合、检验强场引力的全新窗口。",
+      "formula": "h = ΔL / L",
+      "units": "应变 h 无量纲；频率 Hz",
+      "misconceptions": [
+        "引力波不是引力在空间中传播速度的变化，而是时空度规本身的波动。",
+        "引力波引起的应变极小（约 10⁻²¹），需要极长基线干涉仪而非普通传感器探测。"
+      ],
+      "related": [
+        "黑洞",
+        "中子星",
+        "超新星"
+      ],
+      "literatureQuery": "gravitational wave black hole merger",
+      "literatureQueryZh": "引力波 黑洞 并合"
+    },
+    {
+      "key": "solar wind",
+      "en": "solar wind",
+      "zh": "太阳风",
+      "zhTW": "太陽風",
+      "abbr": "",
+      "aliases": [],
+      "astrodictId": "17318",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=17318",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "日冕因高温膨胀，不断抛射到行星际空间的等离子体流。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "太阳物理",
+      "level": "基础",
+      "explanation": "太阳风是日冕高温使等离子体克服太阳引力、持续向外抛射形成的超声速带电粒子流，主要成分为质子和电子，典型速度 300–800 km/s。它携带着太阳磁场（行星际磁场）充满日球层，并与行星磁层相互作用产生极光、磁暴和彗尾。太阳风观测对空间天气预警和认识恒星风的普遍性都很重要。",
+      "formula": "",
+      "units": "速度 km/s；数密度 cm⁻³",
+      "misconceptions": [
+        "太阳风不是空气流动，而是稀薄的带电粒子等离子体流。",
+        "太阳风并非均匀恒定，它会随太阳活动和日冕结构变化，存在高速流和共转相互作用区。"
+      ],
+      "related": [
+        "日冕物质抛射",
+        "耀斑",
+        "星际介质"
+      ],
+      "literatureQuery": "solar wind acceleration corona",
+      "literatureQueryZh": "太阳风 加速 日冕"
+    },
+    {
+      "key": "flare",
+      "en": "flare",
+      "zh": "耀斑",
+      "zhTW": "閃焰; 耀斑",
+      "abbr": "",
+      "aliases": [
+        "太阳耀斑"
+      ],
+      "astrodictId": "9509",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=9509",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "太阳大气局部区域突然变亮的活动现象，常伴随有增强的电磁辐射和粒子发射。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "太阳物理",
+      "level": "基础",
+      "explanation": "太阳耀斑是太阳大气局部区域磁能快速释放导致的突然增亮，常伴随 X 射线增强、粒子加速，并可能与日冕物质抛射相伴。它通常发生在活动区强磁场中，磁重联把磁能转化为等离子体加热和高能辐射，持续时间从几分钟到数小时。耀斑按软 X 射线峰值流量分为 A、B、C、M、X 级，强耀斑可影响地球电离层和空间天气。",
+      "formula": "",
+      "units": "软 X 射线峰值流量 W/m²（GOES 分级依据）",
+      "misconceptions": [
+        "耀斑与日冕物质抛射是相关但不同的现象：耀斑主要在电磁辐射波段增亮，日冕物质抛射是物质抛射。",
+        "耀斑不是太阳表面在“燃烧”，而是磁场能量释放过程。"
+      ],
+      "related": [
+        "日冕物质抛射",
+        "太阳风"
+      ],
+      "literatureQuery": "solar flare magnetic reconnection",
+      "literatureQueryZh": "太阳耀斑 磁重联"
+    },
+    {
+      "key": "coronal mass ejection",
+      "en": "coronal mass ejection",
+      "zh": "日冕物质抛射",
+      "zhTW": "日冕巨量噴發",
+      "abbr": "CME",
+      "aliases": [
+        "日冕瞬变",
+        "coronal transient"
+      ],
+      "astrodictId": "7212",
+      "astrodictUrl": "https://nadc.china-vo.org/astrodict/termdetails?id=7212",
+      "status": "已出版",
+      "sources": [
+        "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+        "《天文学名词（定义版）》科学出版社，2001",
+        "《英汉天文学名词》，中国科学技术出版社，2015",
+        "《天文学名词（第三版）》科学出版社，2024"
+      ],
+      "lastRevised": "2010-04-15",
+      "definition": "又称:日冕瞬变(CME,coronal transient) 日冕局部区域内的物质大规模快速抛射现象。",
+      "definitionSource": "NADC《天文学名词（定义版）》",
+      "examples": [],
+      "notes": "",
+      "nadcTags": [],
+      "field": "太阳物理",
+      "level": "进阶",
+      "explanation": "日冕物质抛射是日冕中大规模等离子体和磁场的快速抛射，典型速度数百至上千 km/s，抛射质量可达 10¹⁵ g 量级。它常与耀斑和暗条爆发相伴，是空间天气最重要的驱动源：朝向地球的抛射可引发地磁暴、极光增强以及卫星与电网风险。日冕物质抛射的观测主要依赖日冕仪白光成像和极紫外成像。",
+      "formula": "",
+      "units": "速度 km/s；质量 g 或 kg",
+      "misconceptions": [
+        "日冕物质抛射不是太阳风本身，它是瞬时的物质抛射，而太阳风是持续的背景流。",
+        "日冕物质抛射与耀斑常同时出现但并非一一对应，有的抛射没有明显耀斑，有的耀斑没有抛射。"
+      ],
+      "related": [
+        "耀斑",
+        "太阳风"
+      ],
+      "literatureQuery": "coronal mass ejection space weather",
+      "literatureQueryZh": "日冕物质抛射 空间天气"
+    }
+  ]
+}

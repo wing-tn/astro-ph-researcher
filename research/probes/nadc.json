@@ -1,0 +1,842 @@
+{
+ "probed_at": "2026-10-21T17:00:07.573727+00:00",
+ "base": "https://nadc.china-vo.org/astrodict/",
+ "requests": {},
+ "samples": {
+  "redshift": {
+   "fuzzy_count": 49,
+   "precise_count": 38,
+   "fuzzy_top5": [
+    {
+     "id": "4536",
+     "en": "abnormal redshift",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "反常红移"
+    },
+    {
+     "id": "4951",
+     "en": "angular diameter-redshift relation",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "角径-红移关系"
+    },
+    {
+     "id": "4952",
+     "en": "angular diameter-redshift test",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "角径-红移检验"
+    },
+    {
+     "id": "21746",
+     "en": "Canada-France redshift survey",
+     "abbr": "CFRS",
+     "lang": "英语",
+     "zh": "加拿大-法国红移巡天; CFRS 巡天"
+    },
+    {
+     "id": "775",
+     "en": "CfA Redshift Survey",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "CfA红移巡天"
+    }
+   ],
+   "precise_top5": [
+    {
+     "id": "4536",
+     "en": "abnormal redshift",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "反常红移"
+    },
+    {
+     "id": "21746",
+     "en": "Canada-France redshift survey",
+     "abbr": "CFRS",
+     "lang": "英语",
+     "zh": "加拿大-法国红移巡天; CFRS 巡天"
+    },
+    {
+     "id": "775",
+     "en": "CfA Redshift Survey",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "CfA红移巡天"
+    },
+    {
+     "id": "21786",
+     "en": "correlation function in redshift space",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "红移空间相关函数"
+    },
+    {
+     "id": "7306",
+     "en": "cosmic redshift",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "宇宙红移"
+    }
+   ],
+   "fuzzy_only_ids": [
+    "4951",
+    "4952",
+    "6789",
+    "6790",
+    "21407",
+    "21925",
+    "12149"
+   ]
+  },
+  "gravitational lensing": {
+   "fuzzy_count": 7,
+   "precise_count": 6,
+   "fuzzy_top5": [
+    {
+     "id": "21589",
+     "en": "gravitational lensing effect",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "引力透镜效应"
+    },
+    {
+     "id": "10224",
+     "en": "gravitational lensing; gravitational lens effect",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "引力透镜效应"
+    },
+    {
+     "id": "12927",
+     "en": "microgravitational lensing; microlensing; mini gravitational lensing; mini lensing",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "微引力透镜效应"
+    },
+    {
+     "id": "22061",
+     "en": "Optical Gravitational Lensing Experiment",
+     "abbr": "OGLE",
+     "lang": "英语",
+     "zh": "光学引力透镜实验"
+    },
+    {
+     "id": "21638",
+     "en": "strong gravitational lensing",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "强引力透镜"
+    }
+   ],
+   "precise_top5": [
+    {
+     "id": "21589",
+     "en": "gravitational lensing effect",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "引力透镜效应"
+    },
+    {
+     "id": "10224",
+     "en": "gravitational lensing; gravitational lens effect",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "引力透镜效应"
+    },
+    {
+     "id": "22061",
+     "en": "Optical Gravitational Lensing Experiment",
+     "abbr": "OGLE",
+     "lang": "英语",
+     "zh": "光学引力透镜实验"
+    },
+    {
+     "id": "21638",
+     "en": "strong gravitational lensing",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "强引力透镜"
+    },
+    {
+     "id": "21324",
+     "en": "time delay in gravitational lensing",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "引力透镜时延"
+    }
+   ],
+   "fuzzy_only_ids": [
+    "12927"
+   ]
+  },
+  "红移": {
+   "fuzzy_count": 52,
+   "precise_count": 16,
+   "fuzzy_top5": [
+    {
+     "id": "4536",
+     "en": "abnormal redshift",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "反常红移"
+    },
+    {
+     "id": "4951",
+     "en": "angular diameter-redshift relation",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "角径-红移关系"
+    },
+    {
+     "id": "4952",
+     "en": "angular diameter-redshift test",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "角径-红移检验"
+    },
+    {
+     "id": "21746",
+     "en": "Canada-France redshift survey",
+     "abbr": "CFRS",
+     "lang": "英语",
+     "zh": "加拿大-法国红移巡天; CFRS 巡天"
+    },
+    {
+     "id": "775",
+     "en": "CfA Redshift Survey",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "CfA红移巡天"
+    }
+   ],
+   "precise_top5": [
+    {
+     "id": "21786",
+     "en": "correlation function in redshift space",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "红移空间相关函数"
+    },
+    {
+     "id": "16171",
+     "en": "redshift",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "红移"
+    },
+    {
+     "id": "16172",
+     "en": "redshift controversy",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "红移论争"
+    },
+    {
+     "id": "16173",
+     "en": "redshift correction",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "红移改正"
+    },
+    {
+     "id": "21575",
+     "en": "redshift cutoff",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "红移截断"
+    }
+   ],
+   "fuzzy_only_ids": [
+    "4536",
+    "4951",
+    "4952",
+    "21746",
+    "775",
+    "6789",
+    "6790"
+   ]
+  },
+  "活动星系核": {
+   "fuzzy_count": 11,
+   "precise_count": 7,
+   "fuzzy_top5": [
+    {
+     "id": "4707",
+     "en": "active galactic nucleus",
+     "abbr": "AGN",
+     "lang": "英语",
+     "zh": "活动星系核"
+    },
+    {
+     "id": "21316",
+     "en": "AGN beaming; beaming in AGN",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "活动星系核集束效应"
+    },
+    {
+     "id": "21339",
+     "en": "AGN classification",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "活动星系核分类"
+    },
+    {
+     "id": "21694",
+     "en": "AGN emission line",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "活动星系核发射线"
+    },
+    {
+     "id": "21131",
+     "en": "AGN evolution",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "活动星系核演化"
+    }
+   ],
+   "precise_top5": [
+    {
+     "id": "4707",
+     "en": "active galactic nucleus",
+     "abbr": "AGN",
+     "lang": "英语",
+     "zh": "活动星系核"
+    },
+    {
+     "id": "21316",
+     "en": "AGN beaming; beaming in AGN",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "活动星系核集束效应"
+    },
+    {
+     "id": "21339",
+     "en": "AGN classification",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "活动星系核分类"
+    },
+    {
+     "id": "21694",
+     "en": "AGN emission line",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "活动星系核发射线"
+    },
+    {
+     "id": "21131",
+     "en": "AGN evolution",
+     "abbr": "",
+     "lang": "英语",
+     "zh": "活动星系核演化"
+    }
+   ],
+   "fuzzy_only_ids": [
+    "733",
+    "26515",
+    "26516",
+    "26517"
+   ]
+  }
+ },
+ "edge_cases": {
+  "fuzzy|redshif": {
+   "http": 200,
+   "rows": 49,
+   "top3": [
+    [
+     "abnormal redshift",
+     "反常红移"
+    ],
+    [
+     "angular diameter-redshift relation",
+     "角径-红移关系"
+    ],
+    [
+     "angular diameter-redshift test",
+     "角径-红移检验"
+    ]
+   ]
+  },
+  "fuzzy|AGN": {
+   "http": 200,
+   "rows": 100,
+   "top3": [
+    [
+     "AB magnitude",
+     "AB星等"
+    ],
+    [
+     "absolute blue magnitude",
+     "绝对蓝星等"
+    ],
+    [
+     "absolute bolometric magnitude; bolometri",
+     "绝对热星等"
+    ]
+   ]
+  },
+  "fuzzy|agn": {
+   "http": 200,
+   "rows": 100,
+   "top3": [
+    [
+     "AB magnitude",
+     "AB星等"
+    ],
+    [
+     "absolute blue magnitude",
+     "绝对蓝星等"
+    ],
+    [
+     "absolute bolometric magnitude; bolometri",
+     "绝对热星等"
+    ]
+   ]
+  },
+  "fuzzy|引力透镜": {
+   "http": 200,
+   "rows": 25,
+   "top3": [
+    [
+     "Deep Lens Survey",
+     "引力透镜深空巡天"
+    ],
+    [
+     "double-lensed quasar",
+     "引力透镜效应双像类星体"
+    ],
+    [
+     "galaxy-galaxy lensing",
+     "星系-星系引力透镜"
+    ]
+   ]
+  },
+  "fuzzy|RedShift": {
+   "http": 200,
+   "rows": 49,
+   "top3": [
+    [
+     "abnormal redshift",
+     "反常红移"
+    ],
+    [
+     "angular diameter-redshift relation",
+     "角径-红移关系"
+    ],
+    [
+     "angular diameter-redshift test",
+     "角径-红移检验"
+    ]
+   ]
+  },
+  "fuzzy|": {
+   "http": 200,
+   "rows": 100,
+   "top3": [
+    [
+     "astrolatry",
+     "星体崇拜"
+    ],
+    [
+     "Shapiro delay",
+     "夏皮罗时延"
+    ],
+    [
+     "&#39;Oumuamua",
+     "奥陌陌"
+    ]
+   ]
+  },
+  "precise|redshif": {
+   "http": 200,
+   "rows": 15,
+   "top3": [
+    [
+     "redshift",
+     "红移"
+    ],
+    [
+     "redshift controversy",
+     "红移论争"
+    ],
+    [
+     "redshift correction",
+     "红移改正"
+    ]
+   ]
+  },
+  "precise|AGN": {
+   "http": 200,
+   "rows": 6,
+   "top3": [
+    [
+     "active galactic nucleus",
+     "活动星系核"
+    ],
+    [
+     "AGN beaming; beaming in AGN",
+     "活动星系核集束效应"
+    ],
+    [
+     "AGN classification",
+     "活动星系核分类"
+    ]
+   ]
+  },
+  "precise|agn": {
+   "http": 200,
+   "rows": 6,
+   "top3": [
+    [
+     "active galactic nucleus",
+     "活动星系核"
+    ],
+    [
+     "AGN beaming; beaming in AGN",
+     "活动星系核集束效应"
+    ],
+    [
+     "AGN classification",
+     "活动星系核分类"
+    ]
+   ]
+  },
+  "precise|引力透镜": {
+   "http": 200,
+   "rows": 7,
+   "top3": [
+    [
+     "Deep Lens Survey",
+     "引力透镜深空巡天"
+    ],
+    [
+     "double-lensed quasar",
+     "引力透镜效应双像类星体"
+    ],
+    [
+     "gravitational lens",
+     "引力透镜"
+    ]
+   ]
+  },
+  "precise|RedShift": {
+   "http": 200,
+   "rows": 38,
+   "top3": [
+    [
+     "abnormal redshift",
+     "反常红移"
+    ],
+    [
+     "Canada-France redshift survey",
+     "加拿大-法国红移巡天; CFRS 巡天"
+    ],
+    [
+     "CfA Redshift Survey",
+     "CfA红移巡天"
+    ]
+   ]
+  },
+  "precise|": {
+   "http": 200,
+   "rows": 100,
+   "top3": [
+    [
+     "astrolatry",
+     "星体崇拜"
+    ],
+    [
+     "Shapiro delay",
+     "夏皮罗时延"
+    ],
+    [
+     "&#39;Oumuamua",
+     "奥陌陌"
+    ]
+   ]
+  }
+ },
+ "robots_root": {
+  "url": "https://nadc.china-vo.org/robots.txt",
+  "http": 200,
+  "body": "Disallow:/data/mirror/\nDisallow:/data/archive/\n"
+ },
+ "robots_astrodict": {
+  "url": "https://nadc.china-vo.org/astrodict/robots.txt",
+  "http": 200,
+  "content_type": "application/json",
+  "body_200": "{\"description\":\"404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.\",\"error\":\"Not Found\"}\n"
+ },
+ "wordscandidate": {
+  "url": "https://nadc.china-vo.org/astrodict/wordscandidate?q=redshift",
+  "http": 200,
+  "content_type": "application/json",
+  "max_items": 10,
+  "body_300": "[{\"text\":\"abnormal redshift\"},{\"text\":\"angular diameter-redshift relation\"},{\"text\":\"angular diameter-redshift test\"},{\"text\":\"Canada-France redshift survey\"},{\"text\":\"CfA Redshift Survey\"},{\"text\":\"color-redshift diagram\"},{\"text\":\"color-redshift relation\"},{\"text\":\"correlation function in redshift space\"},{\"text\":\"cosmic redshift\"},{\"text\":\"cosmological redshift\"}]\n"
+ },
+ "details": {
+  "16171": {
+   "url": "https://nadc.china-vo.org/astrodict/termdetails?id=16171",
+   "http": 200,
+   "english": "redshift",
+   "abbreviation": null,
+   "chinese": "红移",
+   "taiwan_name": "紅移",
+   "status": "已出版",
+   "last_revised": "2010-04-15",
+   "bibliography": [
+    "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+    "《天文学名词（定义版）》科学出版社，2001",
+    "《英汉天文学名词》，中国科学技术出版社，2015",
+    "《天文学名词（第三版）》科学出版社，2024"
+   ],
+   "etymology_items": 0,
+   "text_stripped_600": "termDetailsBlock\">\nredshift\n 【英语】\n 红移 （台湾名：紅移）\n （\n已出版\n）\n 依据：\n《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000\n《天文学名词（定义版）》科学出版社，2001\n《英汉天文学名词》，中国科学技术出版社，2015\n《天文学名词（第三版）》科学出版社，2024\n 最后修订：2010-04-15\n定义\n (1)天体谱线的观测波长向长波方向频移的现象。(2)该现象引起的谱线波长的相对改变量。\n词源\n&nbsp;&nbsp;\n补充词源\n&nbsp;\n -->\n<div class=\""
+  },
+  "4707": {
+   "url": "https://nadc.china-vo.org/astrodict/termdetails?id=4707",
+   "http": 200,
+   "english": "active galactic nucleus",
+   "abbreviation": "AGN",
+   "chinese": "活动星系核",
+   "taiwan_name": "活躍星系核",
+   "status": "已出版",
+   "last_revised": "2010-04-15",
+   "bibliography": [
+    "《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000",
+    "《天文学名词（定义版）》科学出版社，2001",
+    "《英汉天文学名词》，中国科学技术出版社，2015",
+    "《天文学名词（第三版）》科学出版社，2024"
+   ],
+   "etymology_items": 0,
+   "text_stripped_600": "termDetailsBlock\">\nactive galactic nucleus\n 【英语】\n 缩写：AGN\n 活动星系核 （台湾名：活躍星系核）\n （\n已出版\n）\n 依据：\n《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000\n《天文学名词（定义版）》科学出版社，2001\n《英汉天文学名词》，中国科学技术出版社，2015\n《天文学名词（第三版）》科学出版社，2024\n 最后修订：2010-04-15\n定义\n 活动性比一般星系核更强的星系核。其所属星系兼具下述大部或全部特征：有很明亮的核，非热连续谱，明显发射线，较大的光变，较强的高能光子发射能力等。\n词源\n&nbsp;&nbsp;\n补充词源\n&nbsp;\n -->\n<div class=\""
+  },
+  "8240": {
+   "url": "https://nadc.china-vo.org/astrodict/termdetails?id=8240",
+   "http": 200,
+   "english": "double-lensed quasar",
+   "abbreviation": null,
+   "chinese": null,
+   "taiwan_name": null,
+   "status": "已出版",
+   "last_revised": "2010-04-15",
+   "bibliography": [
+    "第十三批天文学名词的推荐译名，天文学进展，2006(1)",
+    "《英汉天文学名词》，中国科学技术出版社，2015"
+   ],
+   "etymology_items": 0,
+   "text_stripped_600": "termDetailsBlock\">\ndouble-lensed quasar\n 【英语】\n 引力透镜效应双像类星体\n （\n已出版\n）\n 依据：\n第十三批天文学名词的推荐译名，天文学进展，2006(1)\n《英汉天文学名词》，中国科学技术出版社，2015\n 最后修订：2010-04-15\n词源\n&nbsp;&nbsp;\n补充词源\n&nbsp;\n -->\n<div class=\""
+  }
+ },
+ "termEtymology": {
+  "url": "https://nadc.china-vo.org/astrodict/termEtymology?termid=16171",
+  "http": 200,
+  "finding": "页面是“补充词源”提交表单(POST + csrf + 验证码)，不是词源数据展示；12个抽样词条的词源<ol>均为空"
+ },
+ "download": {
+  "license_url": "https://nadc.china-vo.org/astrodict/article/download",
+  "license_http": 200,
+  "consent_relative": "20171117233847",
+  "consent_url": "https://nadc.china-vo.org/astrodict/article/20171117233847",
+  "license_version": "r241020",
+  "license_summary": "非商业性公共/个人应用免费；可集成、二次开发、格式转换；不得修改内容或与其他词库整合后二次发布；建议(非强制)署名“英汉天文学名词数据库由中国天文学会天文学名词审定委员会提供”",
+  "zips": [
+   {
+    "url": "https://nadc.china-vo.org/astrodict/s/2024/astrodict_241020.zip",
+    "label": "当前版本: r241020"
+   },
+   {
+    "url": "https://nadc.china-vo.org/astrodict/s/2020/mars_place_names_20200728.zip",
+    "label": "814条地形地貌名称译名"
+   },
+   {
+    "url": "https://nadc.china-vo.org/astrodict/s/2020/mars_crater_names_20200824.zip",
+    "label": "1136条火星陨击坑译名"
+   },
+   {
+    "url": "https://nadc.china-vo.org/astrodict/s/2016/dictionaryDownload/astrodict_r160626.zip",
+    "label": "2010年4月29日发布"
+   },
+   {
+    "url": "https://nadc.china-vo.org/astrodict/s/2016/dictionaryDownload/PWECASTRONOMY.zip",
+    "label": "《天文学词典》"
+   },
+   {
+    "url": "https://nadc.china-vo.org/astrodict/s/2016/dictionaryDownload/PWGECTW.zip",
+    "label": "[名词委审定]英汉天文学名词（定义版）"
+   },
+   {
+    "url": "https://nadc.china-vo.org/astrodict/s/2016/dictionaryDownload/PWGCETW.zip",
+    "label": "[名词委审定]汉英天文学名词（定义版）"
+   },
+   {
+    "url": "https://nadc.china-vo.org/astrodict/s/2019/astrodict_191103_stardict.zip",
+    "label": "这里"
+   },
+   {
+    "url": "https://nadc.china-vo.org/astrodict/s/2019/astrodict_191103_mdict.zip",
+    "label": "这里"
+   }
+  ],
+  "zip": {
+   "url": "https://nadc.china-vo.org/astrodict/s/2024/astrodict_241020.zip",
+   "http": 200,
+   "content_type": "application/zip",
+   "bytes": 696272,
+   "sha256": "2520bb8bd4d3382b560199a708506bead5f26b167e904b9b87465efd3cc55e2e",
+   "files": {
+    "astrodict241020_ce.txt": {
+     "bytes": 967947,
+     "lines": 26770
+    },
+    "astrodict241020_ec.txt": {
+     "bytes": 1083531,
+     "lines": 30094
+    },
+    "readme.txt": {
+     "bytes": 2768,
+     "lines": 27
+    }
+   },
+   "readme_1200": "“天文学名词数据库下载版”格式说明\r\n\r\n“天文学名词数据库下载版”包括英汉（ec）汉英（ce）两个文本文件，均为UTF-8编码。\r\n\r\n文件格式为以制表符（TAB）分割的一对多列表，主词条唯一。包含了数据库中的英文全称，缩写及对应中文。可用于免费辞典，在线查询，输入法辞典等非商业性公共及个人应用。\r\n\r\n下载版本不定期更新，最新数据请以网站 https://nadc.china-vo.org/astrodict/ 查询结果为准。\r\n如果您遇到未被收录的天文学名词，我们欢迎您向名词委员会推荐，推荐页面：https://nadc.china-vo.org/astrodict/dictRecommendation\r\n特此说明。\r\n\r\n全国天文学名词审定委员会\r\n2024年10月20日\r\n\r\n-------------------------------------------------------------------------------\r\n\r\n附“英汉天文学名词数据库”开放使用约定\r\n\r\n“英汉天文学名词数据库”（以下简称“天文名词库”）是由中国天文学会天文学名词审定委员会（以下简称“名词委”）编纂和维护的天文学专业名词数据库。该数据库的所有权归中国天文学会所有。\r\n为了充分发挥“天文名词库”的科学和社会效益，同时促进天文学名词事业的更好发展，经中国天文学会同意，中国天文学会天文学名词审定委员会自2008年8月25日起，将“天文名词库”开放给全社会自由使用。为了保证“天文名词库”使用的健康、有序，特制订如下使用约定，希望使用者自觉遵守。\r\n一.\t“天文名词库”所有权归中国天文学会所有，在未经中国天文学会授权的情况下，任何使用者不得将其用于以赢利为目的的商业产品和活动。\r\n二.\t“天文名词库”通过名词委指定网站无偿向社会发布，使用者可以自由下载。如果需要名词委提供额外的支持和服务，名词委将收取不高于服务成本的费用。\r\n三.\t使用者可以对公开的“天文名词库”进行集成、二次开发、格式转换等操作，但任何使用者无权对“天文名词库”的内容进行修改或者与其它词库产品整合后二次发布。“天文名词库”科学性、权威性的保证由名词委负责。同时，名词委欢迎针对“天文名词库”内容的任何意见和建议。\r\n四.\t名词委希望但不规定使用者在使用了“天文名词库”的相关产品和工作中注明“‘英汉天文学名词数据库’由中国天文学会天文学名词审定委员会提供”或者类似内容，同时希望但不规定使用者将对“天文名词库”的使用情况反馈给名词委知悉。\r\n\r\n\r\n中国天文学会天文学名词审定委员会\r\n2008-8-25\r\n",
+   "inline_abbreviation_sample": [
+    "AGN | 全称：active galactic nucleus。活动星系核"
+   ],
+   "exact_term_sample": [
+    "redshift | 红移"
+   ],
+   "rows_with_leading_whitespace": 0,
+   "abbreviation_rows_with_全称": 1768
+  }
+ },
+ "rate_probe": {
+  "requests": 8,
+  "status_counts": {
+   "200": 8
+  },
+  "note": "no 429 observed; ~0.9s/req server latency"
+ },
+ "ua_probe": {
+  "curl/8.5.0": {
+   "http": 200,
+   "bytes": 27756
+  },
+  "astro-ph-researcher-research/0.1": {
+   "http": 200,
+   "bytes": 27756
+  }
+ },
+ "finding_summary": {
+  "fuzzy_vs_precise": "fuzzy 更宽松(字符级/子串, 上限100行, 按外文名字母序)；precise 更严格(词边界/前缀)且仍返回子串匹配；二者均不按相关度排序",
+  "pagination": "结果表无分页参数，最多100行",
+  "reverse_lookup": "支持中文反查英文(precise?word=红移 返回 redshift id=16171)；支持缩写反查(precise?word=AGN 返回 active galactic nucleus id=4707)",
+  "detail_fields": "英语名/语种/缩写/中文名/台湾名/出版状态/依据书目/最后修订/定义；词源仅有提交表单",
+  "best_for_plugin": "离线词库 zip 或 wordscandidate(JSON,10条) + termdetails 解析；在线 fuzzy/precise 仅作后备"
+ },
+ "exact_term_rank": {
+  "fuzzy": {
+   "rows": 49,
+   "position_of_16171": 29
+  },
+  "precise": {
+   "rows": 38,
+   "position_of_16171": 18
+  }
+ },
+ "etymology_probe": {
+  "sample_size": 12,
+  "all_empty": true,
+  "samples": [
+   {
+    "id": "16171",
+    "http": 200,
+    "english": "redshift",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "4707",
+    "http": 200,
+    "english": "active galactic nucleus",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "4536",
+    "http": 200,
+    "english": "abnormal redshift",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "4951",
+    "http": 200,
+    "english": "angular diameter-redshift relation",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "7306",
+    "http": 200,
+    "english": "cosmic redshift",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "16172",
+    "http": 200,
+    "english": "redshift controversy",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "26515",
+    "http": 200,
+    "english": "changing-look active galactic nucleus",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "8240",
+    "http": 200,
+    "english": "double-lensed quasar",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "10223",
+    "http": 200,
+    "english": "gravitational lens",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "23834",
+    "http": 200,
+    "english": "&#39;Oumuamua",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "26230",
+    "http": 200,
+    "english": "astrolatry",
+    "etymology_items": 0,
+    "etymology_preview": []
+   },
+   {
+    "id": "733",
+    "http": 200,
+    "english": "Catalogue of QSO and Active Nuclei",
+    "etymology_items": 0,
+    "etymology_preview": []
+   }
+  ],
+  "note": "详情页“词源”<ol>全为空；/astrodict/termEtymology?termid= 是提交表单"
+ }
+}

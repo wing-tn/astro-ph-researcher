@@ -1,0 +1,1327 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-22",
+  "notice": "版权安全版：只保留通用天文数据处理方法、统计学知识、公式与独立 Python 示例；不包含书名、作者、出版社、ISBN、章节号或原书结构。",
+  "methods": [
+    {
+      "id": "ccd-calibration",
+      "category": "图像",
+      "name": "CCD 本底、暗流与平场改正",
+      "principle": "天文图像定标的第一步：本底（bias）是零曝光时的读出偏置，暗流（dark）与曝光时间近似成正比，平场（flat）反映光学系统与像元响应的不均匀性。用匹配的 bias/dark/flat 帧把科学帧校正到零偏置、响应均匀的流量标度，后续测光与叠加才有可比性。",
+      "formula": "I_cal = (I_raw − B − (t_sci/t_dark)·D) / F；B 为本底、D 为暗流、F 为归一化平场（median(F)=1）；暗流可忽略时可省略 D 项。",
+      "assumptions": [
+        "探测器响应在线性区",
+        "bias 与暗流在观测期间稳定或可插值",
+        "flat 与科学帧同光路、同滤光片、同焦点",
+        "平场曝光未饱和且信噪比足够"
+      ],
+      "steps": [
+        "检查读出模式、增益与 overscan，必要时先做 overscan 改正",
+        "用多帧中值叠加（配合 sigma clip）生成 master bias",
+        "按曝光时间缩放 master dark 并减除",
+        "平场先减 bias/dark，再除以其中位数归一化",
+        "科学帧逐项减除并除以平场，检查背景与噪声水平"
+      ],
+      "python": {
+        "description": "以 numpy 数组代替 FITS 读写的独立示例：多帧中值生成定标帧，再按曝光时间比做本底/暗流/平场改正。",
+        "code": "import numpy as np\n\ndef master(frames):\n    return np.median(np.stack(frames), axis=0)\n\ndef calibrate(raw, bias, dark, flat, t_sci=1.0, t_dark=1.0):\n    flat_norm = flat / np.median(flat)\n    return (raw - bias - dark * (t_sci / t_dark)) / flat_norm"
+      },
+      "pitfalls": [
+        "暗流未按曝光时间缩放",
+        "平场过曝或欠曝导致响应曲线错误",
+        "把 bias 与暗流重复减除",
+        "平场本身含亮星或月照梯度",
+        "忽略 overscan 与增益差异"
+      ],
+      "related": [
+        "宇宙线剔除",
+        "图像对齐与叠加",
+        "孔径测光"
+      ],
+      "formulaLatex": "I_{\\mathrm{cal}}=\\frac{I_{\\mathrm{raw}}-B-(t_{\\mathrm{sci}}/t_{\\mathrm{dark}})D}{F}"
+    },
+    {
+      "id": "cosmic-ray-rejection",
+      "category": "图像",
+      "name": "宇宙线剔除",
+      "principle": "宇宙线击中在单帧上形成随机、锐利的高值或低值像素，会污染测光与叠加结果。多帧对齐后，同一像元在帧间的真实天体信号一致，而宇宙线位置不相关，因此可用中位数与稳健离散度（MAD）识别离群样本并掩膜；单帧情形可用中值滤波或拉普拉斯边缘检测。",
+      "formula": "对某像元的 N 帧样本 {x_i}：m = median(x_i)，s = 1.4826·MAD(x_i)；若 |x_i − m| > k·s 则判为离群（常用 k = 3）。",
+      "assumptions": [
+        "帧间已对齐且天体结构一致",
+        "宇宙线在帧间位置不相关",
+        "帧数足够（N ≥ 3）以做逐像元统计",
+        "真实亮核与饱和星不会造成大量误判"
+      ],
+      "steps": [
+        "对齐各帧到同一网格",
+        "逐像元计算中位数与 MAD",
+        "按阈值标记离群像素并生成掩膜",
+        "对掩膜像素用中值或邻帧插值",
+        "用叠加结果检查残留与误剔除"
+      ],
+      "python": {
+        "description": "numpy 实现逐像元中值/MAD 判据，输出掩膜并用中值替换离群值。",
+        "code": "import numpy as np\n\ndef mad_sigma(cube):\n    med = np.median(cube, axis=0, keepdims=True)\n    mad = np.median(np.abs(cube - med), axis=0, keepdims=True)\n    return med, 1.4826 * mad\n\nrng = np.random.default_rng(0)\ncube = rng.normal(100.0, 5.0, size=(5, 32, 32))  # 5 帧已对齐的示例数据\ncube[0, 10, 12] += 50.0  # 注入一个宇宙线像素\nmed, sig = mad_sigma(cube)\nmask = np.abs(cube - med) > 3.0 * sig\nclean = np.where(mask, med, cube)\nstacked = np.mean(clean, axis=0)"
+      },
+      "pitfalls": [
+        "帧数太少时中位数与 MAD 不稳定",
+        "MAD = 0 时阈值失效，需加噪声下限",
+        "饱和星/亮核被误判为宇宙线",
+        "单帧无法用多帧统计，需改用滤波类方法",
+        "对齐误差导致边缘误判"
+      ],
+      "related": [
+        "图像对齐与叠加",
+        "CCD 本底、暗流与平场改正"
+      ],
+      "formulaLatex": "m=\\operatorname{median}(x_i),\\quad s=1.4826\\,\\operatorname{MAD}(x_i),\\quad |x_i-m|>k\\,s"
+    },
+    {
+      "id": "image-stacking",
+      "category": "图像",
+      "name": "图像对齐与叠加",
+      "principle": "通过源检测、互相关或 WCS 把多帧重采样到同一像素网格，再按权重合并（均值、加权均值或中值），提高信噪比并压制随机噪声与残留宇宙线。叠加前必须统一流量定标与背景水平，否则加权平均会引入系统误差。",
+      "formula": "S(x,y) = Σ_i w_i·I_i(x,y) / Σ_i w_i；等权时 w_i = 1，背景限下理论信噪比随 √N 提高。",
+      "assumptions": [
+        "帧间视场、像素尺度与滤光片一致",
+        "对齐残差小于 PSF 尺度",
+        "各帧噪声近似独立且已做流量定标",
+        "天体本身无显著变化或被单独处理"
+      ],
+      "steps": [
+        "检测亮源或用相位相关/互相关估计平移",
+        "必要时联合 WCS 估计旋转与畸变",
+        "重采样到统一网格（双线性/三次样条）",
+        "选择合并方式并做 sigma clip 抑制离群",
+        "生成权重/误差图并检查背景噪声"
+      ],
+      "python": {
+        "description": "scipy.ndimage 做亚像素平移，numpy 张量运算实现加权平均合并。",
+        "code": "import numpy as np\nfrom scipy.ndimage import shift as ndshift\n\ndef align(frame, dy, dx):\n    return ndshift(frame.astype(float), (dy, dx), order=3, mode='constant')\n\ndef combine(frames, weights=None):\n    cube = np.stack(frames).astype(float)\n    w = np.ones(len(cube)) if weights is None else np.asarray(weights, float)\n    return np.tensordot(w / w.sum(), cube, axes=(0, 0))"
+      },
+      "pitfalls": [
+        "只做整像素平移，忽略亚像素与旋转",
+        "合并前未统一背景/流量定标",
+        "直接均值而未剔除宇宙线",
+        "边缘插值区域被当成有效像素",
+        "权重未按噪声（而非曝光时间）设置"
+      ],
+      "related": [
+        "宇宙线剔除",
+        "WCS 天文定位",
+        "CCD 本底、暗流与平场改正"
+      ],
+      "formulaLatex": "S(x,y)=\\frac{\\sum_i w_i I_i(x,y)}{\\sum_i w_i}"
+    },
+    {
+      "id": "aperture-photometry",
+      "category": "图像",
+      "name": "孔径测光",
+      "principle": "在目标周围取圆形孔径累加像素值，再用孔径外的环带估计并扣除天空背景，得到目标的仪器流量；除以曝光时间后取负对数即为仪器星等。该方法简单稳健，适合孤立、信噪比不低的点源。",
+      "formula": "F = Σ_{r<r_ap} (I_ij − b)，b = median(环带像素)；m_inst = −2.5·log10(F/t)，t 为曝光时间。",
+      "assumptions": [
+        "目标为孤立点源，邻近源污染可忽略",
+        "孔径覆盖 PSF 的大部分流量",
+        "背景在环带内近似常数",
+        "像素响应已做平场改正"
+      ],
+      "steps": [
+        "估计目标中心（质心或 PSF 拟合）",
+        "按 FWHM 选取孔径与背景环带半径（孔径常取 1.5–3 倍 FWHM）",
+        "环带内用中值/众数稳健估计背景 b",
+        "孔径内累加并减背景",
+        "用定标星求零点并做孔径改正"
+      ],
+      "python": {
+        "description": "用 numpy 网格距离构造孔径与环带，返回扣背景流量与近似泊松误差（假定增益为 1，实际需按 gain 与读出噪声换算）。",
+        "code": "import numpy as np\n\ndef aperture_sum(img, x0, y0, r_ap, r_in, r_out):\n    yy, xx = np.indices(img.shape)\n    rr = np.hypot(xx - x0, yy - y0)\n    sky = img[(rr >= r_in) & (rr <= r_out)]\n    b = np.median(sky)\n    ap = img[rr <= r_ap]\n    flux = np.sum(ap - b)\n    err = np.sqrt(np.sum(np.clip(ap, 0, None)) + ap.size * max(b, 0.0))\n    return flux, err"
+      },
+      "pitfalls": [
+        "孔径随视宁度变化而未做孔径改正",
+        "背景环带混入邻近源或星系光",
+        "饱和星、坏像素未剔除",
+        "未按增益与曝光时间归一就比较星等",
+        "只给流量不给误差与孔径参数"
+      ],
+      "related": [
+        "PSF 拟合测光",
+        "CCD 本底、暗流与平场改正",
+        "误差传递"
+      ],
+      "formulaLatex": "F=\\sum_{r<r_{\\mathrm{ap}}}(I_{ij}-b),\\quad m_{\\mathrm{inst}}=-2.5\\log_{10}(F/t)"
+    },
+    {
+      "id": "psf-photometry",
+      "category": "图像",
+      "name": "PSF 拟合测光",
+      "principle": "用二维点扩散函数模型（高斯、Moffat 等）拟合星像，同时估计中心位置、流量、形状与局部背景。相比孔径测光，它在拥挤场、低信噪比与背景梯度下更稳健，并能给出亚像素定位。",
+      "formula": "Moffat: I(x,y) = sky + I0·[1 + ((x−x0)²+(y−y0)²)/α²]^(−β)，总流量 F = π·I0·α²/(β−1)（β>1）；高斯: I = sky + A·exp(−r²/(2σ²))，F = 2πAσ²。",
+      "assumptions": [
+        "视场内 PSF 形状近似不变或可平滑插值",
+        "局部背景平坦",
+        "星像未饱和且无严重混叠",
+        "选用的解析模型能描述实际 PSF"
+      ],
+      "steps": [
+        "选孤立亮星构建经验 PSF，或选择解析模型",
+        "以目标位置为初值、按 3–5 倍 FWHM 裁切拟合窗口",
+        "用 least_squares 同时拟合中心、流量、形状与背景",
+        "从协方差矩阵估计参数误差",
+        "在拥挤场改用同时拟合或先减影再测光"
+      ],
+      "python": {
+        "description": "scipy.optimize.least_squares 拟合 Moffat 模型，按泊松型权重构造残差。",
+        "code": "import numpy as np\nfrom scipy.optimize import least_squares\n\ndef moffat(p, x, y):\n    i0, x0, y0, alpha, beta, sky = p\n    r2 = (x - x0) ** 2 + (y - y0) ** 2\n    return sky + i0 * (1 + r2 / alpha**2) ** (-beta)\n\ndef fit_psf(img, x0, y0, half=10):\n    yy, xx = np.indices(img.shape)\n    m = (np.abs(xx - x0) <= half) & (np.abs(yy - y0) <= half)\n    x, y, z = xx[m].astype(float), yy[m].astype(float), img[m].astype(float)\n    p0 = [z.max() - np.median(z), x0, y0, 2.0, 3.5, np.median(z)]\n    res = least_squares(lambda p: (moffat(p, x, y) - z) / np.sqrt(np.abs(moffat(p, x, y)) + 1.0), p0)\n    i0, xc, yc, alpha, beta, sky = res.x\n    return {'x': xc, 'y': yc, 'flux': np.pi * i0 * alpha**2 / (beta - 1), 'alpha': alpha, 'beta': beta}"
+      },
+      "pitfalls": [
+        "β 接近 1 时总流量发散",
+        "拥挤场未做同时拟合导致互相污染",
+        "PSF 随视场变化而用单一模型",
+        "初值差陷入局部极小",
+        "把有结构的星系当成点源拟合"
+      ],
+      "related": [
+        "孔径测光",
+        "图像对齐与叠加",
+        "加权最小二乘拟合"
+      ],
+      "formulaLatex": "\\begin{aligned}I_{\\mathrm{Moffat}}(x,y)&=I_0\\left[1+\\frac{(x-x_0)^2+(y-y_0)^2}{\\alpha^2}\\right]^{-\\beta},\\quad F=\\frac{\\pi I_0\\alpha^2}{\\beta-1}\\\\ I_{\\mathrm{Gauss}}(x,y)&=A\\exp\\left[-\\frac{r^2}{2\\sigma^2}\\right],\\quad F=2\\pi A\\sigma^2\\end{aligned}"
+    },
+    {
+      "id": "wcs-calibration",
+      "category": "图像",
+      "name": "WCS 天文定位",
+      "principle": "WCS 建立像素坐标与天球坐标（赤经、赤纬）之间的映射，包含参考像素、参考天球坐标、坐标矩阵与投影类型。用检测源与星表匹配可求解或修正 WCS，它是天体测量、图像叠加、多波段交叉证认与 VO 数据检索的前提。",
+      "formula": "小视场线性近似：ξ ≈ a(x−x0) + b(y−y0)，η ≈ c(x−x0) + d(y−y0)；完整 WCS 由 CRPIX、CRVAL、CD 矩阵与投影类型（如 TAN）描述，ξ、η 为切平面标准坐标。",
+      "assumptions": [
+        "视场较小，投影畸变可忽略或已用 SIP 等模型改正",
+        "星表位置精度优于像素尺度",
+        "匹配星数足够（一般 ≥ 3 且分布分散）",
+        "观测历元与星表历元一致或已做自行改正"
+      ],
+      "steps": [
+        "检测源并做孔径或 PSF 测光",
+        "查询 Gaia 等星表",
+        "用三角形/最近邻方法匹配检测源与星表源",
+        "最小二乘求解线性 WCS 参数或用 astropy.wcs 拟合",
+        "检查残差分布与指向精度并写入头文件"
+      ],
+      "python": {
+        "description": "astropy.wcs 把像素坐标转成天球坐标，astropy.coordinates 做检测源与星表的最近邻匹配。",
+        "code": "from astropy.wcs import WCS\nfrom astropy.coordinates import SkyCoord, match_coordinates_sky\nimport astropy.units as u\n\ndef detected_skycoords(header, x, y):\n    w = WCS(header)\n    ra, dec = w.all_pix2world(x, y, 0)\n    return SkyCoord(ra * u.deg, dec * u.deg)\n\ndef match_catalog(det, cat, max_sep=2 * u.arcsec):\n    idx, sep, _ = match_coordinates_sky(det, cat)\n    return idx, sep < max_sep"
+      },
+      "pitfalls": [
+        "把像素坐标直接当世界坐标使用",
+        "忽略畸变项（SIP）与不同投影类型",
+        "匹配阈值过大导致错配",
+        "未考虑自行与历元差",
+        "叠加/重采样后 WCS 头未同步更新"
+      ],
+      "related": [
+        "图像对齐与叠加",
+        "孔径测光",
+        "VO 锥形检索"
+      ],
+      "formulaLatex": "\\xi\\approx a(x-x_0)+b(y-y_0),\\quad \\eta\\approx c(x-x_0)+d(y-y_0)"
+    },
+    {
+      "id": "ks-test",
+      "category": "统计",
+      "name": "Kolmogorov–Smirnov 检验",
+      "principle": "比较经验分布函数与理论分布（单样本）或两个样本（双样本），用两条分布函数的最大垂直距离 D 衡量差异。该方法不依赖分箱，对分布整体形状敏感，常用于检验样本是否服从某分布或两组数据是否同分布。",
+      "formula": "单样本：D_n = sup_x |F_n(x) − F(x)|；双样本：D_{n,m} = sup_x |F_n(x) − G_m(x)|；p 值由 D 与样本量近似计算。",
+      "assumptions": [
+        "样本独立同分布",
+        "分布连续（离散数据需用专门版本）",
+        "理论分布参数未由同一样本估计（否则应修正或改用 Lilliefors 检验）",
+        "对尾部差异不如 Anderson–Darling 敏感"
+      ],
+      "steps": [
+        "整理样本并构造经验分布函数",
+        "计算与目标分布（或另一经验分布）的最大距离",
+        "由 D 与有效样本量求 p 值",
+        "结合样本量与检验功效解释结果",
+        "必要时用 Anderson–Darling、Cramér–von Mises 交叉验证"
+      ],
+      "python": {
+        "description": "scipy.stats 的单样本与双样本 KS 检验示例；注意单样本参数应事先给定，不能由同一样本估计。",
+        "code": "import numpy as np\nfrom scipy import stats\n\nrng = np.random.default_rng(42)\nsample = rng.normal(size=500)\nd, p = stats.kstest(sample, 'norm')\nother = rng.normal(0.5, 1.2, size=400)\nd2, p2 = stats.ks_2samp(sample, other)\nprint(d, p, d2, p2)"
+      },
+      "pitfalls": [
+        "用同一样本估计 μ、σ 后再做 KS，p 值偏大",
+        "把离散计数直接套用连续分布检验",
+        "多重比较未校正",
+        "把不显著误解为分布相同",
+        "小样本时检验功效不足"
+      ],
+      "related": [
+        "正态分布",
+        "卡方分布与 χ²/dof",
+        "最大似然估计"
+      ],
+      "formulaLatex": "D_n=\\sup_x\\left|F_n(x)-F(x)\\right|,\\quad D_{n,m}=\\sup_x\\left|F_n(x)-G_m(x)\\right|"
+    },
+    {
+      "id": "random-variates",
+      "category": "统计",
+      "name": "随机变量产生",
+      "principle": "从均匀随机数生成服从任意分布的样本：逆变换法用累积分布函数的反函数，Box–Muller 变换把均匀随机数变成正态随机数。它是蒙特卡罗模拟、误差传递与随机抽样检验的基础。",
+      "formula": "逆变换：X = F⁻¹(U)，U ~ Uniform(0,1)；Box–Muller：Z1 = √(−2 ln U1)·cos(2πU2)，Z2 = √(−2 ln U1)·sin(2πU2)。",
+      "assumptions": [
+        "均匀随机数发生器质量良好",
+        "目标分布的 F 可解析求逆或数值近似",
+        "U 不取 0 或 1 端点",
+        "样本间相互独立"
+      ],
+      "steps": [
+        "确定目标分布并写出 CDF 或 PDF",
+        "用 default_rng 生成 U ~ Uniform(0,1)",
+        "按逆变换/Box–Muller 公式变换",
+        "用直方图、矩与 KS 检验验证",
+        "固定随机种子并记录以便复现"
+      ],
+      "python": {
+        "description": "numpy Generator 实现指数分布逆变换与正态分布 Box–Muller 变换。",
+        "code": "import numpy as np\n\nrng = np.random.default_rng(42)\n\ndef exp_samples(n, rate=2.0):\n    return -np.log(1.0 - rng.random(n)) / rate\n\ndef normal_box_muller(n):\n    u1, u2 = rng.random(n), rng.random(n)\n    r = np.sqrt(-2.0 * np.log(u1))\n    return r * np.cos(2 * np.pi * u2)"
+      },
+      "pitfalls": [
+        "U = 0 时 log 发散，需截断或重抽",
+        "使用旧式 np.random.seed 导致全局状态不可控",
+        "把相关随机数当作独立样本",
+        "只验证均值而忽略方差与尾部",
+        "未记录种子导致结果不可复现"
+      ],
+      "related": [
+        "KS 检验",
+        "误差传递"
+      ],
+      "formulaLatex": "X=F^{-1}(U),\\ U\\sim\\mathcal{U}(0,1);\\quad Z_1=\\sqrt{-2\\ln U_1}\\cos(2\\pi U_2)"
+    },
+    {
+      "id": "error-propagation",
+      "category": "统计",
+      "name": "误差传递",
+      "principle": "由输入量的不确定度估计导出量的不确定度：对函数做一阶泰勒展开，输入独立时方差相加，相关时加入协方差交叉项。小误差近似下结果可靠；误差较大或函数强非线性时用蒙特卡罗方法复核。",
+      "formula": "σ_f² ≈ Σ_i (∂f/∂x_i)²·σ_i² + 2·Σ_{i<j} (∂f/∂x_i)(∂f/∂x_j)·Cov(x_i, x_j)；独立时交叉项为零。",
+      "assumptions": [
+        "各输入不确定度相对其值较小",
+        "误差近似高斯且对称",
+        "函数在误差范围内可线性化",
+        "协方差已知，系统误差单独处理"
+      ],
+      "steps": [
+        "写出导出量与输入量的函数关系 f(x)",
+        "解析求偏导或用数值差分",
+        "代入 σ_i 与协方差（相关时）",
+        "核对量纲、主导项与相对误差",
+        "对重要结果用蒙特卡罗抽样复核"
+      ],
+      "python": {
+        "description": "用蒙特卡罗抽样实现任意函数的误差传递，并返回输入点处的函数值与导出量标准差。",
+        "code": "import numpy as np\n\ndef propagate(f, x, sigma, n=20000, seed=42):\n    rng = np.random.default_rng(seed)\n    samples = rng.normal(x, sigma, size=(n, len(x)))\n    values = np.array([f(s) for s in samples])\n    return f(np.asarray(x, float)), values.std(ddof=1)\n\nf = lambda v: v[0] / v[1]\nvalue, error = propagate(f, [10.0, 2.0], [0.3, 0.05])"
+      },
+      "pitfalls": [
+        "忽略输入量之间的相关性",
+        "大相对误差时线性近似失效",
+        "把标准差当作均值的标准误",
+        "报告均值误差时忘记除以 √N",
+        "系统误差被当成随机误差合并"
+      ],
+      "related": [
+        "正态分布",
+        "加权最小二乘拟合",
+        "贝叶斯参数估计"
+      ],
+      "formulaLatex": "\\sigma_f^2\\approx\\sum_i\\left(\\frac{\\partial f}{\\partial x_i}\\right)^2\\sigma_i^2+2\\sum_{i<j}\\frac{\\partial f}{\\partial x_i}\\frac{\\partial f}{\\partial x_j}\\operatorname{Cov}(x_i,x_j)"
+    },
+    {
+      "id": "least-squares",
+      "category": "拟合",
+      "name": "加权最小二乘拟合",
+      "principle": "最小化加权残差平方和，得到模型参数的点估计。线性模型有闭式解（正规方程），非线性模型需迭代；参数协方差由 (AᵀWA)⁻¹ 给出，可直接用于误差估计。",
+      "formula": "χ²(θ) = Σ_i [(y_i − f(x_i;θ))/σ_i]²；线性模型 θ̂ = (AᵀWA)⁻¹AᵀWy，W = diag(1/σ_i²)，Cov(θ̂) = (AᵀWA)⁻¹。",
+      "assumptions": [
+        "测量误差独立（或协方差已知）且近似高斯",
+        "σ_i 可信；未知时可先用相对误差并事后重标定",
+        "模型形式正确，无未建模的系统项",
+        "设计矩阵满秩、无严重共线"
+      ],
+      "steps": [
+        "确定模型并构造设计矩阵 A",
+        "估计每个数据点的误差 σ_i",
+        "解正规方程或用 numpy.linalg.lstsq",
+        "计算 χ²、自由度与约化 χ²",
+        "检查残差结构、参数协方差与离群点"
+      ],
+      "python": {
+        "description": "numpy 实现加权线性最小二乘，返回参数、协方差与 χ²。",
+        "code": "import numpy as np\n\nrng = np.random.default_rng(0)\nx = np.linspace(0, 10, 30)\ny = 2.0 + 1.5 * x + rng.normal(0, 0.2, x.size)\nsigma = np.full_like(x, 0.2)\nA = np.column_stack([np.ones_like(x), x])\n\nw = 1.0 / sigma**2\ncov = np.linalg.inv(A.T @ (w[:, None] * A))\ntheta = cov @ (A.T @ (w * y))\nresid = y - A @ theta\nchi2 = float(np.sum(w * resid**2))\nprint(theta, np.sqrt(np.diag(cov)), chi2)"
+      },
+      "pitfalls": [
+        "误差未知却直接相信参数误差",
+        "离群点未识别导致拟合被拉偏",
+        "设计矩阵共线导致协方差爆炸",
+        "把回归参数的误差当成单点预测误差",
+        "过拟合后不检查残差结构"
+      ],
+      "related": [
+        "非线性最小二乘曲线拟合",
+        "最大似然估计",
+        "误差传递"
+      ],
+      "formulaLatex": "\\chi^2(\\theta)=\\sum_i\\left[\\frac{y_i-f(x_i;\\theta)}{\\sigma_i}\\right]^2,\\quad \\hat\\theta=(A^TWA)^{-1}A^TWy"
+    },
+    {
+      "id": "nonlinear-fit",
+      "category": "拟合",
+      "name": "非线性最小二乘曲线拟合",
+      "principle": "对非线性模型用迭代优化（Gauss–Newton、Levenberg–Marquardt 或 trust-region）最小化 χ²；由雅可比矩阵近似参数协方差。初值、参数退化与局部极值是主要风险，需要残差诊断与多初值检验。",
+      "formula": "χ²(θ) = Σ_i [(y_i − f(x_i;θ))/σ_i]²；迭代 δθ = (JᵀWJ)⁻¹JᵀWr，θ ← θ + δθ（LM 加阻尼）；Cov(θ̂) ≈ (JᵀWJ)⁻¹。",
+      "assumptions": [
+        "初值接近全局最优",
+        "模型对参数可微且参数可识别",
+        "误差独立、近似高斯，σ_i 可信",
+        "残差无未被模型吸收的系统结构"
+      ],
+      "steps": [
+        "选择模型并给合理初值",
+        "给出每个点的测量误差",
+        "调用 scipy.optimize.curve_fit（LM/trf）",
+        "检查收敛、参数协方差与相关系数",
+        "用残差图、χ²/dof 与多初值诊断拟合"
+      ],
+      "python": {
+        "description": "scipy.optimize.curve_fit 拟合高斯线型，使用绝对误差并返回参数误差。",
+        "code": "import numpy as np\nfrom scipy.optimize import curve_fit\n\ndef gaussian(x, amp, mu, sigma):\n    return amp * np.exp(-0.5 * ((x - mu) / sigma) ** 2)\n\nrng = np.random.default_rng(7)\nx = np.linspace(-5, 5, 200)\ny = gaussian(x, 2.0, 0.3, 0.8) + rng.normal(0, 0.05, x.size)\npopt, pcov = curve_fit(gaussian, x, y, p0=[1.5, 0.0, 1.0], sigma=np.full_like(x, 0.05), absolute_sigma=True)\nperr = np.sqrt(np.diag(pcov))\nprint(popt, perr)"
+      },
+      "pitfalls": [
+        "初值差收敛到局部极小",
+        "参数强相关（简并）导致误差被低估",
+        "忽略参数相关性只看边缘误差",
+        "不检查残差就宣布拟合成功",
+        "参数个数接近数据点数导致过拟合"
+      ],
+      "related": [
+        "加权最小二乘拟合",
+        "最大似然估计",
+        "MCMC 采样（Metropolis–Hastings）"
+      ],
+      "formulaLatex": "\\delta\\theta=(J^TWJ)^{-1}J^TWr,\\quad \\theta\\leftarrow\\theta+\\delta\\theta"
+    },
+    {
+      "id": "lomb-scargle",
+      "category": "时间序列",
+      "name": "Lomb–Scargle 周期图",
+      "principle": "针对非均匀采样时间序列，在每个试验频率上拟合正弦与余弦分量，构造功率谱；峰值对应候选周期。显著性通常用假报警概率（FAP）评估，需结合采样窗口与频率范围解释。",
+      "formula": "P(ω) = (1/2σ²)·[ (Σ(y_i−ȳ)cos ω(t_i−τ))²/Σcos²ω(t_i−τ) + (Σ(y_i−ȳ)sin ω(t_i−τ))²/Σsin²ω(t_i−τ) ]，tan(2ωτ) = Σsin2ωt_i / Σcos2ωt_i。",
+      "assumptions": [
+        "信号可近似为单正弦或少数谐波叠加",
+        "采样与信号不产生严重混叠",
+        "噪声近似平稳，趋势已去除",
+        "频率网格足够细、覆盖合理范围"
+      ],
+      "steps": [
+        "去除均值与长期趋势",
+        "设置频率网格（从 1/T 到接近 Nyquist）",
+        "计算 Lomb–Scargle 功率谱",
+        "找峰并估计 FAP/显著性",
+        "用正弦拟合精化周期、振幅与相位"
+      ],
+      "python": {
+        "description": "astropy.timeseries 计算非均匀采样光变曲线的 Lomb–Scargle 周期图与 FAP。",
+        "code": "import numpy as np\nfrom astropy.timeseries import LombScargle\n\nrng = np.random.default_rng(3)\nt = np.sort(rng.uniform(0, 100, 200))\ny = 0.5 * np.sin(2 * np.pi * t / 12.0) + rng.normal(0, 0.2, t.size)\nfreq = np.linspace(0.005, 0.5, 5000)\nls = LombScargle(t, y)\npower = ls.power(freq)\nbest_period = 1.0 / freq[np.argmax(power)]\nfap = ls.false_alarm_probability(power.max())\nprint(best_period, fap)"
+      },
+      "pitfalls": [
+        "频率网格过粗或范围不当",
+        "日/年采样窗口造成混叠与假峰",
+        "未去趋势导致低频功率主导",
+        "只取最高峰而忽略谐波与多周期",
+        "把 FAP 当作独立于采样方式的绝对显著性",
+        "不同软件/实现的功率归一化与 FAP 定义不同，比较时需统一"
+      ],
+      "related": [
+        "相位折叠",
+        "随机变量产生",
+        "最大似然估计"
+      ],
+      "formulaLatex": "P(\\omega)=\\frac{1}{2\\sigma^2}\\left[\\frac{\\left(\\sum_i(y_i-\\bar y)\\cos\\omega(t_i-\\tau)\\right)^2}{\\sum_i\\cos^2\\omega(t_i-\\tau)}+\\frac{\\left(\\sum_i(y_i-\\bar y)\\sin\\omega(t_i-\\tau)\\right)^2}{\\sum_i\\sin^2\\omega(t_i-\\tau)}\\right]"
+    },
+    {
+      "id": "phase-folding",
+      "category": "时间序列",
+      "name": "相位折叠",
+      "principle": "按候选周期把观测时间折叠到一个周期内的相位，再分箱或拟合模板，检验光变是否重复以及相位曲线形态。相位离散度随周期变化，可用来精化周期；形态可辅助区分食双星、脉动与旋转调制。",
+      "formula": "φ_i = ((t_i − t0)/P) mod 1；折叠后按相位分箱求均值/中位数及其误差。",
+      "assumptions": [
+        "周期在观测基线上稳定",
+        "周期精度足够，否则相位漂移模糊曲线",
+        "长期趋势与零点偏移已处理",
+        "各相位区间有足够采样覆盖"
+      ],
+      "steps": [
+        "由周期图或相位离散度极小化得到候选周期",
+        "选定参考历元 t0",
+        "计算相位并排序",
+        "分箱或拟合模板得到相位曲线",
+        "改变周期/历元检验稳定性与覆盖均匀性"
+      ],
+      "python": {
+        "description": "numpy 实现相位折叠与等宽相位分箱，空箱以 NaN 标记。",
+        "code": "import numpy as np\n\ndef binned_curve(time, flux, period, nbins=20, t0=0.0):\n    phase = ((time - t0) / period) % 1.0\n    idx = np.minimum((phase * nbins).astype(int), nbins - 1)\n    counts = np.bincount(idx, minlength=nbins)\n    sums = np.bincount(idx, weights=flux, minlength=nbins)\n    mean = np.divide(sums, counts, out=np.full(nbins, np.nan), where=counts > 0)\n    return (np.arange(nbins) + 0.5) / nbins, mean"
+      },
+      "pitfalls": [
+        "周期混叠（如 1 天采样）导致相位漂移",
+        "t0 选择影响相位零点但与周期无关",
+        "分箱过多导致噪声主导",
+        "忽略相位覆盖不均匀",
+        "用折叠图外观代替显著性检验"
+      ],
+      "related": [
+        "Lomb–Scargle 周期图"
+      ],
+      "formulaLatex": "\\phi_i=\\left(\\frac{t_i-t_0}{P}\\right)\\bmod 1"
+    },
+    {
+      "id": "maximum-likelihood",
+      "category": "统计",
+      "name": "最大似然估计",
+      "principle": "选择使观测样本出现概率最大的参数值：似然函数是数据关于参数的联合密度，取对数后把乘积化为求和，便于数值优化。大样本下 MLE 渐近正态，方差由 Fisher 信息（负对数似然 Hessian 的期望）给出。",
+      "formula": "L(θ) = Π_i p(x_i|θ)，ℓ(θ) = ln L = Σ_i ln p(x_i|θ)；θ̂ = argmax ℓ(θ)；渐近 Cov(θ̂) ≈ [−∂²ℓ/∂θ²]⁻¹（Fisher 信息逆）。",
+      "assumptions": [
+        "样本独立同分布",
+        "模型族包含真值且参数可识别",
+        "正则条件满足（支撑集不依赖参数、内部极值）",
+        "大样本近似，小样本需偏差修正"
+      ],
+      "steps": [
+        "写出含误差模型的似然函数",
+        "取对数并化简",
+        "用 scipy.optimize.minimize 数值最小化负对数似然",
+        "由数值 Hessian 或 Fisher 信息估计协方差",
+        "检查收敛、参数边界与模型拟合优度"
+      ],
+      "python": {
+        "description": "scipy.optimize.minimize 最小化正态分布的负对数似然，得到 μ、σ 的 MLE。",
+        "code": "import numpy as np\nfrom scipy.optimize import minimize\nfrom scipy.stats import norm\n\nrng = np.random.default_rng(11)\ndata = rng.normal(2.0, 0.7, 300)\n\ndef negloglike(p):\n    mu, sigma = p\n    if sigma <= 0:\n        return np.inf\n    return -np.sum(norm.logpdf(data, mu, sigma))\n\nres = minimize(negloglike, x0=[0.0, 1.0], method='Nelder-Mead')\nprint(res.x, res.fun)"
+      },
+      "pitfalls": [
+        "小样本时 σ 的 MLE 偏低（未做无偏修正）",
+        "忽略测量误差/选择效应导致似然写错",
+        "参数贴边界时渐近正态失效",
+        "优化陷入局部极值",
+        "把似然值当作模型概率"
+      ],
+      "related": [
+        "加权最小二乘拟合",
+        "贝叶斯参数估计",
+        "Fisher 信息与渐近方差"
+      ],
+      "formulaLatex": "\\mathcal{L}(\\theta)=\\prod_i p(x_i|\\theta),\\quad \\ell(\\theta)=\\ln\\mathcal{L}=\\sum_i\\ln p(x_i|\\theta),\\quad \\hat\\theta=\\arg\\max_\\theta\\ell(\\theta)"
+    },
+    {
+      "id": "bayesian-estimation",
+      "category": "贝叶斯",
+      "name": "贝叶斯参数估计",
+      "principle": "用先验分布与似然相乘得到后验分布，参数的不确定性由后验分布（可信区间）表达；点估计可取后验均值、中位数或众数。与频率派不同，贝叶斯方法允许把已有知识显式写入先验，并直接给出参数的概率陈述。",
+      "formula": "p(θ|D) = p(D|θ)·p(θ) / p(D)，p(D) = ∫ p(D|θ)p(θ)dθ；95% 可信区间 [a,b] 满足 ∫_a^b p(θ|D)dθ = 0.95。",
+      "assumptions": [
+        "先验需明确写出并说明来源",
+        "似然模型正确",
+        "归一化常数可解析计算或可通过采样得到",
+        "后验可积/可采样；多峰时需多峰处理"
+      ],
+      "steps": [
+        "明确参数与似然函数",
+        "选先验并说明理由",
+        "解析求后验或用 MCMC/网格采样",
+        "检查收敛、先验敏感性与后验形态",
+        "报告后验摘要、可信区间与模型比较指标"
+      ],
+      "python": {
+        "description": "正态似然（σ 已知）配正态先验的共轭后验闭式解。",
+        "code": "import numpy as np\n\ndef normal_normal_posterior(y, sigma, mu0, tau0):\n    n = y.size\n    precision = n / sigma**2 + 1.0 / tau0**2\n    mu_post = (np.sum(y) / sigma**2 + mu0 / tau0**2) / precision\n    sigma_post = np.sqrt(1.0 / precision)\n    return mu_post, sigma_post\n\nrng = np.random.default_rng(5)\ny = rng.normal(1.0, 0.5, 50)\nprint(normal_normal_posterior(y, 0.5, 0.0, 1.0))"
+      },
+      "pitfalls": [
+        "先验来源未说明、先验过强主导结果",
+        "把可信区间解释成频率派置信区间",
+        "只报告点估计不报告后验宽度",
+        "未做先验敏感性分析",
+        "后验多峰时只报告均值"
+      ],
+      "related": [
+        "MCMC 采样（Metropolis–Hastings）",
+        "最大似然估计",
+        "正态分布"
+      ],
+      "formulaLatex": "p(\\theta|D)=\\frac{p(D|\\theta)p(\\theta)}{p(D)},\\quad p(D)=\\int p(D|\\theta)p(\\theta)\\,d\\theta"
+    },
+    {
+      "id": "mcmc-sampling",
+      "category": "贝叶斯",
+      "name": "MCMC 采样（Metropolis–Hastings）",
+      "principle": "构造一条以目标后验为平稳分布的马尔可夫链，通过提议-接受/拒绝机制生成后验样本；只需未归一化的后验，适合高维、非线性与复杂误差模型。收敛诊断（burn-in、多链、自相关）是可信结果的前提。",
+      "formula": "候选 θ' ~ q(θ'|θ)；接受概率 α = min(1, [p(D|θ')p(θ')q(θ|θ')] / [p(D|θ)p(θ)q(θ'|θ)])；对称提议时 q 项抵消。",
+      "assumptions": [
+        "链已收敛到平稳分布（需足够 burn-in）",
+        "提议分布尺度合适，接受率合理",
+        "参数可识别、先验边界处理正确",
+        "多峰后验需多链或更高级采样器"
+      ],
+      "steps": [
+        "写出 log 后验（log 似然 + log 先验）",
+        "选择提议分布与初值",
+        "迭代提议并接受/拒绝",
+        "丢弃 burn-in，用多链、Gelman–Rubin、自相关检查收敛",
+        "由样本计算后验均值、分位数与相关系数"
+      ],
+      "python": {
+        "description": "numpy 实现随机游走 Metropolis 采样，对数后验含正态似然与 log σ 的均匀先验。",
+        "code": "import numpy as np\n\nrng = np.random.default_rng(5)\ny = rng.normal(1.0, 0.5, 50)\n\ndef log_post(theta):\n    mu, log_sigma = theta\n    if not -3.0 < log_sigma < 3.0:\n        return -np.inf\n    sigma = np.exp(log_sigma)\n    return -0.5 * np.sum(((y - mu) / sigma) ** 2) - y.size * log_sigma\n\ndef metropolis(x0, n=20000, step=0.5, seed=1):\n    rng = np.random.default_rng(seed)\n    x = np.asarray(x0, float)\n    chain = np.empty((n, x.size))\n    lp = log_post(x)\n    for i in range(n):\n        proposal = x + rng.normal(0, step, size=x.size)\n        lp_prop = log_post(proposal)\n        if np.log(rng.random()) < lp_prop - lp:\n            x, lp = proposal, lp_prop\n        chain[i] = x\n    return chain\n\nchain = metropolis([0.0, 0.0])"
+      },
+      "pitfalls": [
+        "提议步长过大导致低接受率、过小导致高自相关",
+        "burn-in 不足即统计后验",
+        "单链无法判断收敛",
+        "先验边界处理不当（log 0 / 越界未返回 −∞）",
+        "把样本数当作有效样本数（未考虑自相关）"
+      ],
+      "related": [
+        "贝叶斯参数估计",
+        "最大似然估计"
+      ],
+      "formulaLatex": "\\alpha=\\min\\left(1,\\frac{p(D|\\theta^{\\prime})p(\\theta^{\\prime})q(\\theta|\\theta^{\\prime})}{p(D|\\theta)p(\\theta)q(\\theta^{\\prime}|\\theta)}\\right)"
+    },
+    {
+      "id": "pca",
+      "category": "机器学习",
+      "name": "主成分分析（PCA）",
+      "principle": "对中心化后的数据做正交变换，按方差从大到小提取线性无关的主成分，用少数主成分概括主要变化方向，达到降维、去噪与特征提取的目的。主成分是原始特征的线性组合，解释载荷需结合物理含义。",
+      "formula": "协方差矩阵 C = (1/(n−1))·XᵀX；特征分解 C = VΛVᵀ；主成分得分 Z = X·V_k；累计解释方差比 = Σ_{i≤k}λ_i / Σ_iλ_i。",
+      "assumptions": [
+        "数据结构近似线性",
+        "方差大的方向携带主要信息",
+        "各特征量纲可比（否则先标准化）",
+        "离群点不会主导协方差"
+      ],
+      "steps": [
+        "中心化，必要时标准化",
+        "构造协方差矩阵或直接做 SVD",
+        "取前 k 个主成分",
+        "检查解释方差比与碎石图",
+        "解释载荷/得分并检查离群点影响"
+      ],
+      "python": {
+        "description": "scikit-learn PCA 做降维并输出解释方差比。",
+        "code": "import numpy as np\nfrom sklearn.decomposition import PCA\n\nrng = np.random.default_rng(0)\nX = rng.normal(size=(200, 5)) @ rng.normal(size=(5, 5))\npca = PCA(n_components=3).fit(X)\nZ = pca.transform(X)\nprint(pca.explained_variance_ratio_)\nprint(Z.shape)"
+      },
+      "pitfalls": [
+        "未标准化导致量纲大的特征主导",
+        "把 PCA 当作非线性降维工具",
+        "离群点主导协方差",
+        "把主成分方向当作唯一物理量（符号/旋转不定）",
+        "用解释方差比代替预测性能评估"
+      ],
+      "related": [
+        "k 均值聚类",
+        "随机森林"
+      ],
+      "formulaLatex": "C=\\frac{1}{n-1}X^TX,\\quad C=V\\Lambda V^T,\\quad Z=XV_k"
+    },
+    {
+      "id": "kernel-regression",
+      "category": "机器学习",
+      "name": "核回归",
+      "principle": "用核函数给邻域样本加权，做局部加权平均（Nadaraya–Watson 回归），属于非参数平滑方法。它能刻画非线性关系而无需预设函数形式，但带宽 h 决定偏差-方差权衡，高维时受维数灾难限制。",
+      "formula": "m̂(x) = Σ_i K_h(x − x_i)·y_i / Σ_i K_h(x − x_i)，K_h(u) = K(u/h)/h；高斯核 K(u) = exp(−u²/2)。",
+      "assumptions": [
+        "目标函数在局部近似光滑",
+        "带宽 h 选择合理",
+        "样本在特征空间分布足够均匀",
+        "高维需先降维或做特征选择"
+      ],
+      "steps": [
+        "选择核函数（高斯核常用）",
+        "用交叉验证选择带宽",
+        "对每个查询点计算加权平均",
+        "检查边界效应与外推行为",
+        "与参数模型/其他非参数方法对比"
+      ],
+      "python": {
+        "description": "numpy 实现高斯核 Nadaraya–Watson 回归。",
+        "code": "import numpy as np\n\ndef kernel_regression(x, xi, y, h):\n    w = np.exp(-0.5 * ((x[:, None] - xi[None, :]) / h) ** 2)\n    return (w @ y) / w.sum(axis=1)\n\nrng = np.random.default_rng(2)\nxi = np.sort(rng.uniform(0, 10, 100))\ny = np.sin(xi) + rng.normal(0, 0.1, xi.size)\ngrid = np.linspace(0.5, 9.5, 50)\nsmooth = kernel_regression(grid, xi, y, h=0.6)"
+      },
+      "pitfalls": [
+        "带宽过大过平滑、过小过拟合",
+        "边界处偏差明显",
+        "高维样本稀疏导致失效",
+        "外推到数据范围外没有意义",
+        "未按噪声水平加权"
+      ],
+      "related": [
+        "k 近邻（kNN）",
+        "PCA"
+      ],
+      "formulaLatex": "\\hat m(x)=\\frac{\\sum_i K_h(x-x_i)y_i}{\\sum_i K_h(x-x_i)},\\quad K_h(u)=\\frac{1}{h}K\\left(\\frac{u}{h}\\right)"
+    },
+    {
+      "id": "svm",
+      "category": "机器学习",
+      "name": "支持向量机（SVM）",
+      "principle": "在特征空间中寻找最大间隔分离超平面；用核技巧把线性方法推广到非线性边界；软间隔允许少量越界以提升泛化。SVM 在小样本、高维分类中表现稳健，但超参数与特征尺度影响大。",
+      "formula": "min_{w,b,ξ} ½‖w‖² + C·Σξ_i，s.t. y_i(wᵀφ(x_i)+b) ≥ 1 − ξ_i，ξ_i ≥ 0；对偶形式中出现核 K(x_i, x_j)。",
+      "assumptions": [
+        "任务为分类（或可用回归变体）",
+        "特征需标准化",
+        "类别可分性或核函数选择合适",
+        "C 与核参数需交叉验证调节"
+      ],
+      "steps": [
+        "标准化特征",
+        "选择核函数与超参数网格",
+        "交叉验证训练与调参",
+        "评估精度、混淆矩阵与召回率",
+        "检查支持向量数量与过拟合迹象"
+      ],
+      "python": {
+        "description": "scikit-learn 的标准化 + RBF 核 SVM 分类流程。",
+        "code": "from sklearn.datasets import make_classification\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.svm import SVC\n\nX, y = make_classification(n_samples=300, n_features=2, n_informative=2, n_redundant=0, random_state=0)\nXtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.3, random_state=0)\nclf = make_pipeline(StandardScaler(), SVC(kernel='rbf', C=1.0, gamma='scale'))\nclf.fit(Xtr, ytr)\nprint(clf.score(Xte, yte))"
+      },
+      "pitfalls": [
+        "未标准化特征",
+        "类别不平衡未设 class_weight",
+        "在验证集上反复调参造成过拟合",
+        "需要概率输出时未做校准",
+        "样本量很大时训练/预测开销高"
+      ],
+      "related": [
+        "随机森林",
+        "k 近邻（kNN）"
+      ],
+      "formulaLatex": "\\min_{w,b,\\xi}\\ \\frac{1}{2}\\|w\\|^2+C\\sum_i\\xi_i\\quad\\mathrm{s.t.}\\ y_i(w^T\\varphi(x_i)+b)\\ge 1-\\xi_i,\\ \\xi_i\\ge 0"
+    },
+    {
+      "id": "knn",
+      "category": "机器学习",
+      "name": "k 近邻（kNN）",
+      "principle": "对每个查询样本找特征空间中最接近的 k 个训练样本，用投票（分类）或平均（回归）给出预测。kNN 是非参数方法、无需显式训练，但依赖距离度量、特征尺度与局部样本密度。",
+      "formula": "分类：ŷ(x) = majority{ y_i : i ∈ N_k(x) }；回归：ŷ(x) = (1/k)·Σ_{i∈N_k(x)} y_i；距离常用欧氏距离。",
+      "assumptions": [
+        "特征尺度一致",
+        "局部相似性假设成立",
+        "k 与距离度量选择合理",
+        "高维空间中距离仍有区分度"
+      ],
+      "steps": [
+        "标准化特征",
+        "选择距离度量与 k",
+        "交叉验证选 k",
+        "预测时检索 k 个最近邻",
+        "检查类别不平衡与维度影响"
+      ],
+      "python": {
+        "description": "scikit-learn 标准化 + kNN 分类，并用交叉验证评估。",
+        "code": "from sklearn.datasets import make_classification\nfrom sklearn.model_selection import cross_val_score\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\n\nX, y = make_classification(n_samples=300, n_features=4, random_state=1)\nclf = make_pipeline(StandardScaler(), KNeighborsClassifier(n_neighbors=5))\nprint(cross_val_score(clf, X, y, cv=5).mean())"
+      },
+      "pitfalls": [
+        "未标准化特征导致距离失真",
+        "k 过小对噪声敏感、过大欠拟合",
+        "高维距离集中现象使近邻失去意义",
+        "类别不平衡时多数类主导投票",
+        "预测需保存全部训练数据，规模大时慢"
+      ],
+      "related": [
+        "核回归",
+        "支持向量机（SVM）"
+      ],
+      "formulaLatex": "\\hat y(x)=\\frac{1}{k}\\sum_{i\\in N_k(x)}y_i"
+    },
+    {
+      "id": "kmeans",
+      "category": "机器学习",
+      "name": "k 均值聚类",
+      "principle": "迭代地把样本分配到最近质心、再用簇内均值更新质心，最小化簇内平方和。它是无监督硬划分方法，计算简单、可扩展，但需要预设簇数 K，并隐含簇近似球形、大小相近的假设。",
+      "formula": "目标 J = Σ_{k=1}^K Σ_{x∈C_k} ‖x − μ_k‖²；更新 μ_k = (1/|C_k|)·Σ_{x∈C_k} x。",
+      "assumptions": [
+        "簇近似球形且方差相近",
+        "K 已知或可通过指标估计",
+        "欧氏距离对任务有意义",
+        "特征已标准化"
+      ],
+      "steps": [
+        "标准化特征",
+        "用肘部法/轮廓系数选 K",
+        "用 k-means++ 初始化并多次运行",
+        "迭代至质心稳定",
+        "检查簇稳定性、物理可解释性与离群点"
+      ],
+      "python": {
+        "description": "scikit-learn KMeans 在二维合成数据上聚类并输出惯性与质心。",
+        "code": "from sklearn.cluster import KMeans\nfrom sklearn.datasets import make_blobs\nfrom sklearn.preprocessing import StandardScaler\n\nX, _ = make_blobs(n_samples=300, centers=3, n_features=2, random_state=0)\nX = StandardScaler().fit_transform(X)\nkm = KMeans(n_clusters=3, n_init=10, random_state=0).fit(X)\nprint(km.inertia_)\nprint(km.cluster_centers_)"
+      },
+      "pitfalls": [
+        "K 选择主观",
+        "对初始化敏感（应多次 n_init）",
+        "量纲未统一",
+        "非球形/不同密度簇失效",
+        "把聚类标签当成真实类别"
+      ],
+      "related": [
+        "高斯混合模型（GMM）",
+        "PCA"
+      ],
+      "formulaLatex": "J=\\sum_{k=1}^{K}\\sum_{x\\in C_k}\\|x-\\mu_k\\|^2,\\quad \\mu_k=\\frac{1}{|C_k|}\\sum_{x\\in C_k}x"
+    },
+    {
+      "id": "gmm",
+      "category": "机器学习",
+      "name": "高斯混合模型（GMM）",
+      "principle": "用多个高斯分布的加权和建模数据分布，通过 EM 算法迭代估计混合权重、均值与协方差。与 k-means 的硬划分不同，GMM 给出每个样本属于各分量的后验概率（软聚类），可用 BIC/AIC 选择分量数。",
+      "formula": "p(x) = Σ_k π_k·N(x|μ_k, Σ_k)，Σπ_k = 1；E 步 γ_ik = π_kN(x_i|μ_k,Σ_k) / Σ_jπ_jN(x_i|μ_j,Σ_j)；M 步更新 π、μ、Σ。",
+      "assumptions": [
+        "数据由若干高斯分量混合生成",
+        "分量数与协方差形式选择合理",
+        "样本量足以稳定估计协方差",
+        "初始化合理，避免奇异协方差"
+      ],
+      "steps": [
+        "标准化特征",
+        "选择分量数与协方差类型",
+        "用 k-means 或多组随机初始化",
+        "EM 迭代至对数似然收敛",
+        "用 BIC/AIC 与物理意义选择模型"
+      ],
+      "python": {
+        "description": "scikit-learn GaussianMixture 做软聚类并输出 BIC。",
+        "code": "from sklearn.datasets import make_blobs\nfrom sklearn.mixture import GaussianMixture\n\nX, _ = make_blobs(n_samples=300, centers=3, n_features=2, random_state=0)\ngmm = GaussianMixture(n_components=3, covariance_type='full', random_state=0).fit(X)\nlabels = gmm.predict(X)\nproba = gmm.predict_proba(X)\nprint(gmm.bic(X), proba.shape)"
+      },
+      "pitfalls": [
+        "分量数过多导致过拟合",
+        "协方差矩阵奇异",
+        "EM 陷入局部极值",
+        "未标准化特征",
+        "把软分类概率当成绝对置信度"
+      ],
+      "related": [
+        "k 均值聚类",
+        "决策树"
+      ],
+      "formulaLatex": "p(x)=\\sum_{k=1}^{K}\\pi_k\\mathcal{N}(x|\\mu_k,\\Sigma_k),\\quad \\sum_k\\pi_k=1"
+    },
+    {
+      "id": "decision-tree",
+      "category": "机器学习",
+      "name": "决策树",
+      "principle": "递归选择使不纯度下降最大的特征与阈值划分数据，形成可解释的树结构；叶节点给出类别或回归值。决策树对特征缩放不敏感、易可视化，但单棵树方差大、容易过拟合，通常需要剪枝或集成。",
+      "formula": "基尼不纯度 G = 1 − Σ_k p_k²；信息增益 ΔI = I(parent) − Σ_j (N_j/N)·I(child_j)；回归树常用 MSE 准则。",
+      "assumptions": [
+        "特征与标签关系可用轴对齐划分近似",
+        "树深/叶大小需限制",
+        "类别标签可靠且不平衡已处理",
+        "训练/验证划分无泄漏"
+      ],
+      "steps": [
+        "准备特征与标签",
+        "选择准则与最大深度/最小叶样本数",
+        "训练并可视化树结构",
+        "交叉验证评估泛化",
+        "剪枝或用随机森林提升稳定性"
+      ],
+      "python": {
+        "description": "scikit-learn 决策树分类，限制深度与叶大小并用交叉验证评估。",
+        "code": "from sklearn.datasets import make_classification\nfrom sklearn.model_selection import cross_val_score\nfrom sklearn.tree import DecisionTreeClassifier\n\nX, y = make_classification(n_samples=300, n_features=4, random_state=2)\nclf = DecisionTreeClassifier(max_depth=4, min_samples_leaf=5, random_state=0)\nprint(cross_val_score(clf, X, y, cv=5).mean())"
+      },
+      "pitfalls": [
+        "深树过拟合",
+        "类别不平衡导致偏向多数类",
+        "小数据扰动改变树结构（不稳定）",
+        "把特征重要性当因果效应",
+        "未在独立验证集上评估"
+      ],
+      "related": [
+        "随机森林",
+        "支持向量机（SVM）"
+      ],
+      "formulaLatex": "G=1-\\sum_k p_k^2,\\quad \\Delta I=I(\\mathrm{parent})-\\sum_j\\frac{N_j}{N}I(\\mathrm{child}_j)"
+    },
+    {
+      "id": "random-forest",
+      "category": "机器学习",
+      "name": "随机森林",
+      "principle": "对多棵决策树做自助采样（bootstrap）与随机特征子集训练，再投票或平均，降低单棵树的方差并提升泛化；可输出基于不纯度或置换的特征重要性。它是天文分类/回归中常用的集成方法。",
+      "formula": "回归：ŷ = (1/B)·Σ_{b=1}^B T_b(x)；分类：多数投票；每棵树使用 bootstrap 样本与随机特征子集。",
+      "assumptions": [
+        "基学习器之间具有多样性",
+        "样本独立同分布",
+        "森林规模与树深/叶大小需调节",
+        "特征重要性需谨慎解释"
+      ],
+      "steps": [
+        "准备特征与标签（标准化非必需）",
+        "设置树数量与每次分裂的特征子集大小",
+        "训练森林",
+        "用 OOB 或交叉验证评估",
+        "查看特征重要性并做稳健性/泄漏检查"
+      ],
+      "python": {
+        "description": "scikit-learn 随机森林分类，交叉验证评估并输出特征重要性。",
+        "code": "from sklearn.datasets import make_classification\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import cross_val_score\n\nX, y = make_classification(n_samples=500, n_features=8, random_state=3)\nclf = RandomForestClassifier(n_estimators=300, random_state=0, n_jobs=-1)\nprint(cross_val_score(clf, X, y, cv=5).mean())\nprint(clf.fit(X, y).feature_importances_.round(3))"
+      },
+      "pitfalls": [
+        "树太少导致结果不稳定",
+        "忽略 OOB/交叉验证直接看训练精度",
+        "特征重要性对高基数/连续特征有偏",
+        "类别不平衡未设 class_weight",
+        "用未来信息构造特征造成泄漏"
+      ],
+      "related": [
+        "决策树",
+        "支持向量机（SVM）"
+      ],
+      "formulaLatex": "\\hat y(x)=\\frac{1}{B}\\sum_{b=1}^{B}T_b(x)"
+    },
+    {
+      "id": "neural-network",
+      "category": "机器学习",
+      "name": "神经网络（多层感知机）",
+      "principle": "多层非线性变换堆叠成网络，通过反向传播与梯度下降最小化损失函数；隐藏层使其能逼近复杂非线性映射，是深度学习的基础。天文应用中需注意样本量、标准化、正则化与验证集划分。",
+      "formula": "h^{(l)} = σ(W^{(l)}h^{(l−1)} + b^{(l)})；交叉熵损失 L = −(1/N)·Σ_iΣ_k y_ik·log p_ik；梯度由链式法则反向传播。",
+      "assumptions": [
+        "样本量足以训练网络参数",
+        "特征需标准化",
+        "网络结构与正则化选择合理",
+        "训练/验证/测试划分无泄漏"
+      ],
+      "steps": [
+        "标准化特征并划分数据",
+        "设计层数、激活函数与输出层",
+        "选择损失函数与优化器",
+        "训练并监控验证损失，使用早停/正则化",
+        "在独立测试集上评估并检查稳健性"
+      ],
+      "python": {
+        "description": "scikit-learn 多层感知机分类，标准化后用交叉验证评估。",
+        "code": "from sklearn.datasets import make_classification\nfrom sklearn.model_selection import cross_val_score\nfrom sklearn.neural_network import MLPClassifier\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\n\nX, y = make_classification(n_samples=500, n_features=10, random_state=4)\nclf = make_pipeline(StandardScaler(), MLPClassifier(hidden_layer_sizes=(32, 16), max_iter=500, random_state=0))\nprint(cross_val_score(clf, X, y, cv=5).mean())"
+      },
+      "pitfalls": [
+        "未标准化特征",
+        "过拟合且未用早停/正则化",
+        "学习率与网络结构高度敏感",
+        "小样本下结果不可靠",
+        "随机种子影响结论未报告"
+      ],
+      "related": [
+        "随机森林",
+        "PCA"
+      ],
+      "formulaLatex": "h^{(l)}=\\sigma\\left(W^{(l)}h^{(l-1)}+b^{(l)}\\right),\\quad \\mathcal{L}=-\\frac{1}{N}\\sum_i\\sum_k y_{ik}\\log p_{ik}"
+    },
+    {
+      "id": "vo-cone-search",
+      "category": "VO",
+      "name": "VO 锥形检索（Cone Search / SCS）",
+      "principle": "按天球位置与检索半径向 VO 服务发起 Simple Cone Search 请求，服务返回该范围内的天体表（通常为 VOTable）。它是虚拟天文台最基础的互操作协议之一，用于跨星表交叉证认、资源发现与多波段数据汇集。",
+      "formula": "请求参数约定：RA、DEC（度，J2000 历元）与 SR（检索半径，度）；返回与目标位置角距 ≤ SR 的全部记录。",
+      "assumptions": [
+        "服务遵循 IVOA Simple Cone Search 约定",
+        "坐标历元为 J2000",
+        "检索半径覆盖目标位置误差",
+        "服务可用且返回可解析的 VOTable"
+      ],
+      "steps": [
+        "从 VO 注册表或文献确定服务访问地址",
+        "按 RA/DEC/SR 构造请求",
+        "解析返回的 VOTable",
+        "按角距、星等与质量标记筛选",
+        "记录服务地址与查询参数以便复现"
+      ],
+      "python": {
+        "description": "用标准库构造 Simple Cone Search 请求 URL；实际执行需网络访问，这里只演示参数拼接。",
+        "code": "from urllib.parse import urlencode\n\ndef cone_search_url(base, ra, dec, sr):\n    query = urlencode([('RA', ra), ('DEC', dec), ('SR', sr)])\n    return base + '?' + query\n\nurl = cone_search_url('https://example.org/scs', 210.0, 54.0, 0.1)"
+      },
+      "pitfalls": [
+        "混淆度（degree）与角分（arcmin）单位",
+        "不同服务的坐标历元/参考系不一致",
+        "SR 过大导致返回被截断",
+        "服务限流或超时未做重试",
+        "多服务结果未去重与交叉证认"
+      ],
+      "related": [
+        "VOTable 读取与 VO 数据接入",
+        "WCS 天文定位"
+      ]
+    },
+    {
+      "id": "votable-parsing",
+      "category": "VO",
+      "name": "VOTable 读取与 VO 数据接入",
+      "principle": "VOTable 是 IVOA 定义的 XML 表格交换格式，用于在 VO 服务之间传递星表、观测日志与检索结果。用标准解析器读取资源、表结构与字段元数据（单位、UCD、空值），再转成 astropy Table，可与本地数据合并分析。",
+      "formula": "无统计公式：VOTable 是数据格式规范，核心元素包括 RESOURCE、TABLE、FIELD、DATA/TABLEDATA 或 BINARY 序列化。",
+      "assumptions": [
+        "文件符合 VOTable 1.x/2.0 规范",
+        "字段单位与坐标系由 FIELD/UCD 正确描述",
+        "编码与命名空间声明正确",
+        "大表需考虑流式读取与内存"
+      ],
+      "steps": [
+        "读取本地文件或服务返回的字节流",
+        "解析 RESOURCE/TABLE 结构",
+        "按字段名/ID 取列并转为 astropy Table",
+        "检查单位、空值与坐标列",
+        "与本地数据合并并记录数据来源与版本"
+      ],
+      "python": {
+        "description": "astropy.io.votable 解析单个 VOTable 表并转为 astropy Table。",
+        "code": "from io import BytesIO\nfrom astropy.io.votable import parse_single_table\n\nVOT = '''<?xml version='1.0'?>\n<VOTABLE version='1.3' xmlns='http://www.ivoa.net/xml/VOTable/v1.3'>\n <RESOURCE type='results'><TABLE>\n  <FIELD name='ra' datatype='double' unit='deg'/>\n  <FIELD name='dec' datatype='double' unit='deg'/>\n  <DATA><TABLEDATA><TR><TD>210.0</TD><TD>54.0</TD></TR></TABLEDATA></DATA>\n </TABLE></RESOURCE>\n</VOTABLE>'''\ntable = parse_single_table(BytesIO(VOT.encode())).to_table()\nprint(table.colnames)"
+      },
+      "pitfalls": [
+        "字段 ID 与 name 混用导致取错列",
+        "单位为量纲字符串却当作数值使用",
+        "UCD 缺失时坐标/物理量含义不明",
+        "大表一次性读入内存",
+        "不同 VOTable 版本/命名空间兼容问题"
+      ],
+      "related": [
+        "VO 锥形检索（Cone Search / SCS）",
+        "图像对齐与叠加"
+      ]
+    },
+    {
+      "id": "spectral-analysis",
+      "category": "光谱",
+      "name": "光谱分析（连续谱与谱线）",
+      "principle": "从色散光谱中分解连续谱与发射/吸收线，测量线心、线宽、等值宽、红移与线比，用来推断温度、密度、速度场、金属丰度与电离状态。",
+      "formula": "等值宽 W_λ = ∫(1 − F_λ/F_cont)dλ；高斯线 F_λ = F_0 exp[−(λ−λ0)²/(2σ²)]；分辨本领 R=λ/Δλ。",
+      "formulaLatex": "W_\\lambda=\\int\\left(1-\\frac{F_\\lambda}{F_{\\mathrm{cont}}}\\right)d\\lambda,\\quad F_\\lambda=F_0\\exp\\left[-\\frac{(\\lambda-\\lambda_0)^2}{2\\sigma^2}\\right],\\quad R=\\frac{\\lambda}{\\Delta\\lambda}",
+      "assumptions": [
+        "连续谱可用局部多项式/模板拟合",
+        "谱线轮廓可分辨或已与仪器轮廓卷积",
+        "波长定标准确，速度零点是明确的",
+        "尘埃/大气吸收已处理"
+      ],
+      "steps": [
+        "读取二维谱并抽取一维",
+        "波长定标与流量定标",
+        "拟合连续谱",
+        "拟合线轮廓/多高斯",
+        "计算等值宽、线比、速度与误差",
+        "检查仪器轮廓与信噪比"
+      ],
+      "python": {
+        "description": "numpy 局部连续谱 + 高斯线拟合（示意）",
+        "code": "import numpy as np\n# wave, flux, err; 先选线两侧窗口拟合连续谱\ncont = np.polyfit(wave[mask_cont], flux[mask_cont], 2)\nline = flux - np.polyval(cont, wave)\n# 用 scipy.optimize.curve_fit 拟合 gaussian(lam, A, mu, sigma)\n# 等值宽近似：W = sum(line/cont) * dlambda"
+      },
+      "pitfalls": [
+        "连续谱窗口选到线翼",
+        "忽略仪器轮廓导致线宽偏差",
+        "未做银河/大气消光改正",
+        "把低信噪比线当探测"
+      ],
+      "related": [
+        "energy-spectrum-fitting",
+        "broadband-sed",
+        "redshift"
+      ]
+    },
+    {
+      "id": "energy-spectrum-fitting",
+      "category": "能谱",
+      "name": "能谱分析（X/γ 射线）",
+      "principle": "把计数谱与仪器响应卷积后拟合物理模型；X 射线常用 absorbed power law/blackbody，γ 射线常用 power law/cutoff power law，并联合多仪器宽带拟合。",
+      "formula": "N(E)=A(E/E0)^(−Γ)exp(−E/Ec)；预测计数 C_i=∫R_i(E)N(E)dE+B_i；泊松似然/χ² 拟合。",
+      "formulaLatex": "N(E)=A\\left(\\frac{E}{E_0}\\right)^{-\\Gamma}\\exp\\left(-\\frac{E}{E_c}\\right),\\quad C_i=\\int R_i(E)N(E)\\,dE+B_i",
+      "assumptions": [
+        "响应 RMF/ARF/IRF 与数据版本匹配",
+        "背景模型正确",
+        "能段与曝光已筛选",
+        "多仪器联合时校准/交叉定标已处理"
+      ],
+      "steps": [
+        "检查 PHA/事件表与响应",
+        "选择能段/源区/背景区",
+        "建立背景模型",
+        "拟合单/多成分模型",
+        "检查残差、χ²/dof 或似然",
+        "做误差/置信区间与模型比较"
+      ],
+      "python": {
+        "description": "不依赖仪器响应的幂律谱拟合示意",
+        "code": "import numpy as np\n# energy, flux, err（已去响应/有效面积）\nA, gamma = np.polyfit(np.log(energy), np.log(flux), 1)\nmodel = np.exp(A) * energy**gamma\nchi2 = np.sum(((flux-model)/err)**2)"
+      },
+      "pitfalls": [
+        "响应与数据不匹配",
+        "背景/前景减除错误",
+        "把计数谱直接当流量谱",
+        "多仪器联合忽略交叉定标",
+        "只报最佳拟合不报模型比较"
+      ],
+      "related": [
+        "broadband-sed",
+        "spectral-analysis",
+        "bayesian-estimation"
+      ]
+    },
+    {
+      "id": "broadband-sed",
+      "category": "能谱",
+      "name": "宽波段 SED 分析",
+      "principle": "把射电到 γ 射线的多波段通量放在同一频率/能量坐标下，拟合同步辐射、逆康普顿、热尘埃等成分，并检查消光、K 改正与仪器系统误差。",
+      "formula": "χ² = Σ[(F_ν,obs − F_ν,model)/σ]²；同步辐射/IC 常用 F_ν ∝ ν^(−α)；宽波段需统一单位与宇宙学。",
+      "formulaLatex": "\\chi^2=\\sum_i\\left[\\frac{F_{\\nu,i}^{\\mathrm{obs}}-F_{\\nu,i}^{\\mathrm{model}}}{\\sigma_i}\\right]^2,\\quad F_\\nu\\propto\\nu^{-\\alpha}",
+      "assumptions": [
+        "各波段通量已统一单位与历元",
+        "银河/河外消光与 K 改正已处理",
+        "变量源的多历元数据不被混用",
+        "仪器交叉定标误差已计入"
+      ],
+      "steps": [
+        "收集多波段通量/上限",
+        "统一频率、单位、历元",
+        "消光/K 改正",
+        "选择模型/成分",
+        "拟合与误差",
+        "与单波段/其他模型比较"
+      ],
+      "python": {
+        "description": "多波段 χ² 拟合幂律示意",
+        "code": "import numpy as np\nnu, fnu, err = np.array([]), np.array([]), np.array([])\nalpha = -0.7\nmodel = fnu[0] * (nu/nu[0])**alpha\nchi2 = np.sum(((fnu-model)/err)**2)"
+      },
+      "pitfalls": [
+        "单位/频率与波长混用",
+        "把不同历元当同一 SED",
+        "忽略消光与 K 改正",
+        "用上限当探测",
+        "只拟合一个成分就宣称完整 SED"
+      ],
+      "related": [
+        "energy-spectrum-fitting",
+        "spectral-analysis",
+        "3ml"
+      ]
+    },
+    {
+      "id": "light-curve-variability",
+      "category": "光变",
+      "name": "光变分析（变异性）",
+      "principle": "从光变曲线提取变异性：超额方差、分数均方根、结构函数、时间延迟与趋势；先做时间定标、曝光/背景校正与去趋势。",
+      "formula": "F_var = sqrt(S² − mean(σ_i²))/mean(F)；结构函数 SF(Δt)=sqrt(mean[(F(t+Δt)−F(t))²])。",
+      "formulaLatex": "F_{\\mathrm{var}}=\\frac{\\sqrt{S^2-\\overline{\\sigma_i^2}}}{\\bar F},\\quad \\mathrm{SF}(\\Delta t)=\\sqrt{\\left\\langle\\left[F(t+\\Delta t)-F(t)\\right]^2\\right\\rangle}",
+      "assumptions": [
+        "时间系统统一（MJD/UTC）",
+        "曝光/背景/定标已校正",
+        "采样与窗口函数已考虑",
+        "噪声模型已知"
+      ],
+      "steps": [
+        "检查时间/曝光/质量",
+        "去趋势/去背景",
+        "计算变异性统计",
+        "估计噪声/显著性",
+        "检查采样/窗口",
+        "与物理模型比较"
+      ],
+      "python": {
+        "description": "numpy 超额方差示意",
+        "code": "import numpy as np\nflux = np.array([]); err = np.array([])\nS2 = np.var(flux, ddof=1)\nnoise = np.mean(err**2)\nFvar = np.sqrt(max(0, S2-noise))/np.mean(flux)"
+      },
+      "pitfalls": [
+        "把仪器系统误差当变异性",
+        "未处理时间采样/窗口",
+        "不同孔径/定标混用",
+        "只看一眼光变曲线不量化"
+      ],
+      "related": [
+        "fourier-periodicity",
+        "power-spectrum-psd",
+        "cross-correlation-lag"
+      ]
+    },
+    {
+      "id": "fourier-periodicity",
+      "category": "周期",
+      "name": "傅里叶/周期分析",
+      "principle": "对等间隔光变做 DFT/FFT，检查功率峰、窗口函数与混叠；非等间隔数据用 Lomb-Scargle，周期显著性需用零假设/自助法校准。",
+      "formula": "P(f)=|Σ_n x_n exp(−2πi f n Δt)|²；频率分辨率 ~1/T；Nyquist f_N=1/(2Δt)。",
+      "formulaLatex": "P(f)=\\left|\\sum_{n=0}^{N-1}x_n e^{-2\\pi i f n\\Delta t}\\right|^2,\\quad f_N=\\frac{1}{2\\Delta t}",
+      "assumptions": [
+        "时间采样/窗口已知",
+        "数据等间隔或已用非等间隔方法",
+        "趋势/均值已处理",
+        "周期在整个时间段内稳定（否则用时频分析）"
+      ],
+      "steps": [
+        "检查采样与窗口",
+        "去均值/去趋势",
+        "计算周期图",
+        "峰值频率/周期",
+        "用窗口函数识别混叠",
+        "零假设/自助法给显著性"
+      ],
+      "python": {
+        "description": "numpy FFT 周期图示意",
+        "code": "import numpy as np\nx = np.array([]); dt = 1.0\nx = x - x.mean()\nfreq = np.fft.rfftfreq(x.size, d=dt)\npower = np.abs(np.fft.rfft(x))**2"
+      },
+      "pitfalls": [
+        "把窗口函数旁瓣当周期",
+        "忽略 Nyquist 混叠",
+        "非等间隔却直接用 FFT",
+        "未做显著性校准",
+        "周期不稳定却用单一周期"
+      ],
+      "related": [
+        "power-spectrum-psd",
+        "light-curve-variability",
+        "lomb-scargle"
+      ]
+    },
+    {
+      "id": "power-spectrum-psd",
+      "category": "功率谱",
+      "name": "功率谱/功率谱密度（PSD）",
+      "principle": "用 Welch/分段平均估计 PSD，拟合红噪声斜率、break 或 QPO；PSD 积分给出变异性功率，需考虑噪声与窗口。",
+      "formula": "PSD P(f) ∝ f^(−β)；积分方差 σ²=∫P(f)df；Welch 分段平均降低方差但不改变频率分辨率。",
+      "formulaLatex": "P(f)\\propto f^{-\\beta},\\quad \\sigma^2=\\int P(f)\\,df",
+      "assumptions": [
+        "光变平稳/分段平稳",
+        "噪声/背景已估计",
+        "采样与窗口已考虑",
+        "频率范围覆盖物理兴趣"
+      ],
+      "steps": [
+        "检查光变与采样",
+        "去趋势/分段",
+        "Welch/周期图",
+        "噪声扣除",
+        "拟合斜率/break/QPO",
+        "积分变异性功率与误差"
+      ],
+      "python": {
+        "description": "scipy.signal.welch 示意",
+        "code": "from scipy import signal\n# t, flux, fs=1/dt\nf, Pxx = signal.welch(flux, fs=1.0, nperseg=min(256, len(flux)))\n# 用 log(Pxx) 对 log(f) 拟合斜率"
+      },
+      "pitfalls": [
+        "把白噪声当红噪声",
+        "窗口/采样造成假 break",
+        "分段长度选择不当",
+        "未扣背景/仪器噪声",
+        "QPO 显著性未校准"
+      ],
+      "related": [
+        "fourier-periodicity",
+        "light-curve-variability",
+        "cross-correlation-lag"
+      ]
+    },
+    {
+      "id": "cross-correlation-lag",
+      "category": "时域",
+      "name": "互相关/时间延迟分析",
+      "principle": "用互相关函数、离散相关函数或 JAVELIN 等估计两个波段/连续谱与线光变之间的时间延迟，用于 AGN 反响映射、X 射线延迟与多信使关联。",
+      "formula": "CCF(τ)=Σ[(a(t)−ā)(b(t+τ)−b̄)]/sqrt(Σ(a−ā)²Σ(b−b̄)²)；峰值 τ 为延迟候选。",
+      "formulaLatex": "\\mathrm{CCF}(\\tau)=\\frac{\\sum_t\\left[a(t)-\\bar a\\right]\\left[b(t+\\tau)-\\bar b\\right]}{\\sqrt{\\sum_t(a-\\bar a)^2\\sum_t(b-\\bar b)^2}}",
+      "assumptions": [
+        "两序列时间基准一致",
+        "采样/窗口已考虑",
+        "变异性来自同一物理过程",
+        "延迟稳定或已分段"
+      ],
+      "steps": [
+        "对齐时间基准",
+        "插值/分箱策略",
+        "计算 CCF/DCF",
+        "峰值与不确定度",
+        "窗口/零假设检验",
+        "与物理延迟模型比较"
+      ],
+      "python": {
+        "description": "numpy 互相关示意",
+        "code": "import numpy as np\na = np.array([]); b = np.array([])\na = (a-a.mean())/a.std(); b=(b-b.mean())/b.std()\nccf = np.correlate(a, b, mode='full')/len(a)"
+      },
+      "pitfalls": [
+        "时间基准/时区错误",
+        "插值引入假延迟",
+        "采样窗口造成峰偏移",
+        "把相关当因果",
+        "延迟不稳定却报单一值"
+      ],
+      "related": [
+        "light-curve-variability",
+        "power-spectrum-psd",
+        "spectral-analysis"
+      ]
+    }
+  ],
+  "statistics": [
+    {
+      "id": "normal-distribution",
+      "name": "正态分布（高斯分布）",
+      "statement": "X ~ N(μ, σ²) 的密度为 p(x) = 1/(σ√(2π))·exp(−(x−μ)²/(2σ²))；约 68.3%、95.4%、99.7% 的概率分别落在 μ±1σ、μ±2σ、μ±3σ 内。",
+      "use": "测量误差、噪声与大量独立小效应叠加的默认模型；许多统计量在大样本下渐近正态，是置信区间与显著性检验的基础。",
+      "python": "from scipy.stats import norm\np = norm.cdf(1.96) - norm.cdf(-1.96)  # ≈ 0.95\nlo, hi = norm.ppf([0.025, 0.975])",
+      "formulaLatex": "p(x)=\\frac{1}{\\sigma\\sqrt{2\\pi}}\\exp\\left[-\\frac{(x-\\mu)^2}{2\\sigma^2}\\right]"
+    },
+    {
+      "id": "poisson-distribution",
+      "name": "泊松分布",
+      "statement": "计数 N ~ Poisson(λ)，P(N=k) = λ^k·e^(−λ)/k!，均值与方差都等于 λ；λ 较大时近似 N(λ, λ)。光子计数、事件计数与源计数常服从泊松分布。",
+      "use": "描述光子/粒子计数的不确定度（σ_N ≈ √N）；用于计数显著性、上限估计与背景减除误差。",
+      "python": "from scipy.stats import poisson\np = poisson.pmf(3, mu=2.5)\nlo, hi = poisson.interval(0.95, mu=2.5)",
+      "formulaLatex": "P(N=k)=\\frac{\\lambda^k e^{-\\lambda}}{k!},\\quad \\mathbb{E}[N]=\\operatorname{Var}(N)=\\lambda"
+    },
+    {
+      "id": "chi-square-distribution",
+      "name": "卡方分布与 χ²/dof",
+      "statement": "k 个独立标准正态变量的平方和服从 χ²_k 分布，均值 k、方差 2k；拟合中 χ² = Σ((y_i−f_i)/σ_i)²，约化 χ² = χ²/dof，dof = N − 参数个数。",
+      "use": "拟合优度检验与参数误差标定；约化 χ² 接近 1 说明误差估计与模型大致自洽（但需结合残差结构判断）。",
+      "python": "from scipy.stats import chi2\np = chi2.sf(12.5, df=7)  # 拟合优度 p 值\nreduced = 12.5 / 7",
+      "formulaLatex": "\\chi_k^2=\\sum_{i=1}^{k}Z_i^2,\\quad \\chi^2=\\sum_i\\left(\\frac{y_i-f_i}{\\sigma_i}\\right)^2"
+    },
+    {
+      "id": "student-t-distribution",
+      "name": "Student t 分布与置信区间",
+      "statement": "样本均值标准化后 t = (x̄−μ)/(s/√n) 服从自由度 n−1 的 t 分布；总体标准差未知时用 t 分位数构造置信区间。",
+      "use": "小样本均值估计与误差棒；当 n 较大时 t 分布趋近正态，可用 1.96 近似 95% 区间。",
+      "python": "import numpy as np\nfrom scipy.stats import t\nlo, hi = t.interval(0.95, 9, loc=1.2, scale=0.3 / np.sqrt(10))",
+      "formulaLatex": "t=\\frac{\\bar x-\\mu}{s/\\sqrt{n}}\\sim t_{n-1}"
+    },
+    {
+      "id": "central-limit-theorem",
+      "name": "中心极限定理",
+      "statement": "独立同分布、方差有限的随机变量，其和与均值在样本量增大时趋于正态分布；均值的标准误为 σ/√n。",
+      "use": "解释为什么大量测量平均后误差按 √N 下降；为均值置信区间、t 检验与许多渐近结果提供依据。",
+      "python": "import numpy as np\nrng = np.random.default_rng(0)\nmeans = [rng.exponential(1.0, 50).mean() for _ in range(2000)]\nprint(np.std(means))  # 接近 1/sqrt(50)",
+      "formulaLatex": "\\frac{\\bar X-\\mu}{\\sigma/\\sqrt{n}}\\xrightarrow{d}\\mathcal{N}(0,1)"
+    },
+    {
+      "id": "bayes-theorem",
+      "name": "贝叶斯定理",
+      "statement": "p(θ|D) = p(D|θ)·p(θ)/p(D)；后验分布正比于似然乘以先验，p(D) 为归一化常数。",
+      "use": "贝叶斯参数估计、模型比较与先验信息融合；可把已有测量或物理约束写成先验，直接得到参数的概率分布。",
+      "python": "import numpy as np\nprior = np.array([0.2, 0.5, 0.3])\nlike = np.array([0.1, 0.6, 0.3])\npost = prior * like\npost = post / post.sum()",
+      "formulaLatex": "p(\\theta|D)=\\frac{p(D|\\theta)p(\\theta)}{p(D)}"
+    },
+    {
+      "id": "fisher-information",
+      "name": "Fisher 信息与渐近方差",
+      "statement": "Fisher 信息 I(θ) = −E[∂²ℓ(θ)/∂θ²]；最大似然估计渐近服从 N(θ, I(θ̂)⁻¹)，即参数方差下界由 Fisher 信息给出。",
+      "use": "估计 MLE 的标准误与参数相关性；判断观测量对参数的约束能力（信息量越大，误差越小）。",
+      "python": "import numpy as np\nn, sigma = 50, 0.5\nfisher_mu = n / sigma**2\nstderr_mu = np.sqrt(1.0 / fisher_mu)\nprint(stderr_mu)  # 等于 sigma / sqrt(n)",
+      "formulaLatex": "I(\\theta)=-\\mathbb{E}\\left[\\frac{\\partial^2\\ell(\\theta)}{\\partial\\theta^2}\\right]"
+    },
+    {
+      "id": "multiple-comparisons",
+      "name": "多重比较与假阳性率",
+      "statement": "做 m 次独立检验、每次显著性水平 α 时，至少出现一次假阳性的概率为 1 − (1−α)^m；Bonferroni 校正取 α/m 控制族错误率。",
+      "use": "周期图多频率搜索、多目标分类、多波段相关分析等场景的显著性校正；避免把偶然涨落报告为发现。",
+      "python": "alpha, m = 0.05, 20\nfwer = 1 - (1 - alpha) ** m\nbonferroni = alpha / m\nprint(fwer, bonferroni)",
+      "formulaLatex": "\\mathrm{FWER}=1-(1-\\alpha)^m,\\quad \\alpha_{\\mathrm{Bonf}}=\\frac{\\alpha}{m}"
+    },
+    {
+      "id": "pearson-correlation",
+      "name": "Pearson 相关系数",
+      "statement": "r = Σ(x_i−x̄)(y_i−ȳ) / √(Σ(x_i−x̄)²·Σ(y_i−ȳ)²)，取值 [−1, 1]，度量线性相关程度；对离群点敏感，非线性关系可能给出 r ≈ 0。",
+      "use": "快速检查两个物理量的线性相关；报告时需同时给出样本量、显著性 p 值与散点图，不能只凭 r 判断因果或非线性关系。",
+      "python": "import numpy as np\nfrom scipy.stats import pearsonr\n\nrng = np.random.default_rng(0)\nx = rng.normal(size=100)\ny = 0.5 * x + rng.normal(0, 0.8, x.size)\nr, p = pearsonr(x, y)\nprint(r, p)",
+      "formulaLatex": "r=\\frac{\\sum_i(x_i-\\bar x)(y_i-\\bar y)}{\\sqrt{\\sum_i(x_i-\\bar x)^2\\sum_i(y_i-\\bar y)^2}}"
+    }
+  ]
+}

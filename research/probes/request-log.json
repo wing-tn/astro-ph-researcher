@@ -1,0 +1,455 @@
+{
+ "probed_at": "2026-10-21T17:00:07.573727+00:00",
+ "total_requests": 64,
+ "requests": [
+  {
+   "name": "nadc fuzzy word=redshift",
+   "url": "https://nadc.china-vo.org/astrodict/fuzzy?word=redshift",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 27756
+  },
+  {
+   "name": "nadc precise word=redshift",
+   "url": "https://nadc.china-vo.org/astrodict/precise?word=redshift",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 25164
+  },
+  {
+   "name": "nadc fuzzy word=gravitational lensing",
+   "url": "https://nadc.china-vo.org/astrodict/fuzzy?word=gravitational+lensing",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 18091
+  },
+  {
+   "name": "nadc precise word=gravitational lensing",
+   "url": "https://nadc.china-vo.org/astrodict/precise?word=gravitational+lensing",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 17794
+  },
+  {
+   "name": "nadc fuzzy word=红移",
+   "url": "https://nadc.china-vo.org/astrodict/fuzzy?word=%E7%BA%A2%E7%A7%BB",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 28425
+  },
+  {
+   "name": "nadc precise word=红移",
+   "url": "https://nadc.china-vo.org/astrodict/precise?word=%E7%BA%A2%E7%A7%BB",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 19965
+  },
+  {
+   "name": "nadc fuzzy word=活动星系核",
+   "url": "https://nadc.china-vo.org/astrodict/fuzzy?word=%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB%E6%A0%B8",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 19037
+  },
+  {
+   "name": "nadc precise word=活动星系核",
+   "url": "https://nadc.china-vo.org/astrodict/precise?word=%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB%E6%A0%B8",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 17998
+  },
+  {
+   "name": "nadc fuzzy edge word='redshif'",
+   "url": "https://nadc.china-vo.org/astrodict/fuzzy?word=redshif",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 27753
+  },
+  {
+   "name": "nadc fuzzy edge word='AGN'",
+   "url": "https://nadc.china-vo.org/astrodict/fuzzy?word=AGN",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 39479
+  },
+  {
+   "name": "nadc fuzzy edge word='agn'",
+   "url": "https://nadc.china-vo.org/astrodict/fuzzy?word=agn",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 39479
+  },
+  {
+   "name": "nadc fuzzy edge word='引力透镜'",
+   "url": "https://nadc.china-vo.org/astrodict/fuzzy?word=%E5%BC%95%E5%8A%9B%E9%80%8F%E9%95%9C",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 22417
+  },
+  {
+   "name": "nadc fuzzy edge word='RedShift'",
+   "url": "https://nadc.china-vo.org/astrodict/fuzzy?word=RedShift",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 27756
+  },
+  {
+   "name": "nadc fuzzy edge word=''",
+   "url": "https://nadc.china-vo.org/astrodict/fuzzy?word=",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 39040
+  },
+  {
+   "name": "nadc precise edge word='redshif'",
+   "url": "https://nadc.china-vo.org/astrodict/precise?word=redshif",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 19700
+  },
+  {
+   "name": "nadc precise edge word='AGN'",
+   "url": "https://nadc.china-vo.org/astrodict/precise?word=AGN",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 17672
+  },
+  {
+   "name": "nadc precise edge word='agn'",
+   "url": "https://nadc.china-vo.org/astrodict/precise?word=agn",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 17672
+  },
+  {
+   "name": "nadc precise edge word='引力透镜'",
+   "url": "https://nadc.china-vo.org/astrodict/precise?word=%E5%BC%95%E5%8A%9B%E9%80%8F%E9%95%9C",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 18012
+  },
+  {
+   "name": "nadc precise edge word='RedShift'",
+   "url": "https://nadc.china-vo.org/astrodict/precise?word=RedShift",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 25164
+  },
+  {
+   "name": "nadc precise edge word=''",
+   "url": "https://nadc.china-vo.org/astrodict/precise?word=",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 39040
+  },
+  {
+   "name": "nadc robots root",
+   "url": "https://nadc.china-vo.org/robots.txt",
+   "http": 200,
+   "content_type": "text/plain",
+   "bytes": 47
+  },
+  {
+   "name": "nadc robots under /astrodict/",
+   "url": "https://nadc.china-vo.org/astrodict/robots.txt",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 174
+  },
+  {
+   "name": "nadc wordscandidate",
+   "url": "https://nadc.china-vo.org/astrodict/wordscandidate?q=redshift",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 370
+  },
+  {
+   "name": "nadc termdetails id=16171",
+   "url": "https://nadc.china-vo.org/astrodict/termdetails?id=16171",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 18293
+  },
+  {
+   "name": "nadc termdetails id=4707",
+   "url": "https://nadc.china-vo.org/astrodict/termdetails?id=4707",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 18461
+  },
+  {
+   "name": "nadc termdetails id=8240",
+   "url": "https://nadc.china-vo.org/astrodict/termdetails?id=8240",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 17928
+  },
+  {
+   "name": "nadc termEtymology",
+   "url": "https://nadc.china-vo.org/astrodict/termEtymology?termid=16171",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 17870
+  },
+  {
+   "name": "nadc article/download",
+   "url": "https://nadc.china-vo.org/astrodict/article/download",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 17924
+  },
+  {
+   "name": "nadc category download page",
+   "url": "https://nadc.china-vo.org/astrodict/article/20171117233847",
+   "http": 200,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 20125
+  },
+  {
+   "name": "nadc dictionary zip HEAD/GET",
+   "url": "https://nadc.china-vo.org/astrodict/s/2024/astrodict_241020.zip",
+   "http": 200,
+   "content_type": "application/zip",
+   "bytes": 696272,
+   "note": "zip downloaded and inspected"
+  },
+  {
+   "name": "openalex 8-result sample",
+   "url": "https://api.openalex.org/works?search=gravitational+lensing&filter=type%3Aarticle%2Cfrom_publication_date%3A2015-01-01&sort=relevance_score%3Adesc&per_page=8&select=id%2Cdoi%2Ctitle%2Cpublication_year%2Ccited_by_count%2Cpublication_date%2Cprimary_location%2Cauthorships%2Copen_access%2Cabstract_inverted_index",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 159697
+  },
+  {
+   "name": "openalex sort=relevance_score:desc",
+   "url": "https://api.openalex.org/works?search=gravitational+lensing&sort=relevance_score%3Adesc&per_page=3&select=id%2Ctitle%2Cpublication_year%2Ccited_by_count%2Cpublication_date",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 1479
+  },
+  {
+   "name": "openalex sort=cited_by_count:desc",
+   "url": "https://api.openalex.org/works?search=gravitational+lensing&sort=cited_by_count%3Adesc&per_page=3&select=id%2Ctitle%2Cpublication_year%2Ccited_by_count%2Cpublication_date",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 1708
+  },
+  {
+   "name": "openalex sort=publication_date:desc",
+   "url": "https://api.openalex.org/works?search=gravitational+lensing&sort=publication_date%3Adesc&per_page=3&select=id%2Ctitle%2Cpublication_year%2Ccited_by_count%2Cpublication_date",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 1727
+  },
+  {
+   "name": "openalex relevance sort without search",
+   "url": "https://api.openalex.org/works?sort=relevance_score%3Adesc&per_page=2&select=id%2Ctitle",
+   "http": 400,
+   "content_type": "application/json",
+   "bytes": 182
+  },
+  {
+   "name": "openalex select relevance_score",
+   "url": "https://api.openalex.org/works?search=redshift&select=id%2Ctitle%2Crelevance_score&per_page=2",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 1245
+  },
+  {
+   "name": "openalex combined filters",
+   "url": "https://api.openalex.org/works?filter=from_publication_date%3A2020-01-01%2Cto_publication_date%3A2024-12-31%2Ccited_by_count%3A%3E10%2Cis_oa%3Atrue%2Ctype%3Aarticle&search=fast+radio+burst&per_page=3&select=id%2Ctitle%2Cpublication_year%2Ccited_by_count%2Ctype%2Copen_access%2Cpublication_date",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 2631
+  },
+  {
+   "name": "crossref sample",
+   "url": "https://api.crossref.org/works?query.bibliographic=fast+radio+burst&rows=3&filter=has-abstract%3Atrue%2Ctype%3Ajournal-article&select=DOI%2Ctitle%2Cscore%2Cabstract%2Cis-referenced-by-count%2Cpublished%2Ccontainer-title%2Cauthor%2Ctype%2CURL",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 8558
+  },
+  {
+   "name": "crossref sort=relevance",
+   "url": "https://api.crossref.org/works?query.bibliographic=gravitational+lensing&rows=3&sort=relevance&order=desc&select=DOI%2Ctitle%2Cis-referenced-by-count%2Cpublished",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 629
+  },
+  {
+   "name": "crossref sort=published",
+   "url": "https://api.crossref.org/works?query.bibliographic=gravitational+lensing&rows=3&sort=published&order=desc&select=DOI%2Ctitle%2Cis-referenced-by-count%2Cpublished",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 805
+  },
+  {
+   "name": "crossref sort=is-referenced-by-count",
+   "url": "https://api.crossref.org/works?query.bibliographic=gravitational+lensing&rows=3&sort=is-referenced-by-count&order=desc&select=DOI%2Ctitle%2Cis-referenced-by-count%2Cpublished",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 744
+  },
+  {
+   "name": "crossref invalid select relevance_score",
+   "url": "https://api.crossref.org/works?query.bibliographic=x&rows=1&select=DOI%2Crelevance_score",
+   "http": 400,
+   "content_type": "application/json;charset=utf-8",
+   "bytes": 913
+  },
+  {
+   "name": "crossref CJK query",
+   "url": "https://api.crossref.org/works?query.bibliographic=%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB%E6%A0%B8&rows=3&select=DOI%2Ctitle%2Cpublished%2Cis-referenced-by-count",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 820
+  },
+  {
+   "name": "crossref cursor first",
+   "url": "https://api.crossref.org/works?query.bibliographic=redshift&rows=2&cursor=%2A&select=DOI%2Ctitle",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 528
+  },
+  {
+   "name": "crossref cursor follow",
+   "url": "https://api.crossref.org/works?query.bibliographic=redshift&rows=2&cursor=MTAyNzU4Nzc4NjAwMCwxMC4xMDE2JTJGczEzODQtMTA3NiUyODk4JTI5MDAwMTMteA%3D%3D&select=DOI%2Ctitle",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 562
+  },
+  {
+   "name": "semantic scholar search (no key)",
+   "url": "https://api.semanticscholar.org/graph/v1/paper/search?query=gravitational+lensing&limit=3&fields=title%2Cyear%2CcitationCount%2CexternalIds%2Cvenue%2CopenAccessPdf%2Cauthors%2Cabstract%2CpublicationDate",
+   "http": 200,
+   "content_type": "application/json",
+   "bytes": 5911
+  },
+  {
+   "name": "arxiv sortBy=relevance",
+   "url": "https://export.arxiv.org/api/query?search_query=all%3A%22gravitational+lensing%22&start=0&max_results=3&sortBy=relevance&sortOrder=descending",
+   "http": 200,
+   "content_type": "application/atom+xml; charset=utf-8",
+   "bytes": 5031
+  },
+  {
+   "name": "arxiv sortBy=submittedDate",
+   "url": "https://export.arxiv.org/api/query?search_query=all%3A%22gravitational+lensing%22&start=0&max_results=3&sortBy=submittedDate&sortOrder=descending",
+   "http": 200,
+   "content_type": "application/atom+xml; charset=utf-8",
+   "bytes": 8071
+  },
+  {
+   "name": "arxiv syntax ti:\"gravitational lensing\"",
+   "url": "https://export.arxiv.org/api/query?search_query=ti%3A%22gravitational+lensing%22&max_results=2",
+   "http": 200,
+   "content_type": "application/atom+xml; charset=utf-8",
+   "bytes": 3898
+  },
+  {
+   "name": "arxiv syntax au:Bartelmann",
+   "url": "https://export.arxiv.org/api/query?search_query=au%3ABartelmann&max_results=2",
+   "http": 200,
+   "content_type": "application/atom+xml; charset=utf-8",
+   "bytes": 4002
+  },
+  {
+   "name": "arxiv syntax cat:astro-ph.CO AND abs:\"redshift\"",
+   "url": "https://export.arxiv.org/api/query?search_query=cat%3Aastro-ph.CO+AND+abs%3A%22redshift%22&max_results=2",
+   "http": 200,
+   "content_type": "application/atom+xml; charset=utf-8",
+   "bytes": 6021
+  },
+  {
+   "name": "arxiv syntax all:红移",
+   "url": "https://export.arxiv.org/api/query?search_query=all%3A%E7%BA%A2%E7%A7%BB&max_results=2",
+   "http": 200,
+   "content_type": "application/atom+xml; charset=utf-8",
+   "bytes": 703
+  },
+  {
+   "name": "ads no token",
+   "url": "https://api.adsabs.harvard.edu/v1/search/query?q=gravitational+lensing&fl=title,year,citation_count&rows=2",
+   "http": 401,
+   "content_type": "application/json",
+   "bytes": 52
+  },
+  {
+   "name": "ads bogus token",
+   "url": "https://api.adsabs.harvard.edu/v1/search/query?q=redshift&rows=1",
+   "http": 401,
+   "content_type": "application/json",
+   "bytes": 102
+  },
+  {
+   "name": "cnki kns robots",
+   "url": "https://kns.cnki.net/robots.txt",
+   "http": 200,
+   "content_type": "text/plain",
+   "bytes": 26
+  },
+  {
+   "name": "cnki kns8s deep link",
+   "url": "https://kns.cnki.net/kns8s/defaultresult/index?kw=%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB%E6%A0%B8",
+   "http": 200,
+   "content_type": "text/html",
+   "bytes": 2154
+  },
+  {
+   "name": "cnki search.cnki.com.cn deep link",
+   "url": "https://search.cnki.com.cn/Search/Result?content=%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB%E6%A0%B8",
+   "http": 200,
+   "content_type": "text/html;charset=UTF-8",
+   "bytes": 41277
+  },
+  {
+   "name": "cnki search.cnki.com.cn robots (timeout probe)",
+   "url": "https://search.cnki.com.cn/robots.txt",
+   "http": 404,
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 150
+  },
+  {
+   "name": "doi negotiation 10.1088/0264-9381/27/23/233001 [application/x-bibtex]",
+   "url": "https://doi.org/10.1088/0264-9381/27/23/233001",
+   "http": 200,
+   "content_type": "application/x-bibtex",
+   "bytes": 337
+  },
+  {
+   "name": "doi negotiation 10.1088/0264-9381/27/23/233001 [application/vnd.citationstyles.csl+json]",
+   "url": "https://doi.org/10.1088/0264-9381/27/23/233001",
+   "http": 200,
+   "content_type": "application/vnd.citationstyles.csl+json",
+   "bytes": 80266
+  },
+  {
+   "name": "doi negotiation 10.1088/0264-9381/27/23/233001 [text/x-bibliography; style=apa]",
+   "url": "https://doi.org/10.1088/0264-9381/27/23/233001",
+   "http": 200,
+   "content_type": "text/x-bibliography",
+   "bytes": 140
+  },
+  {
+   "name": "doi negotiation 10.1103/PhysRevD.97.024042 [application/x-bibtex]",
+   "url": "https://doi.org/10.1103/PhysRevD.97.024042",
+   "http": 200,
+   "content_type": "application/x-bibtex",
+   "bytes": 345
+  },
+  {
+   "name": "doi negotiation 10.1103/PhysRevD.97.024042 [application/vnd.citationstyles.csl+json]",
+   "url": "https://doi.org/10.1103/PhysRevD.97.024042",
+   "http": 200,
+   "content_type": "application/vnd.citationstyles.csl+json",
+   "bytes": 7149
+  },
+  {
+   "name": "doi negotiation 10.1103/PhysRevD.97.024042 [text/x-bibliography; style=apa]",
+   "url": "https://doi.org/10.1103/PhysRevD.97.024042",
+   "http": 200,
+   "content_type": "text/x-bibliography",
+   "bytes": 148
+  }
+ ]
+}

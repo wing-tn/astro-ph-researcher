@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>astro-ph-researcher · 侧边栏静态预览</title>
+<style>
+/*__CSS__*/
+html,body{margin:0;height:100%;background:#f6f7f9;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;color:#18181b}
+body{overflow:hidden}
+.fake-sidebar{position:fixed;left:0;top:0;bottom:0;width:264px;background:#eceef2;border-right:1px solid #d9dce3;padding:14px}
+.fake-brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;margin-bottom:18px}
+.fake-dot{width:24px;height:24px;border-radius:8px;background:#4d6bfe;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px}
+.fake-item{padding:8px 10px;border-radius:8px;color:#4b5563;font-size:12.5px;margin-bottom:2px}
+.fake-item.on{background:#fff;color:#18181b;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.fake-item small{display:block;color:#9ca3af;font-size:10px;margin-top:2px}
+.fake-chat{position:fixed;left:264px;right:0;top:0;bottom:0;padding:38px 60px;color:#374151}
+.fake-chat h1{font-size:22px;margin:0 0 8px}
+.fake-chat p{max-width:640px;line-height:1.8;font-size:13.5px;color:#6b7280}
+.fake-chip{display:inline-block;margin-top:10px;margin-right:6px;padding:5px 9px;border:1px solid #d1d5db;border-radius:999px;font-size:11px;color:#4b5563;background:#fff}
+.demo-note{position:fixed;right:16px;top:14px;background:#111827;color:#fff;border-radius:8px;padding:6px 10px;font-size:11px;opacity:.85;z-index:5}
+</style>
+</head>
+<body>
+<div class="fake-sidebar">
+  <div class="fake-brand"><span class="fake-dot">D</span> DeepSeek Harness</div>
+  <div class="fake-item on">新对话<small>现在</small></div>
+  <div class="fake-item">引力透镜文献调研<small>昨天</small></div>
+  <div class="fake-item">高红移星系讨论<small>10 月 20 日</small></div>
+  <div class="fake-item">组会：弱引力透镜<small>10 月 18 日</small></div>
+</div>
+<div class="fake-chat">
+  <h1>帮我找几篇引力透镜和星系团相关的综述</h1>
+  <p>我会先核实术语的审定译名，再按相关性、时间和引用数综合排序检索；你可以把选中的文献直接交给我做结构化分析。</p>
+  <span class="fake-chip">redshift</span><span class="fake-chip">gravitational lensing</span><span class="fake-chip">galaxy clusters</span>
+</div>
+<div class="demo-note">静态预览 · 数据为真实接口示例</div>
+
+<div class="aw-panel" role="dialog" aria-label="天文术语与文献工作台">
+  <div class="aw-head">
+    <div class="aw-logo">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"></circle><ellipse cx="12" cy="12" rx="9.2" ry="4.2" transform="rotate(-24 12 12)"></ellipse><circle cx="20" cy="7.2" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+    </div>
+    <div style="min-width:0">
+      <div class="aw-title">天文术语工作台</div>
+      <div class="aw-sub">NADC 审定译名 · 文献相关性检索 · 交给 DSH 分析</div>
+    </div>
+    <div class="aw-spacer"></div>
+    <button class="aw-iconbtn" title="关闭（Esc）" aria-label="关闭">×</button>
+  </div>
+  <div class="aw-tabs" role="tablist">
+    <button class="aw-tab on" data-tab="term" role="tab">查词</button>
+    <button class="aw-tab" data-tab="lit" role="tab">文献</button>
+    <button class="aw-tab" data-tab="ref" role="tab">文献库</button>
+    <button class="aw-tab" data-tab="writing" role="tab">写作</button>
+    <button class="aw-tab" data-tab="data" role="tab">数据</button>
+    <button class="aw-tab" data-tab="book" role="tab">术语本</button>
+    <button class="aw-tab" data-tab="settings" role="tab">设置</button>
+  </div>
+  <div class="aw-body">
+    <section data-panel="term">
+      <div class="aw-stack">
+        <div class="aw-row">
+          <input class="aw-input" value="redshift" spellcheck="false" aria-label="术语">
+          <button class="aw-btn primary">查词</button>
+        </div>
+        <div class="aw-hint">中文译名按国家天文台天文学名词库（NADC）逐条核验；释义由 DSH 生成，会明确标注。</div>
+
+        <div class="aw-term-card">
+          <div class="aw-term-head">
+            <div style="flex:1;min-width:0">
+              <div class="aw-zh">红移</div>
+              <div class="aw-en">redshift</div>
+            </div>
+            <span class="aw-chip ok">已出版</span>
+          </div>
+          <div class="aw-src"><span>NADC #16171</span><a class="aw-link" href="#">打开词条</a><span>修订 2010-04-15</span><span class="aw-chip brand">宇宙学</span></div>
+
+          <div class="aw-def">
+            <div class="aw-def-label">NADC 审定定义</div>
+            <p>(1)天体谱线的观测波长向长波方向频移的现象。(2)该现象引起的谱线波长的相对改变量。</p>
+            <div class="aw-hint">NADC《天文学名词（定义版）》· 名词委原文</div>
+          </div>
+
+          <div class="aw-section-title">DSH 释义（非名词委原文）</div>
+          <p class="aw-explain">红移是天体谱线波长向长波方向移动的现象，可用 z = (λ_obs − λ_emit)/λ_emit 度量。它可能来自天体相对观测者的退行运动（多普勒红移），也可能来自宇宙空间膨胀（宇宙学红移）或强引力场（引力红移）。红移是测量星系距离、重建宇宙膨胀历史与筛选高红移天体的基础观测量，哈勃定律正是把红移与距离联系起来。</p>
+          <div class="aw-formula">z = (λ_obs − λ_emit) / λ_emit</div>
+          <div class="aw-hint">单位/量纲：无量纲（红移 z）；速度单位 km/s</div>
+          <div>
+            <div class="aw-section-title">常见误解</div>
+            <div class="aw-hint">• 红移并不都等于多普勒退行速度，高红移天体的红移主要来自宇宙膨胀。</div>
+            <div class="aw-hint">• 红移大不代表天体本身运动得快，需借助宇宙学模型才能把 z 换算成距离。</div>
+          </div>
+          <div>
+            <div class="aw-section-title">同名词条 / 其他译名（请确认具体指哪一个）</div>
+            <div class="aw-related">
+              <button>引力透镜效应 · gravitational lensing effect #21589</button>
+              <button>弱引力透镜 · weak gravitational lensing #21675</button>
+            </div>
+            <div class="aw-hint">点击可切换到对应 NADC 词条；保存时记录当前词条 id。</div>
+          </div>
+          <div>
+            <div class="aw-section-title">相关术语（点击继续查）</div>
+            <div class="aw-related">
+              <button>测光红移</button><button>宇宙微波背景</button><button>引力透镜效应</button><button>宇宙学红移</button><button>引力红移</button>
+            </div>
+          </div>
+          <div class="aw-actions">
+            <button class="aw-btn primary">保存到术语本</button>
+            <button class="aw-btn">搜相关文献 →</button>
+            <button class="aw-btn">交给 DSH 讲解</button>
+            <button class="aw-btn ghost">在对话中搜索</button>
+          </div>
+          <div class="aw-hint">依据：《英汉天文学名词》李竞、许邦信主编，上海科技教育出版社，2000；《天文学名词（定义版）》科学出版社，2001；《英汉天文学名词》，中国科学技术出版社，2015；《天文学名词（第三版）》科学出版社，2024</div>
+        </div>
+      </div>
+    </section>
+
+    <section data-panel="lit" hidden>
+      <div class="aw-stack">
+        <div class="aw-row">
+          <input class="aw-input" value="gravitational lensing galaxy clusters" spellcheck="false" aria-label="文献检索式">
+          <button class="aw-btn primary">检索</button>
+        </div>
+        <div class="aw-row" style="justify-content:space-between;flex-wrap:wrap;gap:6px">
+          <div class="aw-segment">
+            <button class="on">综合</button><button>相关</button><button>最新</button><button>高引</button>
+          </div>
+          <div class="aw-filters">
+            <input class="aw-num" placeholder="起始年"><input class="aw-num" placeholder="截止年"><input class="aw-num" placeholder="最低被引">
+            <label class="aw-check"><input type="checkbox" checked> 开放获取</label>
+            <label class="aw-check"><input type="checkbox" checked> 含预印本</label>
+          </div>
+        </div>
+        <div class="aw-hint">openalex · 8 条 · 综合（相关性为主，时间次之，引用数再次）</div>
+
+        <div class="aw-paper sel">
+          <div class="aw-paper-top">
+            <input type="checkbox" checked aria-label="选择">
+            <div style="flex:1;min-width:0">
+              <a class="aw-paper-title" href="#">An excess of small-scale gravitational lenses observed in galaxy clusters</a>
+              <div class="aw-paper-meta"><span>2020</span><span>Science</span><span>被引 200</span><span>期刊论文</span><span class="aw-chip ok">开放获取</span></div>
+            </div>
+          </div>
+          <div class="aw-row" style="gap:6px"><span class="aw-hint" style="white-space:nowrap">评分 0.86</span><span class="aw-meter"><i style="width:86%"></i></span></div>
+          <div class="aw-hint">为什么相关：命中「gravitational」；命中「lensing」；命中「galaxy」；命中「clusters」</div>
+          <p class="aw-paper-abs">We report the detection of an excess of small-scale gravitational lenses in galaxy clusters, using high-resolution imaging and a dedicated search pipeline…</p>
+          <div class="aw-paper-links"><a href="#">DOI</a><a href="#">arXiv</a><a href="#">ADS</a><a href="#">OpenAlex</a><a href="#">Scholar</a></div>
+          <div class="aw-row" style="justify-content:space-between"><span class="aw-hint">Meneghetti, M., et al.</span><button class="aw-btn ghost">分析这篇</button></div>
+        </div>
+
+        <div class="aw-paper">
+          <div class="aw-paper-top">
+            <input type="checkbox" aria-label="选择">
+            <div style="flex:1;min-width:0">
+              <a class="aw-paper-title" href="#">Gravitational lensing</a>
+              <div class="aw-paper-meta"><span>2010</span><span>Classical and Quantum Gravity</span><span>被引 444</span><span>综述</span><span class="aw-chip brand">综述</span></div>
+            </div>
+          </div>
+          <div class="aw-row" style="gap:6px"><span class="aw-hint" style="white-space:nowrap">评分 0.74</span><span class="aw-meter"><i style="width:74%"></i></span></div>
+          <div class="aw-hint">为什么相关：命中「gravitational」；命中「lensing」</div>
+          <p class="aw-paper-abs">This review covers the theory and observations of gravitational lensing, from strong lensing by galaxies and clusters to weak lensing cosmology…</p>
+          <div class="aw-paper-links"><a href="#">DOI</a><a href="#">ADS</a><a href="#">OpenAlex</a><a href="#">Scholar</a></div>
+          <div class="aw-row" style="justify-content:space-between"><span class="aw-hint">Bartelmann, M.</span><button class="aw-btn ghost">分析这篇</button></div>
+        </div>
+
+        <div class="aw-paper">
+          <div class="aw-paper-top">
+            <input type="checkbox" aria-label="选择">
+            <div style="flex:1;min-width:0">
+              <a class="aw-paper-title" href="#">An ISOCAM survey through gravitationally lensing galaxy clusters</a>
+              <div class="aw-paper-meta"><span>2003</span><span>Astronomy and Astrophysics</span><span>被引 123</span><span>期刊论文</span><span class="aw-chip ok">开放获取</span></div>
+            </div>
+          </div>
+          <div class="aw-row" style="gap:6px"><span class="aw-hint" style="white-space:nowrap">评分 0.76</span><span class="aw-meter"><i style="width:76%"></i></span></div>
+          <div class="aw-hint">为什么相关：命中「gravitational」；命中「lensing」；命中「galaxy」；命中「clusters」</div>
+          <p class="aw-paper-abs">ESA's Infrared Space Observatory was used to perform a deep survey with ISOCAM through three massive gravitationally lensing clusters of galaxies…</p>
+          <div class="aw-paper-links"><a href="#">DOI</a><a href="#">开放PDF</a><a href="#">arXiv</a><a href="#">ADS</a><a href="#">Scholar</a></div>
+          <div class="aw-row" style="justify-content:space-between"><span class="aw-hint">Metcalfe, L., et al.</span><button class="aw-btn ghost">分析这篇</button></div>
+        </div>
+
+        <div style="position:sticky;bottom:-8px;background:var(--dsw-alias-bg-overlay,#fff);padding:8px 0 2px;display:flex;gap:8px;align-items:center;border-top:1px solid var(--dsw-alias-border-l1,rgba(0,0,0,.1))">
+          <span class="aw-hint" style="flex:1">已选 1 篇</span>
+          <button class="aw-btn primary">交给 DSH 分析所选</button>
+        </div>
+
+        <div class="aw-divider"></div>
+        <div class="aw-stack" style="gap:6px">
+          <div class="aw-section-title">知网学位论文（人工检索）</div>
+          <div class="aw-row">
+            <input class="aw-input" placeholder="中文关键词，例如 引力透镜 星系团">
+            <button class="aw-btn">打开知网</button>
+          </div>
+          <div class="aw-hint">知网没有公开 API，学位论文通常需要机构登录；本插件只提供检索深链，不抓取、不绕过登录或付费墙。</div>
+        </div>
+      </div>
+    </section>
+
+    <section data-panel="ref" hidden>
+      <div class="aw-stack">
+        <div class="aw-row"><input class="aw-input" placeholder="搜索文献库（标题/作者/期刊/标签）"><button class="aw-btn">刷新</button><button class="aw-btn">导出 BibTeX</button></div>
+        <div class="aw-related"><button>全部</button><button>宇宙学</button><button>引力透镜</button><button>JWST</button></div>
+        <div class="aw-hint">共 2 条；前三位作者、单位、期刊卷期页、DOI/SciX/ADS/arXiv 可引用。</div>
+        <div class="aw-saved">
+          <div class="aw-saved-head"><a class="aw-saved-zh" href="#">An excess of small-scale gravitational lenses observed in galaxy clusters</a></div>
+          <div class="aw-saved-en">Meneghetti, M., et al.</div>
+          <div class="aw-hint">Science 2020, 369, 1234: 1200</div>
+          <div class="aw-hint">单位：INAF–OAS, Bologna; University of California, Berkeley</div>
+          <div class="aw-paper-links"><a href="#">DOI</a><a href="#">SciX</a><a href="#">ADS</a><a href="#">arXiv</a></div>
+          <p class="aw-explain">用高分辨率成像与专用搜索管线，在星系团中发现超出预期的小尺度引力透镜；对暗物质子结构模型给出约束。</p>
+          <div class="aw-related"><span class="aw-chip">领域:宇宙学</span><span class="aw-chip">关键词:引力透镜</span><span class="aw-chip">专题:暗物质</span></div>
+          <div class="aw-row" style="flex-wrap:wrap;gap:6px"><select class="aw-select" style="width:100px"><option>BibTeX</option><option>APA</option><option>GB/T 7714</option></select><button class="aw-btn">复制引用</button><button class="aw-btn ghost">编辑归类</button><button class="aw-btn ghost">删除</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section data-panel="writing" hidden>
+      <div class="aw-stack">
+        <div class="aw-settings">
+          <div class="aw-section-title">新建写作项目</div>
+          <input class="aw-input" placeholder="项目标题（如：JWST 高红移星系的光谱分析）">
+          <div class="aw-row" style="flex-wrap:wrap;gap:6px">
+            <div class="aw-segment"><button class="on">英文期刊论文</button><button>学位论文</button></div>
+            <select class="aw-select" style="width:210px"><option>ApJ · The Astrophysical Journal</option><option>A&amp;A · Astronomy &amp; Astrophysics</option><option>MNRAS · Monthly Notices</option></select>
+            <select class="aw-select" style="width:100px"><option>英文</option><option>中文</option><option>中英双语</option></select>
+          </div>
+          <button class="aw-btn primary">创建写作项目</button>
+        </div>
+        <div class="aw-settings">
+          <div class="aw-section-title">示例项目：JWST 高红移星系</div>
+          <div class="aw-hint">英文期刊论文 · 3 个文件 · 目标 ApJ</div>
+          <div class="aw-hint">作者指南 · Overleaf 模板 · 期刊主页</div>
+          <div class="aw-paper-links"><a href="#">作者指南</a><a href="#">Overleaf 模板</a><a href="#">期刊主页</a></div>
+          <div class="aw-hint">• results.csv（12 KB） • figure.pdf（1.2 MB） • notes.md（4 KB）</div>
+          <div class="aw-row" style="flex-wrap:wrap;gap:6px"><button class="aw-btn primary">分析研究结果</button><button class="aw-btn">生成写作大纲</button><button class="aw-btn">逐节起草</button><button class="aw-btn ghost">检查格式</button></div>
+        </div>
+        <div class="aw-settings">
+          <div class="aw-section-title">格式库：上传/导出学校或期刊格式</div>
+          <div class="aw-row"><input class="aw-input" placeholder="学校名称"><input class="aw-input" placeholder="年份版本"><button class="aw-btn">保存自定义格式</button></div>
+          <div class="aw-hint">当前版本提供格式包导出/导入；不提供云端账户同步。</div>
+        </div>
+      </div>
+    </section>
+
+    <section data-panel="data" hidden>
+      <div class="aw-stack">
+        <div class="aw-data-card">
+          <div class="aw-section-title">《天文数据处理与虚拟天文台》</div>
+          <div class="aw-hint">赵永恒、崔辰州 · 中国科学技术出版社 2024 · ISBN 9787523608272</div>
+          <p class="aw-explain">方法库整理自本书第一部分；Python 示例为独立编写的标准实现。</p>
+          <div class="aw-hint">方法 27 条 · 统计原理 9 条 · 设备 30 个</div>
+        </div>
+        <div class="aw-segment"><button class="on">数据处理方法</button><button>观测设备/数据</button><button>我的工作流</button></div>
+        <div class="aw-related"><button>全部</button><button>图像</button><button>统计</button><button>拟合</button><button>时间序列</button><button>贝叶斯</button></div>
+        <div class="aw-data-card">
+          <div class="aw-saved-zh">Lomb–Scargle 周期图</div>
+          <div class="aw-hint">第 6 章 · 时间序列</div>
+          <p class="aw-explain">针对非均匀采样时间序列，在每个试验频率上拟合正弦/余弦分量，构造功率谱并用 FAP 评估显著性。</p>
+          <pre class="aw-code">from astropy.timeseries import LombScargle
+ls = LombScargle(t, y)
+power = ls.power(freq)
+fap = ls.false_alarm_probability(power.max())</pre>
+        </div>
+        <div class="aw-data-card">
+          <div class="aw-saved-zh">Chandra X-ray Observatory</div>
+          <div class="aw-hint">运行中 · 开放数据 · X-ray</div>
+          <div class="aw-paper-links"><a href="#">CDA</a><a href="#">CIAO</a><a href="#">Sherpa</a></div>
+          <div class="aw-hint">1. 在 CDA 检索 → 2. 下载事件/响应 → 3. CIAO 重处理 → 4. 谱拟合/成像 → 5. 记录版本与引用</div>
+        </div>
+      </div>
+    </section>
+
+    <section data-panel="book" hidden>
+      <div class="aw-stack">
+        <div class="aw-row"><input class="aw-input" placeholder="搜索术语本"><span class="aw-hint" style="white-space:nowrap">3 条</span></div>
+        <div class="aw-row" style="flex-wrap:wrap;gap:6px">
+          <button class="aw-btn">刷新</button><button class="aw-btn">导出 Markdown</button><button class="aw-btn">导出 CSV</button><button class="aw-btn">导出 Anki</button>
+        </div>
+        <div class="aw-saved">
+          <div class="aw-saved-head"><span class="aw-saved-zh">红移</span><span class="aw-saved-en">redshift</span><span class="aw-chip ok">NADC</span><span class="aw-chip">#宇宙学</span></div>
+          <div class="aw-saved-actions"><button class="aw-btn ghost">释义</button><button class="aw-btn ghost">NADC 链接</button><button class="aw-btn ghost">搜文献</button><button class="aw-btn ghost">搜对话</button><button class="aw-btn ghost">复制</button><button class="aw-btn ghost danger">删除</button></div>
+        </div>
+        <div class="aw-saved">
+          <div class="aw-saved-head"><span class="aw-saved-zh">引力透镜效应</span><span class="aw-saved-en">gravitational lensing</span><span class="aw-chip ok">NADC</span><span class="aw-chip">#星系团</span></div>
+          <div class="aw-saved-actions"><button class="aw-btn ghost">释义</button><button class="aw-btn ghost">NADC 链接</button><button class="aw-btn ghost">搜文献</button><button class="aw-btn ghost">搜对话</button><button class="aw-btn ghost">复制</button><button class="aw-btn ghost danger">删除</button></div>
+        </div>
+        <div class="aw-saved">
+          <div class="aw-saved-head"><span class="aw-saved-zh">测光红移</span><span class="aw-saved-en">photometric redshift</span><span class="aw-chip ok">NADC</span><span class="aw-chip warn">未收录定义</span></div>
+          <div class="aw-saved-actions"><button class="aw-btn ghost">释义</button><button class="aw-btn ghost">NADC 链接</button><button class="aw-btn ghost">搜文献</button><button class="aw-btn ghost">搜对话</button><button class="aw-btn ghost">复制</button><button class="aw-btn ghost danger">删除</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section data-panel="settings" hidden>
+      <div class="aw-stack">
+        <div class="aw-settings">
+          <div class="aw-field"><label>面向人群（影响“交给 DSH 分析”的深度）</label>
+            <select class="aw-select"><option>本科生：概念与物理图像优先</option><option selected>研究生：方法、数据与公式</option><option>研究员：新颖性、局限与可复现</option><option>教授/教师：综述、教学与选题</option></select>
+          </div>
+          <div class="aw-field"><label>默认文献排序</label>
+            <select class="aw-select"><option selected>综合：相关性 &gt; 时间 &gt; 引用数</option><option>相关性优先</option><option>时间优先</option><option>引用数优先</option></select>
+          </div>
+          <div class="aw-field"><label>时间衰减半衰期（年）</label><input class="aw-input" value="8"><div class="aw-hint">越大越“念旧”；天文学基础文献可设 8-12 年。</div></div>
+          <div class="aw-field"><label>OpenAlex / Crossref 联系邮箱（可选）</label><input class="aw-input" placeholder="you@example.com"><div class="aw-hint">用于礼貌池，提高 API 稳定性；只写入本地配置。</div></div>
+          <div class="aw-row" style="justify-content:space-between"><span class="aw-hint">ADS token：未配置</span><span class="aw-chip warn">OpenAlex</span></div>
+          <button class="aw-btn primary">保存设置</button>
+        </div>
+        <div class="aw-divider"></div>
+        <div class="aw-settings">
+          <div class="aw-section-title">官方离线词表（NADC）</div>
+          <div class="aw-row" style="justify-content:space-between"><span class="aw-hint">r241020 · 31758 条</span><span class="aw-chip ok">已安装</span></div>
+          <div class="aw-row" style="flex-wrap:wrap;gap:6px"><button class="aw-btn primary">更新官方词表</button><button class="aw-btn">官方下载页</button></div>
+          <div class="aw-hint">约 700 KB，3 万条 EN↔ZH；不含 id/定义，联网时会再用 NADC 详情页补全。词表不随插件分发。</div>
+          <div class="aw-hint">许可：所有权归中国天文学会；允许集成/格式转换，不得修改内容或与其他词库整合后二次发布。</div>
+        </div>
+        <div class="aw-divider"></div>
+        <div class="aw-settings">
+          <div class="aw-section-title">数据与隐私</div>
+          <div class="aw-hint">术语本位置：C:\Users\你\.dsh\astro-ph-researcher</div>
+          <div class="aw-hint">查词会请求 NADC 公共网页；文献检索会把检索式发给 OpenAlex/Crossref/ADS（取决于配置）。术语本只保存在本机。</div>
+          <div class="aw-hint">知网没有公开 API；插件只给人工检索链接，不抓取、不绕过登录/付费墙。</div>
+          <div class="aw-row" style="flex-wrap:wrap;gap:6px"><button class="aw-btn">打开 NADC 名词库</button><button class="aw-btn">导出 JSON 备份</button></div>
+        </div>
+        <div class="aw-hint">astro-ph-researcher v0.3.0 · 术语核验 / 离线词表 / 同名词条消歧 / 文献检索 / 分析转交。</div>
+      </div>
+    </section>
+  </div>
+</div>
+<script>
+  const tabs = document.querySelectorAll('.aw-tab');
+  const panels = document.querySelectorAll('[data-panel]');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((item) => item.classList.toggle('on', item === tab));
+      panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== tab.dataset.tab; });
+    });
+  });
+  document.querySelectorAll('.aw-segment button').forEach((button) => {
+    button.addEventListener('click', () => {
+      button.parentElement.querySelectorAll('button').forEach((item) => item.classList.toggle('on', item === button));
+    });
+  });
+  document.querySelectorAll('.aw-paper input[type=checkbox]').forEach((checkbox) => {
+    checkbox.addEventListener('change', () => checkbox.closest('.aw-paper')?.classList.toggle('sel', checkbox.checked));
+  });
+</script>
+</body>
+</html>

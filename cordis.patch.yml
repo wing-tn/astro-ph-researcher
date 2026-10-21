@@ -1,0 +1,6 @@
+# astro-ph-researcher bundle patch: inserts the plugin row into the profile roster.
+# The host half registers agent tools and loopback HTTP routes.
+# The `dsh.client` declaration in package.json loads the browser half.
+- insert:
+    - id: astro-ph-researcher
+      name: astro-ph-researcher

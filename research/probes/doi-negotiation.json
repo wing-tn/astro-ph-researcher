@@ -1,0 +1,76 @@
+{
+ "probed_at": "2026-10-21T17:00:07.573727+00:00",
+ "results": [
+  {
+   "doi": "10.1088/0264-9381/27/23/233001",
+   "accept": "application/x-bibtex",
+   "http": 200,
+   "content_type": "application/x-bibtex",
+   "bytes": 337,
+   "body_400": " @article{Bartelmann_2010, title={Gravitational lensing}, volume={27}, ISSN={1361-6382}, url={http://dx.doi.org/10.1088/0264-9381/27/23/233001}, DOI={10.1088/0264-9381/27/23/233001}, number={23}, journal={Classical and Quantum Gravity}, publisher={IOP Publishing}, author={Bartelmann, Matthias}, year={2010}, month=Nov, pages={233001} }\n"
+  },
+  {
+   "doi": "10.1088/0264-9381/27/23/233001",
+   "accept": "application/vnd.citationstyles.csl+json",
+   "http": 200,
+   "content_type": "application/vnd.citationstyles.csl+json",
+   "bytes": 80266,
+   "body_400": "{\"indexed\":{\"date-parts\":[[2026,10,6]],\"date-time\":\"2026-10-06T17:53:59Z\",\"timestamp\":1791309239047,\"version\":\"4.3.1\"},\"reference-count\":518,\"publisher\":\"IOP Publishing\",\"issue\":\"23\",\"content-domain\":{\"domain\":[],\"crossmark-restriction\":false},\"published-print\":{\"date-parts\":[[2010,12,7]]},\"DOI\":\"10.1088\\/0264-9381\\/27\\/23\\/233001\",\"type\":\"journal-article\",\"created\":{\"date-parts\":[[2010,11,16]],\"d…[truncated]"
+  },
+  {
+   "doi": "10.1088/0264-9381/27/23/233001",
+   "accept": "text/x-bibliography; style=apa",
+   "http": 200,
+   "content_type": "text/x-bibliography",
+   "bytes": 140,
+   "body_400": "Bartelmann, M. (2010). Gravitational lensing. Classical and Quantum Gravity, 27(23), 233001. https://doi.org/10.1088/0264-9381/27/23/233001\n"
+  },
+  {
+   "doi": "10.1103/PhysRevD.97.024042",
+   "accept": "application/x-bibtex",
+   "http": 200,
+   "content_type": "application/x-bibtex",
+   "bytes": 345,
+   "body_400": " @article{Jusufi_2018, title={Gravitational lensing by rotating wormholes}, volume={97}, ISSN={2470-0029}, url={http://dx.doi.org/10.1103/PhysRevD.97.024042}, DOI={10.1103/physrevd.97.024042}, number={2}, journal={Physical Review D}, publisher={American Physical Society (APS)}, author={Jusufi, Kimet and Övgün, Ali}, year={2018}, month=Jan }\n"
+  },
+  {
+   "doi": "10.1103/PhysRevD.97.024042",
+   "accept": "application/vnd.citationstyles.csl+json",
+   "http": 200,
+   "content_type": "application/vnd.citationstyles.csl+json",
+   "bytes": 7149,
+   "body_400": "{\"indexed\":{\"date-parts\":[[2026,9,22]],\"date-time\":\"2026-09-22T18:44:35Z\",\"timestamp\":1790102675044,\"version\":\"4.0.1\"},\"reference-count\":44,\"publisher\":\"American Physical Society (APS)\",\"issue\":\"2\",\"license\":[{\"start\":{\"date-parts\":[[2018,1,29]],\"date-time\":\"2018-01-29T00:00:00Z\",\"timestamp\":1517184000000},\"content-version\":\"vor\",\"delay-in-days\":0,\"URL\":\"https:\\/\\/creativecommons.org\\/licenses\\/by…[truncated]"
+  },
+  {
+   "doi": "10.1103/PhysRevD.97.024042",
+   "accept": "text/x-bibliography; style=apa",
+   "http": 200,
+   "content_type": "text/x-bibliography",
+   "bytes": 148,
+   "body_400": "Jusufi, K., & Övgün, A. (2018). Gravitational lensing by rotating wormholes. Physical Review D, 97(2). https://doi.org/10.1103/physrevd.97.024042\n"
+  }
+ ],
+ "conclusion": "doi.org 内容协商可用：bibtex / CSL-JSON / 格式化引用(APA) 均 200；适合插件直接生成参考文献",
+ "fallback_crossref_by_doi": {
+  "url": "https://api.crossref.org/works/10.1088/0264-9381/27/23/233001",
+  "http": 200,
+  "title": "Gravitational lensing",
+  "is_referenced_by_count": 410,
+  "published": {
+   "date-parts": [
+    [
+     2010,
+     11,
+     15
+    ]
+   ]
+  }
+ },
+ "fallback_openalex_single_entity": {
+  "url": "https://api.openalex.org/works/https://doi.org/10.1088/0264-9381/27/23/233001",
+  "http": 200,
+  "title": "Gravitational lensing",
+  "cited_by_count": 444,
+  "note": "single-entity lookup is free per official docs"
+ }
+}

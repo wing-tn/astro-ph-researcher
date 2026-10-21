@@ -1,0 +1,419 @@
+{
+ "probed_at": "2026-10-21T17:00:07.573727+00:00",
+ "sorts": {
+  "relevance_score:desc": {
+   "http": 200,
+   "rows": [
+    [
+     1992,
+     1151,
+     "1992-01-01"
+    ],
+    [
+     2010,
+     444,
+     "2010-11-15"
+    ],
+    [
+     1964,
+     447,
+     "1964-09-01"
+    ]
+   ]
+  },
+  "cited_by_count:desc": {
+   "http": 200,
+   "rows": [
+    [
+     1998,
+     19587,
+     "1998-09-01"
+    ],
+    [
+     1999,
+     18059,
+     "1999-06-01"
+    ],
+    [
+     2020,
+     14262,
+     "2020-04-03"
+    ]
+   ]
+  },
+  "publication_date:desc": {
+   "http": 200,
+   "rows": [
+    [
+     2026,
+     0,
+     "2026-10-31"
+    ],
+    [
+     2026,
+     0,
+     "2026-10-30"
+    ],
+    [
+     2026,
+     0,
+     "2026-10-20"
+    ]
+   ]
+  }
+ },
+ "filters": {
+  "combined": {
+   "url": "https://api.openalex.org/works?filter=from_publication_date%3A2020-01-01%2Cto_publication_date%3A2024-12-31%2Ccited_by_count%3A%3E10%2Cis_oa%3Atrue%2Ctype%3Aarticle&search=fast+radio+burst&per_page=3&select=id%2Ctitle%2Cpublication_year%2Ccited_by_count%2Ctype%2Copen_access%2Cpublication_date",
+   "http": 200,
+   "count": 5967,
+   "rows": [
+    [
+     2023,
+     263,
+     "article",
+     true
+    ],
+    [
+     2020,
+     310,
+     "article",
+     true
+    ],
+    [
+     2020,
+     845,
+     "article",
+     true
+    ]
+   ]
+  }
+ },
+ "tests": {
+  "sort_relevance_without_search": {
+   "http": 400,
+   "body": "{\"error\":\"Invalid query parameters error.\",\"message\":\"Must include a search query (such as ?search=example or /filter=fulltext.search:example) in order to sort by relevance_score.\"}\n"
+  },
+  "select_relevance_score": {
+   "http": 200,
+   "values": [
+    156.97075,
+    139.36937
+   ],
+   "keys": [
+    "id",
+    "relevance_score",
+    "title"
+   ]
+  },
+  "relevance_score_returned_without_select": {
+   "sort_relevance_keys": [
+    "id",
+    "title"
+   ],
+   "no_sort_keys": [
+    "id",
+    "title"
+   ]
+  }
+ },
+ "sample": {
+  "url": "https://api.openalex.org/works?search=gravitational+lensing&filter=type%3Aarticle%2Cfrom_publication_date%3A2015-01-01&sort=relevance_score%3Adesc&per_page=8&select=id%2Cdoi%2Ctitle%2Cpublication_year%2Ccited_by_count%2Cpublication_date%2Cprimary_location%2Cauthorships%2Copen_access%2Cabstract_inverted_index",
+  "http": 200,
+  "meta": {
+   "count": 44311,
+   "page": 1,
+   "per_page": 8,
+   "cost_usd": 0.001
+  },
+  "rate_headers": {
+   "x-ratelimit-cost-usd": "0.001",
+   "x-ratelimit-credits-used": "10",
+   "x-ratelimit-limit": "1000",
+   "x-ratelimit-limit-usd": "0.1",
+   "x-ratelimit-onetime-remaining": "0",
+   "x-ratelimit-prepaid-remaining-usd": "0",
+   "x-ratelimit-remaining": "615",
+   "x-ratelimit-remaining-usd": "0.0615",
+   "x-ratelimit-reset": "25165"
+  },
+  "items": [
+   {
+    "title": "Gravitational lensing by rotating wormholes",
+    "year": 2018,
+    "cited_by_count": 235,
+    "doi": "https://doi.org/10.1103/physrevd.97.024042",
+    "publication_date": "2018-01-29",
+    "journal": "Physical review. D/Physical review. D.",
+    "type": null,
+    "is_oa": true,
+    "oa_status": "hybrid",
+    "authors": [
+     "Kimet Jusufi",
+     "Ali Övgün"
+    ],
+    "abstract_300": "In this paper the deflection angle of light by a rotating Teo wormhole spacetime is calculated in the weak limit approximation. We mainly focus on the weak deflection angle by revealing the gravitational lensing as a partially global topological effect. We apply the Gauss-Bonnet theorem (GBT) to the…[truncated]",
+    "abstract_inverted_index_present": true
+   },
+   {
+    "title": "Gravitational lensing in plasmic medium",
+    "year": 2015,
+    "cited_by_count": 102,
+    "doi": "https://doi.org/10.1134/s1063780x15070016",
+    "publication_date": "2015-07-01",
+    "journal": "Plasma Physics Reports",
+    "type": null,
+    "is_oa": false,
+    "oa_status": "closed",
+    "authors": [
+     "Г. С. Бисноватый-Коган",
+     "Oleg Yu. Tsupko"
+    ],
+    "abstract_300": "The influence of plasma on different effects of gravitational lensing is reviewed. Using the Hamiltonian approach for geometrical optics in a medium in the presence of gravity, an exact formula for the photon deflection angle by a black hole (or another body with a Schwarzschild metric) embedded in …[truncated]",
+    "abstract_inverted_index_present": true
+   },
+   {
+    "title": "Gravitational lensing by gravastars",
+    "year": 2016,
+    "cited_by_count": 64,
+    "doi": "https://doi.org/10.1103/physrevd.93.084051",
+    "publication_date": "2016-04-29",
+    "journal": "Physical review. D/Physical review. D.",
+    "type": null,
+    "is_oa": false,
+    "oa_status": "closed",
+    "authors": [
+     "Tomohiro Kubo",
+     "Nobuyuki Sakai"
+    ],
+    "abstract_300": "As a possible method to detect gravastars (gravitational-vacuum-star), which was originally proposed by Mazur and Mottola, we study their gravitational lensing effects. Specifically, we adopt a spherical thin-shell model of a gravastar developed by Visser and Wiltshire, which connects interior de Si…[truncated]",
+    "abstract_inverted_index_present": true
+   },
+   {
+    "title": "Strong gravitational lensing by wormholes",
+    "year": 2019,
+    "cited_by_count": 146,
+    "doi": "https://doi.org/10.1088/1475-7516/2019/07/028",
+    "publication_date": "2019-07-16",
+    "journal": "Journal of Cosmology and Astroparticle Physics",
+    "type": null,
+    "is_oa": true,
+    "oa_status": "bronze",
+    "authors": [
+     "Rajibul Shaikh",
+     "Pritam Banerjee",
+     "Suvankar Paul",
+     "Tapobrata Sarkar"
+    ],
+    "abstract_300": "We study strong gravitational lensing by a class of static wormhole geometries. Analytical approaches to the same are developed, and the results differ substantially from strong lensing by black holes, first reported by Bozza. We consider two distinct situations, one in which the observer and the so…[truncated]",
+    "abstract_inverted_index_present": true
+   },
+   {
+    "title": "lenstronomy II: A gravitational lensing software ecosystem",
+    "year": 2021,
+    "cited_by_count": 190,
+    "doi": "https://doi.org/10.21105/joss.03283",
+    "publication_date": "2021-06-08",
+    "journal": "The Journal of Open Source Software",
+    "type": null,
+    "is_oa": true,
+    "oa_status": "diamond",
+    "authors": [
+     "Simon Birrer",
+     "Anowar J. Shajib",
+     "Daniel Gilman",
+     "Aymeric Galan",
+     "J. Aalbers",
+     "Martin Millon",
+     "Robert Morgan",
+     "Giulia Pagano",
+     "Ji Won Park",
+     "Luca Teodori",
+     "N Tessore",
+     "Madison Ueland",
+     "Lyne Van de Vyvere",
+     "Sebastian Wagner-Carena",
+     "Ewoud Wempe",
+     "Lilan Yang",
+     "Xuheng Ding",
+     "Thomas Schmidt",
+     "Dominique Sluse",
+     "Ming Zhang",
+     "Adam Amara"
+    ],
+    "abstract_300": "lenstronomy is an Astropy-affiliated (Astropy Collaboration et al., 2018, 2013) Python package for gravitational lensing simulations and analyses.lenstronomy was introduced by Birrer & Amara (2018) and is based on the linear basis set approach by Birrer et al. (2015).The user and developer base of l…[truncated]",
+    "abstract_inverted_index_present": true
+   },
+   {
+    "title": "A novel gravitational lensing feature by wormholes",
+    "year": 2018,
+    "cited_by_count": 110,
+    "doi": "https://doi.org/10.1016/j.physletb.2018.12.030",
+    "publication_date": "2018-12-18",
+    "journal": "Physics Letters B",
+    "type": null,
+    "is_oa": true,
+    "oa_status": "diamond",
+    "authors": [
+     "Rajibul Shaikh",
+     "Pritam Banerjee",
+     "Suvankar Paul",
+     "Tapobrata Sarkar"
+    ],
+    "abstract_300": "Horizonless compact objects with light rings (or photon spheres) are becoming increasingly popular in recent years for several reasons. In this paper, we show that a horizonless object such as a wormhole of Morris–Thorne type can have two photon spheres. In particular, we show that, in addition to t…[truncated]",
+    "abstract_inverted_index_present": true
+   },
+   {
+    "title": "Shadows and strong gravitational lensing: a brief review",
+    "year": 2018,
+    "cited_by_count": 572,
+    "doi": "https://doi.org/10.1007/s10714-018-2361-9",
+    "publication_date": "2018-03-20",
+    "journal": "General Relativity and Gravitation",
+    "type": null,
+    "is_oa": true,
+    "oa_status": "green",
+    "authors": [
+     "Pedro V. P. Cunha",
+     "Carlos A. R. Herdeiro"
+    ],
+    "abstract_300": "",
+    "abstract_inverted_index_present": false
+   },
+   {
+    "title": "Planck 2015 resultsXV. Gravitational lensing",
+    "year": 2016,
+    "cited_by_count": 284,
+    "doi": "https://doi.org/10.1051/0004-6361/201525941",
+    "publication_date": "2016-01-01",
+    "journal": "LA Referencia (Red Federada de Repositorios Institucionales de Publicaciones Científicas)",
+    "type": null,
+    "is_oa": true,
+    "oa_status": "green",
+    "authors": [
+     "Peter A. R. Ade",
+     "N. Aghanim",
+     "M. Arnaud",
+     "M. Ashdown",
+     "J. Aumont",
+     "C. Baccigalupi",
+     "Anthony J. Banday",
+     "R. Belén Barreiro",
+     "J. G. Bartlett",
+     "N. Bartolo",
+     "S. Basak",
+     "E. Battaner",
+     "K. Benabed",
+     "A. Benoı̂t",
+     "A. Benoit-Lévy",
+     "J.-P. Bernard",
+     "Marco Bersanelli",
+     "P. Bielewicz",
+     "James J. Bock",
+     "Jullian Borrill",
+     "François R. Bouchet",
+     "F. Boulanger",
+     "M. Bucher",
+     "C. Burigana",
+     "R. C. Butler",
+     "Erminia Calabrese",
+     "J.-F. Cardoso",
+     "Andrea Catalano",
+     "Anthony D. Challinor",
+     "A. Chamballu",
+     "Hsin Cynthia Chiang",
+     "P. R. Christensen",
+     "S. Church",
+     "David L. Clements",
+     "S. Colombi",
+     "L. P. L. Colombo",
+     "Céline Combet",
+     "F. Couchot",
+     "A. Coulais",
+     "Brendan P. Crill",
+     "A. Curto",
+     "F. Cuttaia",
+     "Luigi Danese",
+     "R. D. Davies",
+     "Roger J. Davis",
+     "P. de Bernardis",
+     "A. de Rosa",
+     "G. de Zotti",
+     "G. de Zotti",
+     "F.–X. Désert",
+     "Jose Maria Diego",
+     "Herve A. Dole",
+     "S. Donzelli",
+     "Olivier Doré",
+     "Marian Douspis",
+     "Anne Ducout",
+     "Jo Dunkley",
+     "Xavier Dupac",
+     "G. Efstathiou",
+     "F. Elsner",
+     "Torsten A. Enßlin",
+     "Hans Kristian Eriksen",
+     "James R. Fergusson",
+     "Fabio Finelli",
+     "O. Forni",
+     "M. Frailis",
+     "A. A. Fraisse",
+     "Enrico Franceschi",
+     "A. Frejsel",
+     "Samuele Galeotta",
+     "S. Galli",
+     "Ken M. Ganga",
+     "Martin Giard",
+     "Yannick Giraud-Héraud",
+     "Eirik Gjerløw",
+     "J. González-Nuevo",
+     "Krzysztof M. Gorski",
+     "S. Gratton",
+     "A. Gregorio",
+     "ALESSANDRO GRUPPUSO",
+     "J. E. Gudmundsson",
+     "Frode K. Hansen",
+     "D. Hanson",
+     "Diana L. Harrison",
+     "S. Versillé",
+     "Carlos Hernández-Monteagudo",
+     "D. Herranz",
+     "Sergi R. Hildebrandt",
+     "Eric F. Hivon",
+     "M. Hobson",
+     "W. A. Holmes",
+     "Allan Hornstrup",
+     "Wolfgang Hovest",
+     "Kevin M. Huffenberger",
+     "Guillaume Hurier",
+     "Andrew H. Jaffe",
+     "T. R. Jaffe",
+     "William C. Jones",
+     "Mika J. Juvela",
+     "Elina Keihänen"
+    ],
+    "abstract_300": "29 pages, 2 wide-format tables. Subm. to A & A - See paper for full list of authors",
+    "abstract_inverted_index_present": true
+   }
+  ]
+ },
+ "paging": {
+  "per_page_default": 25,
+  "per_page_supported_max": 100,
+  "per_page_200": "legacy accepted, deprecated",
+  "basic_paging_cap": "page*per_page<=10000",
+  "cursor_beyond_page1": "needs key (401 without)"
+ },
+ "pricing": {
+  "no_key": "$0.10/day shared per IP (observed 401 when exhausted)",
+  "free_key": "$1/day, reset midnight UTC",
+  "search": "$1 per 1000 calls ($0.001/call)",
+  "list_filter": "$0.10 per 1000 calls",
+  "single_entity": "free",
+  "rerank_addon": "+$1 per 1000 calls"
+ },
+ "mailto": {
+  "status": "undocumented in current auth docs; tested harmless (no observable header change)",
+  "recommendation": "use api_key instead; keep mailto only as contact metadata"
+ }
+}

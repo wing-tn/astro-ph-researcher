@@ -1,0 +1,43 @@
+{
+  "version": "2.0",
+  "notice": "评分是辅助与可解释的启发式，不是论文质量或科学真理的最终判决；作者必须可以覆盖并留下理由。",
+  "literature": {
+    "id": "literature-v2.0",
+    "weights": {
+      "relevance": 0.25,
+      "evidence": 0.2,
+      "method": 0.15,
+      "reproducibility": 0.15,
+      "venue": 0.15,
+      "currency": 0.1
+    },
+    "dimensions": [
+      { "id": "relevance", "nameZh": "相关性", "anchors": ["无关", "弱相关", "同领域", "同问题不同样本", "同问题同数据", "直接解决"] },
+      { "id": "evidence", "nameZh": "证据强度", "anchors": ["无数据", "个例", "小样本", "有误差/对照", "多证据链", "独立验证"] },
+      { "id": "method", "nameZh": "方法严谨性", "anchors": ["未说明", "有方法无细节", "可读但缺基线", "有基线", "有敏感性分析", "可复现方案完整"] },
+      { "id": "reproducibility", "nameZh": "可复现性", "anchors": ["无", "部分参数", "有数据", "有代码", "有代码+环境", "端到端可复现"] },
+      { "id": "venue", "nameZh": "发表可信度", "anchors": ["未发表/不明", "预印本", "会议", "正式期刊", "高影响力期刊", "经典/同行广泛验证"] },
+      { "id": "currency", "nameZh": "时效/语境", "anchors": ["过时/被推翻", "旧但经典", "一般", "较新", "最新", "最新且有后续验证"] }
+    ]
+  },
+  "sections": {
+    "id": "section-v2.0",
+    "sections": ["title", "abstract", "introduction", "methods", "results", "discussion", "conclusion", "figures", "references", "formatting"],
+    "weights": {
+      "claimEvidence": 0.25,
+      "citation": 0.15,
+      "consistency": 0.15,
+      "reproducibility": 0.15,
+      "styleFit": 0.15,
+      "language": 0.15
+    },
+    "dimensions": [
+      { "id": "claimEvidence", "nameZh": "主张-证据一致", "anchors": ["主张无证据", "弱证据", "部分支持", "基本支持", "多证据支持", "证据链完整"] },
+      { "id": "citation", "nameZh": "引用覆盖/意图", "anchors": ["无引用", "少量", "关键文献缺失", "基本覆盖", "覆盖+意图清楚", "原始文献+争议都覆盖"] },
+      { "id": "consistency", "nameZh": "数字/单位/图一致", "anchors": ["多处冲突", "有冲突", "部分一致", "基本一致", "一致", "可追溯一致"] },
+      { "id": "reproducibility", "nameZh": "可复现性", "anchors": ["无", "不足", "部分", "基本", "完整", "可复现+数据/代码"] },
+      { "id": "styleFit", "nameZh": "风格-目标匹配", "anchors": ["不匹配", "弱", "一般", "匹配", "强匹配", "匹配且有克制"] },
+      { "id": "language", "nameZh": "语言/结构", "anchors": ["难读", "有结构问题", "一般", "清楚", "清楚简洁", "学术英语/中文规范"] }
+    ]
+  }
+}

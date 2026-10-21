@@ -1,0 +1,42 @@
+{
+  "name": "astro-ph-researcher",
+  "version": "2.0.0",
+  "description": "Astronomy workbench for Codex: NADC-validated terms, a local reference library, journal/thesis format guidance, ten goal-aware writing styles, and an observatory/data-workflow directory.",
+  "author": {
+    "name": "天外奇航",
+    "email": "1253932197@qq.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "astronomy",
+    "astrophysics",
+    "deepseek-harness",
+    "codex",
+    "skills",
+    "literature",
+    "bibtex",
+    "virtual-observatory",
+    "data-analysis",
+    "writing",
+    "academic-writing",
+    "paper-style"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "astro-ph-researcher",
+    "shortDescription": "天文术语、文献库、写作目标与观测数据工作流",
+    "longDescription": "面向天文学生与研究者的 Codex 插件：NADC 术语核验、文献检索与参考文献库、期刊/高校写作格式、10 个目标感知的写作风格（发现/确认/批判/增量/上限/方法/巡天/理论/多信使/综述）、34 个数据处理方法与 9 条统计原理、30 个观测设施的数据/软件/工作流。数据只读本地 JSON；不抓取付费全文、不绕过数据专有期。",
+    "developerName": "天外奇航",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "brandColor": "#0EA5E9",
+    "defaultPrompt": [
+      "Use $astro-ph-researcher:astro-literature-research to build a verifiable astronomy reading list.",
+      "Use $astro-ph-researcher:astro-code-writing to write reproducible astronomy code.",
+      "Use $astro-ph-researcher:astro-english-journal-writing to outline and revise my paper."
+    ]
+  }
+}

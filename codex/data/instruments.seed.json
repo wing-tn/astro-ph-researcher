@@ -1,0 +1,1811 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-22",
+  "instruments": [
+    {
+      "id": "chandra",
+      "name": "Chandra X-ray Observatory",
+      "type": "space_telescope",
+      "status": "running",
+      "openPolicy": "open",
+      "operator": "NASA/CXC (Smithsonian Astrophysical Observatory)",
+      "country": "USA",
+      "waveband": "X-ray (0.1-10 keV)",
+      "description": "NASA 旗舰 X 射线天文台，ACIS/HRC 成像与光栅谱，亚角秒空间分辨率。",
+      "dataLinks": [
+        {
+          "label": "Chandra Data Archive (CDA)",
+          "url": "https://cxc.harvard.edu/cda/",
+          "type": "archive"
+        },
+        {
+          "label": "Chandra Source Catalog (CSC 2.1)",
+          "url": "https://cxc.harvard.edu/csc/",
+          "type": "portal"
+        },
+        {
+          "label": "HEASARC Chandra 页面",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/chandra/",
+          "type": "archive"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "CIAO 文档与线程",
+          "url": "https://cxc.harvard.edu/ciao/",
+          "type": "docs"
+        },
+        {
+          "label": "CIAO 下载",
+          "url": "https://cxc.harvard.edu/ciao/download/",
+          "type": "software"
+        },
+        {
+          "label": "Sherpa 拟合文档",
+          "url": "https://cxc.harvard.edu/sherpa/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "CIAO",
+          "url": "https://cxc.harvard.edu/ciao/",
+          "language": "C/CIAO/S-Lang",
+          "openSource": true,
+          "notes": "CXC 官方分析套件：chandra_repro、specextract、wavdetect、srcflux 等；含 Sherpa。"
+        },
+        {
+          "name": "Sherpa",
+          "url": "https://cxc.harvard.edu/sherpa/",
+          "language": "Python/C++",
+          "openSource": true,
+          "notes": "X 射线谱/成像联合拟合，支持多仪器联合。"
+        }
+      ],
+      "workflow": [
+        "在 CDA 按目标坐标、提案号或 obsid 检索，确认 ACIS/HRC 仪器、 grating 与曝光时间，下载二级事件与响应文件",
+        "用 CIAO 的 chandra_repro 重处理（坏像素、增益、曝光校正），得到 evt2 与曝光图",
+        "点源检测用 wavdetect，测光/谱用 srcflux、specextract；与 CSC 2.1 交叉核对已知源和变率",
+        "用 Sherpa 或 XSPEC 拟合谱（吸收、幂律/热谱），并做背景与 pile-up 检查",
+        "记录 CIAO 版本、CALDB 版本与 obsid，按 DOI/ADS 引用，必要时把脚本与产物清单存档"
+      ],
+      "advice": "档案开放；GO/ToO 新观测存在专有期，需走 CXC 提案系统。无自有数据时先用 CSC 2.1 找同目标堆栈谱，再决定是否申请 XMM/NuSTAR 联合观测。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "CDA、CSC、HEASARC Chandra 页、CIAO 文档与下载、Sherpa 页均实测 HTTP 200（cxc.harvard.edu 首次 12 s 超时，25 s 重试通过）。"
+    },
+    {
+      "id": "fermi-lat",
+      "name": "Fermi Large Area Telescope (Fermi-LAT)",
+      "type": "space_telescope",
+      "status": "running",
+      "openPolicy": "open",
+      "operator": "NASA/DOE (FSSC)",
+      "country": "USA",
+      "waveband": "gamma-ray (20 MeV-300 GeV)",
+      "description": "全天扫描伽马射线望远镜，4FGL/4FGL-DR4 星表与银河系弥散模型是标准分析基础。",
+      "dataLinks": [
+        {
+          "label": "FSSC 数据访问入口",
+          "url": "https://fermi.gsfc.nasa.gov/ssc/data/access/",
+          "type": "archive"
+        },
+        {
+          "label": "FSSC 主页",
+          "url": "https://fermi.gsfc.nasa.gov/ssc/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "fermipy 文档",
+          "url": "https://fermipy.readthedocs.io/en/latest/",
+          "type": "docs"
+        },
+        {
+          "label": "FSSC 分析文档/教程",
+          "url": "https://fermi.gsfc.nasa.gov/ssc/",
+          "type": "tutorial"
+        }
+      ],
+      "software": [
+        {
+          "name": "fermipy",
+          "url": "https://fermipy.readthedocs.io/en/latest/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "LAT 最大似然分析 Python 封装，底层 FSSC fermitools；支持 SED、光变、TS map。"
+        },
+        {
+          "name": "fermitools",
+          "url": "https://fermi.gsfc.nasa.gov/ssc/",
+          "language": "C++/Python",
+          "openSource": false,
+          "notes": "FSSC 官方工具包，需从其软件页获取；与 fermipy 配套。"
+        }
+      ],
+      "workflow": [
+        "用 FSSC 的 LAT 数据服务器按 ROI 中心、时间窗、能量范围筛选 evclass/evtype（注意 P8R3/P8R4 与前端版本），下载 FT1/FT2 及航天器文件",
+        "编写 fermipy 配置：binsz、ROI、银河系弥散模型与各向同性模板、源列表（4FGL），固定/自由参数按分析目标设置",
+        "做 binned 最大似然拟合，迭代剔除低显著度源，检查 TS 图与残差图",
+        "生成 SED 与光变曲线，做能量色散、PSF 与弥散模型系统误差评估，与 4FGL-DR4 交叉",
+        "固定 fermipy/fermitools 版本，导出模型与脚本，按 FSSC 建议引用对应数据集与软件"
+      ],
+      "advice": "高银纬源先处理银河系弥散模型与 ROI 边缘源；低能段注意 PSF 与地球反照（Earth limb）筛选；分析结果必须报告 fermitools 与 IRF 版本。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "FSSC 主页、数据访问页、fermipy readthedocs 均 200。LAT 数据服务器具体下载 URL 未逐一验证，按 FSSC 页面入口使用。"
+    },
+    {
+      "id": "fermi-gbm",
+      "name": "Fermi Gamma-ray Burst Monitor (Fermi-GBM)",
+      "type": "satellite",
+      "status": "running",
+      "openPolicy": "open",
+      "operator": "NASA/MSFC (FSSC)",
+      "country": "USA",
+      "waveband": "gamma-ray (8 keV-40 MeV)",
+      "description": "Fermi 上的全天伽马暴监测仪，提供持续触发、谱与定位信息。",
+      "dataLinks": [
+        {
+          "label": "GBM 数据访问",
+          "url": "https://fermi.gsfc.nasa.gov/ssc/data/access/gbm/",
+          "type": "archive"
+        },
+        {
+          "label": "GBM 数据分析页",
+          "url": "https://fermi.gsfc.nasa.gov/ssc/data/analysis/gbm/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "GBM 分析文档",
+          "url": "https://fermi.gsfc.nasa.gov/ssc/data/analysis/gbm/",
+          "type": "docs"
+        },
+        {
+          "label": "HEASoft 文档",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/heasoft/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "HEASoft",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/heasoft/",
+          "language": "Fortran/C",
+          "openSource": true,
+          "notes": "GBM 数据处理与谱拟合基础环境，含 XSPEC。"
+        },
+        {
+          "name": "XSPEC",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/xspec/",
+          "language": "C++",
+          "openSource": true,
+          "notes": "GRB 谱拟合，支持与其他高能仪器联合。"
+        }
+      ],
+      "workflow": [
+        "从 GBM 触发列表或 GCN 通告定位目标与时间窗，下载 cspec/ctime/tte 及 poshist/geombkg 文件",
+        "用 HEASoft 的 GBM 工具或 GBM Data Tools 做探测器选择、能量通道合并与响应矩阵匹配",
+        "拟合 Band/幂律等谱模型，检查拟合残差与各探测器一致性；必要时做定位与成像分析",
+        "与 Swift/XRT、Fermi-LAT 做联合谱与能量预算分析，交叉 GRB 星表",
+        "记录触发号、探测器组合与响应版本，引用 GBM 星表/GCN 与所用软件"
+      ],
+      "advice": "TTE 数据量大，先按时间窗裁剪再分析；不同入射角度的响应差异显著，定位不确定度要计入。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "GBM 数据访问、GBM 分析、HEASoft、XSPEC 页均实测 200。HEASARC W3Browse 的 GBM 路径实测 404，未采用。"
+    },
+    {
+      "id": "swift",
+      "name": "Neil Gehrels Swift Observatory",
+      "type": "space_telescope",
+      "status": "running",
+      "openPolicy": "open",
+      "operator": "NASA/GSFC + UKSA",
+      "country": "USA/UK",
+      "waveband": "gamma-ray/X-ray/UV-optical",
+      "description": "快速指向的多波段天文台，BAT 触发、XRT 成像谱与 UVOT 光学/紫外同时观测。",
+      "dataLinks": [
+        {
+          "label": "Swift 数据归档 (NASA)",
+          "url": "https://swift.gsfc.nasa.gov/archive/",
+          "type": "archive"
+        },
+        {
+          "label": "UKSSDC Swift 数据与工具",
+          "url": "https://www.swift.ac.uk/",
+          "type": "portal"
+        },
+        {
+          "label": "UKSSDC Swift Portal",
+          "url": "https://www.swift.ac.uk/swift_portal/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "UKSSDC 数据指南",
+          "url": "https://www.swift.ac.uk/archive/",
+          "type": "docs"
+        },
+        {
+          "label": "HEASoft 文档",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/heasoft/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "HEASoft（Swift 任务包）",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/heasoft/",
+          "language": "Fortran/C",
+          "openSource": true,
+          "notes": "xrtpipeline、batgrbproduct、uvotimsum 等 Swift 专用任务。"
+        },
+        {
+          "name": "XSPEC",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/xspec/",
+          "language": "C++",
+          "openSource": true,
+          "notes": "XRT/BAT 谱拟合。"
+        }
+      ],
+      "workflow": [
+        "用 UKSSDC 的 GRB/源检索或 NASA 归档按目标名、坐标、obsid 筛选，确认 XRT 观测模式（WT/PC）与 UVOT 滤光片",
+        "下载 Level 1/2 数据，运行 xrtpipeline 生成事件与谱，uvotimsum 合并 UVOT 曝光",
+        "XRT 谱用 XSPEC 拟合（吸收、幂律/热谱），UVOT 做孔径测光与消光校正，BAT 用 batgrbproduct 提取光变",
+        "与 UKSSDC 自动产品（光变、谱、XRT 星表）交叉验证，检查源在视场中的位置与背景",
+        "记录 obsid、处理版本与校准文件，引用 DOI/ADS 与 UKSSDC 数据页"
+      ],
+      "advice": "ToO 响应快但 XRT 数据模式影响谱拟合；WT 模式有 pile-up 与坏列，PC 模式适合暗源。UKSSDC 的自动光变/谱可先做快速科学判断。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "Swift NASA 主页/归档、UKSSDC 主页/portal/archive、HEASoft、XSPEC 均 200。"
+    },
+    {
+      "id": "xmm-newton",
+      "name": "XMM-Newton",
+      "type": "space_telescope",
+      "status": "running",
+      "openPolicy": "open",
+      "operator": "ESA",
+      "country": "Europe",
+      "waveband": "X-ray (0.2-12 keV)",
+      "description": "ESA 大型 X 射线天文台，EPIC 高有效面积成像谱、RGS 高分辨谱与 OM 光学监测。",
+      "dataLinks": [
+        {
+          "label": "XMM-Newton Science Archive (XSA)",
+          "url": "https://www.cosmos.esa.int/web/xmm-newton/xsa",
+          "type": "archive"
+        },
+        {
+          "label": "XMM-Newton 主页",
+          "url": "https://www.cosmos.esa.int/web/xmm-newton",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "SAS 文档",
+          "url": "https://www.cosmos.esa.int/web/xmm-newton/sas",
+          "type": "docs"
+        },
+        {
+          "label": "XSA 数据检索",
+          "url": "https://www.cosmos.esa.int/web/xmm-newton/xsa",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "SAS (Science Analysis System)",
+          "url": "https://www.cosmos.esa.int/web/xmm-newton/sas",
+          "language": "C/Fortran",
+          "openSource": false,
+          "notes": "ESA 官方 XMM 处理套件（免费但非开源）：odfIngest、emchain、epchain、evselect、backscale 等。"
+        },
+        {
+          "name": "XSPEC",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/xspec/",
+          "language": "C++",
+          "openSource": true,
+          "notes": "EPIC/RGS 谱拟合。"
+        }
+      ],
+      "workflow": [
+        "在 XSA 按坐标/提案号检索，确认 EPIC PN/MOS、RGS、OM 曝光与滤光片，下载 ODF",
+        "用 SAS 的 odfIngest 建立 ODF 索引，emchain/epchain 生成事件文件，做坏像素、flare 与曝光校正",
+        "用 evselect 提谱与光变，backscale/arfgen/rmfgen 生成响应，注意 pile-up 与 PATTERN 选择",
+        "用 XSPEC 拟合，PN/MOS 联合时引入 cross-calibration 常数；RGS 做高分辨谱线分析",
+        "记录 SAS 版本与 CCF，导出产物清单，按 XMM 数据政策引用"
+      ],
+      "advice": "EPIC PN 的 pile-up 与背景耀发是主坑：先用光变筛掉高背景段，再做谱。无自有观测时用 XSA 的 3XMM/4XMM 星表快速定位。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "cosmos.esa.int 的 XMM 主页、XSA、SAS 页均 200；xmm.esac.esa.int 已 DNS 解析失败，改用 cosmos 入口。"
+    },
+    {
+      "id": "nustar",
+      "name": "Nuclear Spectroscopic Telescope Array (NuSTAR)",
+      "type": "space_telescope",
+      "status": "running",
+      "openPolicy": "open",
+      "operator": "NASA/Caltech",
+      "country": "USA",
+      "waveband": "X-ray (3-79 keV)",
+      "description": "聚焦硬 X 射线望远镜，填补 Chandra/XMM 与 MeV 观测之间的能段。",
+      "dataLinks": [
+        {
+          "label": "HEASARC NuSTAR 数据",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/nustar/",
+          "type": "archive"
+        },
+        {
+          "label": "NuSTAR 任务主页",
+          "url": "https://www.nustar.caltech.edu/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "NuSTAR 分析文档",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/nustar/analysis/",
+          "type": "docs"
+        },
+        {
+          "label": "XSPEC 文档",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/xspec/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "NuSTARDAS (HEASoft)",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/nustar/analysis/",
+          "language": "Fortran/C",
+          "openSource": true,
+          "notes": "nupipeline、nuproducts、nuflux 等；随 HEASoft 发布。"
+        },
+        {
+          "name": "XSPEC",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/xspec/",
+          "language": "C++",
+          "openSource": true,
+          "notes": "3-79 keV 谱拟合，常与 XMM/Chandra 联合。"
+        }
+      ],
+      "workflow": [
+        "在 HEASARC 按坐标/obsid 检索，确认焦平面模块 A/B、曝光与观测模式",
+        "用 nupipeline 生成清理后事件与曝光图，nuproducts 提取源/背景谱、光变与响应",
+        "检查 3-10 keV 与低能仪器的一致性，用 XSPEC 做联合拟合并引入 cross-cal 常数",
+        "评估 stray light 与孔径背景，必要时用源区外多次背景估计",
+        "记录 CALDB 与 NuSTARDAS 版本，引用观测与软件"
+      ],
+      "advice": "与 XMM/Chandra 联合时必须处理互定标差异（3-10 keV 重叠段）；亮源注意 dead time 与堆叠。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "HEASARC NuSTAR、NuSTAR 主页、分析文档、XSPEC 均 200。"
+    },
+    {
+      "id": "jwst",
+      "name": "James Webb Space Telescope (JWST)",
+      "type": "space_telescope",
+      "status": "running",
+      "openPolicy": "proprietary",
+      "operator": "NASA/ESA/CSA (STScI)",
+      "country": "USA/Europe/Canada",
+      "waveband": "infrared (0.6-28.5 um)",
+      "description": "6.5 米红外空间望远镜，NIRCam/NIRSpec/MIRI/NIRISS 成像、谱与时间序列。",
+      "dataLinks": [
+        {
+          "label": "MAST JWST 数据",
+          "url": "https://mast.stsci.edu/",
+          "type": "archive"
+        },
+        {
+          "label": "JWST 文档 (JDox)",
+          "url": "https://jwst-docs.stsci.edu/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "JDox 数据处理文档",
+          "url": "https://jwst-docs.stsci.edu/",
+          "type": "docs"
+        },
+        {
+          "label": "DrizzlePac 文档",
+          "url": "https://www.stsci.edu/scientific-community/software/drizzlepac",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "JWST Science Calibration Pipeline",
+          "url": "https://jwst-docs.stsci.edu/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "官方 pipeline，从 rate 到 cal/spec3 产品；文档入口在 JDox。"
+        },
+        {
+          "name": "DrizzlePac",
+          "url": "https://www.stsci.edu/scientific-community/software/drizzlepac",
+          "language": "Python",
+          "openSource": true,
+          "notes": "图像对齐与 drizzle 合成。"
+        },
+        {
+          "name": "astroquery",
+          "url": "https://astroquery.readthedocs.io/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "MAST/Vizier 等数据检索。"
+        }
+      ],
+      "workflow": [
+        "在 MAST 按目标坐标、程序号（PID）与仪器筛选，确认观测日期、滤光片/光栅与数据版本",
+        "下载 rate/cal/spec3 等产品；需要自定义处理时用 jwst pipeline 从 rate 重跑",
+        "用 DrizzlePac 做图像对齐、背景扣除与合成，用 astropy/photutils 做孔径或 PSF 测光",
+        "谱数据用 spec3 产品做波长/通量校准，检查背景与 fringe；必要时用公开 ERS/GO 数据交叉",
+        "记录 PID、pipeline 与 CRDS 版本，按 MAST DOI 引用"
+      ],
+      "advice": "GO 数据有约 12 个月专有期（以 STScI 政策为准）；无自有数据时优先用 ERS/早期公开数据与 MAST 高级产品，避免重复处理。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "MAST、JDox、DrizzlePac、astroquery 均 200。JWST 专用 pipeline 文档 URL 未单独验证，统一指向 JDox；专有期 12 个月为通行政策，未在可访问页面逐条确认，写为约数。"
+    },
+    {
+      "id": "hubble",
+      "name": "Hubble Space Telescope (HST)",
+      "type": "space_telescope",
+      "status": "running",
+      "openPolicy": "proprietary",
+      "operator": "NASA/ESA (STScI)",
+      "country": "USA/Europe",
+      "waveband": "UV/optical/NIR",
+      "description": "在轨 30 余年的空间望远镜，ACS/WFC3/COS/STIS 仍是紫外—近红外主力。",
+      "dataLinks": [
+        {
+          "label": "MAST HST 数据",
+          "url": "https://mast.stsci.edu/",
+          "type": "archive"
+        },
+        {
+          "label": "STScI 归档",
+          "url": "https://archive.stsci.edu/",
+          "type": "archive"
+        },
+        {
+          "label": "HubbleSite",
+          "url": "https://hubblesite.org/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "DrizzlePac 文档",
+          "url": "https://www.stsci.edu/scientific-community/software/drizzlepac",
+          "type": "docs"
+        },
+        {
+          "label": "MAST 检索",
+          "url": "https://mast.stsci.edu/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "DrizzlePac",
+          "url": "https://www.stsci.edu/scientific-community/software/drizzlepac",
+          "language": "Python",
+          "openSource": true,
+          "notes": "AstroDrizzle 对齐/合成，处理 CTE 与几何畸变。"
+        },
+        {
+          "name": "astroquery",
+          "url": "https://astroquery.readthedocs.io/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "MAST 数据检索与元数据查询。"
+        }
+      ],
+      "workflow": [
+        "在 MAST 按坐标、PID、仪器/滤光片检索，确认访问级别与数据版本（flt/flc/drc/drz）",
+        "下载 flc/flt（CTE 校正）与响应文件；需要重处理时用 AstroDrizzle",
+        "做图像对齐、背景扣除与合成，用 astropy/photutils 测光并做孔径/PSF 校正",
+        "谱数据用 cal 产品做波长与通量校准，检查 geocoronal 背景",
+        "记录 PID 与校准版本，按 MAST DOI 与仪器论文引用"
+      ],
+      "advice": "GO 数据通常 12 个月专有期；HLA 高级产品可快速做形态与测光交叉，但发表前应核对校准版本。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "MAST、STScI archive、HubbleSite、DrizzlePac、astroquery 均 200。"
+    },
+    {
+      "id": "gaia",
+      "name": "Gaia",
+      "type": "satellite",
+      "status": "ended",
+      "openPolicy": "open",
+      "operator": "ESA/DPAC",
+      "country": "Europe",
+      "waveband": "optical (astrometry, photometry, spectroscopy)",
+      "description": "ESA 天体测量卫星，2025 年 3 月结束科学任务；DR3 已公开，DR4 在准备中。",
+      "dataLinks": [
+        {
+          "label": "Gaia Archive (TAP/ADQL)",
+          "url": "https://gea.esac.esa.int/archive/",
+          "type": "api"
+        },
+        {
+          "label": "Gaia DR3 文档",
+          "url": "https://www.cosmos.esa.int/web/gaia/dr3",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "Gaia 任务页",
+          "url": "https://www.cosmos.esa.int/web/gaia",
+          "type": "docs"
+        },
+        {
+          "label": "astroquery 文档",
+          "url": "https://astroquery.readthedocs.io/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astroquery",
+          "url": "https://astroquery.readthedocs.io/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "Gaia TAP/ADQL 查询与批量下载。"
+        },
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "坐标、单位、FITS 与星表处理。"
+        }
+      ],
+      "workflow": [
+        "用 Gaia Archive 的 ADQL/TAP 按天区、星等、视差与自行筛选，取 source_id、G/BP/RP、parallax、pm、RUWE",
+        "用 astropy 做单位与坐标转换，按 parallax_over_error、RUWE 与 BP/RP 质量标志清洗样本",
+        "与 2MASS/AllWISE 等星表交叉证认，做消光与距离估计；必要时用 Gaia DR3 的 astrophysical parameters",
+        "对变星/双星做光变与周期分析，注意 DR3 的 epoch photometry 覆盖",
+        "记录 DR 版本与查询语句，按 Gaia 合作组论文与 DOI 引用"
+      ],
+      "advice": "任务已于 2025 年结束，不会再有新观测；DR3 仍需注意视差零点与 RUWE>1.4 的污染。DR4 发布前不要使用未公开数据。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "Gaia Archive、DR3 页、Gaia 主页、astroquery、astropy 均 200。任务结束时间（2025-03）为 ESA 公告的通行事实，未逐页验证。"
+    },
+    {
+      "id": "tess",
+      "name": "Transiting Exoplanet Survey Satellite (TESS)",
+      "type": "space_telescope",
+      "status": "running",
+      "openPolicy": "open",
+      "operator": "NASA/MIT",
+      "country": "USA",
+      "waveband": "optical (600-1000 nm)",
+      "description": "全天亮星凌星巡天，提供 2 分钟与 FFI 光变，是系外行星与变星主力数据源。",
+      "dataLinks": [
+        {
+          "label": "MAST TESS 数据",
+          "url": "https://mast.stsci.edu/",
+          "type": "archive"
+        },
+        {
+          "label": "TESS 任务页",
+          "url": "https://tess.gsfc.nasa.gov/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "Lightkurve 教程",
+          "url": "https://lightkurve.github.io/lightkurve/",
+          "type": "tutorial"
+        },
+        {
+          "label": "MAST 检索",
+          "url": "https://mast.stsci.edu/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "Lightkurve",
+          "url": "https://lightkurve.github.io/lightkurve/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "读取 SPOC/TESS-SPOC 光变、去趋势、BLS 与 FFI 孔径测光。"
+        },
+        {
+          "name": "astroquery",
+          "url": "https://astroquery.readthedocs.io/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "MAST/TIC 查询。"
+        }
+      ],
+      "workflow": [
+        "用 MAST 按 TIC 或坐标检索 SPOC 光变（2 min/20 s）与目标像素文件，确认 sector 与数据版本",
+        "用 Lightkurve 读取光变，做归一化、CBV/多项式去趋势与离群点剔除",
+        "用 BLS/TLS 搜索凌星信号，估计周期、深度与持续时间，检查奇偶凌星与二次食",
+        "需要自建光变时用 TESScut FFI 做孔径测光，或交叉 TESS-Gaia 星表",
+        "记录 TIC、sector 与 pipeline 版本，按 MAST 与 TESS 论文引用"
+      ],
+      "advice": "2 分钟数据与 FFI 的孔径污染不同；先查 TESS Input Catalog 的 crowding，再做去趋势。sector 间隙与动量轮系统误差需要用 CBV 处理。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "MAST、tess.gsfc.nasa.gov 均 200；Lightkurve 文档（https://lightkurve.github.io/lightkurve/）为 GitHub Pages，实测 200 与 TLS reset（000）交替，属网络抖动，已记录；tess.mit.edu 本机 DNS 解析失败，改用 tess.gsfc.nasa.gov。"
+    },
+    {
+      "id": "alma",
+      "name": "Atacama Large Millimeter/submillimeter Array (ALMA)",
+      "type": "ground_telescope",
+      "status": "running",
+      "openPolicy": "proprietary",
+      "operator": "ESO/NAOJ/NRAO",
+      "country": "Chile (international)",
+      "waveband": "radio/mm/submm (0.3-3.6 mm)",
+      "description": "66 天线毫米波/亚毫米波干涉阵，谱线与连续谱成像主力设备。",
+      "dataLinks": [
+        {
+          "label": "ALMA Science Archive (NRAO)",
+          "url": "https://almascience.nrao.edu/alma-data/archive",
+          "type": "archive"
+        },
+        {
+          "label": "ALMA Science Archive (ESO)",
+          "url": "https://almascience.eso.org/alma-data/archive",
+          "type": "archive"
+        },
+        {
+          "label": "ALMA 主页",
+          "url": "https://almascience.nrao.edu/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "CASA 文档与下载",
+          "url": "https://casa.nrao.edu/",
+          "type": "docs"
+        },
+        {
+          "label": "astroquery 文档",
+          "url": "https://astroquery.readthedocs.io/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "CASA",
+          "url": "https://casa.nrao.edu/",
+          "language": "Python/C++",
+          "openSource": true,
+          "notes": "干涉阵校准、tclean 成像与谱线分析；需匹配 ALMA 数据对应的 CASA 版本。"
+        },
+        {
+          "name": "astroquery",
+          "url": "https://astroquery.readthedocs.io/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "ALMA/NRAO 档案检索。"
+        }
+      ],
+      "workflow": [
+        "在 ALMA Science Archive 按目标坐标、项目号或 PI 检索，确认阵列构型、波段、谱线设置与 QA 等级",
+        "下载已校准 MS 与 QA2 产品（或 raw/asdm 自行校准），核对 flux/bandpass/phase 定标",
+        "用 CASA 做 continuum 与谱线成像（tclean、自校准），检查 uv 覆盖、旁瓣与动态范围",
+        "做源检测、通量/谱指数测量与谱线拟合，必要时与 VLA/JWST 数据联合",
+        "记录项目号、CASA 版本与成像参数，按 ALMA 项目号与 DOI 引用"
+      ],
+      "advice": "新观测有约 12 个月专有期（以 ALMA 政策为准）；无自有数据时用 QA2 已发布产品与 ALMA 星表，避免重复校准。注意通量定标的系统不确定度。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "ALMA NRAO/ESO 档案页、ALMA 主页、CASA 主页、astroquery 均 200；casa.nrao.edu/docs/ 目录页返回 403（目录禁止浏览），不影响软件主页。"
+    },
+    {
+      "id": "vla",
+      "name": "Karl G. Jansky Very Large Array (VLA)",
+      "type": "ground_telescope",
+      "status": "running",
+      "openPolicy": "proprietary",
+      "operator": "NRAO/NSF",
+      "country": "USA",
+      "waveband": "radio (0.3-50 GHz)",
+      "description": "27 天线厘米波干涉阵，射电连续谱、谱线与偏振观测的标准设施。",
+      "dataLinks": [
+        {
+          "label": "NRAO 数据档案",
+          "url": "https://data.nrao.edu/portal/",
+          "type": "archive"
+        },
+        {
+          "label": "VLA 设施页",
+          "url": "https://science.nrao.edu/facilities/vla",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "CASA 文档与下载",
+          "url": "https://casa.nrao.edu/",
+          "type": "docs"
+        },
+        {
+          "label": "NRAO 数据检索",
+          "url": "https://data.nrao.edu/portal/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "CASA",
+          "url": "https://casa.nrao.edu/",
+          "language": "Python/C++",
+          "openSource": true,
+          "notes": "VLA 校准与成像标准工具。"
+        },
+        {
+          "name": "astroquery",
+          "url": "https://astroquery.readthedocs.io/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "NRAO 档案与星表查询。"
+        }
+      ],
+      "workflow": [
+        "在 NRAO 档案按目标、项目号或 PI 检索，确认波段、构型、积分时间与数据版本",
+        "下载已校准可见度数据与 flag 版本，检查定标表与 RFI 标记",
+        "用 CASA 做自校准与多尺度成像，评估动态范围与负通量噪声",
+        "做源检测、通量/谱指数与偏振测量；必要时与 ALMA/光学数据联合",
+        "记录项目号、CASA 版本与 flag 决策，按 NRAO DOI 引用"
+      ],
+      "advice": "数据有专有期（期限以 NRAO 政策为准），期满进入公开档案；低频观测注意 RFI 与宽带谱指数拟合。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "NRAO 档案 portal、VLA 设施页、CASA 主页、astroquery 均 200；专有期具体月数未在可访问页面确认，故不写死。"
+    },
+    {
+      "id": "icecube",
+      "name": "IceCube Neutrino Observatory",
+      "type": "neutrino",
+      "status": "running",
+      "openPolicy": "open",
+      "operator": "University of Wisconsin-Madison/NSF",
+      "country": "Antarctica/USA",
+      "waveband": "neutrino (TeV-PeV)",
+      "description": "南极冰下 1 km3 中微子探测器，开展天体物理中微子点源、弥散与多信使分析。",
+      "dataLinks": [
+        {
+          "label": "IceCube 数据发布",
+          "url": "https://icecube.wisc.edu/science/data-releases/",
+          "type": "archive"
+        },
+        {
+          "label": "IceCube 主页",
+          "url": "https://icecube.wisc.edu/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "SkyLLH 文档",
+          "url": "https://icecube.github.io/skyllh/",
+          "type": "docs"
+        },
+        {
+          "label": "公开数据发布说明",
+          "url": "https://icecube.wisc.edu/science/data-releases/",
+          "type": "tutorial"
+        }
+      ],
+      "software": [
+        {
+          "name": "SkyLLH",
+          "url": "https://icecube.github.io/skyllh/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "IceCube 官方似然分析框架，含点源/stacking/时间扫描与 IRF 处理；文档含公开 10 年数据教程。"
+        }
+      ],
+      "workflow": [
+        "从 IceCube data releases 下载公开数据集（如 10 年 point-source 事件、IRF、背景估计）与教程配置",
+        "用 SkyLLH 定义数据集、信号/背景 PDF、源列表与时间模型，构建 LLH",
+        "拟合信号强度 ns 与谱指数 gamma，做 stacking、时间扫描与多源联合",
+        "用 scrambled/off-source 数据做背景试验，估 p 值与显著性，检查探测器随年份变化",
+        "记录数据集版本与 SkyLLH 版本，按数据 DOI 与 IceCube 合作组规则引用"
+      ],
+      "advice": "公开数据是发布子集，不等于全样本；不同年份 detector 配置与冰层条件不同，必须用对应 IRF。alert 数据要区分 GFU/EHE 与是否含方向重建。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "IceCube 主页/数据发布页、SkyLLH 文档均 200；GitHub 仓库 github.com 本机 DNS 不可达，故不引用仓库地址。"
+    },
+    {
+      "id": "ligo-virgo-kagra",
+      "name": "LIGO-Virgo-KAGRA (LVK)",
+      "type": "gravitational_wave",
+      "status": "commissioning",
+      "openPolicy": "open",
+      "operator": "LIGO Lab/Caltech-MIT, EGO/Virgo, KAGRA",
+      "country": "USA/Europe/Japan",
+      "waveband": "gravitational waves (10 Hz-10 kHz)",
+      "description": "地面引力波干涉网；O4 观测于 2025 年初结束，当前处于升级/调试与 O5 准备阶段。",
+      "dataLinks": [
+        {
+          "label": "GWOSC 开放科学中心",
+          "url": "https://gwosc.org/",
+          "type": "archive"
+        },
+        {
+          "label": "GWOSC 数据下载",
+          "url": "https://gwosc.org/data/",
+          "type": "archive"
+        },
+        {
+          "label": "GWOSC 事件 API",
+          "url": "https://gwosc.org/eventapi/html/",
+          "type": "api"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "GWpy 文档",
+          "url": "https://gwpy.github.io/",
+          "type": "docs"
+        },
+        {
+          "label": "PyCBC 文档",
+          "url": "https://pycbc.org/pycbc/latest/html/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "GWpy",
+          "url": "https://gwpy.github.io/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "应变数据读取、谱图、q-transform 与数据质量。"
+        },
+        {
+          "name": "PyCBC",
+          "url": "https://pycbc.org/pycbc/latest/html/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "匹配滤波、检验统计量与参数估计。"
+        }
+      ],
+      "workflow": [
+        "在 GWOSC 按事件名或 GPS 时间下载 H1/L1/V1/K1 应变与 PSD，核对数据版本与标定",
+        "用 GWpy 做 q-transform、谱图与信噪比检查，识别 glitch 与数据质量 veto",
+        "用 PyCBC 做匹配滤波、参数估计与 FAR 计算，必要时与 GWTC 目录结果对比",
+        "做多探测器符合与天空定位，交叉电磁/中微子跟踪",
+        "记录事件版本、软件版本与标定不确定度，按事件 DOI 引用"
+      ],
+      "advice": "O4 数据已公开；O5 前用 GWTC 目录做方法验证。注意标定不确定度与 glitch veto，不要把 O4 的公开事件当完整样本。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "GWOSC 主页/data/eventapi、PyCBC 文档均 200；GWpy 文档（https://gwpy.github.io/）实测 200 与 000 交替（GitHub Pages 网络抖动），已记录；www.ligo.org 本机连接超时（000），未采用其数据政策页。O4 结束与 O5 计划时间为公开信息，未逐页验证。"
+    },
+    {
+      "id": "hess",
+      "name": "High Energy Stereoscopic System (H.E.S.S.)",
+      "type": "ground_telescope",
+      "status": "running",
+      "openPolicy": "restricted",
+      "operator": "H.E.S.S. Collaboration",
+      "country": "Namibia (international)",
+      "waveband": "VHE gamma (0.03-100 TeV)",
+      "description": "纳米比亚地面切伦科夫望远镜阵列，开展 TeV 伽马射线成像、谱与源普查。",
+      "dataLinks": [
+        {
+          "label": "H.E.S.S. 官方站",
+          "url": "https://www.mpi-hd.mpg.de/hfm/HESS/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "Gammapy 文档",
+          "url": "https://gammapy.org/",
+          "type": "docs"
+        },
+        {
+          "label": "ctools 文档",
+          "url": "http://cta.irap.omp.eu/ctools-devel/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "Gammapy",
+          "url": "https://gammapy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "读 DL3（events+IRF），做 3D 似然谱/形态拟合与系统误差。"
+        },
+        {
+          "name": "ctools",
+          "url": "http://cta.irap.omp.eu/ctools-devel/",
+          "language": "C++/Python",
+          "openSource": true,
+          "notes": "官方文档站在本机连接超时（000），不确认当前可访问性。"
+        }
+      ],
+      "workflow": [
+        "通过合作组/公开数据页获取 DL3 数据或公开源表/SED；确认观测模式与 IRF 版本",
+        "用 Gammapy 读 DL3，建立 MapDataset，设置背景模型与有效面积",
+        "做 3D 似然拟合，得到谱与形态参数，评估有效面积与背景系统误差",
+        "与 Fermi-LAT、HAWC、TeVCat 及射电/X 射线对应体交叉",
+        "记录 IRF 版本与分析脚本，按合作组规则引用"
+      ],
+      "advice": "H.E.S.S. 无全面公开的原始数据档案，需通过合作组申请或使用已发表 SED/星表；不得写成完全开放数据。官网 2026-10 临时关闭，建议用论文与 TeVCat 交叉。",
+      "verified": false,
+      "verifiedAt": "2026-10-22",
+      "notes": "https://www.mpi-hd.mpg.de/hfm/HESS/ 实测 200，但 302 跳转到 https://hess-experiment.eu/ 且正文为站点临时关闭公告（Temporary shutdown，安全措施），未能读取数据政策；ctools 文档站 cta.irap.omp.eu 连接超时（000）。"
+    },
+    {
+      "id": "auger",
+      "name": "Pierre Auger Observatory",
+      "type": "ground_telescope",
+      "status": "running",
+      "openPolicy": "open",
+      "operator": "Pierre Auger Collaboration",
+      "country": "Argentina (international)",
+      "waveband": "UHECR (E > 1e17 eV)",
+      "description": "阿根廷 3000 km2 混合探测阵列，测量超高能宇宙线的能谱、成分与各向异性。",
+      "dataLinks": [
+        {
+          "label": "Auger 公开数据（数据与表）",
+          "url": "https://www.auger.org/science/public-data/data-and-tables",
+          "type": "portal"
+        },
+        {
+          "label": "Auger Open Data",
+          "url": "https://opendata.auger.org/",
+          "type": "archive"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "Open Data 门户",
+          "url": "https://opendata.auger.org/",
+          "type": "docs"
+        },
+        {
+          "label": "Auger 主页",
+          "url": "https://www.auger.org/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "读取公开事件 FITS、坐标与天区暴露分析；官方离线重建软件未公开。"
+        }
+      ],
+      "workflow": [
+        "从 Auger 公开数据页/Open Data 下载表面探测器事件、能量与天顶角，确认数据版本与暴露说明",
+        "用 astropy 读表，按能量/天顶角筛选，计算天区暴露与各向异性统计",
+        "做能谱拟合与成分（Xmax）分析，评估系统不确定度",
+        "与 Telescope Array、IceCube 的高能中微子/宇宙线结果交叉",
+        "记录数据集版本与筛选条件，按公开数据说明引用"
+      ],
+      "advice": "公开数据是发布子集，不能当完整样本；能量标定有系统不确定度，做跨实验比较时要统一能量尺度。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "auger.org 主页、公开数据页、opendata.auger.org 与 display.php 均 200。"
+    },
+    {
+      "id": "erosita-srg",
+      "name": "SRG / eROSITA",
+      "type": "space_telescope",
+      "status": "running",
+      "openPolicy": "open",
+      "operator": "MPE/DLR (eROSITA), IKI (SRG)",
+      "country": "Germany/Russia",
+      "waveband": "X-ray (0.2-8 keV)",
+      "description": "SRG 上的 X 射线巡天望远镜，完成首轮全天巡天并发布 DR1；2022 年起巡天暂停，档案仍开放。",
+      "dataLinks": [
+        {
+          "label": "MPE eROSITA 主页",
+          "url": "https://www.mpe.mpg.de/eROSITA",
+          "type": "portal"
+        },
+        {
+          "label": "eROSITA-DE DR1 站点",
+          "url": "https://erosita.mpe.mpg.de/dr1/",
+          "type": "archive"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "MPE eROSITA 文档入口",
+          "url": "https://www.mpe.mpg.de/eROSITA",
+          "type": "docs"
+        },
+        {
+          "label": "astropy 文档",
+          "url": "https://www.astropy.org/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "FITS/事件表处理与测光；eSASS 官方分析包未在本机验证，未给 URL。"
+        }
+      ],
+      "workflow": [
+        "从 eROSITA-DE DR1 或 MPE 入口获取事件文件、曝光图与星表，确认巡天编号与版本",
+        "用 astropy 读 FITS，做点源检测、孔径测光与背景估计",
+        "与 XMM-Newton/Chandra 星表交叉证认，检查多波段对应体",
+        "做星系团/热气体或 AGN 统计，评估曝光与背景系统误差",
+        "记录 DR 版本与选择函数，按 eROSITA 合作组论文引用"
+      ],
+      "advice": "DR1 站点本机不可达，需从 MPE 主页找镜像/入口；巡天自 2022 年起暂停，不要声称仍在持续产出新数据。",
+      "verified": false,
+      "verifiedAt": "2026-10-22",
+      "notes": "https://www.mpe.mpg.de/eROSITA 实测 200；https://erosita.mpe.mpg.de/dr1/ 与 erosita.mpe.mpg.de 均 TCP 连接超时（000，25 s），DR1 数据入口未验证。"
+    },
+    {
+      "id": "fast",
+      "name": "Five-hundred-meter Aperture Spherical radio Telescope (FAST)",
+      "type": "ground_telescope",
+      "status": "running",
+      "openPolicy": "restricted",
+      "operator": "National Astronomical Observatories, CAS (NAOC)",
+      "country": "China",
+      "waveband": "radio (70 MHz-3 GHz)",
+      "description": "中国 500 米球面射电望远镜，脉冲星计时、中性氢与快速射电暴的主力设备。",
+      "dataLinks": [
+        {
+          "label": "FAST 官方网站",
+          "url": "https://fast.bao.ac.cn/",
+          "type": "portal"
+        },
+        {
+          "label": "CAS 平台 FAST 数据发布通告",
+          "url": "https://lssf.cas.cn/en/facilities/sa/fast/notice/202507/t20250731_5078715.html",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "CAS FAST 用户规章",
+          "url": "https://lssf.cas.cn/sszs/zyyj/500mkjwyj/yhgz/202503/t20250314_5050242.html",
+          "type": "docs"
+        },
+        {
+          "label": "FAST 官网",
+          "url": "https://fast.bao.ac.cn/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "FITS/谱线数据处理；脉冲星分析常用 PRESTO/PSRCHIVE，本机未验证其官方 URL，故不列链接。"
+        }
+      ],
+      "workflow": [
+        "通过 FAST 提案系统提交观测申请（竞争性评审），明确科学目标、接收机与观测模式",
+        "获批观测后，通过 FAST/CAS 数据平台按项目号获取数据；关注 CAS 平台的数据开放批次通告",
+        "脉冲星用 PRESTO/PSRCHIVE 做折叠、计时与噪声分析；谱线用 astropy 做基线扣除与高斯拟合",
+        "与已有巡天（NVSS/GBT/ASKAP）交叉，检查射电干扰与流量定标",
+        "记录项目号、数据批次与软件版本，按 FAST 数据使用条款引用"
+      ],
+      "advice": "数据不是全开放档案：观测须提案评审，数据按批次公开（见 CAS 平台通告）。不要假设 raw 数据可直接下载；使用前读用户规章，公开批次优先。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "fast.bao.ac.cn 200（SPA 首页），CAS 平台 FAST 英文数据发布通告与用户规章页均 200；具体专有期与批次内容未逐条解读，写为按批次开放。"
+    },
+    {
+      "id": "lhaaso",
+      "name": "Large High Altitude Air Shower Observatory (LHAASO)",
+      "type": "ground_telescope",
+      "status": "running",
+      "openPolicy": "restricted",
+      "operator": "Institute of High Energy Physics, CAS (IHEP)",
+      "country": "China",
+      "waveband": "VHE gamma/cosmic rays (sub-TeV-PeV)",
+      "description": "稻城高海拔宇宙线观测站，KM2A/WCDA/水切伦科夫探测器开展超高能伽马与宇宙线观测。",
+      "dataLinks": [
+        {
+          "label": "LHAASO 官方网站",
+          "url": "https://lhaaso.ihep.ac.cn/",
+          "type": "portal"
+        },
+        {
+          "label": "国家高能物理数据中心 LHAASO",
+          "url": "https://datadc.ihep.ac.cn/resource/astro/lhaaso",
+          "type": "archive"
+        },
+        {
+          "label": "LHAASO 合作组规章 (CAS)",
+          "url": "http://lssf.cas.cn/sszs/zyyj/ghbyzx/yhgz/202504/t20250410_5062632.html",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "LHAASO 合作组规章",
+          "url": "http://lssf.cas.cn/sszs/zyyj/ghbyzx/yhgz/202504/t20250410_5062632.html",
+          "type": "docs"
+        },
+        {
+          "label": "国家高能物理数据中心",
+          "url": "https://datadc.ihep.ac.cn/resource/astro/lhaaso",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "公开数据产品的 FITS 处理；合作组内部重建/分析软件未公开。"
+        }
+      ],
+      "workflow": [
+        "阅读 LHAASO 合作组规章，确认数据使用、署名与发表规则，按流程申请合作或数据使用",
+        "通过国家高能物理科学数据中心获取公开数据产品（本机当前不可达，需换网络或联系数据中心）",
+        "用 astropy 处理 FITS，做能谱、天区分布与各向异性分析",
+        "与 Fermi-LAT、CTA/MAGIC、IceCube 及射电/X 射线对应体交叉",
+        "记录数据版本与分析流程，按合作组规则引用"
+      ],
+      "advice": "LHAASO 不是开放档案：数据受合作组规章约束，需申请。官网本机 DNS 解析失败、数据中心 TCP 超时；先用 lssf 规章页与已发表星表（如 1LHAASO）做文献层面工作。",
+      "verified": false,
+      "verifiedAt": "2026-10-22",
+      "notes": "lhaaso.ihep.ac.cn DNS 解析失败（getent 无结果）；datadc.ihep.ac.cn 可解析但 TCP 连接超时（000）；lssf.cas.cn 合作组规章页实测 200。"
+    },
+    {
+      "id": "ixpe",
+      "name": "Imaging X-ray Polarimetry Explorer (IXPE)",
+      "type": "space_telescope",
+      "status": "running",
+      "openPolicy": "restricted",
+      "operator": "NASA/MSFC + ASI",
+      "country": "USA/Italy",
+      "waveband": "X-ray polarization (2-8 keV)",
+      "description": "首个成像 X 射线偏振卫星，测量天体 X 射线偏振度与偏振角。",
+      "dataLinks": [
+        {
+          "label": "HEASARC IXPE 数据",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/ixpe/",
+          "type": "archive"
+        },
+        {
+          "label": "IXPE 任务主页",
+          "url": "https://ixpe.msfc.nasa.gov/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "IXPE 分析文档",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/ixpe/analysis/",
+          "type": "docs"
+        },
+        {
+          "label": "ixpeobssim 文档",
+          "url": "https://ixpeobssim.readthedocs.io/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "ixpeobssim",
+          "url": "https://ixpeobssim.readthedocs.io/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "官方偏振分析/模拟框架，含 IRF、偏振拟合与成像。"
+        },
+        {
+          "name": "HEASoft",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/heasoft/",
+          "language": "Fortran/C",
+          "openSource": true,
+          "notes": "事件筛选与辅助处理。"
+        },
+        {
+          "name": "XSPEC",
+          "url": "https://heasarc.gsfc.nasa.gov/docs/software/xspec/",
+          "language": "C++",
+          "openSource": true,
+          "notes": "与能谱联合拟合。"
+        }
+      ],
+      "workflow": [
+        "在 HEASARC/IXPE 页面按目标与观测 ID 获取 Level-2 事件、曝光与响应，确认处理版本",
+        "用 ixpeobssim 生成 IRF，做偏振度/偏振角拟合与最小可探测偏振度评估",
+        "用 XSPEC 做能谱联合拟合，检查背景与前景污染",
+        "与射电/X 射线成像形态及 GeV 数据交叉，解释偏振来源",
+        "记录观测 ID、ixpeobssim 版本与响应文件，按 NASA 数据政策引用"
+      ],
+      "advice": "IXPE 为 GO 任务，观测须提案评审；数据有专有期（具体期限本报告未确认，下载前查 HEASARC IXPE 数据政策）。先用已公开 GO 数据与 ixpeobssim 教程练手。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "HEASARC IXPE 主页/数据页/分析页、ixpe.msfc.nasa.gov、ixpeobssim 文档均 200；专有期具体月数未在可访问页面确认，写入 notes 而非断言。"
+    },
+    {
+      "id": "ctao",
+      "name": "Cherenkov Telescope Array Observatory (CTAO)",
+      "type": "ground_telescope",
+      "status": "under_construction",
+      "openPolicy": "open",
+      "operator": "CTAO ERIC",
+      "country": "Spain/Chile (international)",
+      "waveband": "VHE gamma (20 GeV-300 TeV)",
+      "description": "下一代地面伽马射线天文台，La Palma 与 Paranal 两站点建设中，部分望远镜已进入调试。",
+      "dataLinks": [
+        {
+          "label": "CTAO 主页",
+          "url": "https://www.ctao.org/",
+          "type": "portal"
+        },
+        {
+          "label": "CTAO 科学用户页",
+          "url": "https://www.ctao.org/for-scientists/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "Gammapy 文档",
+          "url": "https://gammapy.org/",
+          "type": "docs"
+        },
+        {
+          "label": "ctools 文档",
+          "url": "http://cta.irap.omp.eu/ctools-devel/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "Gammapy",
+          "url": "https://gammapy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "CTA 官方推荐的低层/高层伽马射线分析框架，读 DL3，做 3D 似然拟合。"
+        },
+        {
+          "name": "ctools",
+          "url": "http://cta.irap.omp.eu/ctools-devel/",
+          "language": "C++/Python",
+          "openSource": true,
+          "notes": "官方文档站在本机连接超时（000），不确认当前可访问性。"
+        }
+      ],
+      "workflow": [
+        "关注 CTAO 科学数据发布与科学验证数据（目前尚无量产开放档案），确认可用的 DL3 数据与 IRF",
+        "用 Gammapy 读 DL3，建 MapDataset，设置背景与有效面积模型",
+        "做 3D 似然谱/形态拟合，评估系统误差与观测时间",
+        "与 H.E.S.S./MAGIC/VERITAS 及 Fermi-LAT 数据交叉验证",
+        "记录 IRF 与软件版本，按 CTAO 数据政策引用"
+      ],
+      "advice": "当前无开放科学档案；用 CTA 科学验证数据与 Gammapy 教程准备方法。建设期数据政策以 CTAO 官方为准，不要假设与 H.E.S.S. 相同。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "ctao.org 主页与 for-scientists 页、gammapy.org 均 200；ctools 文档站 cta.irap.omp.eu 连接超时（000），已在软件 notes 标注。"
+    },
+    {
+      "id": "ska",
+      "name": "Square Kilometre Array (SKA)",
+      "type": "ground_telescope",
+      "status": "under_construction",
+      "openPolicy": "open",
+      "operator": "SKA Observatory (SKAO)",
+      "country": "Australia/South Africa/UK (international)",
+      "waveband": "radio (50 MHz-15 GHz)",
+      "description": "SKA-Low 与 SKA-Mid 正在建设，首批科学数据尚未开放。",
+      "dataLinks": [
+        {
+          "label": "SKAO 主页",
+          "url": "https://www.skao.int/",
+          "type": "portal"
+        },
+        {
+          "label": "SKAO 天文用户页",
+          "url": "https://astronomers.skatelescope.org/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "SKAO 主页",
+          "url": "https://www.skao.int/",
+          "type": "docs"
+        },
+        {
+          "label": "astropy 文档",
+          "url": "https://www.astropy.org/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "射电数据/坐标/FITS 处理；SKA 专属流程尚未公开可用。"
+        }
+      ],
+      "workflow": [
+        "建设期用 ASKAP/MeerKAT 公开数据与 SKA 区域中心（SRC）试点数据准备方法",
+        "关注 SKAO 科学用户页与提案公告（本机 503，需换网络访问）",
+        "数据发布后用区域中心流程获取可见度/FITS，做成像与谱线分析",
+        "与 LOFAR/MeerKAT/ASKAP 交叉，评估灵敏度与 uv 覆盖",
+        "记录数据版本与流程，按 SKAO 政策引用"
+      ],
+      "advice": "SKA 尚无开放科学数据，网站返回 503（反爬/WAF）；不要编造 SKA 数据产品，也不要引用未发布数据。",
+      "verified": false,
+      "verifiedAt": "2026-10-22",
+      "notes": "https://www.skao.int/、https://www.skao.int/en、https://astronomers.skatelescope.org/ 均返回 503（WAF/反爬），未取得内容；astropy 页 200。"
+    },
+    {
+      "id": "rubin",
+      "name": "Vera C. Rubin Observatory / LSST",
+      "type": "ground_telescope",
+      "status": "commissioning",
+      "openPolicy": "open",
+      "operator": "NSF/DOE, Rubin Observatory (AURA)",
+      "country": "Chile/USA",
+      "waveband": "optical (ugrizy)",
+      "description": "8.4 米大视场巡天望远镜，2025 年首光，LSST 巡天正式开始前处于 commissioning。",
+      "dataLinks": [
+        {
+          "label": "Rubin Observatory 主页",
+          "url": "https://rubinobservatory.org/",
+          "type": "portal"
+        },
+        {
+          "label": "数据产品说明",
+          "url": "https://rubinobservatory.org/for-scientists/data-products",
+          "type": "portal"
+        },
+        {
+          "label": "Rubin Science Platform",
+          "url": "https://data.lsst.cloud/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "LSST Science Pipelines 文档",
+          "url": "https://pipelines.lsst.io/",
+          "type": "docs"
+        },
+        {
+          "label": "astropy 文档",
+          "url": "https://www.astropy.org/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "LSST Science Pipelines",
+          "url": "https://pipelines.lsst.io/",
+          "language": "Python/C++",
+          "openSource": true,
+          "notes": "图像校准、检测、测光与共加；文档含 Butler 与数据处理流程。"
+        },
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "FITS/星表与坐标处理。"
+        }
+      ],
+      "workflow": [
+        "用 Rubin Science Platform（data.lsst.cloud）账号访问数据发布（DP0/DP1 等），确认数据集版本",
+        "通过 TAP/Butler 检索图像、源表与元数据，筛选天区、波段与质量标志",
+        "用 LSST Science Pipelines 或 astropy 做测光、差分成像与光变分析",
+        "与 DECam/ZTF/PS1 交叉，评估系统误差与选择函数",
+        "记录 DP 版本与查询语句，按 Rubin 数据政策引用"
+      ],
+      "advice": "数据经 RSP 发布且需账号；DP0 等早期数据可用于方法准备。LSST 巡天尚未正式开始，不要把 commissioning 数据当巡天样本。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "rubinobservatory.org 主页、data-products、data.lsst.cloud、pipelines.lsst.io、astropy 均 200。"
+    },
+    {
+      "id": "elt",
+      "name": "Extremely Large Telescope (ELT)",
+      "type": "ground_telescope",
+      "status": "under_construction",
+      "openPolicy": "open",
+      "operator": "ESO",
+      "country": "Chile/Europe",
+      "waveband": "optical/IR",
+      "description": "ESO 39 米分段镜望远镜，Cerro Armazones 在建，首光目标 2028 年前后。",
+      "dataLinks": [
+        {
+          "label": "ESO ELT 页面",
+          "url": "https://elt.eso.org/",
+          "type": "portal"
+        },
+        {
+          "label": "ESO 主页",
+          "url": "https://www.eso.org/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "ESO 主页",
+          "url": "https://www.eso.org/",
+          "type": "docs"
+        },
+        {
+          "label": "astropy 文档",
+          "url": "https://www.astropy.org/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "模拟数据与 FITS 处理；ELT 专属流程尚未公开。"
+        }
+      ],
+      "workflow": [
+        "关注 ESO ELT 仪器团队与数据政策（当前 ELT 页面 502 不可达）",
+        "用 VLT/JWST 公开数据与模拟工具准备方法，确认仪器能力与波长覆盖",
+        "用 astropy 处理模拟/早期数据，做测光与谱分析",
+        "与 VLT/JWST 结果交叉，评估分辨率与灵敏度增益",
+        "引用设计文档与 ESO 政策，不引用未发布数据"
+      ],
+      "advice": "ELT 尚未观测，无真实科学数据；elt.eso.org 返回 502，站点恢复前用 ESO 主页与官方设计文档。",
+      "verified": false,
+      "verifiedAt": "2026-10-22",
+      "notes": "https://elt.eso.org/ 与 https://www.eso.org/public/teles-instr/elt/ 均返回 502；https://www.eso.org/ 主页 200（但 ELT 子页仍 502）。"
+    },
+    {
+      "id": "tmt",
+      "name": "Thirty Meter Telescope (TMT)",
+      "type": "ground_telescope",
+      "status": "planned",
+      "openPolicy": "open",
+      "operator": "TMT International Observatory (TIO)",
+      "country": "USA/Japan/Canada/China/India",
+      "waveband": "optical/IR",
+      "description": "30 米级望远镜项目，建设因选址争议暂停，尚未进入观测阶段。",
+      "dataLinks": [
+        {
+          "label": "TIO 官方站",
+          "url": "https://www.tmt.org/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "TIO 官方站",
+          "url": "https://www.tmt.org/",
+          "type": "docs"
+        },
+        {
+          "label": "astropy 文档",
+          "url": "https://www.astropy.org/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "模拟/设计数据处理；TMT 数据流程未公开。"
+        }
+      ],
+      "workflow": [
+        "阅读 TIO 科学仪器与数据政策文档，确认计划中的仪器与能力",
+        "用 Keck/Subaru/VLT 数据准备方法，做模拟与灵敏度估计",
+        "用 astropy 处理模拟数据，评估自适应光学性能",
+        "与 JWST/ELT 设计指标交叉，明确科学案例",
+        "引用设计报告与官方文档，不引用未发布数据"
+      ],
+      "advice": "项目未进入观测阶段，没有真实数据；以设计报告与仪器概念为依据，勿把规划指标当观测结果。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "https://www.tmt.org/ 实测 200；astropy 200。项目状态按公开信息写为 planned（建设暂停）。"
+    },
+    {
+      "id": "ngvla",
+      "name": "next-generation Very Large Array (ngVLA)",
+      "type": "ground_telescope",
+      "status": "planned",
+      "openPolicy": "open",
+      "operator": "NRAO/NSF",
+      "country": "USA",
+      "waveband": "radio (1.2-116 GHz)",
+      "description": "下一代厘米—毫米波干涉阵，处于设计/规划阶段，尚未开工。",
+      "dataLinks": [
+        {
+          "label": "ngVLA 项目主页",
+          "url": "https://ngvla.nrao.edu/",
+          "type": "portal"
+        },
+        {
+          "label": "NRAO 数据档案",
+          "url": "https://data.nrao.edu/portal/",
+          "type": "archive"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "ngVLA 项目主页",
+          "url": "https://ngvla.nrao.edu/",
+          "type": "docs"
+        },
+        {
+          "label": "CASA 文档",
+          "url": "https://casa.nrao.edu/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "CASA",
+          "url": "https://casa.nrao.edu/",
+          "language": "Python/C++",
+          "openSource": true,
+          "notes": "未来 ngVLA 数据分析基础；当前用 VLA 数据练手。"
+        },
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "模拟与 FITS 处理。"
+        }
+      ],
+      "workflow": [
+        "阅读 ngVLA 科学白皮书与设计报告，确认频段、灵敏度与科学案例",
+        "用 VLA/JVLA 公开数据与 CASA 流程准备方法，做成像与谱线练习",
+        "用模拟工具估计 ngVLA 灵敏度与 uv 覆盖，评估科学可行性",
+        "与 ALMA/VLA/SKA 的能力交叉，明确独特科学空间",
+        "引用项目文档与模拟结果，不引用未发布的 ngVLA 数据"
+      ],
+      "advice": "ngVLA 尚未开工，没有观测数据；用 VLA 数据与公开模拟准备，勿把设计指标当实测结果。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "ngvla.nrao.edu、data.nrao.edu/portal、casa.nrao.edu、astropy 均 200。"
+    },
+    {
+      "id": "athena",
+      "name": "Advanced Telescope for High-ENergy Astrophysics (Athena)",
+      "type": "space_telescope",
+      "status": "planned",
+      "openPolicy": "open",
+      "operator": "ESA",
+      "country": "Europe",
+      "waveband": "X-ray (0.2-12 keV)",
+      "description": "ESA X 射线旗舰（L 类），宽视场成像与 X-IFU 量能器，目标 2030 年代发射。",
+      "dataLinks": [
+        {
+          "label": "ESA Athena 页面",
+          "url": "https://www.cosmos.esa.int/web/athena",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "ESA Athena 页面",
+          "url": "https://www.cosmos.esa.int/web/athena",
+          "type": "docs"
+        },
+        {
+          "label": "astropy 文档",
+          "url": "https://www.astropy.org/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "模拟谱/响应处理；SIXTE 官方站本机不可达，未列 URL。"
+        }
+      ],
+      "workflow": [
+        "阅读 ESA Athena 科学白皮书与仪器定义，确认 WFI/X-IFU 能力",
+        "用 SIXTE 或 astropy 生成模拟事件/谱（SIXTE 站点本机不可达，需换网络）",
+        "与 XMM-Newton/Chandra 公开数据交叉，评估增益与科学案例",
+        "做源 confusion 与背景估计，明确 Athena 的独特参数空间",
+        "引用白皮书与模拟结果，不引用未发布数据"
+      ],
+      "advice": "Athena 未发射，无真实数据；用 XMM/Chandra 数据与模拟准备。SIXTE 站点本机超时，需换网络或在其他环境访问。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "https://www.cosmos.esa.int/web/athena 与 astropy 均 200；SIXTE 站点 www.sternwarte.uni-erlangen.de 连接超时（000），未作为链接。"
+    },
+    {
+      "id": "lisa",
+      "name": "Laser Interferometer Space Antenna (LISA)",
+      "type": "gravitational_wave",
+      "status": "planned",
+      "openPolicy": "open",
+      "operator": "ESA/NASA",
+      "country": "Europe/USA",
+      "waveband": "mHz gravitational waves",
+      "description": "ESA L3 空间引力波天文台，目标 2035 年发射，探测 mHz 频段引力波。",
+      "dataLinks": [
+        {
+          "label": "NASA LISA 页面",
+          "url": "https://lisa.nasa.gov/",
+          "type": "portal"
+        },
+        {
+          "label": "LISA 任务联盟站",
+          "url": "https://www.lisamission.org/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "LISA 任务联盟站",
+          "url": "https://www.lisamission.org/",
+          "type": "docs"
+        },
+        {
+          "label": "astropy 文档",
+          "url": "https://www.astropy.org/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "时间序列与模拟数据处理；LISA Data Challenge 站点本机不可达。"
+        }
+      ],
+      "workflow": [
+        "用 LISA Data Challenge 模拟数据（本机不可达，需换网络）或官方文档理解数据格式",
+        "用 astropy 处理时间序列，做谱估计与噪声建模",
+        "做参数估计与信号注入-恢复测试，评估波形系统误差",
+        "与 LIGO/Virgo 的地面频段结果交叉，明确多频段科学",
+        "引用 LISA 白皮书、LDC 数据与软件版本"
+      ],
+      "advice": "LISA 尚未发射，无真实数据；LDC 站点本机不可达，先读官方文档并用已发表模拟结果。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "lisa.nasa.gov、lisamission.org、astropy 均 200；lisa-ldc.lal.in2p3.fr 连接超时（000），未作为链接。"
+    },
+    {
+      "id": "icecube-gen2",
+      "name": "IceCube-Gen2",
+      "type": "neutrino",
+      "status": "proposed",
+      "openPolicy": "open",
+      "operator": "University of Wisconsin-Madison/NSF",
+      "country": "Antarctica/USA",
+      "waveband": "neutrino (TeV-PeV)",
+      "description": "IceCube 的下一代扩展（光学+射电阵列），处于规划/提案阶段。",
+      "dataLinks": [
+        {
+          "label": "IceCube-Gen2 主页",
+          "url": "https://icecube-gen2.wisc.edu/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "IceCube-Gen2 主页",
+          "url": "https://icecube-gen2.wisc.edu/",
+          "type": "docs"
+        },
+        {
+          "label": "SkyLLH 文档",
+          "url": "https://icecube.github.io/skyllh/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "SkyLLH",
+          "url": "https://icecube.github.io/skyllh/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "用现有 IceCube 数据验证似然方法，为 Gen2 灵敏度研究做准备。"
+        }
+      ],
+      "workflow": [
+        "阅读 IceCube-Gen2 设计报告与白皮书，确认光学/射电阵列配置",
+        "用 IceCube 公开数据与 SkyLLH 做点源/弥散分析，验证方法",
+        "做灵敏度模拟与事件率估计，评估相对 IceCube 的增益",
+        "与 KM3NeT、Baikal-GVD 的能力交叉",
+        "引用 Gen2 白皮书与 IceCube 公开数据，不引用未发布数据"
+      ],
+      "advice": "Gen2 未建成，无观测数据；用 IceCube 公开数据 + SkyLLH 验证方法，用白皮书做灵敏度论证。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "icecube-gen2.wisc.edu 与 SkyLLH 文档均 200。"
+    },
+    {
+      "id": "extp",
+      "name": "enhanced X-ray Timing and Polarimetry mission (eXTP)",
+      "type": "space_telescope",
+      "status": "proposed",
+      "openPolicy": "open",
+      "operator": "Institute of High Energy Physics, CAS (IHEP)",
+      "country": "China",
+      "waveband": "X-ray timing/polarimetry (0.5-30 keV)",
+      "description": "中国主导的 X 射线时变与偏振天文台，处于背景型号/提案阶段。",
+      "dataLinks": [
+        {
+          "label": "eXTP 官方站",
+          "url": "https://extp.ihep.ac.cn/",
+          "type": "portal"
+        }
+      ],
+      "analysisLinks": [
+        {
+          "label": "eXTP 官方站",
+          "url": "https://extp.ihep.ac.cn/",
+          "type": "docs"
+        },
+        {
+          "label": "astropy 文档",
+          "url": "https://www.astropy.org/",
+          "type": "docs"
+        }
+      ],
+      "software": [
+        {
+          "name": "astropy",
+          "url": "https://www.astropy.org/",
+          "language": "Python",
+          "openSource": true,
+          "notes": "时变/偏振模拟数据处理；eXTP 专属分析软件未公开。"
+        }
+      ],
+      "workflow": [
+        "阅读 eXTP 科学白皮书与仪器定义，确认时变/偏振能力",
+        "用 IXPE/NICER/RXTE 公开数据准备方法，做模拟与灵敏度估计",
+        "用 astropy 处理模拟光变与偏振数据，评估统计显著度",
+        "与 Athena/IXPE 的能力交叉，明确科学案例",
+        "引用白皮书与模拟结果，不引用未发布数据"
+      ],
+      "advice": "eXTP 尚未立项发射，无真实数据；官网可访问但内容有限，用 IXPE/NICER 数据做方法准备。",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "https://extp.ihep.ac.cn/ 实测 200；astropy 200。"
+    }
+  ]
+}

@@ -1,0 +1,402 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-22",
+  "formats": [
+    {
+      "id": "pku-physics",
+      "university": "北京大学",
+      "department": "研究生院 / 学位办公室（物理学院、天文系适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2014 年 5 月版",
+      "title": "北京大学研究生学位论文写作指南",
+      "url": "https://grs.pku.edu.cn/docs/2018-03/20180301083100898652.pdf",
+      "formatNotes": [
+        "结构依次为封面、版权声明、中英文摘要、目录、正文（含引言与结论）、参考文献、附录、致谢/后记、学位论文原创性声明等（PDF 第 1 章）。",
+        "中文摘要标题黑体三号、单倍行距；摘要正文小四号宋体、固定行距 20 磅；博士摘要约 800–1000 字，硕士约 600 字。",
+        "正文小四号（12pt）宋体，英文与阿拉伯数字用 Times New Roman，固定行距 20 磅，首行缩进 2 个汉字符。",
+        "参考文献可采用“顺序编码制”或“著者-出版年制”，著录规则见 PDF 附录 A，附录未标注 GB/T 版本。"
+      ],
+      "citationStandard": "学校自定（PDF 附录 A《参考文献著录规则及注意事项》；顺序编码制或著者-出版年制，未标注 GB/T 版本）",
+      "templateUrl": "",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "PDF 存于研究生院 2018-03 归档路径，正文落款 2014 年 5 月（北京大学学位办公室）；未发现更新版公开页。"
+    },
+    {
+      "id": "tsinghua-physics",
+      "university": "清华大学",
+      "department": "研究生院（物理系、天文系适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "未标注版本",
+      "title": "清华大学研究生学位论文写作指南（公开页未获取）",
+      "url": "",
+      "formatNotes": [],
+      "citationStandard": "",
+      "templateUrl": "",
+      "verified": false,
+      "verifiedAt": "2026-10-22",
+      "notes": "未找到官方格式页。研究生院公开站（www.tsinghua.edu.cn/yjsy/，HTTP 200）及办事指南、培养要求栏目未见《写作指南》下载；培养方案 PDF 仅引用“info 清华—研究生院办公信息网—培养—论文答辩”校内入口；grad.tsinghua.edu.cn 在本网络 DNS 不可达（HTTP 000）。"
+    },
+    {
+      "id": "nju-astronomy",
+      "university": "南京大学",
+      "department": "研究生院（天文与空间科学学院、物理学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "未标注版本",
+      "title": "南京大学研究生学位论文格式要求（公开页未获取）",
+      "url": "",
+      "formatNotes": [],
+      "citationStandard": "",
+      "templateUrl": "",
+      "verified": false,
+      "verifiedAt": "2026-10-22",
+      "notes": "未找到官方格式页。已查研究生院学位工作、下载专区、相关规定（均 HTTP 200）及物理学院、天文与空间科学学院公开页，均无统一格式文件；仅见体育科学研究所 2024-11《学位论文格式规范》（非天文/物理方向，未采用）。"
+    },
+    {
+      "id": "ustc-physics",
+      "university": "中国科学技术大学",
+      "department": "研究生院（物理学院、天文与空间科学学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "未标注版本",
+      "title": "中国科学技术大学研究生学位论文撰写模板",
+      "url": "https://gradschool.ustc.edu.cn/column/65",
+      "formatNotes": [
+        "A4（21.0×29.7 cm）；页边距上/下 2.54 cm、左/右 3.17 cm、装订线 0 cm，左右对称。",
+        "正文小四号（12pt）宋体，英文与数字用 Times New Roman，固定行距 20 磅，首行缩进 2 个汉字符。",
+        "页眉为章级标题、五号宋体；页码从摘要起用罗马数字、第 1 章起用阿拉伯数字，页脚居中。",
+        "参考文献按模板正文要求执行 GB/T 7714-2025；关键词 3–8 个。",
+        "研究生院同时提供 Word 模板与通用 LaTeX 模板。"
+      ],
+      "citationStandard": "GB/T 7714-2025（模板正文明确要求；注意与常见 2015 版不同）",
+      "templateUrl": "https://gradschool.ustc.edu.cn/static/upload/article/file/1789972356385/1789972356385-940711.docx",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "研究生院“学位授予”栏目（HTTP 200）提供 Word 模板（HTTP 200）与通用 LaTeX 模板 zip（HTTP 200）；模板未标年份/版次。"
+    },
+    {
+      "id": "bnu-astronomy",
+      "university": "北京师范大学",
+      "department": "学位评定委员会办公室（天文系适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2026 年 1 月版（2026 版）",
+      "title": "北京师范大学研究生学位论文编写规则（2026 版）",
+      "url": "http://ss.graduate.bnu.edu.cn/core/ucontent/FmFile/r_xw_dbcl?attname=wj&attvalue=/2026/20260128-144540-261928-811f1b.pdf&name=1.+%e5%8c%97%e4%ba%ac%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6%e7%a0%94%e7%a9%b6%e7%94%9f%e5%ad%a6%e4%bd%8d%e8%ae%ba%e6%96%87%e7%bc%96%e5%86%99%e8%a7%84%e5%88%99%ef%bc%882026%e7%89%88%ef%bc%89",
+      "formatNotes": [
+        "内页及摘要 A4 纸、双面印刷（封面与版权页除外）。",
+        "博士摘要约 2000 字、硕士约 1000 字；关键词 3–8 个。",
+        "论文题目黑体小二号加粗居中、一般不超过 25 个汉字、行距 1.25 倍；摘要标题小三号、摘要内容小四号、行距 20 磅。",
+        "参考文献执行 GB/T 7714-2015，可选择顺序编码制或著者-出版年制。",
+        "同时引用 GB/T 7713.1-2025《学位论文编写规则》。"
+      ],
+      "citationStandard": "GB/T 7714-2015《信息与文献 参考文献著录规则》；并引用 GB/T 7713.1-2025《学位论文编写规则》",
+      "templateUrl": "",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "PDF 文件名标注“2026 版”，正文落款 2026 年 1 月（北京师范大学学位评定委员会办公室）；PDF HTTP 200。"
+    },
+    {
+      "id": "sjtu-physics",
+      "university": "上海交通大学",
+      "department": "研究生院（物理与天文学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "未标注版本",
+      "title": "上海交通大学博士、硕士学位论文撰写指南",
+      "url": "https://www.gs.sjtu.edu.cn/post/detail/Z3MzNDA0",
+      "formatNotes": [
+        "一级标题三号粗黑体、二级标题四号粗黑体、三级标题小四号粗黑体；正文中文小四号或五号宋体，英文/数字用 Times New Roman。",
+        "A4 页面、双面打印（长边翻页）；归档纸质论文须使用学校统一印制的封面并装订成册。",
+        "摘要关键词 4–6 个；图序及图名置于图下方，表序及表名置于表上方，公式编号加括号写在右边行末。",
+        "参考文献建议参照 GB/T 7714-2015；学院、学部学位评定委员会可在校级指南基础上自定格式。"
+      ],
+      "citationStandard": "GB/T 7714-2015（页面表述为“建议参照”）",
+      "templateUrl": "https://gs.sjtu.edu.cn/storage/gs/web/cn/article/2024/07/8dff34547269297128145bdf67d7794b.docx",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "撰写指南为网页正文（HTTP 200）；模板页（HTTP 200）提供 Word 模板（docx HTTP 200）与 LaTeX 模板（zip HTTP 200），模板本身未标版本。"
+    },
+    {
+      "id": "ucas-astronomy",
+      "university": "中国科学院大学",
+      "department": "校部研究生管理办公室（天文与空间科学学院适用）",
+      "degree": "博士/硕士（分学科群）",
+      "yearVersion": "2024 年 10 月更新",
+      "title": "各学科群分会学位论文撰写具体要求（2024 年 10 月更新）",
+      "url": "https://yjsgl.ucas.edu.cn/index.php/zh-cn/xuewei/dabian-2/349-2024-10",
+      "formatNotes": [
+        "校部研究生管理办公室按学科群分会发布撰写具体要求，附件 zip 为 2024 年 10 月更新版。",
+        "页面未列出统一字体、字号、页边距，需按所属学科群分会附件执行。",
+        "附件 zip 约 7.4 MB，页面发布于 2025-12-22。"
+      ],
+      "citationStandard": "页面未标明（见附件各学科群分会要求）",
+      "templateUrl": "https://yjsgl.ucas.edu.cn/index.php/zh-cn/xuewei/dabian-2/349-2024-10?task=down&fid=LwvWf%2Bqzb6lJoYypbK7Z0A%3D%3D",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "论文撰写规范栏目列表页 https://yjsgl.ucas.edu.cn/index.php/zh-cn/xuewei/dabian-2 亦为 HTTP 200；附件 zip HTTP 200（7,472,893 字节）。"
+    },
+    {
+      "id": "ynu-physics",
+      "university": "云南大学",
+      "department": "研究生院（物理与天文学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2016 年 2 月版",
+      "title": "云南大学研究生学位论文写作规范",
+      "url": "http://www.grs.ynu.edu.cn/info/1037/1540.htm",
+      "formatNotes": [
+        "硕士学位论文一般不少于 2 万字，博士学位论文一般不少于 4 万字。",
+        "正文用 A4 纸、宋体小四号、1.5 倍行距；页边距上 3 cm，下/左/右 2.5 cm，装订线 1 cm，页眉 1.6 cm，页脚 1.5 cm。",
+        "中文摘要约 600 字，标题小三号黑体、内容小四号宋体、1.5 倍行距；关键词 3–5 个。",
+        "参考文献按 GB/T 7714-2005（附件 3），可选顺序编码制或著者-出版年制。"
+      ],
+      "citationStandard": "GB/T 7714-2005《文后参考文献著录规则》（附件 3）",
+      "templateUrl": "http://www.grs.ynu.edu.cn/__local/1/15/7F/403C8B152E4356A4BCB67DEC0B4_072436DC_D40E.docx?e=.docx",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "文末落款“云南大学研究生院 2016 年 2 月 27 日”；页面另附声明模板与 GB/T 7714-2005 附件（附件 1 docx HTTP 200）。"
+    },
+    {
+      "id": "xmu-astronomy",
+      "university": "厦门大学",
+      "department": "研究生院（天文学系适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2005 年（厦大研字〔2005〕28 号；页面 2025-06-09 发布）",
+      "title": "关于厦门大学研究生学位论文规范的通知",
+      "url": "https://gs.xmu.edu.cn/info/1631/53641.htm",
+      "formatNotes": [
+        "硕士学位论文一般不少于 3 万字，博士学位论文一般不少于 5 万字。",
+        "结构：封面、原创性声明、著作权使用声明、中英文摘要、关键词、目录、正文、附件、参考文献、致谢、封底。",
+        "排版细节按附件 1《厦门大学研究生学位论文格式规范.doc》执行，封面/声明另有统一模板。"
+      ],
+      "citationStandard": "页面未标明（格式规范见附件 1）",
+      "templateUrl": "",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "通知页 HTTP 200；6 个附件经 download.jsp 提供，直接请求返回“附件下载”中转页（text/html，非文件本体），未取到附件文件。"
+    },
+    {
+      "id": "sysu-physics",
+      "university": "中山大学",
+      "department": "研究生院（物理与天文学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2012 年 8 月修订",
+      "title": "中山大学研究生学位论文格式要求",
+      "url": "https://ce.sysu.edu.cn/zh-hans/article/272",
+      "formatNotes": [
+        "A4 纸双面打印，四周留足装订、复制与批注空白。",
+        "硕士摘要一般不超过 1200 字，博士不超过 2000 字；关键词 3–5 个。",
+        "图表公式按章用阿拉伯数字编号（图 1-1、表 1-1、式(1-1)）；图序图名置于图下方，表序表名置于表上方。",
+        "参考文献按正文出现先后编号，文件给出期刊、图书、会议、学位论文、电子文献著录示例。",
+        "排版字体字号未给硬性数值，文件称“以版面清晰、容易辨识和阅读为原则”。"
+      ],
+      "citationStandard": "学校自定（文件给出期刊/图书/会议/学位论文/电子文献著录示例，未采用 GB/T 7714 表述）",
+      "templateUrl": "",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "研究生院原 PDF 链接（2019-04 路径）已 404；本条取化学学院 2015-04-19 转载页（HTTP 200）及其 docx 附件（HTTP 200，正文标注 2012 年 8 月修订）。"
+    },
+    {
+      "id": "hust-physics",
+      "university": "华中科技大学",
+      "department": "研究生院（物理学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2009 年（校研〔2009〕39 号；页面 2022-09-22 发布）",
+      "title": "华中科技大学博士、硕士学位论文撰写规定",
+      "url": "http://gs.hust.edu.cn/info/1022/1027.htm",
+      "formatNotes": [
+        "论文外形尺寸以 A4 本为准；装订顺序为封面、英文扉页、独创性声明与授权书、摘要、目次、引言、正文、结论、致谢、参考文献、附录等。",
+        "章标题黑体 3 号、节标题黑体 4 号；正文用小四号宋体，行间距不小于三分之二字高度，正文标题左顶格。",
+        "参考文献按正文引用顺序编号（顺序编码制），给出图书、期刊、会议论文集、专利、学位论文著录格式。"
+      ],
+      "citationStandard": "学校自定（正文给出图书/期刊/会议/专利/学位论文著录格式；未标注 GB/T 版本）",
+      "templateUrl": "",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "页面 HTTP 200；正文提及“目次页编排式样见附件”，未在 HTML 中取得附件直链。2026-10-22 复核研究生院“学位管理”栏目（HTTP 200），未找到 2025/2026 更新版本，公开最新仍为校研〔2009〕39 号。"
+    },
+    {
+      "id": "buaa-physics",
+      "university": "北京航空航天大学",
+      "department": "研究生院（物理学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2025 年 3 月版",
+      "title": "北京航空航天大学研究生学位论文撰写规范",
+      "url": "https://graduate.buaa.edu.cn/__local/4/27/6F/4E099CEBEC1B251AAE2796893F6_8A8AEEED_A4384.pdf",
+      "formatNotes": [
+        "标准 A4 纸（210×297 mm）；页边距上/下/左/右均 2.5 cm，装订线 0 cm。",
+        "博士中文摘要约 800–1200 字，硕士约 500 字。",
+        "封面与题名页等有明确字体字号（如论文题目 32 pt 宋体加粗、1.5 倍行距）。",
+        "参考文献执行 GB/T 7714-2015；同时参考 GB/T 7713.6-2006、GB/T 7713.2-2022 等标准。"
+      ],
+      "citationStandard": "GB/T 7714-2015《信息与文献 参考文献著录规则》；同时参考 GB/T 7713.6-2006、GB/T 7713.2-2022 等",
+      "templateUrl": "",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "PDF 封面落款“北京航空航天大学研究生院 二〇二五年三月”；HTTP 200（672,644 字节）。"
+    },
+    {
+      "id": "gxu-physics",
+      "university": "广西大学",
+      "department": "研究生院（物理学院等适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2026 年 3 月版",
+      "title": "广西大学学位论文撰写规则",
+      "url": "https://yjsc.gxu.edu.cn/info/1035/2468.htm",
+      "formatNotes": [
+        "A4 纸；除封面单面打印外，其余内容双面打印，左侧装订。",
+        "中文摘要一般 300–1000 字；以外文撰写的学位论文须附不少于 5000 字的中文摘要及中文关键词；关键词 3–5 个。",
+        "目录标题三号黑体、目次内容小四号；参考文献标题三号黑体加粗，内容宋体小四号（英文 Times New Roman），1.25 倍行距或固定 25 磅。",
+        "正文从第一章起设页眉（左侧“广西大学XX学位论文”、右侧论文题目）；摘要页用罗马数字页码，正文重新用阿拉伯数字页码。",
+        "参考文献执行 GB/T 7714-2025，可采用顺序编码制或著者-出版年制。"
+      ],
+      "citationStandard": "GB/T 7714-2025《信息与文献 参考文献著录规则》（顺序编码制或著者-出版年制）",
+      "templateUrl": "https://yjsc.gxu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1934138075&wbfileid=17914541",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "研究生院“学位论文撰写规范专题培训”页（2026-03-27，HTTP 200）附件《广西大学学位论文撰写规则202603.pdf》（66 页，HTTP 200，application/pdf）；版本取 PDF 封面“2026 年 03 月”。"
+    },
+    {
+      "id": "swjtu-physics",
+      "university": "西南交通大学",
+      "department": "研究生院（物理科学与技术学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2026 年 4 月修订（2026-05-11 日志更新）",
+      "title": "西南交通大学研究生学位论文及实践成果（总结报告）撰写范式",
+      "url": "https://gsnews.swjtu.edu.cn/info/1967/25444.htm",
+      "formatNotes": [
+        "撰写范式为基础版；专业学位论文可按各教指委学位论文相关要求调整。",
+        "2024-08-30 首发；2026-04-24 增加博士、硕士专业学位研究生实践成果（总结报告）撰写范式；2026-05-11 修订实践成果平装本封面。",
+        "附件含博士（精装/平装）、硕士（平装）学位论文封面、扉页及范式（docx），以及实践成果（总结报告）撰写范式 zip。",
+        "修订日志载明：文献引用标注、参考文献增加“著者-出版年制”方式。"
+      ],
+      "citationStandard": "页面未标明（修订日志：参考文献增加“著者-出版年制”，与顺序编码制并用）",
+      "templateUrl": "",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "页面 HTTP 200；附件经 download.jsp 下载返回验证码中转页（HTTP 200 text/html），未取到文件本体；版本取页面标题“2026年4月修订”与文末 2026-05-11 修订日志。"
+    },
+    {
+      "id": "sdu-physics",
+      "university": "山东大学",
+      "department": "研究生院（物理学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2006 年 11 月（山大研字〔2006〕53 号）",
+      "title": "山东大学学位论文规范（试行）",
+      "url": "https://grad.sdu.edu.cn/info/1064/3372.htm",
+      "formatNotes": [
+        "博士学位论文一般 3–10 万字、摘要 3000 字以上；硕士学位论文一般 2–5 万字、摘要约 1000 字。",
+        "A4 纸双面打印；博士学位论文一式 25 份、硕士一式 15 份，装订成册。",
+        "封面题目小二号加重黑体（不超过 30 个汉字）；目录/摘要标题小三号加重黑体、内容小四号宋体；正文题目小三号黑体、内容小四号宋体，每行 32–34 字、每页 29–31 行；章标题小三号加重黑体、节标题四号加重黑体。",
+        "参考文献：人文社科类需详细标注引文出处；理学、工学、医学类按国际惯例执行。"
+      ],
+      "citationStandard": "学校自定（2006 规范；理学、工学、医学按国际惯例；未标注 GB/T 版本）",
+      "templateUrl": "",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "山大研字〔2006〕53 号，2006-11-10；另有“2024 版学位论文封面（扉页）”页（https://grad.sdu.edu.cn/info/1138/20664.htm，HTTP 200）。未找到 2025/2026 更新版本。"
+    },
+    {
+      "id": "imu-physics",
+      "university": "内蒙古大学",
+      "department": "研究生院（物理科学与技术学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "2025 年修订版（2025-03-21 发布）",
+      "title": "内蒙古大学研究生学位论文格式要求（2025 年修订）",
+      "url": "https://gs.imu.edu.cn/info/1040/1970.htm",
+      "formatNotes": [
+        "2025 年修订版按学位类型分为 4 个附件：学术学位博士、专业学位博士、学术学位硕士、专业学位硕士论文格式。",
+        "页面未列具体字体、字号、页边距等数值，需按对应附件执行。"
+      ],
+      "citationStandard": "页面未标明",
+      "templateUrl": "",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "页面 HTTP 200；4 个 .doc 附件经 download.jsp 下载返回验证码中转页（HTTP 200 text/html），未解析文件内容；版本取页面标题“2025年修订”与发布时间 2025-03-21。"
+    },
+    {
+      "id": "cwnu-management",
+      "university": "西华师范大学",
+      "department": "管理学院（院系级参考模板；校级规范未见公开正文）",
+      "degree": "硕士",
+      "yearVersion": "2026 版（院系模板）",
+      "title": "管理学院硕士学位论文格式规范参考模板（2026 版）",
+      "url": "https://mng.cwnu.edu.cn/info/1040/11364.htm",
+      "formatNotes": [
+        "管理学院 2026 版参考模板分 4 类：MPA 硕士、学术硕士、来华留学生学术硕士、同等学力学术硕士。",
+        "页面未列具体字体字号，格式细节在模板附件中。"
+      ],
+      "citationStandard": "页面未标明",
+      "templateUrl": "",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "研究生院层面的《西华师范大学硕士学位论文撰写规范（试行）》附件下载返回验证码中转页（HTTP 200 text/html），未核实；本条取管理学院官方页面（HTTP 200），仅覆盖院系级模板，非全校统一规范。"
+    },
+    {
+      "id": "whu-physics",
+      "university": "武汉大学",
+      "department": "研究生院（物理科学与技术学院适用）",
+      "degree": "博士/硕士",
+      "yearVersion": "未标注版本",
+      "title": "武汉大学博士学位论文撰写及印制规格的规定（公开正文未获取）",
+      "url": "",
+      "formatNotes": [],
+      "citationStandard": "",
+      "templateUrl": "",
+      "verified": false,
+      "verifiedAt": "2026-10-22",
+      "notes": "未找到可公开访问的官方格式页：研究生院学位授予列表（https://gs.whu.edu.cn/xwgz/xwsy.htm，HTTP 200）可见《武汉大学博士学位论文撰写及印制规格的规定》（2016-03-22）与《武汉大学硕士学位论文印制规定》（2016-03-11）条目，但正文页返回“暂无权限”（HTTP 200 系统提示页），院系副本无法核实标题与版本；未编造格式。"
+    },
+    {
+      "id": "pmo-astronomy",
+      "university": "中国科学院大学（紫金山天文台培养）",
+      "department": "紫金山天文台研究生部（学位授予按 UCAS）",
+      "degree": "博士/硕士",
+      "yearVersion": "2024 年 10 月更新",
+      "title": "各学科群分会学位论文撰写具体要求（2024 年 10 月更新）",
+      "url": "https://yjsgl.ucas.edu.cn/index.php/zh-cn/xuewei/dabian-2/349-2024-10",
+      "formatNotes": [
+        "按 UCAS 学科群分会执行学位论文撰写要求，天文方向适用天文与空间科学学院分会要求。",
+        "UCAS 页面附件为 2024 年 10 月更新 zip，页面未单列统一字体/字号/页边距。"
+      ],
+      "citationStandard": "页面未标明（见 UCAS 学科群分会附件）",
+      "templateUrl": "https://yjsgl.ucas.edu.cn/index.php/zh-cn/xuewei/dabian-2/349-2024-10?task=down&fid=LwvWf%2Bqzb6lJoYypbK7Z0A%3D%3D",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "以 UCAS 统一格式为准；UCAS 页面与学科群分会要求附件 zip 均 HTTP 200。 未找到紫金山天文台独立公开的学位论文格式文件（台研究生部通知页未见）；未找到 2025/2026 更新。"
+    },
+    {
+      "id": "ihep-physics",
+      "university": "中国科学院大学（高能物理研究所培养）",
+      "department": "高能物理研究所教育处（学位授予按 UCAS）",
+      "degree": "博士/硕士",
+      "yearVersion": "2024 年 10 月更新",
+      "title": "各学科群分会学位论文撰写具体要求（2024 年 10 月更新）",
+      "url": "https://yjsgl.ucas.edu.cn/index.php/zh-cn/xuewei/dabian-2/349-2024-10",
+      "formatNotes": [
+        "按 UCAS 学科群分会执行学位论文撰写要求，物理方向适用相应学科群分会要求。",
+        "UCAS 页面附件为 2024 年 10 月更新 zip，页面未单列统一字体/字号/页边距。"
+      ],
+      "citationStandard": "页面未标明（见 UCAS 学科群分会附件）",
+      "templateUrl": "https://yjsgl.ucas.edu.cn/index.php/zh-cn/xuewei/dabian-2/349-2024-10?task=down&fid=LwvWf%2Bqzb6lJoYypbK7Z0A%3D%3D",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "以 UCAS 统一格式为准；UCAS 页面与学科群分会要求附件 zip 均 HTTP 200。 高能所教育处“学位申请”栏目仅有《中国科学院大学研究生学位论文撰写规范指导意见》转载（2021-11-25），未找到所内独立格式文件；未找到 2025/2026 更新。"
+    },
+    {
+      "id": "shao-astronomy",
+      "university": "中国科学院大学（上海天文台培养）",
+      "department": "上海天文台研究生部（学位授予按 UCAS）",
+      "degree": "博士/硕士",
+      "yearVersion": "2024 年 10 月更新",
+      "title": "各学科群分会学位论文撰写具体要求（2024 年 10 月更新）",
+      "url": "https://yjsgl.ucas.edu.cn/index.php/zh-cn/xuewei/dabian-2/349-2024-10",
+      "formatNotes": [
+        "按 UCAS 学科群分会执行学位论文撰写要求，天文方向适用天文与空间科学学院分会要求。",
+        "UCAS 页面附件为 2024 年 10 月更新 zip，页面未单列统一字体/字号/页边距。"
+      ],
+      "citationStandard": "页面未标明（见 UCAS 学科群分会附件）",
+      "templateUrl": "https://yjsgl.ucas.edu.cn/index.php/zh-cn/xuewei/dabian-2/349-2024-10?task=down&fid=LwvWf%2Bqzb6lJoYypbK7Z0A%3D%3D",
+      "verified": true,
+      "verifiedAt": "2026-10-22",
+      "notes": "以 UCAS 统一格式为准；UCAS 页面与学科群分会要求附件 zip 均 HTTP 200。 上海天文台规章制度页转载《中国科学院大学研究生学位论文撰写规定》（2014-05-04，HTTP 200），未找到台内独立格式文件；未找到 2025/2026 更新。"
+    }
+  ]
+}

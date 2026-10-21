@@ -1,0 +1,220 @@
+{
+ "semantic_scholar": {
+  "probed_at": "2026-10-21T17:00:07.573727+00:00",
+  "url": "https://api.semanticscholar.org/graph/v1/paper/search?query=gravitational+lensing&limit=3&fields=title%2Cyear%2CcitationCount%2CexternalIds%2Cvenue%2CopenAccessPdf%2Cauthors%2Cabstract%2CpublicationDate",
+  "http": 200,
+  "content_type": "application/json",
+  "retry_after": null,
+  "body_400": "{\"total\": 907521, \"offset\": 0, \"next\": 3, \"data\": [{\"paperId\": \"933bc7a2ad9cd303da44125541c4ebb1d1c94033\", \"externalIds\": {\"ArXiv\": \"2503.00082\", \"DOI\": \"10.1016/j.physletb.2025.139448\", \"CorpusId\": 276741369}, \"title\": \"Gravitational lensing phenomena of Ellis-Bronnikov-Morris-Thorne wormhole with global monopole and cosmic string\", \"venue\": \"Physics Letters B\", \"year\": 2025, \"citationCount\": 39,…[truncated]",
+  "burst": [
+   {
+    "http": 429,
+    "retry_after": null
+   },
+   {
+    "http": 429,
+    "retry_after": null
+   },
+   {
+    "http": 429,
+    "retry_after": null
+   },
+   {
+    "http": 429,
+    "retry_after": null
+   }
+  ],
+  "conclusion": "未鉴权时不稳定：同一时刻偶发 200（本次首调用 200 并返回数据），随后 6 次重试均为 429（无 Retry-After 头）；不可作为默认依赖来源，需 key 或降级。",
+  "sequential": [
+   {
+    "attempt": 1,
+    "http": 429,
+    "retry_after": null,
+    "body_300": "{\"message\": \"Too Many Requests. Please wait and try again or apply for a key for higher rate limits. https://www.semanticscholar.org/product/api#api-key-form\", \"code\": \"429\"}"
+   },
+   {
+    "attempt": 2,
+    "http": 429,
+    "retry_after": null,
+    "body_300": "{\"message\": \"Too Many Requests. Please wait and try again or apply for a key for higher rate limits. https://www.semanticscholar.org/product/api#api-key-form\", \"code\": \"429\"}"
+   },
+   {
+    "attempt": 3,
+    "http": 429,
+    "retry_after": null,
+    "body_300": "{\"message\": \"Too Many Requests. Please wait and try again or apply for a key for higher rate limits. https://www.semanticscholar.org/product/api#api-key-form\", \"code\": \"429\"}"
+   }
+  ]
+ },
+ "arxiv": {
+  "probed_at": "2026-10-21T17:00:07.573727+00:00",
+  "sorts": {
+   "relevance": {
+    "url": "https://export.arxiv.org/api/query?search_query=all%3A%22gravitational+lensing%22&start=0&max_results=3&sortBy=relevance&sortOrder=descending",
+    "http": 200,
+    "content_type": "application/atom+xml; charset=utf-8",
+    "entries": [
+     {
+      "title": "Image simulations for strong and weak gravitational lensing",
+      "published": "2020-03-13T03:10:07Z",
+      "updated": "2020-03-16T16:16:43Z",
+      "id": "http://arxiv.org/abs/2003.06090v2",
+      "authors": [
+       "Andrés A. Plazas"
+      ],
+      "primary_category": "astro-ph.CO",
+      "arxiv_doi": null,
+      "journal_ref": null,
+      "summary_300": "Gravitational lensing has been identified as a powerful tool to address fundamental problems in astrophysics at different scales, ranging from exoplanet identification to dark energy and dark matter characterization in cosmology. Image simulations have played a fundamental role in the realization of…[truncated]"
+     },
+     {
+      "title": "Resource Letter: Gravitational Lensing",
+      "published": "2012-06-04T23:28:57Z",
+      "updated": "2012-06-04T23:28:57Z",
+      "id": "http://arxiv.org/abs/1206.0791v1",
+      "authors": [
+       "T. Treu",
+       "P. J. Marshall",
+       "D. Clowe"
+      ],
+      "primary_category": "astro-ph.CO",
+      "arxiv_doi": "10.1119/1.4726204",
+      "journal_ref": null,
+      "summary_300": "This Resource Letter provides a guide to a selection of the literature on gravitational lensing and its applications. Journal articles, books, popular articles, and websites are cited for the following topics: foundations of gravitational lensing, foundations of cosmology, history of gravitational l…[truncated]"
+     },
+     {
+      "title": "Numerical Methods in Gravitational Lensing",
+      "published": "2003-04-09T14:20:38Z",
+      "updated": "2003-04-09T14:20:38Z",
+      "id": "http://arxiv.org/abs/astro-ph/0304162v1",
+      "authors": [
+       "Matthias Bartelmann"
+      ],
+      "primary_category": "astro-ph",
+      "arxiv_doi": null,
+      "journal_ref": null,
+      "summary_300": "Most problems in gravitational lensing require numerical solutions. The most frequent types of problems are (1) finding multiple images of a single source and classifying the images according to their properties like magnification or distortion; (2) propagating light rays through large cosmological …[truncated]"
+     }
+    ]
+   },
+   "submittedDate": {
+    "url": "https://export.arxiv.org/api/query?search_query=all%3A%22gravitational+lensing%22&start=0&max_results=3&sortBy=submittedDate&sortOrder=descending",
+    "http": 200,
+    "content_type": "application/atom+xml; charset=utf-8",
+    "entries": [
+     {
+      "title": "Searching for Dense Perturbers in Cold Dark Matter Simulations",
+      "published": "2026-10-19T20:02:50Z",
+      "updated": "2026-10-19T20:02:50Z",
+      "id": "http://arxiv.org/abs/2610.27236v1",
+      "authors": [
+       "Xingyu Zhang",
+       "Hai-Bo Yu",
+       "Demao Kong",
+       "Ethan O. Nadler"
+      ],
+      "primary_category": "astro-ph.CO",
+      "arxiv_doi": null,
+      "journal_ref": null,
+      "summary_300": "Recently, several low-mass, dense perturbers have been inferred from astrophysical observations of gravitational lensing, stellar streams, and satellite galaxies. If interpreted as dark matter subhalos, their inner densities exceed the predictions of the standard cold dark matter (CDM) model. We sys…[truncated]"
+     },
+     {
+      "title": "DDELenS: Tomographic Weak Lensing Simulations with Dynamical Dark Energy",
+      "published": "2026-10-19T18:00:07Z",
+      "updated": "2026-10-19T18:00:07Z",
+      "id": "http://arxiv.org/abs/2610.27088v1",
+      "authors": [
+       "Shu-Fan Chen",
+       "J. Colin Hill",
+       "Zoltán Haiman"
+      ],
+      "primary_category": "astro-ph.CO",
+      "arxiv_doi": null,
+      "journal_ref": null,
+      "summary_300": "We present a suite of 128 cosmological simulations in $w_0w_a$CDM cosmologies with massive neutrinos, designed to enable simulation-based inference of dynamical dark energy parameters from weak gravitational lensing and other cosmological observables. Each simulation follows $1024^3$ dark matter par…[truncated]"
+     },
+     {
+      "title": "Late-time distance consistency and model-independent curvature inference with strong lensing, quasars, and galaxy clusters",
+      "published": "2026-10-19T09:59:10Z",
+      "updated": "2026-10-19T09:59:10Z",
+      "id": "http://arxiv.org/abs/2610.26097v1",
+      "authors": [
+       "Jian Hu",
+       "Yi Liu",
+       "Jian Ping Hu",
+       "Zhongmu Li"
+      ],
+      "primary_category": "astro-ph.CO",
+      "arxiv_doi": null,
+      "journal_ref": null,
+      "summary_300": "We revisit a late-time, model-independent distance-consistency framework that combines strong gravitational lensing systems (SGLS), ultraviolet/X-ray quasars (QSOs), and 38 Sunyaev--Zel'dovich/X-ray galaxy-cluster angular-diameter distances. The analysis focuses on systematics rather than on present…[truncated]"
+     }
+    ]
+   }
+  },
+  "syntax_tests": {
+   "ti:\"gravitational lensing\"": {
+    "http": 200,
+    "entries": 2
+   },
+   "au:Bartelmann": {
+    "http": 200,
+    "entries": 2
+   },
+   "cat:astro-ph.CO AND abs:\"redshift\"": {
+    "http": 200,
+    "entries": 2
+   },
+   "all:红移": {
+    "http": 200,
+    "entries": 0
+   }
+  },
+  "atom_fields": [
+   "id",
+   "updated",
+   "published",
+   "title",
+   "summary",
+   "author/name",
+   "arxiv:doi",
+   "arxiv:journal_ref",
+   "arxiv:primary_category",
+   "link[@rel=alternate]",
+   "category[@term]"
+  ],
+  "rate_limit": "官方条款：每3秒最多1次请求，单连接 (https://info.arxiv.org/help/api/tou.html)"
+ },
+ "ads": {
+  "probed_at": "2026-10-21T17:00:07.573727+00:00",
+  "no_token": {
+   "url": "https://api.adsabs.harvard.edu/v1/search/query?q=gravitational+lensing&fl=title,year,citation_count&rows=2",
+   "http": 401,
+   "body": "{\"message\": \"Missing \\\"Authorization\\\" in headers.\"}",
+   "www_authenticate": null
+  },
+  "bogus_token": {
+   "http": 401,
+   "body": "{\"message\": \"The access token provided is expired, revoked, malformed, or invalid for other reasons.\"}"
+  },
+  "auth": "Authorization: Bearer <token>；OpenAPI securityScheme=ApiKeySecurity(http/bearer/JWT)",
+  "token_url": "https://ui.adsabs.harvard.edu/#user/settings/token",
+  "endpoints": {
+   "search": "GET /v1/search/query",
+   "qtree": "GET /v1/search/qtree",
+   "bigquery": "GET /v1/search/bigquery",
+   "export": "/v1/export"
+  },
+  "search_params": {
+   "q": "必填",
+   "fq": "数组，最多10个",
+   "fl": "逗号分隔字段，默认id，允许66个字段(含 title,author,year,pubdate,citation_count,doi,bibcode,abstract,keyword,read_count,score 等)",
+   "start": "默认0",
+   "rows": "默认10，最大2000",
+   "sort": "field asc|desc；允许 score、citation_count、date、read_count、entry_date 等"
+  },
+  "rate_limit": "每端点 5000 次/天；响应头 X-RateLimit-Limit/Remaining/Reset；UTC 午夜重置（官方仓库 README）",
+  "docs_note": "https://ui.adsabs.harvard.edu/help/api/api-docs 被 AWS WAF 拦截(HTTP 202 空页)；字段与参数取自官方 OpenAPI 规范 github.com/adsabs/adsabs-dev-api/openapi",
+  "apply": "注册 ui.adsabs.harvard.edu 账号 → user settings → Generate a new key（本次未申请）"
+ }
+}

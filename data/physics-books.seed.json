@@ -1,0 +1,32 @@
+{
+  "version": "2.0",
+  "notice": "候选书目，版次/章节/引用在实现前逐条核验；只存书目与自己的摘要，不存受版权保护全文。",
+  "books": [
+    { "id": "landau-mechanics", "title": "Mechanics", "authors": ["L. D. Landau", "E. M. Lifshitz"], "edition": "3rd", "year": 1976, "series": "Course of Theoretical Physics, Vol. 1", "tier": "A", "domains": ["mechanics"], "use": "经典力学/守恒律/拉格朗日表述" },
+    { "id": "landau-fields", "title": "The Classical Theory of Fields", "authors": ["L. D. Landau", "E. M. Lifshitz"], "edition": "4th", "year": 1975, "series": "Course of Theoretical Physics, Vol. 2", "tier": "A", "domains": ["relativity", "electromagnetism"], "use": "相对论/电磁场/引力波基础；注意符号约定" },
+    { "id": "landau-qm", "title": "Quantum Mechanics: Non-Relativistic Theory", "authors": ["L. D. Landau", "E. M. Lifshitz"], "edition": "3rd", "year": 1977, "series": "Course of Theoretical Physics, Vol. 3", "tier": "A", "domains": ["quantum"], "use": "量子力学基础" },
+    { "id": "landau-qed", "title": "Quantum Electrodynamics", "authors": ["V. B. Berestetskii", "E. M. Lifshitz", "L. P. Pitaevskii"], "edition": "2nd", "year": 1982, "series": "Course of Theoretical Physics, Vol. 4", "tier": "A", "domains": ["quantum", "radiation"], "use": "QED/辐射过程" },
+    { "id": "landau-stat1", "title": "Statistical Physics, Part 1", "authors": ["L. D. Landau", "E. M. Lifshitz"], "edition": "3rd", "year": 1980, "series": "Course of Theoretical Physics, Vol. 5", "tier": "A", "domains": ["statistics", "thermodynamics"], "use": "统计物理/热力学" },
+    { "id": "landau-fluid", "title": "Fluid Mechanics", "authors": ["L. D. Landau", "E. M. Lifshitz"], "edition": "2nd", "year": 1987, "series": "Course of Theoretical Physics, Vol. 6", "tier": "A", "domains": ["fluid"], "use": "流体/激波/喷流基础" },
+    { "id": "landau-elasticity", "title": "Theory of Elasticity", "authors": ["L. D. Landau", "E. M. Lifshitz"], "edition": "3rd", "year": 1986, "series": "Course of Theoretical Physics, Vol. 7", "tier": "A", "domains": ["mechanics"], "use": "弹性理论" },
+    { "id": "landau-continuous", "title": "Electrodynamics of Continuous Media", "authors": ["L. D. Landau", "E. M. Lifshitz", "L. P. Pitaevskii"], "edition": "2nd", "year": 1984, "series": "Course of Theoretical Physics, Vol. 8", "tier": "A", "domains": ["electromagnetism", "plasma"], "use": "连续介质电动力学/MHD 基础" },
+    { "id": "landau-stat2", "title": "Statistical Physics, Part 2", "authors": ["E. M. Lifshitz", "L. P. Pitaevskii"], "year": 1980, "series": "Course of Theoretical Physics, Vol. 9", "tier": "A", "domains": ["statistics", "condensed"], "use": "相变/凝聚态理论" },
+    { "id": "landau-kinetics", "title": "Physical Kinetics", "authors": ["E. M. Lifshitz", "L. P. Pitaevskii"], "year": 1981, "series": "Course of Theoretical Physics, Vol. 10", "tier": "A", "domains": ["kinetics", "plasma"], "use": "动理学/输运" },
+    { "id": "mtw", "title": "Gravitation", "authors": ["C. W. Misner", "K. S. Thorne", "J. A. Wheeler"], "year": 1973, "tier": "A", "domains": ["relativity", "gravitational-waves"], "use": "广义相对论标准参考；核对符号约定" },
+    { "id": "wald", "title": "General Relativity", "authors": ["R. M. Wald"], "year": 1984, "tier": "A", "domains": ["relativity", "black-holes"], "use": "严格 GR/黑洞热力学" },
+    { "id": "chandrasekhar-bh", "title": "The Mathematical Theory of Black Holes", "authors": ["S. Chandrasekhar"], "year": 1983, "tier": "A", "domains": ["black-holes"], "use": "黑洞微扰/代数结构" },
+    { "id": "shapiro-teukolsky", "title": "Black Holes, White Dwarfs, and Neutron Stars", "authors": ["S. L. Shapiro", "S. A. Teukolsky"], "year": 1983, "tier": "A", "domains": ["compact-objects", "neutron-stars"], "use": "致密天体经典教材（需结合新综述）" },
+    { "id": "haensel-neutron", "title": "Neutron Stars 1: Equation of State and Structure", "authors": ["P. Haensel", "A. Y. Potekhin", "D. G. Yakovlev"], "year": 2007, "tier": "A", "domains": ["neutron-stars"], "use": "中子星 EOS/结构" },
+    { "id": "rybicki-lightman", "title": "Radiative Processes in Astrophysics", "authors": ["G. B. Rybicki", "A. P. Lightman"], "year": 1979, "tier": "A", "domains": ["radiative-transfer", "radiation"], "use": "辐射机制标准教材" },
+    { "id": "hubeny-mihalas", "title": "Theory of Stellar Atmospheres", "authors": ["I. Hubeny", "D. Mihalas"], "year": 2014, "tier": "A", "domains": ["radiative-transfer", "stellar"], "use": "现代恒星大气/辐射转移" },
+    { "id": "kippenhahn", "title": "Stellar Structure and Evolution", "authors": ["R. Kippenhahn", "A. Weigert", "A. Weiss"], "edition": "2nd", "year": 2012, "tier": "A", "domains": ["stellar"], "use": "恒星结构与演化" },
+    { "id": "krolik-agn", "title": "Active Galactic Nuclei", "authors": ["J. H. Krolik"], "year": 1999, "tier": "A", "domains": ["agn"], "use": "AGN 物理" },
+    { "id": "netzer-agn", "title": "The Physics and Evolution of Active Galactic Nuclei", "authors": ["H. Netzer"], "year": 2013, "tier": "A", "domains": ["agn"], "use": "现代 AGN 物理" },
+    { "id": "zhang-grb", "title": "The Physics of Gamma-Ray Bursts", "authors": ["Bing Zhang"], "year": 2018, "publisher": "Cambridge University Press", "doi": "10.1017/9781139226530", "tier": "A", "domains": ["grb"], "use": "GRB 物理专著" },
+    { "id": "kumar-zhang-grb", "title": "The physics of gamma-ray bursts & relativistic jets", "authors": ["P. Kumar", "B. Zhang"], "year": 2015, "venue": "Physics Reports", "doi": "10.1016/j.physrep.2014.09.008", "tier": "B", "domains": ["grb"], "use": "GRB/相对论喷流权威综述" },
+    { "id": "maggiore-gw1", "title": "Gravitational Waves, Vol. 1: Theory and Experiments", "authors": ["M. Maggiore"], "year": 2008, "tier": "A", "domains": ["gravitational-waves"], "use": "GW 理论/实验" },
+    { "id": "maggiore-gw2", "title": "Gravitational Waves, Vol. 2: Astrophysics and Cosmology", "authors": ["M. Maggiore"], "year": 2018, "tier": "A", "domains": ["gravitational-waves"], "use": "GW 天体物理/宇宙学" },
+    { "id": "halzen-hooper-neutrino", "title": "High-energy neutrino astronomy: the cosmic ray connection", "authors": ["F. Halzen", "D. Hooper"], "year": 2002, "venue": "Reports on Progress in Physics", "doi": "10.1088/0034-4885/65/7/201", "tier": "B", "domains": ["neutrino"], "use": "高能中微子天文综述" },
+    { "id": "pdg", "title": "Review of Particle Physics", "authors": ["Particle Data Group"], "year": "latest", "tier": "C", "domains": ["particle"], "use": "粒子数据/截面/常数权威；使用最新版" }
+  ]
+}

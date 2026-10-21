@@ -1,0 +1,93 @@
+{
+  "name": "astro-ph-researcher",
+  "version": "2.0.0",
+  "description": "astro-ph-researcher v2.0：DSH/Codex 天文工作台；保留 v1.0.1 全部功能，新增逐节写作、作者确认、评分、物理书目、文件格式与分析工具引导。",
+  "author": "天外奇航 (@hyperskysail) <1253932197@qq.com>",
+  "contributors": [
+    "天外奇航 (@hyperskysail, GXU-CN)"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "data",
+    "skills",
+    "codex",
+    "presentation",
+    "demo",
+    "assets",
+    "screenshots.json",
+    "docs",
+    "cordis.patch.yml",
+    "README.md",
+    "AUTHORS.md",
+    "CITATION.cff",
+    "CHANGELOG.md",
+    "LICENSE",
+    "SUPPORT.md",
+    "RELEASE_NOTES.md",
+    "ACKNOWLEDGMENTS.md",
+    "SECURITY.md",
+    "PRIVACY.md",
+    "DISCLAIMER.md"
+  ],
+  "scripts": {
+    "test": "node test/smoke.mjs && node test/dictionary.mjs && node test/references.mjs && node test/writing.mjs && node test/skills.mjs && node test/data-library.mjs && node test/thesis-fetcher.mjs && node test/migration.mjs && node test/formula-ui.mjs && node test/v2.mjs && node test/host-smoke.mjs && node test/client-smoke.mjs",
+    "test:live": "node scripts/live-check.mjs",
+    "build:demo": "node scripts/build-demo.mjs",
+    "check:client": "node --check lib/client.js",
+    "check": "node --check lib/index.js && node --check lib/client.js && npm test"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
+    }
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "astronomy",
+    "astrophysics",
+    "astronomy",
+    "astrophysics",
+    "glossary",
+    "literature",
+    "writing",
+    "skills",
+    "codex",
+    "openalex",
+    "ads",
+    "cnki"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "license": "MIT",
+  "funding": {
+    "type": "custom",
+    "url": "https://github.com/hyperskysail/astro-ph-researcher/blob/main/SUPPORT.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyperskysail/astro-ph-researcher.git"
+  },
+  "homepage": "https://github.com/hyperskysail/astro-ph-researcher",
+  "bugs": {
+    "url": "https://github.com/hyperskysail/astro-ph-researcher/issues"
+  }
+}

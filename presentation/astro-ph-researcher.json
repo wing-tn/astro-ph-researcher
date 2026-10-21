@@ -1,0 +1,549 @@
+{
+ "version": "0.13.0",
+ "schemaVersion": 1,
+ "deckId": "b21e4db2-83a3-4744-a7e9-a03141d7af4f",
+ "revision": 1,
+ "title": "astro-ph-researcher",
+ "theme": "swiss",
+ "language": "zh",
+ "motion": true,
+ "brand": {
+  "primaryColor": "#0EA5E9",
+  "backgroundColor": "#0B1120",
+  "textColor": "#F8FAFC",
+  "fontFamily": "Microsoft YaHei",
+  "name": "astro-ph-researcher",
+  "footer": "astro-ph-researcher v2.0.0 · 天外奇航 · GXU-CN"
+ },
+ "assets": {},
+ "history": [
+  {
+   "title": "astro-ph-researcher",
+   "theme": "swiss",
+   "language": "zh",
+   "motion": true,
+   "slides": [
+    {
+     "layout": "cover",
+     "kicker": "DSH / Codex 插件 / 9 个 Agent Skills / v2.0.0",
+     "title": "astro-ph-researcher",
+     "subtitle": "天文术语 · 文献库 · 写作 · 数据工作台",
+     "text": "",
+     "bullets": [],
+     "notes": "作者：天外奇航（@hyperskysail，1253932197@qq.com，GXU-CN）。日期：2026-10-22。适用于 DSH 与 Codex。",
+     "id": "91ae1346-6cfe-4762-afe7-2f1c84026919"
+    },
+    {
+     "layout": "bullets",
+     "kicker": "从读文献到写论文，中间断了四次",
+     "title": "为什么需要它",
+     "subtitle": "",
+     "text": "",
+     "bullets": [
+      "术语译名不统一：同一英文词，教材与机翻给出不同中文名。",
+      "文献散落在 SciX / ADS / arXiv / 出版商页面，读完就忘。",
+      "从文献到代码、从数据到论文，没有一条可复现的链。",
+      "望远镜/卫星的数据入口、软件、数据政策各不相同。"
+     ],
+     "id": "02816b51-3e47-4b05-86c5-7c019e9399ce"
+    },
+    {
+     "layout": "statement",
+     "kicker": "",
+     "title": "一条工作流",
+     "subtitle": "每个环节都留下可点击、可引用、可复现的痕迹。",
+     "text": "查词 → 文献 → 文献库 → 写作 → 数据处理 → 观测设备/工作流",
+     "bullets": [],
+     "id": "50b2b38c-e3bd-49dc-9028-34922baf8f79"
+    },
+    {
+     "layout": "bullets",
+     "kicker": "NADC 审定译名 + 离线兜底",
+     "title": "术语：先查准，再谈理解",
+     "subtitle": "",
+     "text": "",
+     "bullets": [
+      "实时查国家天文台 NADC：中文名、台湾名、出版状态、依据书目、最后修订。",
+      "官方离线词表 r241020：31,758 条 EN↔ZH，断网也能查。",
+      "同名词条消歧：一个英文名对应多个词条时，逐条切换并记录 id。",
+      "严格区分「NADC 审定定义」与「DSH 释义」，不把 AI 解释冒充名词委原文。"
+     ],
+     "id": "28b24fa7-0d58-43ae-990c-a379d5d16792"
+    },
+    {
+     "layout": "bullets",
+     "kicker": "相关性 > 时间 > 引用数",
+     "title": "文献：找对，再存住",
+     "subtitle": "",
+     "text": "",
+     "bullets": [
+      "支持 OpenAlex / Crossref / ADS / arXiv，按主题检索并给出 DOI、SciX、ADS、arXiv、PDF 链接。",
+      "参考文献库保留：前三位作者（姓名/ORCID）、单位、期刊卷期页、DOI、摘要。",
+      "可写「分析总结」与「可引用关键结果」，按领域/关键词/专题分类。",
+      "一键生成 BibTeX / APA / GB 7714 / MLA，或导出 .bib 进 Overleaf。"
+     ],
+     "id": "0c563525-2b85-4ace-af28-c44189d0e687"
+    },
+    {
+     "layout": "table",
+     "kicker": "先框架，后写作",
+     "title": "写作：从结果到投稿",
+     "rows": [
+      [
+       "模块",
+       "能力"
+      ],
+      [
+       "项目",
+       "英文期刊论文 / 学位论文；多文件上传；可选 DSH 分析"
+      ],
+      [
+       "目标",
+       "14 个期刊；21 个高校/院所格式（含版本）"
+      ],
+      [
+       "格式",
+       "作者指南 / Overleaf / GB 7714 / 学校规范"
+      ],
+      [
+       "交接",
+       "分析结果 → 大纲 → 逐节起草 → 格式检查"
+      ]
+     ],
+     "notes": "期刊数据含 verified 标记；反爬未能验证的链接会明确提示。写作由 DSH 按 skill 起草，用户审阅。",
+     "id": "99c8a14e-3f0d-4ce5-81bb-2f4f1e1a67d8"
+    },
+    {
+     "layout": "table",
+     "kicker": "通用数据处理与统计",
+     "title": "数据方法库：把统计讲通",
+     "rows": [
+      [
+       "类别",
+       "内容"
+      ],
+      [
+       "图像",
+       "CCD 校准、宇宙线、叠加、测光、WCS"
+      ],
+      [
+       "统计",
+       "分布、KS、误差传递、置信区间"
+      ],
+      [
+       "拟合/时间",
+       "最小二乘、Lomb–Scargle、相位折叠"
+      ],
+      [
+       "推断",
+       "最大似然、贝叶斯、MCMC"
+      ],
+      [
+       "机器学习",
+       "PCA、SVM、kNN、GMM、随机森林、神经网络"
+      ]
+     ],
+     "notes": "27 个方法 + 9 条统计卡片；每条含原理、公式、假设、步骤、独立 Python 示例、常见坑。代码不是原书代码。",
+     "id": "25fb3b53-9528-4b40-ba54-e7279939b444"
+    },
+    {
+     "layout": "table",
+     "kicker": "运行 / 在建 / 规划 / 提案 分开",
+     "title": "观测设备：30 个入口，四类政策",
+     "rows": [
+      [
+       "类型",
+       "代表设施"
+      ],
+      [
+       "X 射线 / 伽马",
+       "Chandra、XMM、Swift、NuSTAR、Fermi、IXPE"
+      ],
+      [
+       "光学 / 红外 / 射电",
+       "JWST、HST、TESS、ALMA、VLA、FAST"
+      ],
+      [
+       "多信使",
+       "IceCube、LIGO/Virgo/KAGRA"
+      ],
+      [
+       "在建/规划",
+       "CTAO、SKA、Rubin、ELT、TMT、Athena、LISA"
+      ]
+     ],
+     "notes": "18 运行、2 调试、3 在建、4 规划、2 提案、1 结束；22 开放、4 专有期、4 受限。25/30 链接在线验证；FAST/LHAASO/IXPE 给申请与分析建议。",
+     "id": "807d87a7-8681-4b6c-8bea-de4aa1685218"
+    },
+    {
+     "layout": "table",
+     "kicker": "不是泛泛提示词，是可执行 SOP",
+     "title": "四个 Agent Skills",
+     "rows": [
+      [
+       "Skill",
+       "解决什么"
+      ],
+      [
+       "astro-literature-research",
+       "检索式、证据分级、精读笔记、引用链"
+      ],
+      [
+       "astro-code-writing",
+       "数据契约、astropy、统计、图表、测试"
+      ],
+      [
+       "astro-english-journal-writing",
+       "选刊、标题摘要、各节写作、返修"
+      ],
+      [
+       "astro-phd-thesis-writing",
+       "学校格式、创新点、综述、GB 7714"
+      ]
+     ],
+     "notes": "DSH 通过 ctx.skills.register 注册；Codex 版以 plugin/skills 目录分发，命名空间 $astro-ph-researcher:astro-*。",
+     "id": "16a37d7f-c27a-42d7-9c2c-b1fd25679ee9"
+    },
+    {
+     "layout": "table",
+     "kicker": "DSH 侧栏 / Codex CLI",
+     "title": "两种安装方式",
+     "rows": [
+      [
+       "平台",
+       "安装"
+      ],
+      [
+       "DSH",
+       "profile bundle + junction；刷新页面，必要时重启"
+      ],
+      [
+       "Codex 1",
+       "codex plugin marketplace add ."
+      ],
+      [
+       "Codex 2",
+       "codex plugin add astro-ph-researcher@astro-ph-researcher-local"
+      ],
+      [
+       "仅 skill",
+       "bash codex/install-skills.sh"
+      ],
+      [
+       "数据 CLI",
+       "node scripts/astro-cli.mjs stats"
+      ]
+     ],
+     "notes": "Codex 版已在本机 Codex CLI 0.149.0-alpha.4.3 实测安装为 installed, enabled。",
+     "id": "ada21c3d-b1d4-477d-815e-061a11eea15b"
+    },
+    {
+     "layout": "statement",
+     "kicker": "",
+     "title": "质量与边界",
+     "subtitle": "Host/API/数据通过 8 组测试；登录态 Web UI 未逐页点击验收；书籍未逐页精读；30 个设施是 curated 子集；云端同步尚未实现。",
+     "text": "自动化测试全绿，不等于每个按钮都点过。",
+     "bullets": [],
+     "id": "8f488ecf-edf1-4d3b-9fb9-2509baa900ea"
+    },
+    {
+     "layout": "closing",
+     "kicker": "",
+     "title": "让天文工作流可核验、可复现",
+     "subtitle": "GitHub: README / presentation/astro-ph-researcher-intro.pdf · 1253932197@qq.com · GXU-CN",
+     "text": "astro-ph-researcher · MIT · 天外奇航（@hyperskysail）",
+     "bullets": [],
+     "id": "b7e943f8-d906-4361-9e4d-b46841b79cd2"
+    }
+   ],
+   "brand": {
+    "primaryColor": "#0EA5E9",
+    "backgroundColor": "#0B1120",
+    "textColor": "#F8FAFC",
+    "fontFamily": "Microsoft YaHei",
+    "name": "astro-ph-researcher",
+    "footer": "astro-ph-researcher v2.0.0 · 天外奇航 · GXU-CN"
+   }
+  }
+ ],
+ "slides": [
+  {
+   "layout": "cover",
+   "kicker": "DSH / Codex 插件 / 9 个 Agent Skills / v2.0.0",
+   "title": "astro-ph-researcher",
+   "subtitle": "天文术语 · 文献库 · 写作 · 数据工作台",
+   "text": "",
+   "bullets": [],
+   "notes": "作者：天外奇航（@hyperskysail，1253932197@qq.com，GXU-CN）。日期：2026-10-22。适用于 DSH 与 Codex。",
+   "id": "91ae1346-6cfe-4762-afe7-2f1c84026919"
+  },
+  {
+   "layout": "bullets",
+   "kicker": "从读文献到写论文，中间断了四次",
+   "title": "为什么需要它",
+   "subtitle": "",
+   "text": "",
+   "bullets": [
+    "术语译名不统一：同一英文词，教材与机翻给出不同中文名。",
+    "文献散落在 SciX / ADS / arXiv / 出版商页面，读完就忘。",
+    "从文献到代码、从数据到论文，没有一条可复现的链。",
+    "望远镜/卫星的数据入口、软件、数据政策各不相同。"
+   ],
+   "id": "02816b51-3e47-4b05-86c5-7c019e9399ce"
+  },
+  {
+   "layout": "statement",
+   "kicker": "",
+   "title": "一条工作流",
+   "subtitle": "查词 → 文献 → 文献库 → 写作 → 数据 → 设备/工作流",
+   "text": "查词 → 文献 → 文献库 → 写作 → 数据处理 → 观测设备/工作流",
+   "bullets": [],
+   "id": "50b2b38c-e3bd-49dc-9028-34922baf8f79"
+  },
+  {
+   "layout": "bullets",
+   "kicker": "NADC 审定译名 + 离线兜底",
+   "title": "术语：先查准，再谈理解",
+   "subtitle": "",
+   "text": "",
+   "bullets": [
+    "实时查国家天文台 NADC：中文名、台湾名、出版状态、依据书目、最后修订。",
+    "官方离线词表 r241020：31,758 条 EN↔ZH，断网也能查。",
+    "同名词条消歧：一个英文名对应多个词条时，逐条切换并记录 id。",
+    "严格区分「NADC 审定定义」与「DSH 释义」，不把 AI 解释冒充名词委原文。"
+   ],
+   "id": "28b24fa7-0d58-43ae-990c-a379d5d16792"
+  },
+  {
+   "layout": "bullets",
+   "kicker": "相关性 > 时间 > 引用数",
+   "title": "文献：找对，再存住",
+   "subtitle": "",
+   "text": "",
+   "bullets": [
+    "支持 OpenAlex / Crossref / ADS / arXiv，按主题检索并给出 DOI、SciX、ADS、arXiv、PDF 链接。",
+    "参考文献库保留：前三位作者（姓名/ORCID）、单位、期刊卷期页、DOI、摘要。",
+    "可写「分析总结」与「可引用关键结果」，按领域/关键词/专题分类。",
+    "一键生成 BibTeX / APA / GB 7714 / MLA，或导出 .bib 进 Overleaf。"
+   ],
+   "id": "0c563525-2b85-4ace-af28-c44189d0e687"
+  },
+  {
+   "layout": "table",
+   "kicker": "先框架，后写作",
+   "title": "写作：从结果到投稿",
+   "rows": [
+    [
+     "模块",
+     "能力"
+    ],
+    [
+     "项目",
+     "英文期刊论文 / 学位论文；多文件上传；可选 DSH 分析"
+    ],
+    [
+     "目标",
+     "14 个期刊；21 个高校/院所格式（含版本）"
+    ],
+    [
+     "格式",
+     "作者指南 / Overleaf / GB 7714 / 学校规范"
+    ],
+    [
+     "交接",
+     "分析结果 → 大纲 → 逐节起草 → 格式检查"
+    ]
+   ],
+   "notes": "期刊数据含 verified 标记；反爬未能验证的链接会明确提示。写作由 DSH 按 skill 起草，用户审阅。",
+   "id": "99c8a14e-3f0d-4ce5-81bb-2f4f1e1a67d8"
+  },
+  {
+   "layout": "table",
+   "kicker": "通用数据处理与统计",
+   "title": "数据方法库：把统计讲通",
+   "rows": [
+    [
+     "类别",
+     "内容"
+    ],
+    [
+     "图像",
+     "CCD 校准、宇宙线、叠加、测光、WCS"
+    ],
+    [
+     "统计",
+     "分布、KS、误差传递、置信区间"
+    ],
+    [
+     "拟合/时间",
+     "最小二乘、Lomb–Scargle、相位折叠"
+    ],
+    [
+     "推断",
+     "最大似然、贝叶斯、MCMC"
+    ],
+    [
+     "机器学习",
+     "PCA、SVM、kNN、GMM、随机森林、神经网络"
+    ]
+   ],
+   "notes": "27 个方法 + 9 条统计卡片；每条含原理、公式、假设、步骤、独立 Python 示例、常见坑。代码不是原书代码。",
+   "id": "25fb3b53-9528-4b40-ba54-e7279939b444"
+  },
+  {
+   "layout": "table",
+   "kicker": "四类政策：开放 / 专有期 / 受限 / 闭源",
+   "title": "观测设备：30 个数据入口",
+   "rows": [
+    [
+     "类型",
+     "代表设施"
+    ],
+    [
+     "X 射线 / 伽马",
+     "Chandra、XMM、Swift、NuSTAR、Fermi、IXPE"
+    ],
+    [
+     "光学 / 红外 / 射电",
+     "JWST、HST、TESS、ALMA、VLA、FAST"
+    ],
+    [
+     "多信使",
+     "IceCube、LIGO/Virgo/KAGRA"
+    ],
+    [
+     "在建/规划",
+     "CTAO、SKA、Rubin、ELT、TMT、Athena、LISA"
+    ]
+   ],
+   "notes": "18 运行、2 调试、3 在建、4 规划、2 提案、1 结束；22 开放、4 专有期、4 受限。25/30 链接在线验证；FAST/LHAASO/IXPE 给申请与分析建议。",
+   "id": "807d87a7-8681-4b6c-8bea-de4aa1685218"
+  },
+  {
+   "layout": "table",
+   "kicker": "4 个基础 + 4 个写作目标 + 1 个 v2 研究流程",
+   "title": "九个 Agent Skills",
+   "rows": [
+    [
+     "类别",
+     "技能"
+    ],
+    [
+     "基础 4",
+     "literature / code / journal / thesis"
+    ],
+    [
+     "目标 4",
+     "goals / discovery / critical / incremental"
+    ],
+    [
+     "批判/上限",
+     "refutation / null-limit"
+    ],
+    [
+     "增量/方法",
+     "incremental / method / survey / review"
+    ]
+   ],
+   "notes": "DSH 通过 ctx.skills.register 注册 8 个 skill；Codex 版以 plugin/skills 目录分发，命名空间 $astro-ph-researcher:astro-*。写作目标由 astro-writing-goals 选择，项目 goalId 注入写作提示词。",
+   "id": "16a37d7f-c27a-42d7-9c2c-b1fd25679ee9"
+  },
+  {
+   "layout": "table",
+   "kicker": "DSH 侧栏 / Codex CLI",
+   "title": "两种安装方式",
+   "rows": [
+    [
+     "平台",
+     "安装"
+    ],
+    [
+     "DSH",
+     "profile bundle + junction；刷新页面，必要时重启"
+    ],
+    [
+     "Codex 1",
+     "codex plugin marketplace add ."
+    ],
+    [
+     "Codex 2",
+     "codex plugin add astro-ph-researcher@astro-ph-researcher-local"
+    ],
+    [
+     "仅 skill",
+     "bash codex/install-skills.sh"
+    ],
+    [
+     "数据 CLI",
+     "node scripts/astro-cli.mjs stats"
+    ]
+   ],
+   "notes": "Codex 版已在本机 Codex CLI 0.149.0-alpha.4.3 实测安装为 installed, enabled。",
+   "id": "ada21c3d-b1d4-477d-815e-061a11eea15b"
+  },
+  {
+   "layout": "statement",
+   "kicker": "",
+   "title": "质量与边界",
+   "subtitle": "Host/API/数据通过 8 组测试；登录态 Web UI 未逐页点击验收；书籍未逐页精读；30 个设施是 curated 子集；云端同步尚未实现。",
+   "text": "自动化测试全绿，不等于每个按钮都点过。",
+   "bullets": [],
+   "id": "8f488ecf-edf1-4d3b-9fb9-2509baa900ea"
+  },
+  {
+   "layout": "closing",
+   "kicker": "",
+   "title": "可核验、可复现",
+   "subtitle": "GitHub：README + presentation/astro-ph-researcher.pdf · 1253932197@qq.com · GXU-CN",
+   "text": "astro-ph-researcher · MIT · 天外奇航（@hyperskysail）",
+   "bullets": [],
+   "id": "b7e943f8-d906-4361-9e4d-b46841b79cd2"
+  }
+ ],
+ "slideCount": 12,
+ "quality": {
+  "ok": true,
+  "slideCount": 12,
+  "errorCount": 0,
+  "warningCount": 4,
+  "issues": [
+   {
+    "slide": 6,
+    "slideId": "99c8a14e-3f0d-4ce5-81bb-2f4f1e1a67d8",
+    "severity": "warning",
+    "code": "table-density",
+    "message": "表格单元格文字较长，可能换行拥挤",
+    "suggestion": "精简单元格或减少列数"
+   },
+   {
+    "slide": 7,
+    "slideId": "25fb3b53-9528-4b40-ba54-e7279939b444",
+    "severity": "warning",
+    "code": "table-density",
+    "message": "表格单元格文字较长，可能换行拥挤",
+    "suggestion": "精简单元格或减少列数"
+   },
+   {
+    "slide": 8,
+    "slideId": "807d87a7-8681-4b6c-8bea-de4aa1685218",
+    "severity": "warning",
+    "code": "table-density",
+    "message": "表格单元格文字较长，可能换行拥挤",
+    "suggestion": "精简单元格或减少列数"
+   },
+   {
+    "slide": 10,
+    "slideId": "ada21c3d-b1d4-477d-815e-061a11eea15b",
+    "severity": "warning",
+    "code": "table-density",
+    "message": "表格单元格文字较长，可能换行拥挤",
+    "suggestion": "精简单元格或减少列数"
+   }
+  ],
+  "note": "文字尺寸与溢出为静态估算；最终请检查 HTML 放映和 PowerPoint / WPS 实际显示。页脚和页码的小字号不计入正文检查。"
+ },
+ "artifacts": {
+  "html": "f1a6a09980d7048491f4d13bca9de87cdc47ae780fa051379ed7b3b2cc5fd1bb",
+  "pptx": "a5c083c1cc10cc8b1d296299c3b67c202cfb8198c838882cf3edfe71e92b7935"
+ }
+}

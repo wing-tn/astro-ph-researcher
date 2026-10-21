@@ -1,0 +1,14 @@
+node_modules/
+.venv/
+.dsh-pyenv/
+.DS_Store
+*.log
+.demo-*
+dist/
+provenance/raw/
+backups/*.zip
+provenance/*.zip
+.env
+.env.*
+*.pem
+*.key

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this plugin or its bundled skills, cite the project and the author below."
+title: "astro-ph-researcher: astronomy terms, references, writing and data-workflow workbench for DeepSeek Harness"
+abstract: >-
+  A local DSH host/client plugin for astronomy: NADC-validated terminology,
+  literature search and a local reference library, journal/thesis writing
+  handoff, a methods/statistics library based on the book
+  "天文数据处理与虚拟天文台" (2024), and an observatory/data-workflow directory.
+authors:
+  - name: "天外奇航"
+    alias: "hyperskysail"
+    email: "1253932197@qq.com"
+version: "2.0.0"
+date-released: "2026-10-22"
+license: MIT
+type: software
+keywords:
+  - astronomy
+  - deepseek-harness
+  - dsh-plugin
+  - literature
+  - virtual-observatory
+  - data-processing

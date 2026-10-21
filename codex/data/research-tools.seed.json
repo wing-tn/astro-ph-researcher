@@ -1,0 +1,255 @@
+{
+  "version": "2.0",
+  "tools": [
+    {
+      "id": "3ml",
+      "name": "3ML (ThreeML)",
+      "kind": "python-analysis",
+      "url": "https://threeml.readthedocs.io/",
+      "install": "用户自建 Python 环境安装 threeML；插件只给版本/数据清单/配置/结果解释",
+      "use": [
+        "多仪器联合似然",
+        "time-energy fit",
+        "Fermi/XSPEC 插件",
+        "模型比较"
+      ],
+      "inputs": [
+        "PHA/谱点",
+        "RMF/ARF",
+        "时间标签",
+        "源坐标",
+        "背景模型"
+      ],
+      "outputs": [
+        "最佳拟合参数",
+        "-log likelihood",
+        "AIC/BIC",
+        "协方差"
+      ],
+      "checks": [
+        "时间标签单位与来源",
+        "响应版本",
+        "背景/前景",
+        "模型比较不只报最佳拟合"
+      ],
+      "notes": "示例参考：https://threeml.readthedocs.io/en/stable/notebooks/Time-energy-fit.html",
+      "aliases": [
+        "3ML",
+        "ThreeML",
+        "threeML"
+      ]
+    },
+    {
+      "id": "am3",
+      "name": "AM³ (Astrophysical Multi-Messenger Modeling)",
+      "kind": "simulation",
+      "url": "https://am3.readthedocs.io/en/latest/",
+      "install": "Docker / native C++ / Python 接口；不随插件打包",
+      "use": [
+        "轻子-强子时变模拟",
+        "blazar/GRB/TDE",
+        "光子+中微子"
+      ],
+      "inputs": [
+        "磁场",
+        "半径",
+        "注入谱",
+        "能量范围",
+        "时间步"
+      ],
+      "outputs": [
+        "光子 SED",
+        "中微子谱",
+        "次级粒子"
+      ],
+      "checks": [
+        "参数简并",
+        "强子模型假设",
+        "与观测 SED 的兼容性",
+        "版本/物理开关"
+      ],
+      "citation": "Klinger et al., ApJS 275, 4 (2024), DOI 10.3847/1538-4365/ad725c",
+      "aliases": [
+        "AM3",
+        "AM³",
+        "Astrophysical Multi-Messenger Modeling"
+      ]
+    },
+    {
+      "id": "sed-builder",
+      "name": "SSDC SED Builder",
+      "kind": "web-service",
+      "url": "https://tools.ssdc.asi.it/SED/",
+      "install": "浏览器使用；不抓登录态页面",
+      "use": [
+        "多波段 SED 构建",
+        "数据点检索",
+        "SED 拟合/导出"
+      ],
+      "inputs": [
+        "源名/坐标",
+        "检索半径",
+        "历元",
+        "目录选择"
+      ],
+      "outputs": [
+        "CSV/VOTable/图",
+        "数据点来源"
+      ],
+      "checks": [
+        "单位/频率/能量",
+        "银河/河外消光",
+        "每个点来源与引用"
+      ],
+      "tutorial": "https://www.ssdc.asi.it/tutorial/SEDBuilder/SEDBuilderTutorial.html",
+      "aliases": [
+        "SED",
+        "SED Builder",
+        "SSDC SED",
+        "Spectral Energy Distribution"
+      ]
+    },
+    {
+      "id": "ds9",
+      "name": "SAOImageDS9",
+      "kind": "desktop-viewer",
+      "url": "https://ds9.si.edu/",
+      "install": "官方安装包/包管理器；用户本地运行",
+      "use": [
+        "FITS 图像/事件查看",
+        "WCS/区域",
+        "头信息检查"
+      ],
+      "inputs": [
+        "本地 FITS",
+        "区域文件"
+      ],
+      "outputs": [
+        ".reg",
+        "坐标/头信息记录",
+        "检查结论"
+      ],
+      "checks": [
+        "HDU/EXTNAME",
+        "BUNIT/BSCALE/BZERO",
+        "WCS/历元",
+        "EXPTIME",
+        "GTI"
+      ],
+      "notes": "插件不控制 GUI；只提供命令、检查清单和后续分析衔接。",
+      "aliases": [
+        "DS9",
+        "SAOImage DS9"
+      ]
+    },
+    {
+      "id": "geant4",
+      "name": "Geant4",
+      "kind": "simulation",
+      "url": "https://geant4.web.cern.ch/",
+      "install": "CERN 官方安装；GENT4 若指其他工具需确认",
+      "use": [
+        "粒子输运",
+        "探测器响应",
+        "本底/屏蔽模拟"
+      ],
+      "inputs": [
+        "几何",
+        "物理列表",
+        "源谱",
+        "材料"
+      ],
+      "outputs": [
+        "ROOT/HDF5/CSV",
+        "能量沉积",
+        "探测器响应"
+      ],
+      "checks": [
+        "物理列表版本",
+        "几何/材料",
+        "统计量",
+        "与观测响应一致性"
+      ],
+      "notes": "你写的 GENT4 需确认是否就是 Geant4；确认前不把它写成已接入。",
+      "aliases": [
+        "GENT4",
+        "GEANT4",
+        "Geant4",
+        "geant 4"
+      ]
+    }
+  ],
+  "catalogs": [
+    {
+      "id": "4fgl",
+      "name": "Fermi LAT 4FGL / 4FGL-DR4",
+      "kind": "gamma-ray",
+      "url": "https://fermi.gsfc.nasa.gov/ssc/data/access/lat/14yr_catalog/",
+      "access": "official",
+      "citation": "Fermi LAT Collaboration"
+    },
+    {
+      "id": "3fhl",
+      "name": "Fermi LAT 3FHL",
+      "kind": "gamma-ray",
+      "url": "https://fermi.gsfc.nasa.gov/ssc/data/access/lat/3FHL/",
+      "access": "official"
+    },
+    {
+      "id": "swift-xrt",
+      "name": "Swift/XRT catalog",
+      "kind": "x-ray",
+      "url": "https://swift.gsfc.nasa.gov/results/",
+      "access": "official"
+    },
+    {
+      "id": "chandra-csc",
+      "name": "Chandra Source Catalog",
+      "kind": "x-ray",
+      "url": "https://cxc.cfa.harvard.edu/csc/",
+      "access": "official"
+    },
+    {
+      "id": "xmm",
+      "name": "XMM-Newton catalog",
+      "kind": "x-ray",
+      "url": "https://www.cosmos.esa.int/web/xmm-newton",
+      "access": "official"
+    },
+    {
+      "id": "gaia",
+      "name": "Gaia archive",
+      "kind": "astrometry",
+      "url": "https://gea.esac.esa.int/archive/",
+      "access": "official"
+    },
+    {
+      "id": "sdss",
+      "name": "SDSS",
+      "kind": "optical",
+      "url": "https://www.sdss.org/",
+      "access": "official"
+    },
+    {
+      "id": "vizier",
+      "name": "VizieR",
+      "kind": "catalog-service",
+      "url": "https://vizier.cds.unistra.fr/",
+      "access": "official"
+    },
+    {
+      "id": "ned",
+      "name": "NED",
+      "kind": "crossmatch",
+      "url": "https://ned.ipac.caltech.edu/",
+      "access": "official"
+    },
+    {
+      "id": "simbad",
+      "name": "SIMBAD",
+      "kind": "crossmatch",
+      "url": "https://simbad.cds.unistra.fr/",
+      "access": "official"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+ "probed_at": "2026-10-21T17:00:07.573727+00:00",
+ "robots_kns": {
+  "url": "https://kns.cnki.net/robots.txt",
+  "http": 200,
+  "body": "User-agent: *\r\nDisallow: /"
+ },
+ "kns_deeplink": {
+  "url": "https://kns.cnki.net/kns8s/defaultresult/index?kw=%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB%E6%A0%B8",
+  "http": 200,
+  "final_bytes": 2154,
+  "title": "安全验证",
+  "body_300": "<!doctype html><html lang><head><meta charset=\"utf-8\"/><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><link rel=\"icon\" href=\"/verify/cnki.ico\"/><title>安全验证</title><script defer=\"defer\" type=\"module\" src=\"/verify/js/chunk-vend…[truncated]"
+ },
+ "search_deeplink": {
+  "url": "https://search.cnki.com.cn/Search/Result?content=%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB%E6%A0%B8",
+  "http": 200,
+  "bytes": 41277,
+  "title": "综合搜索_知网空间",
+  "login_word_present": false,
+  "static_result_items": 0,
+  "query_mentions": 2
+ },
+ "degree_param": {
+  "probes": [
+   {
+    "extra": "",
+    "http": 200,
+    "bytes": 41277,
+    "md5": "b426a5a6e70a"
+   },
+   {
+    "extra": "&dbcode=CDMD",
+    "http": 200,
+    "bytes": 41277,
+    "md5": "b426a5a6e70a"
+   },
+   {
+    "extra": "&type=%E5%AD%A6%E4%BD%8D%E8%AE%BA%E6%96%87",
+    "http": 200,
+    "bytes": 41287,
+    "md5": "44c70cfd1a11"
+   }
+  ],
+  "conclusion": "未验证：&dbcode=CDMD 完全不改变响应(md5一致)；&type=学位论文 仅+10字节(疑似回显)，无法确认可用筛选参数"
+ },
+ "public_api": "未发现公开 API 或官方 API 文档；按要求未尝试绕过登录/付费墙/验证码",
+ "recommendation": "仅作为人工检索深链在用户浏览器打开；不要抓取 kns.cnki.net（robots: Disallow: / 且首请求即跳转 安全验证 滑块验证码）",
+ "robots_search": {
+  "http": 404,
+  "body_300": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+  "note": "25-30s 超时无响应，未取得 robots.txt"
+ }
+}

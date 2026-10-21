@@ -1,0 +1,237 @@
+{
+ "probed_at": "2026-10-21T17:00:07.573727+00:00",
+ "sample": {
+  "url": "https://api.crossref.org/works?query.bibliographic=fast+radio+burst&rows=3&filter=has-abstract%3Atrue%2Ctype%3Ajournal-article&select=DOI%2Ctitle%2Cscore%2Cabstract%2Cis-referenced-by-count%2Cpublished%2Ccontainer-title%2Cauthor%2Ctype%2CURL",
+  "http": 200,
+  "total_results": 121075,
+  "items": [
+   {
+    "DOI": "10.3847/2041-8213/abc6a3",
+    "title": "Fast Radio Burst Breakouts from Magnetar Burst Fireballs",
+    "score": 27.217098,
+    "is_referenced_by_count": 47,
+    "published": [
+     [
+      2020,
+      11,
+      24
+     ]
+    ],
+    "container_title": "The Astrophysical Journal Letters",
+    "type": "journal-article",
+    "authors": [
+     "Kunihito Ioka"
+    ],
+    "abstract_raw_300": "<jats:title>Abstract</jats:title>\n               <jats:p>The recent discovery of a Mega-Jansky radio burst occurring simultaneously with short X-ray bursts from the Galactic magnetar (strongly magnetized neutron star (NS)) SGR 1935+2154 is a smoking gun for the hypothesis that some cosmological fast…[truncated]",
+    "abstract_clean_300": "The recent discovery of a Mega-Jansky radio burst occurring simultaneously with short X-ray bursts from the Galactic magnetar (strongly magnetized neutron star (NS)) SGR 1935+2154 is a smoking gun for the hypothesis that some cosmological fast radio bursts (FRBs) arise from magnetar bursts. We argue…[truncated]"
+   },
+   {
+    "DOI": "10.1093/mnras/stag1325",
+    "title": "Scatter in the relation between persistent radio source luminosity and fast radio burst rotation measure: a window into circum-burst environments",
+    "score": 25.717165,
+    "is_referenced_by_count": 0,
+    "published": [
+     [
+      2026,
+      7,
+      15
+     ]
+    ],
+    "container_title": "Monthly Notices of the Royal Astronomical Society",
+    "type": "journal-article",
+    "authors": [
+     "Yuan-Pei Yang"
+    ],
+    "abstract_raw_300": "<jats:title>ABSTRACT</jats:title>\n                  <jats:p>The association of persistent radio sources (PRSs) with repeating fast radio bursts (FRBs) offers unique insights into their circum-burst environments. Building upon the physical link between PRS luminosity ($L_\\nu$) and FRB rotation measur…[truncated]",
+    "abstract_clean_300": "The association of persistent radio sources (PRSs) with repeating fast radio bursts (FRBs) offers unique insights into their circum-burst environments. Building upon the physical link between PRS luminosity ($L_\\nu$) and FRB rotation measure (RM), we introduce a novel diagnostic framework utilizing …[truncated]"
+   },
+   {
+    "DOI": "10.3847/1538-4357/adfec4",
+    "title": "Flat Tails in Fast Radio Burst and Pulsar Energy Distributions: Implications for Optimizing Nearby Fast Radio Burst Surveys",
+    "score": 25.390543,
+    "is_referenced_by_count": 1,
+    "published": [
+     [
+      2025,
+      9,
+      24
+     ]
+    ],
+    "container_title": "The Astrophysical Journal",
+    "type": "journal-article",
+    "authors": [
+     "S. B. Zhang",
+     "G. Hobbs",
+     "S. Johnston",
+     "S. Dai",
+     "Y. Li",
+     "J. S. Wang",
+     "X. Yang",
+     "X. F. Wu",
+     "L. Staveley-Smith"
+    ],
+    "abstract_raw_300": "<jats:title>Abstract</jats:title>\n                  <jats:p>\n                    Fast radio bursts (FRBs) are energetic, short-duration radio pulses of unclear origin. To explore effective survey strategies for detecting FRBs from nearby globular clusters (GCs), we investigate the burst energy distr…[truncated]",
+    "abstract_clean_300": "Fast radio bursts (FRBs) are energetic, short-duration radio pulses of unclear origin. To explore effective survey strategies for detecting FRBs from nearby globular clusters (GCs), we investigate the burst energy distribution, which has a strong influence on the detection rate. We reanalyze FRBs an…[truncated]"
+   }
+  ],
+  "rate_headers": {
+   "x-rate-limit-limit": "3",
+   "x-rate-limit-interval": "1s",
+   "x-concurrency-limit": "3",
+   "x-api-pool": "polite-array"
+  }
+ },
+ "sorts": {
+  "relevance": {
+   "http": 200,
+   "rows": [
+    [
+     0,
+     [
+      [
+       2011,
+       12,
+       14
+      ]
+     ]
+    ],
+    [
+     1,
+     [
+      [
+       2002,
+       1
+      ]
+     ]
+    ],
+    [
+     0,
+     [
+      [
+       2020,
+       12,
+       8
+      ]
+     ]
+    ]
+   ]
+  },
+  "published": {
+   "http": 200,
+   "rows": [
+    [
+     0,
+     [
+      [
+       2027,
+       2
+      ]
+     ]
+    ],
+    [
+     0,
+     [
+      [
+       2027,
+       2
+      ]
+     ]
+    ],
+    [
+     0,
+     [
+      [
+       2027,
+       1
+      ]
+     ]
+    ]
+   ]
+  },
+  "is-referenced-by-count": {
+   "http": 200,
+   "rows": [
+    [
+     11987,
+     [
+      [
+       2016,
+       2,
+       11
+      ]
+     ]
+    ],
+    [
+     8472,
+     [
+      [
+       2017,
+       10,
+       16
+      ]
+     ]
+    ],
+    [
+     6660,
+     [
+      [
+       2009,
+       6
+      ]
+     ]
+    ]
+   ]
+  }
+ },
+ "invalid_select": {
+  "http": 400,
+  "body": "{\"status\":\"failed\",\"message-type\":\"validation-failure\",\"message\":[{\"type\":\"select-not-available\",\"value\":\"relevance_score\",\"message\":\"Select 'relevance_score' specified but there is no such select for this route. Valid selects for this route are: abstract, URL, resource, member, posted, score, created, degree, update-policy, short-title, license, ISSN, container-title, issued, update-to, issue, pr…[truncated]"
+ },
+ "cjk": {
+  "url": "https://api.crossref.org/works?query.bibliographic=%E6%B4%BB%E5%8A%A8%E6%98%9F%E7%B3%BB%E6%A0%B8&rows=3&select=DOI%2Ctitle%2Cpublished%2Cis-referenced-by-count",
+  "http": 200,
+  "total_results": 199291,
+  "titles": [
+   "活动星系核中紫外大包的辐射机制",
+   "活动星系核中的尘埃",
+   "Blandford-Znajek效应对活动星系核中心黑洞热力学演化的影响"
+  ]
+ },
+ "polite_pool": {
+  "no_mailto": {
+   "http": 200,
+   "x-rate-limit-limit": "1",
+   "x-rate-limit-interval": "1s",
+   "x-concurrency-limit": "1",
+   "x-api-pool": "public-array"
+  },
+  "mailto_in_UA": {
+   "http": 200,
+   "x-rate-limit-limit": "3",
+   "x-rate-limit-interval": "1s",
+   "x-concurrency-limit": "3",
+   "x-api-pool": "polite-array"
+  },
+  "mailto_as_query_param_UA_without": {
+   "http": 200,
+   "x-rate-limit-limit": "3",
+   "x-rate-limit-interval": "1s",
+   "x-concurrency-limit": "3",
+   "x-api-pool": "polite-array"
+  }
+ },
+ "paging": {
+  "next_cursor_first_40": "MTAyNzU4Nzc4NjAwMCwxMC4xMDE2JTJGczEzODQt",
+  "follow_http": 200,
+  "follow_dois": [
+   "10.1016/s0920-5632(96)00478-1",
+   "10.1016/0370-2693(96)01013-1"
+  ]
+ },
+ "notes": {
+  "select_score": "relevance is exposed as select=score (e.g. 30.55); sort=relevance also works",
+  "jats_cleaning": "remove <jats:title>…</jats:title>, then strip all tags, collapse whitespace",
+  "query_variants": "query.bibliographic=56876 vs query.title=52741 for \"gravitational lensing\"",
+  "rate_limit_polite": "polite-array: 3/s, 3 concurrent; public-array: 1/s, 1 concurrent"
+ }
+}
