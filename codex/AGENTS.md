@@ -24,6 +24,7 @@ codex/
 - 首次发现/确认/多信使：`astro-discovery-writing`
 - 批判反驳/零结果：`astro-critical-writing`
 - 跟进增量/方法/巡天/理论/综述：`astro-incremental-method-writing`
+- v2 逐节写作/评分/作者确认/格式/工具：`astro-research-workflow`
 
 在 Codex 中可用插件命名空间调用，例如：
 

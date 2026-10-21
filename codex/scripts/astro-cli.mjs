@@ -63,6 +63,10 @@ function thesisFormats() {
   return readJson('thesis-formats.seed.json').formats ?? [];
 }
 
+function recommendedBooks() {
+  return readJson('recommended-books.seed.json').books ?? [];
+}
+
 function writingGoals() {
   return readJson('writing-goals.seed.json').goals ?? [];
 }
@@ -135,6 +139,19 @@ function printThesis(item) {
   ].filter(Boolean).join('\n');
 }
 
+function printRecommended(book) {
+  return [
+    `${book.title}${book.year ? ` (${book.year})` : ''}`,
+    `作者: ${(book.authors ?? []).join('、')}`,
+    line('出版', book.publisher),
+    line('ISBN', book.isbn),
+    line('领域', book.domain),
+    `推荐理由: ${book.why}`,
+    book.verified ? '' : '元数据待核验：版次/ISBN 以出版社为准。',
+    '仅书目元数据；版权归作者/出版社；非盈利；侵权联系 1253932197@qq.com 删除。',
+  ].filter(Boolean).join('\n');
+}
+
 function printGoal(goal) {
   return [
     `${goal.nameZh}（${goal.nameEn}） · ${goal.id}`,
@@ -158,7 +175,7 @@ if (command === 'stats') {
       instruments: i.length,
       journals: journals().length,
       thesisFormats: thesisFormats().length,
-      book: m.book,
+      recommended: recommendedBooks().length,
     },
     [
       `method: ${m.methods?.length ?? 0}`,
@@ -166,7 +183,7 @@ if (command === 'stats') {
       `instruments: ${i.length}`,
       `journals: ${journals().length}`,
       `thesis: ${thesisFormats().length}`,
-      `book: ${m.book?.title ?? ''} (${m.book?.isbn ?? ''})`,
+      `recommended: ${recommendedBooks().length}`,
     ].join('\n'),
   );
 } else if (command === 'term') {
@@ -187,10 +204,13 @@ if (command === 'stats') {
 } else if (command === 'thesis') {
   const rows = thesisFormats().filter((item) => matches([item.university, item.department, item.yearVersion, item.degree].join(' '), query));
   output(rows, rows.length ? rows.map(printThesis).join('\n\n---\n\n') : 'no matching thesis format');
+} else if (command === 'recommended' || command === 'books') {
+  const rows = recommendedBooks().filter((item) => matches([item.id, item.title, ...(item.authors ?? []), item.publisher, item.domain].join(' '), query));
+  output(rows, rows.length ? rows.map(printRecommended).join('\n\n---\n\n') : 'no matching recommended book');
 } else if (command === 'goal' || command === 'style') {
   const rows = id ? writingGoals().filter((item) => item.id === id) : writingGoals().filter((item) => matches([item.id, item.nameZh, item.nameEn, ...(item.aliases ?? [])].join(' '), query));
   output(rows, rows.length ? rows.map(printGoal).join('\n\n---\n\n') : 'no matching writing goal');
 } else {
-  console.error('usage: node scripts/astro-cli.mjs [stats|term|method|statistics|instrument|journal|thesis|goal] [query] [--json] [--id ID]');
+  console.error('usage: node scripts/astro-cli.mjs [stats|term|method|statistics|instrument|journal|thesis|goal|recommended] [query] [--json] [--id ID]');
   process.exit(2);
 }
