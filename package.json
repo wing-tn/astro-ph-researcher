@@ -80,14 +80,14 @@
   "license": "MIT",
   "funding": {
     "type": "custom",
-    "url": "https://github.com/hyperskysail/astro-ph-researcher/blob/main/SUPPORT.md"
+    "url": "https://github.com/wing-tn/astro-ph-researcher/blob/main/SUPPORT.md"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hyperskysail/astro-ph-researcher.git"
+    "url": "https://github.com/wing-tn/astro-ph-researcher.git"
   },
-  "homepage": "https://github.com/hyperskysail/astro-ph-researcher",
+  "homepage": "https://github.com/wing-tn/astro-ph-researcher",
   "bugs": {
-    "url": "https://github.com/hyperskysail/astro-ph-researcher/issues"
+    "url": "https://github.com/wing-tn/astro-ph-researcher/issues"
   }
 }

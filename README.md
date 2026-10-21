@@ -67,7 +67,7 @@
 ### 3.2 从 GitHub 安装
 
 ```bash
-git clone https://github.com/hyperskysail/astro-ph-researcher.git
+git clone https://github.com/wing-tn/astro-ph-researcher.git
 cd astro-ph-researcher
 dsh plugin --profile desktop add .
 ```

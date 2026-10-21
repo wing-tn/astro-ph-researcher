@@ -19,7 +19,7 @@
 前置：Codex CLI **0.149.0-alpha.4.3** 或支持 `.codex-plugin` 的版本；本机实测平台为 Windows + Codex CLI 0.149.0-alpha.4.3。
 
 ```bash
-git clone https://github.com/hyperskysail/astro-ph-researcher.git astro-ph-researcher
+git clone https://github.com/wing-tn/astro-ph-researcher.git astro-ph-researcher
 cd astro-ph-researcher
 codex plugin marketplace add .
 codex plugin add astro-ph-researcher@astro-ph-researcher-local
