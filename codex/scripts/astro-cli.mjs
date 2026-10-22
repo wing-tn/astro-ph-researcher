@@ -71,6 +71,10 @@ function deepData() {
   return readJson('deep-prompts.seed.json');
 }
 
+function novicePath() {
+  return readJson('novice-path.seed.json');
+}
+
 function planTemplate() {
   return readJson('research-plan-template.json');
 }
@@ -228,6 +232,14 @@ if (command === 'stats') {
     '## 深度检查问题',
     ...prompts.map((p) => `- [${p.phase}/${p.level}] ${p.title}\n  ${p.prompt}`),
   ].filter(Boolean).join('\n'));
+} else if (command === 'beginner' || command === 'novice') {
+  const data = novicePath();
+  const steps = data.steps ?? [];
+  output({ notice: data.notice, steps }, [
+    data.notice,
+    '',
+    ...steps.map((step, i) => `${i + 1}. ${step.title}（${step.phase} · ${step.duration}）\n   目标：${step.goal}\n   交付物：${step.deliverable}\n   提示词：${step.prompt}`),
+  ].join('\n'));
 } else if (command === 'plan') {
   const template = planTemplate();
   output(template, JSON.stringify(template, null, 2));
@@ -235,6 +247,6 @@ if (command === 'stats') {
   const rows = id ? writingGoals().filter((item) => item.id === id) : writingGoals().filter((item) => matches([item.id, item.nameZh, item.nameEn, ...(item.aliases ?? [])].join(' '), query));
   output(rows, rows.length ? rows.map(printGoal).join('\n\n---\n\n') : 'no matching writing goal');
 } else {
-  console.error('usage: node scripts/astro-cli.mjs [stats|term|method|statistics|instrument|journal|thesis|goal|recommended|plan|deep] [query] [--json] [--id ID]');
+  console.error('usage: node scripts/astro-cli.mjs [stats|term|method|statistics|instrument|journal|thesis|goal|recommended|plan|deep|beginner] [query] [--json] [--id ID]');
   process.exit(2);
 }

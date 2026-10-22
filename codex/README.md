@@ -10,7 +10,7 @@
 |---|---|
 | Codex 插件清单 | `.codex-plugin/plugin.json` |
 | 9 个 skill | 文献/代码/英文期刊/学位论文 + 写作目标/发现/批判/增量方法 + v3.1 研究流程（含计划树与盲点审查） |
-| 数据 | `data/`：29 术语、14 期刊、21 高校/院所格式、34 方法 + 9 统计、30 观测设施、10 写作目标、8 推荐书籍、文件格式/分析工具、研究计划模板、9 个深度/交叉学科领域 |
+| 数据 | `data/`：29 术语、14 期刊、21 高校/院所格式、34 方法 + 9 统计、30 观测设施、10 写作目标、8 推荐书籍、文件格式/分析工具、研究计划模板、9 步新手路径、9 个深度/交叉学科领域 |
 | 离线 CLI | `scripts/astro-cli.mjs` |
 | 安装脚本 | `install-skills.sh` / `install-skills.ps1` |
 
@@ -75,6 +75,7 @@ node scripts/astro-cli.mjs goal refutation
 node scripts/astro-cli.mjs recommended 赵永恒
 node scripts/astro-cli.mjs plan > research-plan.json
 node scripts/astro-cli.mjs deep astrochemistry
+node scripts/astro-cli.mjs beginner
 ```
 
 输出默认是人类可读文本，加 `--json` 输出结构化数据。

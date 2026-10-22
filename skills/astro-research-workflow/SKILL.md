@@ -1,6 +1,6 @@
 ---
 name: astro-research-workflow
-description: "v3.1 研究/写作流程：文献与章节评分、逐节写作、作者本人确认、物理书目、文件格式（FITS/Fermi XML 等）、3ML/AM³/SED/DS9 引导与公开源表。"
+description: "v3.2 研究/写作流程：文献与章节评分、逐节写作、作者本人确认、物理书目、文件格式（FITS/Fermi XML 等）、3ML/AM³/SED/DS9 引导与公开源表。"
 whenToUse: "用户要按章节推进论文、给文献/章节打分、作者确认、查文件格式、使用 3ML/AM³/SED/DS9 或公开源表时加载。"
 metadata:
   domain: astronomy
@@ -99,7 +99,20 @@ Fermi 4FGL/3FHL、Swift/XRT、Chandra、XMM、Gaia、SDSS、NED/SIMBAD/VizieR。
 - DSH：`astro_deep_scan` / 「深度」页；Codex：`node codex/scripts/astro-cli.mjs deep <关键词>`。
 - 数据/方法/文献不确定时标“不确定”，由作者核验。
 
-## 10. 工具
+## 10. 新手循序渐进路径
+
+给第一次做天文研究的人：
+
+```text
+学习地图 → 文献调研 → 可证伪问题 → 研究计划
+→ 项目框架 → 理论/代码 → 结果评判 → 英文论文 → 选刊投稿
+```
+
+每一步都要有交付物、检查清单和可核验的数据/引用；不要跳过“结果评判”直接写论文。  
+DSH：`astro_novice_path` / 「新手」页；Codex：`node codex/scripts/astro-cli.mjs beginner`。  
+AI 可以讲解、起草与检查，但不能代替作者核验或确认。
+
+## 11. 工具
 
 - `astro_literature_score`
 - `astro_section_workflow`
