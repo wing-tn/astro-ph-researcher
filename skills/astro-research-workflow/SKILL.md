@@ -1,6 +1,6 @@
 ---
 name: astro-research-workflow
-description: "v3 研究/写作流程：文献与章节评分、逐节写作、作者本人确认、物理书目、文件格式（FITS/Fermi XML 等）、3ML/AM³/SED/DS9 引导与公开源表。"
+description: "v3.1 研究/写作流程：文献与章节评分、逐节写作、作者本人确认、物理书目、文件格式（FITS/Fermi XML 等）、3ML/AM³/SED/DS9 引导与公开源表。"
 whenToUse: "用户要按章节推进论文、给文献/章节打分、作者确认、查文件格式、使用 3ML/AM³/SED/DS9 或公开源表时加载。"
 metadata:
   domain: astronomy
@@ -87,7 +87,19 @@ Fermi 4FGL/3FHL、Swift/XRT、Chandra、XMM、Gaia、SDSS、NED/SIMBAD/VizieR。
 - 导出 `research-plan.md` / `research-plan.json` 随项目保存；不要提交含个人路径的原始计划。
 - 计划树不是论文结果；最终数字/引用仍由作者逐项确认。
 
-## 9. 工具
+## 9. 深度与交叉学科盲点
+
+不要只回答“已知结论”；主动做红队审查：
+
+- **假设审计**：选择函数、定标、单位/零点、模型简并、样本方差。
+- **选择效应**：Malmquist/Eddington、试验因子、look-elsewhere、背景偶然符合。
+- **系统误差**：仪器响应、尘埃/消光、定标传递、模拟亚网格。
+- **交叉学科**：天体化学（分子/尘埃/冰/同位素）、ML/神经网络（泄漏、域移、校准）、核天体/粒子、多信使/时域、宇宙学/大尺度、行星/天体生物、仪器/实验室、统计因果、开放科学。
+- **输出方式**：给“可检验诊断 + 替代解释 + 下一步最小验证”，不要用问题冒充结论。
+- DSH：`astro_deep_scan` / 「深度」页；Codex：`node codex/scripts/astro-cli.mjs deep <关键词>`。
+- 数据/方法/文献不确定时标“不确定”，由作者核验。
+
+## 10. 工具
 
 - `astro_literature_score`
 - `astro_section_workflow`

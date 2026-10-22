@@ -1,9 +1,9 @@
-# astro-ph-researcher v3.0 · 天文研究工作台
+# astro-ph-researcher v3.1 · 天文研究工作台
 
 [![GitHub release](https://img.shields.io/github/v/release/wing-tn/astro-ph-researcher?label=release)](https://github.com/wing-tn/astro-ph-researcher/releases) [![License: MIT](https://img.shields.io/github/license/wing-tn/astro-ph-researcher?label=license)](https://github.com/wing-tn/astro-ph-researcher/blob/main/LICENSE) [![GitHub Repo](https://img.shields.io/badge/GitHub-wing--tn%2Fastro--ph--researcher-181717?logo=github)](https://github.com/wing-tn/astro-ph-researcher)
 
 **仓库**：https://github.com/wing-tn/astro-ph-researcher  
-**Release**：https://github.com/wing-tn/astro-ph-researcher/releases/tag/v3.0.0
+**Release**：https://github.com/wing-tn/astro-ph-researcher/releases/tag/v3.1.0
 
 
 > **作者 / 所有者**：天外奇航（@hyperskysail，1253932197@qq.com，GXU-CN）
@@ -15,7 +15,7 @@
 > 面向天文学本科生、研究生、研究员与教师的 DSH 插件。三步闭环：
 > **查准术语（NADC 审定译名/定义）→ 找对文献并建立可核验的参考文献库 → 基于研究结果与引用文献写作英文期刊论文或学位论文。**
 
-本仓库是可直接安装的 DSH 双端插件（Host + Client）。v3.0 保留 v2.0 全部功能，并新增主题/本地背景、研究计划树、对话框下方应用与 Skill 选择、交接目标弹窗。
+本仓库是可直接安装的 DSH 双端插件（Host + Client）。v3.1 保留 v3.0 全部功能，并新增深度/交叉学科盲点扫描、天体化学/神经网络等检查提示词。
 
 ---
 
@@ -62,7 +62,7 @@
 
 真实插件从 `/api/astro-ph-researcher/*` 拉取数据；预览与插件共用同一套 CSS。
 
-## 3. 安装（v3.0.0）
+## 3. 安装（v3.1.0）
 
 ### 3.1 前置
 
@@ -104,7 +104,7 @@ node scripts/install-local.mjs
 ### 3.5 验证
 
 - 侧边栏底部出现「天文术语」按钮（轨道图标）。
-- 点击后打开浮窗；「设置」页应显示 `astro-ph-researcher v3.0.0`。
+- 点击后打开浮窗；「设置」页应显示 `astro-ph-researcher v3.1.0`。
 - 当前版本实测可热加载；若没有出现，刷新页面；仍没有则完全重启 DSH。
 - 在对话中问「redshift 的中文名是什么？」应触发 `astro_term_lookup`。
 
@@ -376,13 +376,14 @@ node scripts/dict-check.mjs          # 首次会真实下载约 700 KB 官方词
 
 ---
 
-## 7.4 v3.0 新增
+## 7.4 v3.0/v3.1 新增
 
 - **外观**：6 套主题（深空/纸张/星云/森林/高对比/高亮）、自定义底色、本地背景图、高对比模式；面板宽度/缩放保留。
 - **研究计划树**：「计划」标签页记录问答中确认过的结论/证据/待办，按阶段组织为树，本地保存，导出 Markdown/JSON。
 - **对话框下方工具条**：应用模式 + Skill 选择、「计划」「记录选中」「外观」快捷入口。
 - **交接弹窗**：点「交给 DSH」不再直接发送，先选择当前对话/已有对话/新建对话，并设置面向人群、应用、Skill。
 - **Codex**：新增研究计划模板与 `plan` CLI，研究流程 skill 增加计划树规范。
+- **v3.1 深度**：新增「深度」页、8 个交叉学科领域、15 条盲点/深度提示词、`astro_deep_scan` 工具与 Codex `deep` CLI。
 
 ## 7.5 v2.0 已实现的基础
 
