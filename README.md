@@ -1,9 +1,9 @@
-# astro-ph-researcher v3.2 · 天文研究工作台
+# astro-ph-researcher v3.3 · 天文研究工作台
 
 [![GitHub release](https://img.shields.io/github/v/release/wing-tn/astro-ph-researcher?label=release)](https://github.com/wing-tn/astro-ph-researcher/releases) [![License: MIT](https://img.shields.io/github/license/wing-tn/astro-ph-researcher?label=license)](https://github.com/wing-tn/astro-ph-researcher/blob/main/LICENSE) [![GitHub Repo](https://img.shields.io/badge/GitHub-wing--tn%2Fastro--ph--researcher-181717?logo=github)](https://github.com/wing-tn/astro-ph-researcher)
 
 **仓库**：https://github.com/wing-tn/astro-ph-researcher  
-**Release**：https://github.com/wing-tn/astro-ph-researcher/releases/tag/v3.2.0
+**Release**：https://github.com/wing-tn/astro-ph-researcher/releases/tag/v3.3.0
 
 
 > **作者 / 所有者**：天外奇航（@hyperskysail，1253932197@qq.com，GXU-CN）
@@ -15,7 +15,7 @@
 > 面向天文学本科生、研究生、研究员与教师的 DSH 插件。三步闭环：
 > **查准术语（NADC 审定译名/定义）→ 找对文献并建立可核验的参考文献库 → 基于研究结果与引用文献写作英文期刊论文或学位论文。**
 
-本仓库是可直接安装的 DSH 双端插件（Host + Client）。v3.2 保留 v3.1 全部功能，并新增新手循序渐进教程（学习→调研→问题→计划→项目框架→代码→结果→英文论文→投稿）。
+本仓库是可直接安装的 DSH 双端插件（Host + Client）。v3.3 保留 v3.2 全部功能，并新增 PPT 桥：把收藏文献、计划树、深度/新手知识汇总为 Markdown，交接给 dsh-ppt/dsh-ppt-maker。
 
 ---
 
@@ -62,7 +62,7 @@
 
 真实插件从 `/api/astro-ph-researcher/*` 拉取数据；预览与插件共用同一套 CSS。
 
-## 3. 安装（v3.2.0）
+## 3. 安装（v3.3.0）
 
 ### 3.1 前置
 
@@ -104,7 +104,7 @@ node scripts/install-local.mjs
 ### 3.5 验证
 
 - 侧边栏底部出现「天文术语」按钮（轨道图标）。
-- 点击后打开浮窗；「设置」页应显示 `astro-ph-researcher v3.2.0`。
+- 点击后打开浮窗；「设置」页应显示 `astro-ph-researcher v3.3.0`。
 - 当前版本实测可热加载；若没有出现，刷新页面；仍没有则完全重启 DSH。
 - 在对话中问「redshift 的中文名是什么？」应触发 `astro_term_lookup`。
 
@@ -376,7 +376,7 @@ node scripts/dict-check.mjs          # 首次会真实下载约 700 KB 官方词
 
 ---
 
-## 7.4 v3.0/v3.1/v3.2 新增
+## 7.4 v3.0/v3.1/v3.2/v3.3 新增
 
 - **外观**：6 套主题（深空/纸张/星云/森林/高对比/高亮）、自定义底色、本地背景图、高对比模式；面板宽度/缩放保留。
 - **研究计划树**：「计划」标签页记录问答中确认过的结论/证据/待办，按阶段组织为树，本地保存，导出 Markdown/JSON。
@@ -385,6 +385,7 @@ node scripts/dict-check.mjs          # 首次会真实下载约 700 KB 官方词
 - **Codex**：新增研究计划模板与 `plan` CLI，研究流程 skill 增加计划树规范。
 - **v3.1 深度**：新增「深度」页、9 个交叉学科领域、15 条盲点/深度提示词、`astro_deep_scan` 工具与 Codex `deep` CLI。
 - **v3.2 新手**：新增「新手」页、9 步路径、首次打开新手/有经验选项、本地进度、`astro_novice_path` 与 Codex `beginner` CLI。
+- **v3.3 PPT**：新增「PPT」页，汇总收藏文献/计划树/深度/新手知识，生成 Markdown 与交接提示词，交给已安装的 dsh-ppt/dsh-ppt-maker。
 
 ## 7.5 v2.0 已实现的基础
 

@@ -52,7 +52,7 @@ const { apply } = await import('../lib/index.js?host=' + Date.now());
 const dispose = apply(ctx);
 
 // wait for async initStore + registration
-for (let i = 0; i < 50 && tools.size < 28; i += 1) {
+for (let i = 0; i < 50 && tools.size < 29; i += 1) {
   await new Promise((resolve) => setTimeout(resolve, 20));
 }
 
@@ -73,6 +73,7 @@ assert.deepEqual(
     'astro_literature_search',
     'astro_novice_path',
     'astro_physics_reference',
+    'astro_ppt_outline',
     'astro_reference_cite',
     'astro_reference_export',
     'astro_reference_list',
@@ -188,6 +189,8 @@ assert.match(recommended, /天文数据处理与虚拟天文台/);
 assert.match(recommended, /非盈利/);
 const novice = await tools.get('astro_novice_path').execute({ action: 'path' });
 assert.match(novice, /学习|新手/);
+const ppt = await tools.get('astro_ppt_outline').execute({ action: 'preview', sources: ['deep', 'plan'], title: 'v3.3 smoke' });
+assert.match(ppt, /v3.3 smoke|收藏|跨学科/);
 const deep = await tools.get('astro_deep_scan').execute({ action: 'scan', phase: '分析', domain: 'astrochemistry', limit: 4 });
 assert.match(deep, /盲点|检查问题/);
 const plan = await tools.get('astro_research_plan').execute({ action: 'add', title: 'v3 plan smoke', phase: '测试' });

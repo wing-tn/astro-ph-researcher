@@ -14,6 +14,10 @@
 | 离线 CLI | `scripts/astro-cli.mjs` |
 | 安装脚本 | `install-skills.sh` / `install-skills.ps1` |
 
+## PPT
+
+Codex 本身用 `dsh-ppt` / `dsh-ppt-maker` 的 skill 生成；本插件的「PPT 桥」是 DSH 专属（收藏文献/计划树/深度/新手 → Markdown → 交接）。Codex 侧可把 `deep`/`beginner` 的输出作为 PPT 大纲素材。
+
 ## 安装方式 A：作为 Codex 插件（推荐）
 
 前置：Codex CLI **0.149.0-alpha.4.3** 或支持 `.codex-plugin` 的版本；本机实测平台为 Windows + Codex CLI 0.149.0-alpha.4.3。

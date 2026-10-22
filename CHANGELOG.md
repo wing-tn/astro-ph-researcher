@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.3.0 — 2026-10-22
+
+### Added
+- 「PPT」页：收藏文献/计划树/深度/新手知识 → Markdown 预览。
+- 交接 dsh-ppt / dsh-ppt-maker 生成 HTML/可编辑 PPTX；提供插件 GitHub 链接。
+- `astro_ppt_outline` 工具与 `/ppt/*` API。
+- 复制/下载 Markdown；统一交接弹窗（当前/已有/新建）。
+
 ## 3.2.0 — 2026-10-22
 
 ### Added
