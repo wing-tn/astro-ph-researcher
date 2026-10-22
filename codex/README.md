@@ -9,8 +9,8 @@
 | 内容 | 路径 |
 |---|---|
 | Codex 插件清单 | `.codex-plugin/plugin.json` |
-| 9 个 skill | 文献/代码/英文期刊/学位论文 + 写作目标/发现/批判/增量方法 + v3 研究流程（含计划树） |
-| 数据 | `data/`：29 术语、14 期刊、21 高校/院所格式、34 方法 + 9 统计、30 观测设施、10 写作目标、8 推荐书籍、文件格式/分析工具、研究计划模板 |
+| 9 个 skill | 文献/代码/英文期刊/学位论文 + 写作目标/发现/批判/增量方法 + v3.1 研究流程（含计划树与盲点审查） |
+| 数据 | `data/`：29 术语、14 期刊、21 高校/院所格式、34 方法 + 9 统计、30 观测设施、10 写作目标、8 推荐书籍、文件格式/分析工具、研究计划模板、8 个深度/交叉学科领域 |
 | 离线 CLI | `scripts/astro-cli.mjs` |
 | 安装脚本 | `install-skills.sh` / `install-skills.ps1` |
 
@@ -29,7 +29,7 @@ codex plugin list
 应看到：
 
 ```text
-astro-ph-researcher@astro-ph-researcher-local  installed, enabled  3.0.0
+astro-ph-researcher@astro-ph-researcher-local  installed, enabled  3.1.0
 ```
 
 然后在 Codex 中按命名空间调用 skill：
@@ -74,6 +74,7 @@ node scripts/astro-cli.mjs thesis 北京大学
 node scripts/astro-cli.mjs goal refutation
 node scripts/astro-cli.mjs recommended 赵永恒
 node scripts/astro-cli.mjs plan > research-plan.json
+node scripts/astro-cli.mjs deep astrochemistry
 ```
 
 输出默认是人类可读文本，加 `--json` 输出结构化数据。
@@ -113,7 +114,7 @@ codex plugin add astro-ph-researcher@astro-ph-researcher-local --json
 # {"pluginId":"astro-ph-researcher@astro-ph-researcher-local","version":"1.0.0",...}
 
 codex plugin list
-# astro-ph-researcher@astro-ph-researcher-local  installed, enabled  3.0.0
+# astro-ph-researcher@astro-ph-researcher-local  installed, enabled  3.1.0
 ```
 
 > 插件清单按 Codex `.codex-plugin/plugin.json` 文档实现；GitHub 上不同 Codex 版本的插件系统可能有差异，安装失败时请附 `codex --version` 和错误信息。

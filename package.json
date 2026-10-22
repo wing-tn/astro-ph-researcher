@@ -1,7 +1,7 @@
 {
   "name": "astro-ph-researcher",
-  "version": "3.0.0",
-  "description": "astro-ph-researcher v3.0：DSH/Codex 天文工作台；新增可换主题/本地背景、研究计划树、对话框下方应用与 Skill 选择、交接目标弹窗；保留 34 方法、推荐书籍、逐节写作/评分/作者确认、物理书目、文件格式与分析工具。",
+  "version": "3.1.0",
+  "description": "astro-ph-researcher v3.1：DSH/Codex 天文工作台；新增深度/交叉学科盲点扫描、主题/本地背景、研究计划树、输入框应用与 Skill 选择、交接目标弹窗；保留 34 方法、推荐书籍、逐节写作/评分/作者确认、物理书目、文件格式与分析工具。",
   "author": "天外奇航 (@hyperskysail) <1253932197@qq.com>",
   "contributors": [
     "天外奇航 (@hyperskysail, GXU-CN)"

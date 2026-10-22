@@ -67,6 +67,10 @@ function recommendedBooks() {
   return readJson('recommended-books.seed.json').books ?? [];
 }
 
+function deepData() {
+  return readJson('deep-prompts.seed.json');
+}
+
 function planTemplate() {
   return readJson('research-plan-template.json');
 }
@@ -211,6 +215,19 @@ if (command === 'stats') {
 } else if (command === 'recommended' || command === 'books') {
   const rows = recommendedBooks().filter((item) => matches([item.id, item.title, ...(item.authors ?? []), item.publisher, item.domain].join(' '), query));
   output(rows, rows.length ? rows.map(printRecommended).join('\n\n---\n\n') : 'no matching recommended book');
+} else if (command === 'deep' || command === 'cross') {
+  const data = deepData();
+  const domains = (data.domains ?? []).filter((d) => matches([d.name, d.id, d.summary, ...(d.questions ?? [])].join(' '), query));
+  const prompts = (data.prompts ?? []).filter((p) => matches([p.title, p.prompt, p.why, p.phase, p.level].join(' '), query));
+  output({ notice: data.notice, domains, prompts }, [
+    data.notice,
+    '',
+    '## 交叉学科领域',
+    ...domains.map((d) => `- ${d.name}（${d.kind}）：${d.summary}`),
+    '',
+    '## 深度检查问题',
+    ...prompts.map((p) => `- [${p.phase}/${p.level}] ${p.title}\n  ${p.prompt}`),
+  ].filter(Boolean).join('\n'));
 } else if (command === 'plan') {
   const template = planTemplate();
   output(template, JSON.stringify(template, null, 2));
@@ -218,6 +235,6 @@ if (command === 'stats') {
   const rows = id ? writingGoals().filter((item) => item.id === id) : writingGoals().filter((item) => matches([item.id, item.nameZh, item.nameEn, ...(item.aliases ?? [])].join(' '), query));
   output(rows, rows.length ? rows.map(printGoal).join('\n\n---\n\n') : 'no matching writing goal');
 } else {
-  console.error('usage: node scripts/astro-cli.mjs [stats|term|method|statistics|instrument|journal|thesis|goal|recommended|plan] [query] [--json] [--id ID]');
+  console.error('usage: node scripts/astro-cli.mjs [stats|term|method|statistics|instrument|journal|thesis|goal|recommended|plan|deep] [query] [--json] [--id ID]');
   process.exit(2);
 }
