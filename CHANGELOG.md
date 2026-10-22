@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.4.0 — 2026-10-22
+
+### Added
+- Complete bilingual Codex web workbench: writing projects and ten section editors, nine-step learning progress, research plans, methods/resources, research checks and Markdown briefing exports.
+- English default launcher/package guide, Chinese/English UI preference, and full local workspace backups.
+- Native Codex project top-bar action templates and an installer preserving existing project configuration.
+- Thirteen UI/API tests and a Windows/Linux Node 22/24 CI workflow.
+
+### Preserved and clarified
+- Original DSH integration, nine skill contents, offline CLI and seed data are retained.
+- Metadata checks and text heuristics do not validate scientific conclusions. Writing and slide features prepare handoffs; they do not silently call a model or export PPTX.
+- The native entry is project-scoped; installing a skill/plugin does not promise a global Codex sidebar button.
+
+
 ## 3.3.0 — 2026-10-22
 
 ### Added

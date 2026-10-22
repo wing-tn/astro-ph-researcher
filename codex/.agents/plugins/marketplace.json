@@ -1,0 +1,1 @@
+{"name":"astro-ph-researcher-local","interface":{"displayName":"astro-ph-researcher (local)"},"plugins":[{"name":"astro-ph-researcher","source":{"source":"local","path":"."},"policy":{"installation":"AVAILABLE","authentication":"ON_USE","products":["CODEX"]},"category":"Productivity"}]}

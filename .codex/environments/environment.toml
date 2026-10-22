@@ -1,0 +1,15 @@
+version = 1
+name = "Astro Research Workbench"
+
+[setup]
+script = ""
+
+[[actions]]
+name = "打开 Astro 工作台"
+icon = "run"
+command = "node codex/scripts/open-ui.mjs --lang zh"
+
+[[actions]]
+name = "Open Astro Workbench"
+icon = "run"
+command = "node codex/scripts/open-ui.mjs --lang en"

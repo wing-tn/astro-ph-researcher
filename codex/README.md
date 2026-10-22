@@ -1,129 +1,53 @@
-# astro-ph-researcher · Codex 版
+# Astro 天文研究工作台 3.4.0
 
-把 `astro-ph-researcher` 的天文术语、文献方法、写作规范与数据工作流带给 **OpenAI Codex CLI**。
+这是在原插件基础上补齐的 Codex 本地可视化工作台。需要 **Node.js 22+**，无需安装 npm 依赖，不要求 DSH 运行时，不依赖付费模型 API。
 
-这个目录是 **Codex 插件 + 9 个 Agent Skills + 只读数据 + 研究计划模板 + 离线查询 CLI**。它不依赖 DSH 运行时；DSH 的 `astro_*` 工具在 Codex 中不可用，因此这里用 `scripts/astro-cli.mjs` 和本地 `data/` 代替。
+## 启动与主界面按钮
 
-## 包含什么
+Windows 双击 `start-ui.cmd` 可在终端运行；双击 `start-ui-en.cmd` 可直接打开英文界面。也可运行 `node scripts/open-ui.mjs --lang zh`，自动复用/启动后台服务并打开网页。使用 Codex 浏览器面板时，打开启动器打印的真实地址。
 
-| 内容 | 路径 |
-|---|---|
-| Codex 插件清单 | `.codex-plugin/plugin.json` |
-| 9 个 skill | 文献/代码/英文期刊/学位论文 + 写作目标/发现/批判/增量方法 + v3.1 研究流程（含计划树与盲点审查） |
-| 数据 | `data/`：29 术语、14 期刊、21 高校/院所格式、34 方法 + 9 统计、30 观测设施、10 写作目标、8 推荐书籍、文件格式/分析工具、研究计划模板、9 步新手路径、9 个深度/交叉学科领域 |
-| 离线 CLI | `scripts/astro-cli.mjs` |
-| 安装脚本 | `install-skills.sh` / `install-skills.ps1` |
+给每位用户提供的原生快捷入口是 **Codex 主界面顶栏的项目操作按钮**，不是置顶聊天，也不声称是全局侧栏按钮。
 
-## PPT
+1. 将插件解压到稳定位置，不要随后删除或移动该目录。
+2. Windows 双击 `install-button-zh.cmd`，输入平时在 Codex 打开的项目目录。跨平台也可运行：
 
-Codex 本身用 `dsh-ppt` / `dsh-ppt-maker` 的 skill 生成；本插件的「PPT 桥」是 DSH 专属（收藏文献/计划树/深度/新手 → Markdown → 交接）。Codex 侧可把 `deep`/`beginner` 的输出作为 PPT 大纲素材。
-
-## 安装方式 A：作为 Codex 插件（推荐）
-
-前置：Codex CLI **0.149.0-alpha.4.3** 或支持 `.codex-plugin` 的版本；本机实测平台为 Windows + Codex CLI 0.149.0-alpha.4.3。
-
-```bash
-git clone https://github.com/wing-tn/astro-ph-researcher.git astro-ph-researcher
-cd astro-ph-researcher
-codex plugin marketplace add .
-codex plugin add astro-ph-researcher@astro-ph-researcher-local
-codex plugin list
+```sh
+node scripts/install-action.mjs --project "你的项目目录" --lang zh
 ```
 
-应看到：
+3. 在 Codex 中重新打开该项目，使用顶栏的 **打开 Astro 工作台** 操作。
 
-```text
-astro-ph-researcher@astro-ph-researcher-local  installed, enabled  3.1.0
-```
+安装器只在该项目 `.codex/environments/environment.toml` 中追加按钮，保留已有配置并先备份；重复安装不重复添加。它不会改全局 Codex 配置，不会跳过信任确认。若已有 Astro 按钮、但插件目录移动了，请更新按钮的命令路径。机器专属绝对路径不宜原样提交给其他用户。
 
-然后在 Codex 中按命名空间调用 skill：
+源码包和独立包都附带可共享的相对路径配置；把解压目录直接作为 Codex 项目打开，也可使用其顶栏操作。按钮的配置和启动器已测试；宿主是否发现并显示该配置，取决于 Codex 桌面版。只安装 skill/插件，不能保证自动创建全局按钮。依据：[官方本地环境/操作说明](https://learn.chatgpt.com/docs/environments/local-environment)。
 
-```text
-Use $astro-ph-researcher:astro-literature-research to build a verifiable reading list for ...
-Use $astro-ph-researcher:astro-code-writing to write a reproducible Python analysis for ...
-```
+## 网页已接入的功能
 
-> 插件安装到 Codex 缓存后，修改 `codex/` 下的文件不会自动更新；需要：
-> `codex plugin remove astro-ph-researcher@astro-ph-researcher-local`，再 `codex plugin add ...`。
+- 文献检索与阅读清单：Crossref/arXiv、筛选、题录核验、去重、来源快照、笔记与三种导出。
+- 写作工作台：期刊/学位项目、10 种写作目标、期刊/学校资料、作者材料与文本导入、10 个章节编辑器、启发式检查、作者确认、Markdown 导出和写作交接。
+- 新手路径：原插件的九步研究流程；笔记、检查项与进度本地保存。
+- 研究计划：任务、上级依赖、状态、来源和交付物；阻止循环依赖。
+- 方法与设备库：34 方法、9 统计、30 设施、工具、公开源表和 8 条推荐书目。
+- 跨学科检查：9 个方向的提问与本地检查笔记。
+- 汇报大纲：将阅读清单与计划整理为 Markdown，供演示文稿工具接续制作。
+- 设置：中英文界面切换、完整工作区备份。
 
-## 安装方式 B：只装 skills
+## 语言、模型与科研边界
 
-如果不想启用插件，只用 9 个 skill：
+顶栏和设置页均可切换中英文，浏览器会记住选择。切换不会改写论文正文、个人笔记和科学元数据。英文版提供新手路径及研究检查的英文配套内容；方法、设备等详细原始资料保留原语言，并明确标注。
 
-### Windows PowerShell
+网页不会自行调用模型写论文，而是根据真实项目材料生成可复制到 Codex 的交接提示词。汇报导出是 **Markdown，不是 PPTX**。启发式评分不验证科学正确性；四项作者确认必须由本人完成，正文修改后旧确认和评分自动失效。题录核验不等于同行评议、结论或撤稿状态核验；投稿前须检查当年官方格式指南。
 
-```powershell
-.\codex\install-skills.ps1
-```
+## 数据和升级
 
-### macOS / Linux
+本地数据为 `ui/local-data/library.json` 与 `ui/local-data/workbench.json`，与原 DSH 库独立。设置 `ASTRO_UI_LIBRARY` 时，工作台文件放在该文件的同目录。每个数据库目录只运行一个写入进程。
 
-```bash
-bash codex/install-skills.sh
-```
+升级前在设置页备份。恢复时先停服务并备份旧文件，再将完整备份中的 `library` 与 `workspace` 对象分别写回上述两个文件。发布包不含运行时个人数据。原有 9 个 skills、离线 CLI 和 DSH 功能仍保留。
 
-默认复制到 `${CODEX_HOME:-$HOME/.codex}/skills/`。这会让 Codex 能发现 `SKILL.md`，但不会自动附带数据 CLI；需要数据时把本仓库 `codex/` 放在旁边，或使用方式 A。
+英文说明见 [README.en.md](README.en.md)，发布与验收说明见 [VALIDATION.md](VALIDATION.md)。
 
-## 离线 CLI
+## 声明与反馈
 
-```bash
-cd codex
-node scripts/astro-cli.mjs stats
-node scripts/astro-cli.mjs term redshift
-node scripts/astro-cli.mjs method --id lomb-scargle
-node scripts/astro-cli.mjs statistics --json
-node scripts/astro-cli.mjs instrument FAST
-node scripts/astro-cli.mjs journal ApJ
-node scripts/astro-cli.mjs thesis 北京大学
-node scripts/astro-cli.mjs goal refutation
-node scripts/astro-cli.mjs recommended 赵永恒
-node scripts/astro-cli.mjs plan > research-plan.json
-node scripts/astro-cli.mjs deep astrochemistry
-node scripts/astro-cli.mjs beginner
-```
+设置页“关于与声明”可查看版权、AIGC、免责、非盈利立场及致谢，并下载完整声明。软件仍采用原 MIT 许可，非盈利维护不等于新增禁止商业使用限制。详见 [DISCLAIMER.md](DISCLAIMER.md)。
 
-输出默认是人类可读文本，加 `--json` 输出结构化数据。
-
-## 八个 skill 怎么用
-
-| 场景 | skill |
-|---|---|
-| 文献检索、综述、引用链、ADS/SciX/arXiv 检索式 | `astro-literature-research` |
-| Python 数据分析、astropy 单位、统计、MCMC、复现 | `astro-code-writing` |
-| 英文期刊论文、标题/摘要/引言/图表/返修 | `astro-english-journal-writing` |
-| 中文学位论文、学校格式、GB/T 7714、查重/答辩 | `astro-phd-thesis-writing` |
-| 选写作目标/叙述风格（发现/反驳/增量/上限等） | `astro-writing-goals` |
-| 首次发现、确认、多信使 | `astro-discovery-writing` |
-| 批判/反驳、零结果/上限 | `astro-critical-writing` |
-| 跟进增量、方法软件、巡天、理论、综述 | `astro-incremental-method-writing` |
-| v2 逐节写作/评分/作者确认/格式/工具 | `astro-research-workflow` |
-
-每个 skill 顶部都有一段 **Codex 适配说明**：`astro_*`、`pyenv_*`、`dsh-*` 是 DSH 工具名，在 Codex 中用本地 CLI/系统 Python 代替，禁止伪造工具调用。
-
-## 数据来源与边界
-
-- 方法库只保留通用技术知识与独立 Python 示例，不包含书籍/章节/ISBN 元数据。
-- 观测设备：30 个 curated 设施；25 个链接 `verified:true`，5 个（H.E.S.S.、eROSITA DR1、LHAASO、SKA、ELT）标 `verified:false`，以官方页面为准。
-- 不抓取付费全文、不绕过数据专有期/登录；不把在建/规划设施当成已运行数据源。
-- SCI 收录状态无法精确判定；知网只给人工检索链接。
-
-## 已验证
-
-本机 Codex CLI 0.149.0-alpha.4.3：
-
-```text
-codex plugin marketplace add .
-# {"marketplaceName":"astro-ph-researcher-local","installedRoot":"...","alreadyAdded":false}
-
-codex plugin add astro-ph-researcher@astro-ph-researcher-local --json
-# {"pluginId":"astro-ph-researcher@astro-ph-researcher-local","version":"1.0.0",...}
-
-codex plugin list
-# astro-ph-researcher@astro-ph-researcher-local  installed, enabled  3.1.0
-```
-
-> 插件清单按 Codex `.codex-plugin/plugin.json` 文档实现；GitHub 上不同 Codex 版本的插件系统可能有差异，安装失败时请附 `codex --version` 和错误信息。
-
-## 许可
-
-MIT。作者：天外奇航（@hyperskysail，1253932197@qq.com，GXU-CN）。
+**用户反馈 QQ 交流群：1126615665** · 邮箱：1253932197@qq.com。

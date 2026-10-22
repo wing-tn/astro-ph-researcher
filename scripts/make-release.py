@@ -13,12 +13,15 @@ TGZ = DIST / f"astro-ph-researcher-{VERSION}.tar.gz"
 
 INCLUDE = [
     ".agents",
+    ".codex",
     ".github",
+    ".gitignore",
     "AUTHORS.md",
     "CHANGELOG.md",
     "CITATION.cff",
     "LICENSE",
     "README.md",
+    "README.en.md",
     "RELEASE_NOTES.md",
     "ACKNOWLEDGMENTS.md",
     "PRIVACY.md",
@@ -39,7 +42,7 @@ INCLUDE = [
     "skills",
     "test",
 ]
-EXCLUDE_DIRS = {".venv", "node_modules", ".git", "dist", "provenance", "research", ".dict-test"}
+EXCLUDE_DIRS = {".venv", "node_modules", ".git", "dist", "release", "local-data", "provenance", "research", ".dict-test"}
 
 
 def files():
@@ -54,6 +57,8 @@ def files():
             if not child.is_file():
                 continue
             if any(part in EXCLUDE_DIRS for part in child.relative_to(ROOT).parts):
+                continue
+            if child.name == '.env' or child.name.startswith('.env.') or child.suffix in {'.log', '.bak', '.pem', '.key'}:
                 continue
             yield child
 

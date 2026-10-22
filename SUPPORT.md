@@ -1,59 +1,26 @@
-# 支持 astro-ph-researcher
+# 支持、反馈与交流 / Support and feedback
 
-`astro-ph-researcher` 是免费、开源的插件。功能不收费、不设付费墙、不卖“优先支持”或“解锁功能”。
+**用户反馈 QQ 交流群：1126615665**
 
-如果它帮你节省了时间，可以**自愿打赏**，用于维护、文档、测试设备与未来的服务成本（例如可选的在线索引/镜像）。打赏不是购买，不构成服务合同，也不保证任何响应时间或功能承诺。
+- 邮箱：1253932197@qq.com
+- 问题追踪：[GitHub Issues](https://github.com/wing-tn/astro-ph-researcher/issues)
 
-## 方式一：GitHub Sponsors / 支持页
+欢迎报告 bug、失效链接、资料错误、版权/许可疑问与功能建议。请说明版本、系统、操作步骤、实际结果和预期结果；必要时提供不含敏感内容的截图或最小示例。
 
-本仓库的 [`.github/FUNDING.yml`](.github/FUNDING.yml) 指向 [`SUPPORT.md`](SUPPORT.md)。GitHub 仓库页会出现 **Sponsor** 按钮。
+## 免费与非盈利维护
 
-> `FUNDING.yml` 中的 URL 必须是 HTTPS 页面；微信/支付宝的收款二维码图片不能直接作为 URL。推荐做法：在本仓库的 `SUPPORT.md` 或 GitHub Pages 放收款码，再把这个页面填进 `FUNDING.yml`。
+astro-ph-researcher 由作者以学习、科研交流和开放科学为目的维护。现有功能免费、开源，不设置付费解锁，不承诺付费审稿、发表或科研结果。
 
-## 方式二：微信 / 支付宝收款码
+若作者以后开放自愿支持渠道，支持应出于自愿，可用于维护、测试、文档和必要服务成本；支持不等于购买功能、优先响应、固定交付日期或特定科研结果。当前文档没有提供未经作者确认的收款地址或占位付款链接。
 
-1. 在微信/支付宝中生成**个人收款码**（不要公开手机号、身份证、银行卡）。
-2. 把图片保存为：
-   ```text
-   assets/support/wechat.png
-   assets/support/alipay.png
-   ```
-3. 在下面替换占位图，并填写金额说明（建议写“任意金额，自愿”）：
+项目的非盈利立场不是慈善/非营利组织登记声明，不改变 MIT 许可下的使用权。详见 [项目声明](DISCLAIMER.md) 和 [LICENSE](LICENSE)。
 
-```markdown
-<!-- 放入收款码图片后取消注释；没有图片时不要取消，避免破图
-![微信收款码](../assets/support/wechat.png)
-![支付宝收款码](../assets/support/alipay.png)
--->
-```
+## 隐私与交流
 
-4. 不要制作“付款后解锁功能/优先审稿”的说明；这与开源免费承诺冲突。
+QQ群与公开 Issues 用于一般反馈。请避免公开密钥、token、未公开观测数据、手稿私密内容或其他敏感资料；使用最小复现材料。软件隐私说明见 [PRIVACY.md](PRIVACY.md)。维护者会在核实后更正问题，但不保证即时响应。
 
-如果你有官方商户/平台生成的 **HTTPS 支付页**，可以把链接放在这里（没有就删掉这几行，不要伪造）：
+## English
 
-```markdown
-- [微信支持](https://your-wechat-pay-page.example)
-- [支付宝支持](https://your-alipay-page.example)
-```
+**User feedback QQ group: 1126615665** · Email: 1253932197@qq.com · [GitHub Issues](https://github.com/wing-tn/astro-ph-researcher/issues).
 
-GitHub 的 `FUNDING.yml` 只接受 URL；个人收款码请用上面的图片方式。
-
-## 重要说明
-
-- **不是慈善募捐**：不要使用“捐款/公益/救灾”等措辞，除非你已完成相应法律登记。
-- **税务**：个人收到的打赏可能涉及个人所得税/经营所得；不同地区规则不同，请咨询当地税务专业人士，不要以本项目作为税务建议。
-- **平台规则**：微信/支付宝、GitHub 对收款码、赞助、商业推广各有条款；发布前自行确认。
-- **隐私**：不要在仓库中放手机号、身份证、家庭住址；收款码本身也可能关联实名信息，介意的话用昵称/专门账号。
-- **公司/机构**：如果以单位名义收款或开票，应走单位财务/对公账户，不要用个人码。
-- **服务器**：当前插件是本地优先，不依赖服务器；打赏不购买服务器访问权。未来若提供可选的在线服务，会单独说明数据/隐私/费用。
-
-## 资金用途（建议公开）
-
-- 维护与 bug 修复；
-- 数据更新（期刊/学校/设施链接核对）；
-- 测试设备、CI/存储；
-- 可选的在线镜像或索引服务。
-
-## 免责声明
-
-本项目按 MIT License 提供，不提供任何明示或暗示担保。打赏不改变许可证、不购买任何权利，也不构成对特定结果、交付时间或支持的承诺。
+Please include the version, platform, reproduction steps and a non-sensitive minimal example. Current features are free and open source, maintained on a non-profit basis. Voluntary support, if offered, does not purchase features, response deadlines, publication assistance or scientific results, and does not change the MIT License. Do not post credentials or private research material publicly.

@@ -1,7 +1,7 @@
 {
   "name": "astro-ph-researcher",
-  "version": "3.3.0",
-  "description": "astro-ph-researcher v3.3：DSH/Codex 天文工作台；新增 PPT 桥、新手循序教程、深度/交叉学科盲点扫描、主题/本地背景、研究计划树、输入框应用与 Skill 选择、交接弹窗；保留 34 方法、推荐书籍、写作/评分/作者确认、书目与格式。",
+  "version": "3.4.0",
+  "description": "astro-ph-researcher 3.4.0: bilingual Codex research workbench, literature checks, writing studio, beginner path, research plans and preserved DSH integration.",
   "author": "天外奇航 (@hyperskysail) <1253932197@qq.com>",
   "contributors": [
     "天外奇航 (@hyperskysail, GXU-CN)"
@@ -37,11 +37,15 @@
     "DISCLAIMER.md"
   ],
   "scripts": {
+    "ui": "node codex/ui/server.mjs",
+    "test:ui": "node --test codex/ui/test/*.test.mjs",
     "test": "node test/smoke.mjs && node test/dictionary.mjs && node test/references.mjs && node test/writing.mjs && node test/skills.mjs && node test/data-library.mjs && node test/thesis-fetcher.mjs && node test/migration.mjs && node test/formula-ui.mjs && node test/v2.mjs && node test/host-smoke.mjs && node test/client-smoke.mjs",
     "test:live": "node scripts/live-check.mjs",
     "build:demo": "node scripts/build-demo.mjs",
     "check:client": "node --check lib/client.js",
-    "check": "node --check lib/index.js && node --check lib/client.js && npm test"
+    "check": "node --check lib/index.js && node --check lib/client.js && npm test",
+    "ui:open": "node codex/scripts/open-ui.mjs --lang zh",
+    "ui:en": "node codex/scripts/open-ui.mjs --lang en"
   },
   "dsh": {
     "bundle": {

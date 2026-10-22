@@ -1,5 +1,15 @@
 # AGENTS.md · Codex 使用说明
 
+## 本地可视化文献窗口（新增）
+
+用户要求打开文献窗口时，从本目录运行 `node ui/server.mjs`（Node.js 22+）；服务只监听 `127.0.0.1`，默认地址 `http://127.0.0.1:4317`，可用 `--port 4318` 换端口。若有浏览器面板工具，用它打开服务实际打印的 URL；否则向用户提供该链接。复用已有服务，先检查 `/api/health`，不要重复占用同一端口。Windows 可双击 `start-ui.cmd`。
+
+3.4.0 窗口还提供写作项目与逐节编辑、作者确认、新手九步路径、研究计划、方法/设备库、跨学科检查和汇报 Markdown。中英文界面可切换；启动英文窗口用 `node scripts/open-ui.mjs --lang en`。
+
+用户要求主界面按钮时，用 `node scripts/install-action.mjs --project <用户项目目录> --lang zh|en` 安装项目操作入口；保留已有配置。该入口显示在支持本地操作的 Codex 桌面版顶栏，不能声称是全局侧栏按钮。不要通过置顶聊天冒充插件入口。源码附带 `.codex/environments/environment.toml`，项目打开时由宿主发现。
+
+文献库为 `ui/local-data/library.json`；写作、计划和进度为同目录 `workbench.json`。它们与 DSH 库分开，`ASTRO_UI_LIBRARY` 可指定文献文件路径，工作台文件随其目录存放。不要自动迁移或覆盖旧库。详情见 `README-3.4.zh.md` / `README.en.md`。网页不自动调用模型，写作和演示文稿为交接流程；评分不验证科学结论，作者确认须本人完成。
+
 本仓库的 `codex/` 是一个 **Codex CLI 插件**（`astro-ph-researcher`），同时提供 9 个 Agent Skills、只读数据和离线查询 CLI。
 
 ## 目录

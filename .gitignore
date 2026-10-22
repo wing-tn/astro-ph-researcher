@@ -2,9 +2,9 @@ node_modules/
 .venv/
 .dsh-pyenv/
 .DS_Store
-*.log
 .demo-*
 dist/
+release/
 provenance/raw/
 backups/*.zip
 provenance/*.zip
@@ -12,3 +12,6 @@ provenance/*.zip
 .env.*
 *.pem
 *.key
+codex/ui/local-data/
+*.log
+*.before-astro-*.bak

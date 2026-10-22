@@ -1,7 +1,7 @@
 {
   "name": "astro-ph-researcher",
-  "version": "3.3.0",
-  "description": "Astronomy workbench for Codex: NADC-validated terms, local references, journal/thesis guidance, ten goal-aware writing styles, research-plan templates, and observatory/data-workflow guides.",
+  "version": "3.4.0",
+  "description": "Bilingual local astronomy workbench for Codex: literature, writing, learning, research plans and evidence-aware workflows.",
   "author": {
     "name": "天外奇航",
     "email": "1253932197@qq.com"
@@ -24,8 +24,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "astro-ph-researcher",
-    "shortDescription": "天文术语、文献库、写作目标与观测数据工作流",
-    "longDescription": "面向天文学生与研究者的 Codex 插件：NADC 术语核验、文献检索与参考文献库、期刊/高校写作格式、10 个目标感知的写作风格（发现/确认/批判/增量/上限/方法/巡天/理论/多信使/综述）、34 个数据处理方法与 9 条统计原理、30 个观测设施的数据/软件/工作流。数据只读本地 JSON；不抓取付费全文、不绕过数据专有期。",
+    "shortDescription": "双语天文工作台：文献、写作、新手、计划与研究资料",
+    "longDescription": "3.4.0 为 Codex 提供本地双语窗口：文献检索与核验、写作项目、逐节编辑、作者确认、新手路径、研究计划、方法设备库和汇报 Markdown；附项目顶栏按钮安装器。保留原 DSH 与 9 个 skills。",
     "developerName": "天外奇航",
     "category": "Productivity",
     "capabilities": [

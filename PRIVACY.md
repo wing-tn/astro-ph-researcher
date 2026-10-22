@@ -1,43 +1,29 @@
 # 隐私说明 / Privacy
 
-## 默认本地
+版本：3.4.0 · 更新：2026-10-22
 
-`astro-ph-researcher` 默认把以下数据保存在**本机**：
+## Codex 工作台的本地数据
 
-```text
-%USERPROFILE%\.dsh\astro-ph-researcher\
-  terms.json / config.json / references.json / projects.json / formats/
-```
+默认保存在 `codex/ui/local-data/`：
 
-这些数据不上传到本项目服务器（本项目没有服务器），也不含遥测/统计 SDK。
+- `library.json`：阅读清单、题录核验、笔记与检索快照。
+- `workbench.json`：写作项目、正文、新手进度、计划和研究检查笔记。
+- 浏览器语言偏好：仅保存中文/英文的选择。
 
-## 外部网络请求
+`ASTRO_UI_LIBRARY` 可指定文献库文件；`workbench.json` 随其目录存放。原 DSH 版继续使用其原有数据目录，两者不会自动合并。设置中的完整备份包含上述研究内容，分享前请自行检查。
 
-只有你主动检索/下载/查询时，插件才会访问：
+## 网络请求与模型交接
 
-- 国家天文台 NADC（术语/词表）；
-- OpenAlex / Crossref / NASA ADS / arXiv 等文献元数据；
-- 你选择抓取的学校/期刊/设施官方页面；
-- 公开目录/工具官方页面（仅在你点击链接时由浏览器打开）。
+主动检索或核验时，Codex 文献窗口会把检索词或公开 DOI/arXiv ID 发送给 Crossref/arXiv。请求也会向对方暴露网络地址及常规请求头。手动点击 ADS、SciX、CNKI、NADC、期刊、设备和工具链接时，由浏览器访问相应站点，其隐私规则另行适用。原 DSH 功能的可选联网来源仍包括原配置支持的 OpenAlex、ADS 等服务。
 
-请求可能携带你的查询词、IP、User-Agent；这是任何网络请求都无法避免的。  
-HTTPS 由目标站点与运行环境提供；插件不绕过证书校验。
+Codex 窗口把个人笔记和手稿保存在本地，不含广告或遥测 SDK。写作与汇报按钮生成可复制的交接提示词；将其发送到 Codex 或其他 AI 服务时，用户应遵循相应服务的数据政策。导入文本文件只读取用户主动选择的文件。
 
-## 不会做的事
+## 反馈
 
-- 不自动上传你的术语本、文献库、手稿、本机文件；
-- 不运行网页/下载文件中的脚本；
-- 不在后台扫描本机磁盘；
-- 不内置遥测或广告；
-- 不把 API key/token 写进日志或返回给 UI。
+隐私问题：1253932197@qq.com。一般反馈 QQ 交流群：**1126615665**。公开交流使用不含密钥、未公开数据或私密手稿的最小示例。
 
-## 你可以做的
+## English
 
-- 不填真实邮箱也能用大部分功能（邮箱只用于 OpenAlex/Crossref 礼貌池）；
-- 用系统磁盘加密保护本地数据；
-- 定期备份 `astro-ph-researcher` 目录；
-- 不把 `provenance/raw/` 或含个人路径的日志公开。
+The Codex UI stores reading lists, drafts, learning progress, plans and notes locally in `library.json` and `workbench.json`. The browser retains the interface-language preference. Search/verification sends the chosen query or identifier to Crossref/arXiv; manual links are handled by the browser and destination services. The local UI includes no advertising or telemetry SDK and prepares prompts rather than calling a model. Sending a handoff to an AI service is governed by that service's data policy. Backups may contain private research material.
 
-## 联系
-
-隐私问题：1253932197@qq.com
+Privacy contact: 1253932197@qq.com. General user feedback QQ group: **1126615665**.
