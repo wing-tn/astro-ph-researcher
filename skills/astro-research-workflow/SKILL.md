@@ -1,6 +1,6 @@
 ---
 name: astro-research-workflow
-description: "v2 研究/写作流程：文献与章节评分、逐节写作、作者本人确认、物理书目、文件格式（FITS/Fermi XML 等）、3ML/AM³/SED/DS9 引导与公开源表。"
+description: "v3 研究/写作流程：文献与章节评分、逐节写作、作者本人确认、物理书目、文件格式（FITS/Fermi XML 等）、3ML/AM³/SED/DS9 引导与公开源表。"
 whenToUse: "用户要按章节推进论文、给文献/章节打分、作者确认、查文件格式、使用 3ML/AM³/SED/DS9 或公开源表时加载。"
 metadata:
   domain: astronomy
@@ -69,7 +69,25 @@ todo → ai_draft → author_editing → needs_evidence
 Fermi 4FGL/3FHL、Swift/XRT、Chandra、XMM、Gaia、SDSS、NED/SIMBAD/VizieR。  
 只走官方 API/TAP/VizieR；缓存版本/许可/坐标历元；交叉匹配报半径/误差/误配率。
 
-## 7. 工具
+## 8. 研究计划树
+
+把问答中**已确认**的信息整理成树，而不是把整段对话倒进去：
+
+```text
+科学问题
+├── 文献证据链（DOI/样本/方法/结论）
+├── 数据与选择函数（版本/曝光/能段/系统误差）
+├── 分析与零假设（统计量/显著性/复现命令）
+└── 写作与投稿（期刊/格式/图/作者确认）
+```
+
+- 节点字段：`title / parentId / phase / status(todo|doing|done|blocked) / note / source / tags`。
+- 只记录可核验的结论；推测标 `todo`，未复现标 `blocked`。
+- DSH 中打开「数据 → 计划」保存/导出；Codex 中用 `codex/data/research-plan-template.json` 生成本地 JSON/Markdown。
+- 导出 `research-plan.md` / `research-plan.json` 随项目保存；不要提交含个人路径的原始计划。
+- 计划树不是论文结果；最终数字/引用仍由作者逐项确认。
+
+## 9. 工具
 
 - `astro_literature_score`
 - `astro_section_workflow`

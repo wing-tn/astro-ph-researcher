@@ -67,6 +67,10 @@ function recommendedBooks() {
   return readJson('recommended-books.seed.json').books ?? [];
 }
 
+function planTemplate() {
+  return readJson('research-plan-template.json');
+}
+
 function writingGoals() {
   return readJson('writing-goals.seed.json').goals ?? [];
 }
@@ -207,10 +211,13 @@ if (command === 'stats') {
 } else if (command === 'recommended' || command === 'books') {
   const rows = recommendedBooks().filter((item) => matches([item.id, item.title, ...(item.authors ?? []), item.publisher, item.domain].join(' '), query));
   output(rows, rows.length ? rows.map(printRecommended).join('\n\n---\n\n') : 'no matching recommended book');
+} else if (command === 'plan') {
+  const template = planTemplate();
+  output(template, JSON.stringify(template, null, 2));
 } else if (command === 'goal' || command === 'style') {
   const rows = id ? writingGoals().filter((item) => item.id === id) : writingGoals().filter((item) => matches([item.id, item.nameZh, item.nameEn, ...(item.aliases ?? [])].join(' '), query));
   output(rows, rows.length ? rows.map(printGoal).join('\n\n---\n\n') : 'no matching writing goal');
 } else {
-  console.error('usage: node scripts/astro-cli.mjs [stats|term|method|statistics|instrument|journal|thesis|goal|recommended] [query] [--json] [--id ID]');
+  console.error('usage: node scripts/astro-cli.mjs [stats|term|method|statistics|instrument|journal|thesis|goal|recommended|plan] [query] [--json] [--id ID]');
   process.exit(2);
 }

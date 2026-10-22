@@ -1,0 +1,57 @@
+{
+  "version": "3.0",
+  "title": "我的研究计划",
+  "goal": "一句话写清要回答的科学问题",
+  "nodes": [
+    {
+      "id": "root-question",
+      "parentId": null,
+      "title": "科学问题与可证伪预言",
+      "phase": "问题",
+      "status": "todo",
+      "note": "写出问题、样本、观测量、判据；明确什么结果会推翻它。",
+      "source": "",
+      "tags": ["问题"]
+    },
+    {
+      "id": "literature",
+      "parentId": "root-question",
+      "title": "文献证据链",
+      "phase": "文献",
+      "status": "todo",
+      "note": "每篇文献记录 DOI/样本/方法/结论/与你工作的关系。",
+      "source": "",
+      "tags": ["文献"]
+    },
+    {
+      "id": "data",
+      "parentId": "root-question",
+      "title": "数据与选择函数",
+      "phase": "数据",
+      "status": "todo",
+      "note": "数据来源、版本、曝光/能段/样本选择、系统误差。",
+      "source": "",
+      "tags": ["数据"]
+    },
+    {
+      "id": "analysis",
+      "parentId": "root-question",
+      "title": "分析与零假设",
+      "phase": "分析",
+      "status": "todo",
+      "note": "方法、统计量、零假设、显著性、系统误差与复现命令。",
+      "source": "",
+      "tags": ["分析"]
+    },
+    {
+      "id": "writing",
+      "parentId": "root-question",
+      "title": "写作与投稿",
+      "phase": "写作",
+      "status": "todo",
+      "note": "目标期刊/学校格式、图、引用、作者确认四项。",
+      "source": "",
+      "tags": ["写作"]
+    }
+  ]
+}

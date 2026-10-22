@@ -1,4 +1,4 @@
-# astro-ph-researcher v2.0.0
+# astro-ph-researcher v3.0.0
 
 **发布日期**：2026-10-22  
 **许可**：MIT  
@@ -11,61 +11,60 @@
 - NADC 审定术语核验 + 本地术语本；
 - 文献检索、参考文献库与 BibTeX/APA/GB 7714 引用；
 - 14 个天文期刊 + 21 个中国高校/中科院院所学位论文格式；
-- 10 种目标感知写作风格（发现/确认/反驳/增量/上限/方法/巡天/理论/多信使/综述）；
-- 学位论文格式/模板本地抓取、上传与 DOCX/TXT/ZIP 解析；
-- 27 个数据处理方法 + 9 条统计原理；
-- 30 个观测设施的数据、软件与工作流入口；
-- 8 个 Agent Skills，DSH 与 Codex 双版本；
-- 方法/统计/术语公式用本地 KaTeX 编译显示，每个公式可复制 LaTeX 源码。
-- 逐节写作、6 维评分、作者确认台账、文件格式百科、物理书目、3ML/AM³/SED/DS9 引导。
-- 术语公式增至 15 个；公式资源支持 HEAD/自检/失败回退。
+- 10 种目标感知写作风格；
+- 34 个数据处理/统计方法 + 9 条统计原理；
+- 30 个观测设施、8 本推荐书籍、文件格式/分析工具；
+- 9 个 Agent Skills，DSH 与 Codex 双版本；
+- **v3 新增**：6 套主题、自定义底色、本地背景图、高对比模式；
+- **v3 新增**：研究计划树（本地保存、导出 Markdown/JSON、记录对话选中信息）；
+- **v3 新增**：对话框下方应用/Skill 选择工具条；
+- **v3 新增**：交接弹窗（当前/已有/新建对话 + 设置）；
+- **v3 新增**：Codex 研究计划模板与 `plan` CLI。
 
 ## 安装
 
+### DSH
+
 ```bash
-git clone https://github.com/hyperskysail/astro-ph-researcher.git
+git clone https://github.com/wing-tn/astro-ph-researcher.git
 cd astro-ph-researcher
 dsh plugin --profile desktop add .
 ```
 
-完全重启 DSH 后，侧栏出现「天文术语」；设置页显示 `astro-ph-researcher v2.0.0`。
+完全重启 DSH 后，侧栏出现「天文术语」；设置页显示 `astro-ph-researcher v3.0.0`。
+
+### Codex
+
+```bash
+git clone https://github.com/wing-tn/astro-ph-researcher.git
+cd astro-ph-researcher
+codex plugin marketplace add .
+codex plugin add astro-ph-researcher@astro-ph-researcher-local
+```
+
+## v3 变化
+
+- 外观主题与高对比；背景色/本地图片；面板宽度与缩放。
+- 「计划」标签页：研究计划树；节点状态/阶段/证据；记录选中；导出。
+- 输入框下方工具条：计划、记录选中、外观、应用、Skill。
+- 「交给 DSH」不再直接发送：先选当前/已有/新建对话与设置。
+- Codex：`research-plan-template.json`、`node codex/scripts/astro-cli.mjs plan`。
 
 ## 从旧版升级
 
-- 新包名：`astro-ph-researcher`。
+- 包名保持 `astro-ph-researcher`。
 - 首次启动自动把 `$DSH_HOME/astro-words` 迁移到 `$DSH_HOME/astro-ph-researcher`。
 - 旧 DSH bundle `dsh-astro-words` 需要卸载；旧 Codex 插件也需要移除后重装。
-- 路由改为 `/api/astro-ph-researcher/*`；工具名 `astro_*` 保持不变。
+- 路由保持 `/api/astro-ph-researcher/*`；工具名 `astro_*` 保持。
 
 ## 验证
 
-```bash
-npm test
-```
-
-覆盖：术语/词表、文献库、写作项目、8 个 skill、数据方法/设施、格式抓取、迁移、Host、Client。
-
-## 已知边界
-
-- 示例论文只作写作结构参考，不是引用许可；DOI 使用前请核验。
-- PDF/DOC 格式材料需要 DSH 阅读；插件不内置 PDF 文字抽取。
-- 部分高校格式需登录/验证码，插件不绕过；请手动下载后上传。
-- 写作风格是修辞结构归纳，不保证审稿结果。
-- 当前本地优先，无服务器依赖。
-
-## 支持
-
-免费、开源、不盈利。自愿打赏入口见 [SUPPORT.md](SUPPORT.md)；功能不设付费墙，打赏不购买优先支持或任何权利。
-
-## 校验
-
 ```text
-dist/astro-ph-researcher-1.0.0.zip
-dist/SHA256SUMS
+host-smoke: 26 tools, routes, plan store
+client-smoke: sidebar + overlay + composer.input.left + composer.dock
+formula-ui: 56 formulas
+v2 core: sections/scoring/confirmation/libraries
+data-library: 34 methods / 30 instruments
 ```
 
-下载后：
-
-```bash
-sha256sum -c SHA256SUMS
-```
+完整包说明见 [README.md](README.md)；版权/隐私/安全见 [DISCLAIMER.md](DISCLAIMER.md)、[PRIVACY.md](PRIVACY.md)、[SECURITY.md](SECURITY.md)。

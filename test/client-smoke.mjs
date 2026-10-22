@@ -86,11 +86,13 @@ const ctx = {
 };
 
 exportsObj.apply(ctx);
-assert.equal(registrations.length, 2);
+assert.equal(registrations.length, 4);
 assert.equal(registrations[0].slotName, 'sidebar.footer.action');
 assert.equal(registrations[0].definition.id, 'astro-ph-researcher');
 assert.equal(typeof registrations[0].component, 'function');
 assert.equal(registrations[1].slotName, 'shell.overlay');
 assert.equal(typeof registrations[1].component, 'function');
+assert.equal(registrations[2].slotName, 'conversation.input.left');
+assert.equal(registrations[3].slotName, 'conversation.composer.dock');
 
 console.log('client registration smoke ok', registrations.map((item) => item.slotName));

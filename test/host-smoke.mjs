@@ -52,7 +52,7 @@ const { apply } = await import('../lib/index.js?host=' + Date.now());
 const dispose = apply(ctx);
 
 // wait for async initStore + registration
-for (let i = 0; i < 50 && tools.size < 25; i += 1) {
+for (let i = 0; i < 50 && tools.size < 26; i += 1) {
   await new Promise((resolve) => setTimeout(resolve, 20));
 }
 
@@ -77,6 +77,7 @@ assert.deepEqual(
     'astro_reference_save',
     'astro_reference_update',
     'astro_research_guide',
+    'astro_research_plan',
     'astro_section_workflow',
     'astro_term_list',
     'astro_term_lookup',
@@ -183,6 +184,8 @@ assert.match(physics, /Gamma-Ray Bursts/);
 const recommended = await tools.get('astro_physics_reference').execute({ action: 'recommended', query: '赵永恒' });
 assert.match(recommended, /天文数据处理与虚拟天文台/);
 assert.match(recommended, /非盈利/);
+const plan = await tools.get('astro_research_plan').execute({ action: 'add', title: 'v3 plan smoke', phase: '测试' });
+assert.match(plan, /v3 plan smoke/);
 const guide = await tools.get('astro_research_guide').execute({ action: 'tool', id: '3ml' });
 assert.match(guide, /3ML|ThreeML/);
 const sectionList = await tools.get('astro_section_workflow').execute({ action: 'list', projectId });

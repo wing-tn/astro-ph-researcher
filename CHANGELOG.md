@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.0.0 — 2026-10-22
+
+### Added
+- 6 套主题、高对比、背景色、本地背景图；面板宽度/缩放保留。
+- 研究计划树：本地 plans.json、节点状态/阶段/证据、导出 Markdown/JSON、记录对话选中。
+- 对话输入框下方工具条：计划、记录选中、外观、应用、Skill。
+- 交接弹窗：当前/已有/新建对话 + 角色/应用/Skill 设置；写作用于分析/写作/观测工作流。
+- `astro_research_plan` 工具与 `/plan` API。
+- Codex：research-plan-template.json、`plan` CLI、研究计划 skill 规范。
+- 版本 3.0.0；49 个公式（34 方法 + 9 统计 + 15 术语）。
+
 ## 2.0.0 — 2026-10-22
 
 ### Added
